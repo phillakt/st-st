@@ -1,0 +1,27 @@
+
+.wrap {
+    display: flex;
+    padding: 100px 30px 30px 30px;
+    background: #151f30;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    font-size: 22px;
+    color: #e0e0e0;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        color: #2f80ed;
+    }
+}
+
+.count {
+    background: #131720b3;
+    padding: 5px 16px;
+    border-radius: 16px;
+    color: #e0e0e0;
+}

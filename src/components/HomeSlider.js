@@ -8,7 +8,7 @@ import playBtn from "../img/webp/play-button.webp";
 import star from "../img/webp/star.webp";
 
 export const HomeSlider = () => {
-  const films = useSelector((selector) => selector.films.items);
+  const mainSlider = useSelector((selector) => selector.films.mainSlider);
   const dispatch = useDispatch();
   const _getMainSlider = useCallback(() => {
     dispatch(getMainSlider());
@@ -18,7 +18,7 @@ export const HomeSlider = () => {
     _getMainSlider();
   }, []);
 
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     arrows: false,
@@ -34,11 +34,11 @@ export const HomeSlider = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12">
-            {!films.length ? (
+            {!mainSlider.length ? (
               "Загрузка..."
             ) : (
               <Slider {...settings}>
-                {films.map((item, i) => {
+                {mainSlider.map((item, i) => {
                   return (
                     <div className="home-slider__card" key={item.ID}>
                       <img

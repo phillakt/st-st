@@ -1,24 +1,24 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getMainFilter, getMainFilterCategoryCurrent } from "../redux/actions";
+import { getCategories, getMainFilterCategoryCurrent } from "../redux/actions";
 
 export const HomeFilter = () => {
-  const filterList = useSelector((selector) => selector.films.mainFilter);
+  const filterList = useSelector((selector) => selector.films.categories);
   const mainFilterCategoryCurrent = useSelector(
     (selector) => selector.films.mainFilterCategoryCurrent
   );
   const dispatch = useDispatch();
 
-  const _getMainFilter = useCallback(() => {
-    dispatch(getMainFilter());
+  const _getCategories = useCallback(() => {
+    dispatch(getCategories());
   }, []);
 
   useEffect(() => {
-    _getMainFilter();
+    _getCategories();
   }, []);
 
   return (
-    <section className="home-filter _mt-60">
+    <section className="home-filter _mt-20">
       <div className="container">
       <div className="row">
           <div className="col-lg-12">

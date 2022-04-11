@@ -1,14 +1,14 @@
 import {
   GET_MAIN_SLIDER,
-  GET_MAIN_FILTER,
+  GET_CATEGORIES,
   GET_MAIN_FILTER_CATEGORY_CURRENT,
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
 } from "./types";
 
 const initState = {
-  items: [],
-  mainFilter: [],
+  mainSlider: [],
+  categories: [],
   mainFilterCategoryCurrent: {
     count: 0,
     slug: "",
@@ -23,12 +23,12 @@ export const films = (state = initState, action) => {
     case GET_MAIN_SLIDER:
       return {
         ...state,
-        items: action.films,
+        mainSlider: action.mainSlider,
       };
-    case GET_MAIN_FILTER:
+    case GET_CATEGORIES:
       return {
         ...state,
-        mainFilter: action.mainFilter,
+        categories: action.categories,
       };
     case GET_MAIN_FILTER_CATEGORY_CURRENT:
       return {

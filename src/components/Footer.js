@@ -6,7 +6,7 @@ import vkBrands from "../img/social/vk-brands.svg";
 import telegramBrands from "../img/social/telegram-brands.svg";
 
 export const Footer = () => {
-  const footerCategory = useSelector((selector) => selector.films.mainFilter);
+  const footerCategory = useSelector((selector) => selector.films.categories);
   const date = new Date();
   return (
     <footer className="footer">

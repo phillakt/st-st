@@ -2,7 +2,7 @@ import axios from "axios";
 import { token } from "../token";
 import {
   GET_MAIN_SLIDER,
-  GET_MAIN_FILTER,
+  GET_CATEGORIES,
   GET_MAIN_FILTER_CATEGORY_CURRENT,
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
@@ -16,19 +16,19 @@ export const getMainSlider = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/films",
+      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/main-slider",
       {},
       config
     );
 
     dispatch({
       type: GET_MAIN_SLIDER,
-      films: response.data,
+      mainSlider: response.data,
     });
   };
 };
 
-export const getMainFilter = () => {
+export const getCategories = () => {
   return async (dispatch) => {
     const config = {
       headers: {
@@ -42,8 +42,8 @@ export const getMainFilter = () => {
     );
 
     dispatch({
-      type: GET_MAIN_FILTER,
-      mainFilter: response.data,
+      type: GET_CATEGORIES,
+      categories: response.data,
     });
   };
 };

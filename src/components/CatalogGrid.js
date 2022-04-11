@@ -33,7 +33,7 @@ export const CatalogGrid = () => {
           {!mainFilterCategoryCurrent.categoryPosts.length ? (
             <div className="col-lg-12">
               <div className="fjc-c fia-c">
-                <span className="color__white fs-22 tt_upper">
+                <span className="color__white fs-22">
                   Выберите жанр
                 </span>
               </div>
