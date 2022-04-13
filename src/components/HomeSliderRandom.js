@@ -50,7 +50,7 @@ const HomeSliderRandom = () => {
                 {mainSliderRandom.map((item, i) => {
                   return (
                     <div key={item.ID}>
-                      <div className="card _ml-20 _mr-20">
+                      <div className="card _mr-20">
                         <div className="fjc-c card__link">
                           <span className="card__img">
                             <img
