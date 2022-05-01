@@ -4,11 +4,17 @@ import {
   GET_MAIN_FILTER_CATEGORY_CURRENT,
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
+  GET_CATEGORY,
 } from "./types";
 
 const initState = {
   mainSlider: [],
   categories: [],
+  category: {
+    count: 0,
+    slug: "",
+    categoryPosts: [],
+  },
   mainFilterCategoryCurrent: {
     count: 0,
     slug: "",
@@ -49,6 +55,11 @@ export const films = (state = initState, action) => {
         ...state,
         filmDetail: action.filmDetail,
       };
+    case GET_CATEGORY:
+      return {
+        ...state,
+        category: action.category
+      }
     default:
       return state;
   }

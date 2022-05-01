@@ -20,12 +20,12 @@ export const HomeSlider = () => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     arrows: false,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
   };
 
