@@ -18,7 +18,7 @@ export const HomeFilter = () => {
   }, []);
 
   return (
-    <section className="home-filter _mt-20">
+    <section className="home-filter _mt-60">
       <div className="container">
       <div className="row">
           <div className="col-lg-12">

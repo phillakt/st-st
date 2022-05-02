@@ -1,0 +1,34 @@
+.card__title {
+
+    a {
+        display: inline-flex;
+        font-size: 20px;
+        color: #e0e0e0;
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+    }
+}
+
+.card__genre_list {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    li {
+        line-height: 0.5;
+
+        a {
+            font-family: Montserrat, sans-serif;
+            display: inline-flex;
+            font-weight: 400;
+            font-size: 12px;
+            color: #e0e0e0;
+            padding: 5px 5px 5px 0;
+            text-decoration: none;
+            transition: all .3s ease-in-out;
+
+            :hover {
+                color: #2f80ed;;
+            }
+        }
+    }
+}

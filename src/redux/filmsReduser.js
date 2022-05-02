@@ -4,15 +4,16 @@ import {
   GET_MAIN_FILTER_CATEGORY_CURRENT,
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
-  GET_CATEGORY,
+  GET_CATEGORY_CURRENT,
 } from "./types";
 
 const initState = {
   mainSlider: [],
   categories: [],
-  category: {
+  categoryCurrent: {
     count: 0,
     slug: "",
+    categoryData: {},
     categoryPosts: [],
   },
   mainFilterCategoryCurrent: {
@@ -22,6 +23,38 @@ const initState = {
   },
   mainSliderRandom: [],
   filmDetail: {},
+  filtersProps: [
+    {
+      title: "По годам",
+      slug: "year",
+      type: "checkbox",
+      value: [
+        {
+          title: "За",
+          prop: "2022",
+        },
+        {
+          title: "За",
+          prop: "2021",
+        },
+      ]
+    },
+    {
+      title: "Сортировка",
+      slug: "sort",
+      type: "radio",
+      value: [
+        {
+          title: "От старых к новым",
+          prop: "ASC",
+        },
+        {
+          title: "От новых к старым",
+          prop: "DESC",
+        },
+      ]
+    },
+  ]
 };
 
 export const films = (state = initState, action) => {
@@ -55,10 +88,15 @@ export const films = (state = initState, action) => {
         ...state,
         filmDetail: action.filmDetail,
       };
-    case GET_CATEGORY:
+    case GET_CATEGORY_CURRENT:
       return {
         ...state,
-        category: action.category
+        categoryCurrent: {
+          count: action.count,
+          slug: action.slug,
+          categoryData: action.categoryCurrent.categoryData,
+          categoryPosts: action.categoryCurrent.posts
+        }
       }
     default:
       return state;

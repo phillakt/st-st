@@ -6,7 +6,7 @@ import {
   GET_MAIN_FILTER_CATEGORY_CURRENT,
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
-  GET_CATEGORY,
+  GET_CATEGORY_CURRENT,
 } from "./types";
 
 export const getMainSlider = () => {
@@ -118,7 +118,7 @@ export const getFilmDetail = (slug) => {
   };
 };
 
-export const getCategory = (slug) => {
+export const getCategoryCurrent = (slug, count) => {
   return async (dispatch) => {
     const config = {
       headers: {
@@ -127,16 +127,19 @@ export const getCategory = (slug) => {
     }
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category",
+      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current",
       {
-        name: slug,
+        category: slug,
+        count,
       },
       config
     );
 
     dispatch({
-      type: GET_CATEGORY,
-      category: response.data,
+      type: GET_CATEGORY_CURRENT,
+      slug,
+      count,
+      categoryCurrent: response.data,
     })
 
   }

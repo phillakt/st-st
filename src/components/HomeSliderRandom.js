@@ -27,7 +27,7 @@ const HomeSliderRandom = () => {
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
   };
 
@@ -51,7 +51,7 @@ const HomeSliderRandom = () => {
                   return (
                     <div key={item.ID}>
                       <div className="card _mr-20">
-                        <div className="fjc-c card__link">
+                        <div className="fjc-s card__link">
                           <span className="card__img">
                             <img
                               src={item.thumbnail_url}

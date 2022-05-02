@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Home from "./Home/Home";
 import About from "./About/About";
 import Categories from "./Categories/Categories";
-import Category from "./Category/Category";
+import CategoryCurrent from "./CategoryCurrent/CategoryCurrent";
 import Detail from "./Detail/Detail";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/" exact element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/category/:slug" element={<Category />} />
+        <Route path="/category/:slug" element={<CategoryCurrent />} />
         <Route path="/detail/:slug" element={<Detail />} />
       </Routes>
       <Footer />

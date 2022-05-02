@@ -1,5 +1,5 @@
 import React from "react";
-import CatalogGrid from "../components/CatalogGrid";
+import CatalogGrid from "../components/CatalogGrid/CatalogGrid";
 import HomeFilter from "../components/HomeFilter";
 import HomeSlider from "../components/HomeSlider";
 import HomeSliderRandom from "../components/HomeSliderRandom";
