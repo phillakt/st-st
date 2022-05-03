@@ -5,6 +5,8 @@ import {
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
+  GET_CATEGORY_CURRENT_FILTER,
+  SET_CHECKED_EL_CURRENT_FILTER,
 } from "./types";
 
 const initState = {
@@ -15,7 +17,14 @@ const initState = {
     slug: "",
     categoryData: {},
     categoryPosts: [],
+    categoryPostsFilter: [],
   },
+  // categoryCurrentFilter: {
+  //   count: 0,
+  //   slug: "",
+  //   categoryData: {},
+  //   categoryPosts: [],
+  // },
   mainFilterCategoryCurrent: {
     count: 0,
     slug: "",
@@ -32,10 +41,12 @@ const initState = {
         {
           title: "За",
           prop: "2022",
+          checked: false,
         },
         {
           title: "За",
           prop: "2021",
+          checked: false,
         },
       ]
     },
@@ -47,14 +58,16 @@ const initState = {
         {
           title: "От старых к новым",
           prop: "ASC",
+          checked: false,
         },
         {
           title: "От новых к старым",
           prop: "DESC",
+          checked: false,
         },
       ]
     },
-  ]
+  ],
 };
 
 export const films = (state = initState, action) => {
@@ -98,6 +111,18 @@ export const films = (state = initState, action) => {
           categoryPosts: action.categoryCurrent.posts
         }
       }
+    case GET_CATEGORY_CURRENT_FILTER:
+      return {
+        ...state,
+        categoryCurrent: {
+          categoryPostsFilter: action.categoryCurrent.posts,
+        }
+      }
+
+    // case SET_CHECKED_EL_CURRENT_FILTER:
+    //   return {
+    //     ...state
+    //   }
     default:
       return state;
   }

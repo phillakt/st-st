@@ -1,7 +1,8 @@
 import React from 'react';
-import Checkbox from '../Checkbox/Checkbox';
 import style from './Filter.module.scss';
 import { useSelector } from 'react-redux';
+import ElementFilter from './ElementFilter/ElementFilter';
+
 
 const CategoryCurrentFilter = () => {
     const filtersProps = useSelector((selector => selector.films.filtersProps))
@@ -10,10 +11,9 @@ const CategoryCurrentFilter = () => {
             {
                 !filtersProps ? "Нету параметров" : (
                     filtersProps.map((item, i) => {
-                        // console.log(item);
-                        return (
-                            <div key={i}>
-                                <Checkbox item={item} />
+                        return (    
+                            <div className={style.wrap__box} key={i}>
+                                <ElementFilter item={item} />
                             </div>
                         )
                     })

@@ -7,6 +7,8 @@ import {
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
+  GET_CATEGORY_CURRENT_FILTER,
+  SET_CHECKED_EL_CURRENT_FILTER,
 } from "./types";
 
 export const getMainSlider = () => {
@@ -142,5 +144,46 @@ export const getCategoryCurrent = (slug, count) => {
       categoryCurrent: response.data,
     })
 
+  }
+}
+
+export const getCategoryCurrentFilter = (...arg) => {
+  // console.log("action getCategoryCurrentFilter:", arg);
+  return async (dispatch) => {
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }
+
+    // const response = await axios.post(
+    //   "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current-filter",
+    //   {
+    //     category: slug,
+    //     count,
+    //     year,
+    //     sort,
+    //   },
+    //   config
+    // );
+
+    // dispatch({
+    //   type: GET_CATEGORY_CURRENT_FILTER,
+    //   categoryCurrent: response.data,
+    // })
+
+  }
+}
+
+export const setCheckedElCurrentFilter = (item, positionElFilter) => {
+  // console.log("action setCheckedElCurrentFilter: ", item, positionElFilter);
+  return (dispatch) => {
+    dispatch({
+      type: SET_CHECKED_EL_CURRENT_FILTER,
+      filtersProps: {
+        positionElFilter,
+        item
+      }
+    });
   }
 }

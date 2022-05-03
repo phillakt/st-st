@@ -30,7 +30,9 @@ const CategoryCurrent = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h2 className="color__white fs-26">Категория {params.slug}</h2>
+            <h2 className="color__white fs-26">
+              {categoryCurrent.categoryData.name}
+            </h2>
           </div>
         </div>
 
@@ -39,10 +41,11 @@ const CategoryCurrent = () => {
             <CategoryCurrentFilter />
           </div>
 
-          <div className="col-lg-8 offset-lg-1">
-            <div className="row catalog__grid color__white fs-26">
+          <div className="col-lg-9">
+            <div className="row catalog__grid">
+
               {
-                !categoryCurrent.categoryPosts ? "Загрузка фильмов" : (
+                !categoryCurrent.categoryPosts.length ? "Загрузка..." : (
                   categoryCurrent.categoryPosts.map((item, i) => {
                     return (
                       <div className="col-lg-6" key={i}>
