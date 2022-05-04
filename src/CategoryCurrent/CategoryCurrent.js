@@ -29,9 +29,9 @@ const CategoryCurrent = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h2 className="color__white fs-26">
+            <h1 className="color__white fs-26">
               {categoryCurrent.categoryData.name}
-            </h2>
+            </h1>
           </div>
         </div>
 

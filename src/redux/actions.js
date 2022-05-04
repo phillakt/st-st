@@ -8,7 +8,7 @@ import {
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
-  CHANGE_CHECKED_EL_CURRENT_FILTER,
+  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
 } from "./types";
 
 export const getMainSlider = () => {
@@ -176,11 +176,9 @@ export const getCategoryCurrentFilter = () => {
 }
 
 export const changeCheckedElCurrentFilter = (param) => {
-  console.log("changeCheckedElCurrentFilter: ", param);
-  // console.log("action setCheckedElCurrentFilter: ", item, positionElFilter);
   return (dispatch) => {
     dispatch({
-      type: CHANGE_CHECKED_EL_CURRENT_FILTER,
+      type: CHANGE_EL_CHECKBOX_CURRENT_FILTER,
       filtersProps: param
     });
   }

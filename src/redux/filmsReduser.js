@@ -6,7 +6,7 @@ import {
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
-  CHANGE_CHECKED_EL_CURRENT_FILTER,
+  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
 } from "./types";
 
 const initState = {
@@ -41,21 +41,34 @@ const initState = {
           value: "2021",
           checked: false,
         },
-      ],
-    },
-    {
-      title: "Сортировка",
-      type: "checkbox",
-      param: "sort",
-      list: [
         {
-          text: "По",
-          value: "2022",
+          text: "За",
+          value: "2020",
           checked: false,
         },
         {
-          text: "По",
-          value: "2021",
+          text: "За",
+          value: "2019",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2018",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2017",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2016",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2015",
           checked: false,
         },
       ],
@@ -129,7 +142,7 @@ export const films = (state = initState, action) => {
         },
       };
 
-    case CHANGE_CHECKED_EL_CURRENT_FILTER:
+    case CHANGE_EL_CHECKBOX_CURRENT_FILTER:
       return {
         ...state,
         filtersProps: [
