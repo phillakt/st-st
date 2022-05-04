@@ -68,6 +68,36 @@ const initState = {
       ]
     },
   ],
+  filterListYear: {
+    title: "По годам",
+    prefixEltext: "За",
+    type: "checkbox",
+    list: [
+      {
+        value: "2022",
+        checked: false,
+      },
+      {
+        value: "2021",
+        checked: false,
+      },
+    ]
+  },
+  filterListSort: {
+    title: "По годам",
+    prefixEltext: "За",
+    type: "radio",
+    list: [
+      {
+        value: "2022",
+        checked: false,
+      },
+      {
+        value: "2021",
+        checked: false,
+      },
+    ]
+  },
 };
 
 export const films = (state = initState, action) => {
@@ -119,10 +149,20 @@ export const films = (state = initState, action) => {
         }
       }
 
-    // case SET_CHECKED_EL_CURRENT_FILTER:
-    //   return {
-    //     ...state
-    //   }
+    case SET_CHECKED_EL_CURRENT_FILTER:
+      console.log(action);
+      console.log(action.filtersProps.item.checked);
+      console.log(action.filtersProps.item.prop);
+      return {
+        ...state,
+        filtersProps: {
+          ...state.filtersProps.map((item, i) => {
+            if (action.change.type === item.type) {
+
+            }
+          })
+        }
+      }
     default:
       return state;
   }

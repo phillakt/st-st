@@ -1,8 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCheckedElCurrentFilter } from '../../../../redux/actions';
 import style from './Checkbox.module.scss';
+
 
 const Checkbox = ({ item }) => {
     const checkboxList = item.value;
+    const dispatch = useDispatch();
+
+    const changeItem = (el) => {
+        const element = {
+            checked: !el.checked,
+            prop: el.prop,
+            type: item.type,
+        };
+        console.log(element);
+        dispatch(setCheckedElCurrentFilter(element));
+    };
+
     return (
         <>
             <div>
@@ -12,8 +27,9 @@ const Checkbox = ({ item }) => {
                 checkboxList.map((el, i) => {
                     return (
                         <div className={`${style.wrap} _mt-10 _mb-10`} key={i}>
-                            <input type={item.type} className={style.custom_checkbox} id={`${item.slug}_${el.prop}`} name={el.prop} value={el.prop} />
+                            <input type={item.type} className={style.custom_checkbox} id={`${item.slug}_${el.prop}`} />
                             <label htmlFor={`${item.slug}_${el.prop}`}
+                                onClick={() => (changeItem(el))}
                             >{el.title} {el.prop}</label>
                         </div>
                     );

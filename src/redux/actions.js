@@ -175,15 +175,12 @@ export const getCategoryCurrentFilter = (...arg) => {
   }
 }
 
-export const setCheckedElCurrentFilter = (item, positionElFilter) => {
-  // console.log("action setCheckedElCurrentFilter: ", item, positionElFilter);
+export const setCheckedElCurrentFilter = (props) => {
+  console.log(props);
   return (dispatch) => {
     dispatch({
       type: SET_CHECKED_EL_CURRENT_FILTER,
-      filtersProps: {
-        positionElFilter,
-        item
-      }
+      change: props
     });
   }
 }
