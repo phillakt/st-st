@@ -11,8 +11,6 @@ const ElementFilter = ({ item }) => {
             return (<Checkbox item={el} />)
         } else if (el.type === 'radio') {
             return (<Radio item={el} />)
-        } else {
-            return (<div>Is not type components.</div>)
         }
     }
 

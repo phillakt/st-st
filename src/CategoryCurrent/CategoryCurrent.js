@@ -15,7 +15,6 @@ const CategoryCurrent = () => {
     dispatch(getCategories());
   }, []);
 
-
   const _getCategoryCurrent = useCallback(() => {
     dispatch(getCategoryCurrent(params.slug, 3))
   });
