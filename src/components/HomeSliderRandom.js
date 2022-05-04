@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMainSliderRandom } from "../redux/actions";
-import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
+import CardFlat from "./CardFlat/CardFlat";
 
-import playBtn from "../img/webp/play-button.webp";
-import star from "../img/webp/star.webp";
+
+
 
 const HomeSliderRandom = () => {
   const mainSliderRandom = useSelector(
@@ -22,12 +22,12 @@ const HomeSliderRandom = () => {
 
   var settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     arrows: false,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
   };
 
@@ -49,68 +49,7 @@ const HomeSliderRandom = () => {
               <Slider {...settings}>
                 {mainSliderRandom.map((item, i) => {
                   return (
-                    <div key={item.ID}>
-                      <div className="card _mr-20">
-                        <div className="fjc-s card__link">
-                          <span className="card__img">
-                            <img
-                              src={item.thumbnail_url}
-                              className="img-res"
-                              alt="films"
-                            />
-                          </span>
-                          <NavLink
-                            to={`/detail/${item.post_name}`}
-                            className="card__play"
-                          >
-                            <img
-                              className="width-50 fa-circle-play"
-                              src={playBtn}
-                              alt={"play"}
-                            />
-                            {/* <i className="fa-solid fa-circle-play" /> */}
-                          </NavLink>
-                          <span className="card__rating">
-                            <img src={star} alt={"star"} />
-                            <span className="_pl-5">
-                              {item.meta_fields.rating[0]}
-                            </span>
-                          </span>
-                        </div>
-                        <div className="card__content _mt-10">
-                          <div>
-                            <div className="_pb-10">
-                              <h3 className="card__title">
-                                <NavLink to={`/detail/${item.post_name}`}>
-                                  {item.post_title}
-                                </NavLink>
-                              </h3>
-                            </div>
-                            <div className="_mb-5">
-                              <div className="card__year">
-                                <span className="_mr-10">
-                                  {item.meta_fields.duration[0]}
-                                </span>
-                                <span>{item.meta_fields.year[0]}</span>
-                              </div>
-                            </div>
-                            <div className="_pb-10">
-                              <ul className="card__genre-list">
-                                {item.category.map((item, i) => {
-                                  return (
-                                    <li key={i}>
-                                      <NavLink to={`/category/${item.slug}`}>
-                                        {item.name}
-                                      </NavLink>
-                                    </li>
-                                  );
-                                })}
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <CardFlat item={item} key={item.ID} />
                   );
                 })}
               </Slider>

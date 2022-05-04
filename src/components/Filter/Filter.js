@@ -8,6 +8,9 @@ const CategoryCurrentFilter = () => {
     const filtersProps = useSelector((selector => selector.films.filtersProps))
     return (
         <div className={style.wrap}>
+            <div>
+                <h2 className={style.title}>Фильтр</h2>
+            </div>
             {
                 !filtersProps ? "Нету параметров" : (
                     filtersProps.map((item, i) => {

@@ -5,47 +5,43 @@ import star from "../../img/webp/star.webp";
 import style from "./CardBook.module.scss";
 
 const CardBook = ({ item }) => {
+    console.log(item);
     return (
-        <div className="card _mb-30">
-            <div className="card__link">
-                <span className="card__img">
-                    <img
-                        src={item.thumbnail_url}
-                        className="img-res"
-                        alt={item.post_title}
-                    />
+        <div className={`${style.card} _mb-30`}>
+            <div className={style.link}>
+                <span className={style.img} style={{"background": `url(${item.thumbnail_url})`}}>
                 </span>
                 <NavLink
                     to={`/detail/${item.post_name}`}
-                    className="card__play"
+                    className={style.play}
                 >
                     <img src={playBtn} alt="playBtn" />
                 </NavLink>
-                <span className="card__rating">
+                <span className={style.rating} >
                     <img src={star} alt="star" />
                     <span className="_pl-5">{item.meta_fields.rating}</span>
                 </span>
             </div>
-            <div className="flex__55 card__content">
+            <div className={`${style.content} flex__55`}>
                 <div>
                     <div className="_pb-10">
-                        <h3 className={style.card__title}>
+                        <h3 className={style.title}>
                             <NavLink to={`/detail/${item.post_name}`}>
                                 {item.post_title}
                             </NavLink>
                         </h3>
                     </div>
-                    {!item.post_title ? (
+                    {!item.meta_fields.director ? (
                         ""
                     ) : (
                         <div className="_pb-10">
-                            <div className="card__director">
-                                <span>Режисер: </span>
+                            <div className={style.director}>
+                                <span>Режисер: {item.meta_fields.director}</span>
                             </div>
                         </div>
                     )}
                     <div className="_pb-10">
-                        <ul className={style.card__genre_list}>
+                        <ul className={style.category_list}>
                             {item.category.map((item, i) => {
                                 return (
                                     <li key={i}>
@@ -59,9 +55,15 @@ const CardBook = ({ item }) => {
                     </div>
                 </div>
                 <div>
-                    <div className="card__slogan">
-                        «The longer you wait, the harder it gets»
-                    </div>
+                {!item.meta_fields.slogan ? (
+                        ""
+                    ) : (
+                        <div className="_pb-10">
+                            <div className="card__slogan">
+                                <span>{item.meta_fields.slogan}</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

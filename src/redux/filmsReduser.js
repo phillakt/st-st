@@ -6,7 +6,7 @@ import {
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
-  SET_CHECKED_EL_CURRENT_FILTER,
+  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
 } from "./types";
 
 const initState = {
@@ -17,14 +17,7 @@ const initState = {
     slug: "",
     categoryData: {},
     categoryPosts: [],
-    categoryPostsFilter: [],
   },
-  // categoryCurrentFilter: {
-  //   count: 0,
-  //   slug: "",
-  //   categoryData: {},
-  //   categoryPosts: [],
-  // },
   mainFilterCategoryCurrent: {
     count: 0,
     slug: "",
@@ -35,38 +28,68 @@ const initState = {
   filtersProps: [
     {
       title: "По годам",
-      slug: "year",
       type: "checkbox",
-      value: [
+      param: "year",
+      list: [
         {
-          title: "За",
-          prop: "2022",
+          text: "За",
+          value: "2022",
           checked: false,
         },
         {
-          title: "За",
-          prop: "2021",
+          text: "За",
+          value: "2021",
           checked: false,
         },
-      ]
+        {
+          text: "За",
+          value: "2020",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2019",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2018",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2017",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2016",
+          checked: false,
+        },
+        {
+          text: "За",
+          value: "2015",
+          checked: false,
+        },
+      ],
     },
-    {
-      title: "Сортировка",
-      slug: "sort",
-      type: "radio",
-      value: [
-        {
-          title: "От старых к новым",
-          prop: "ASC",
-          checked: false,
-        },
-        {
-          title: "От новых к старым",
-          prop: "DESC",
-          checked: false,
-        },
-      ]
-    },
+    // {
+    //   title: "Сортировка",
+    //   param: "sort",
+    //   type: "radio",
+    //   list: [
+    //     {
+    //       text: "От старых к новым",
+    //       value: "ASC",
+    //       checked: false,
+    //     },
+    //     {
+    //       text: "От новых к старым",
+    //       value: "DESC",
+    //       checked: false,
+    //     },
+    //   ],
+    // },
   ],
   filterListYear: {
     title: "По годам",
@@ -138,31 +161,39 @@ export const films = (state = initState, action) => {
           count: action.count,
           slug: action.slug,
           categoryData: action.categoryCurrent.categoryData,
-          categoryPosts: action.categoryCurrent.posts
-        }
-      }
+          categoryPosts: action.categoryCurrent.posts,
+        },
+      };
     case GET_CATEGORY_CURRENT_FILTER:
       return {
         ...state,
         categoryCurrent: {
           categoryPostsFilter: action.categoryCurrent.posts,
-        }
-      }
-
-    case SET_CHECKED_EL_CURRENT_FILTER:
-      console.log(action);
-      console.log(action.filtersProps.item.checked);
-      console.log(action.filtersProps.item.prop);
+        },
+      };
+    case CHANGE_EL_CHECKBOX_CURRENT_FILTER:
       return {
         ...state,
-        filtersProps: {
-          ...state.filtersProps.map((item, i) => {
-            if (action.change.type === item.type) {
-
+        filtersProps: [
+          ...state.filtersProps.map((item) => {
+            if (item.param === action.filtersProps.param) {
+              return {
+                ...item,
+                list: [
+                  ...item.list.map((_item) => {
+                    if (_item.value === action.filtersProps.value) {
+                      _item.checked = !_item.checked;
+                      return _item;
+                    }
+                    return _item;
+                  }),
+                ]
+              }
             }
+            return item;
           })
-        }
-      }
+        ]
+      };
     default:
       return state;
   }
