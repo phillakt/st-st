@@ -1,0 +1,22 @@
+
+.btn {
+    font-family: Montserrat,sans-serif;
+    cursor: pointer;
+}
+
+.default {
+    background: #151f30;
+    border-radius: 16px;
+    transition: all .3s ease-in-out ;
+    
+    span {
+        display: inline-flex;
+        color: #e0e0e0;
+        padding: 20px 40px;
+        font-size: 16px;
+    }
+
+    &:hover {
+        background: #2f80ed;
+    }
+}

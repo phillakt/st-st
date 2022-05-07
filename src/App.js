@@ -4,7 +4,7 @@ import "./css/custom.css";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 import Home from "./Home/Home";
 import About from "./About/About";

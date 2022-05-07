@@ -5,7 +5,6 @@ import star from "../../img/webp/star.webp";
 import style from "./CardBook.module.scss";
 
 const CardBook = ({ item }) => {
-    console.log(item);
     return (
         <div className={`${style.card} _mb-30`}>
             <div className={style.link}>

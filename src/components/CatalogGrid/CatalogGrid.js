@@ -1,62 +1,57 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMainFilterCategoryCurrent } from "../../redux/actions";
+import BtnUploadMoreDefault from "../../ui/BtnUploadMoreDefault/BtnUploadMoreDefault";
 import CardBook from "../CardBook/CardBook";
 
-
 const CatalogGrid = () => {
-
-  const mainFilterCategoryCurrent = useSelector(
+  const categoryCurrent = useSelector(
     (selector) => selector.films.mainFilterCategoryCurrent
   );
 
   const dispatch = useDispatch();
 
-  const increment = (mainFilterCategoryCurrent) => {
-    const count = mainFilterCategoryCurrent.count + 9;
-    dispatch(
-      getMainFilterCategoryCurrent(
-        mainFilterCategoryCurrent.slug,
-        count
-      )
-    );
-  }
+  const increment = (categoryCurrent) => {
+    const count = categoryCurrent.count + 9;
+    dispatch(getMainFilterCategoryCurrent(categoryCurrent.slug, count));
+  };
 
   return (
     <section className="catalog__grid _mt-30">
       <div className="container">
         <div className="row">
-          {!mainFilterCategoryCurrent.categoryPosts.length ? (
+          {!categoryCurrent.categoryPosts.length ? (
             <div className="col-lg-12">
               <div className="fjc-c fia-c">
-                <span className="color__white fs-22">
-                  Выберите жанр
-                </span>
+                <span className="color__white fs-22">Выберите жанр</span>
               </div>
             </div>
           ) : (
-            mainFilterCategoryCurrent.categoryPosts.map((item, i) => {
+            categoryCurrent.categoryPosts.map((item, i) => {
               return (
                 <div key={i} className="col-lg-4 col-sm-6">
-                    <CardBook item={item} />
+                  <CardBook item={item} />
                 </div>
               );
             })
           )}
         </div>
-        {!mainFilterCategoryCurrent.categoryPosts.length ? (
+        {!categoryCurrent.categoryPosts.length ? (
           ""
         ) : (
           <div className="row">
             <div className="col-lg-12">
-              <div className="fjc-c">
-                <div
-                  className="btn btn-download"
-                  onClick={() => increment(mainFilterCategoryCurrent)}
-                >
-                  <span>Загрузить еще</span>
+              {categoryCurrent.count > categoryCurrent.categoryPosts.length ? (
+                ""
+              ) : (
+                <div className="fjc-c">
+                  <BtnUploadMoreDefault
+                    text="Загрузить еще"
+                    increment={increment}
+                    categoryCurrent={categoryCurrent}
+                  />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         )}

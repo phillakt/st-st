@@ -2,14 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import vkBrands from "../img/social/vk-brands.svg";
-import telegramBrands from "../img/social/telegram-brands.svg";
+import vkBrands from "../../img/social/vk-brands.svg";
+import telegramBrands from "../../img/social/telegram-brands.svg";
+
+import style from "./Footer.module.scss";
 
 export const Footer = () => {
   const footerCategory = useSelector((selector) => selector.films.categories);
   const date = new Date();
   return (
-    <footer className="footer">
+    <footer className={style.wrap}>
       <div className="container">
         <div className="row _pb-60">
           <div className="col-lg-4">

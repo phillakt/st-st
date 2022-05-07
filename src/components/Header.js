@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import magnifyingGlass from "../img/webp/magnifying-glass.webp";
-import login from "../img/webp/login.png";
+import login from "../img/webp/login.webp";
 
 export const Header = () => {
   return (
@@ -44,7 +44,7 @@ export const Header = () => {
             </form>
           </div>
           <div className="col-lg-2">
-            <div className="sign-in _pt-5 _mt-10">
+            <div className="fjc-e sign-in _pt-5 _mt-10">
               <span className="sign-in__text">
                 <a href="#!" className="fjc-s fai-c">
                   <span className="_pr-10">Войти</span> <img src={login} alt="login" />
