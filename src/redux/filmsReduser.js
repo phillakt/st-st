@@ -7,6 +7,8 @@ import {
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  GET_ALL_FILMS,
+  GET_SEARCH_FILMS,
 } from "./types";
 
 const initState = {
@@ -25,6 +27,11 @@ const initState = {
   },
   mainSliderRandom: [],
   filmDetail: {},
+  allFilms: [],
+  searchFilms: {
+    searchInputValue: "",
+    searchFilmsList: [],
+  },
   filtersProps: [
     {
       title: "По годам",
@@ -91,36 +98,6 @@ const initState = {
     //   ],
     // },
   ],
-  filterListYear: {
-    title: "По годам",
-    prefixEltext: "За",
-    type: "checkbox",
-    list: [
-      {
-        value: "2022",
-        checked: false,
-      },
-      {
-        value: "2021",
-        checked: false,
-      },
-    ]
-  },
-  filterListSort: {
-    title: "По годам",
-    prefixEltext: "За",
-    type: "radio",
-    list: [
-      {
-        value: "2022",
-        checked: false,
-      },
-      {
-        value: "2021",
-        checked: false,
-      },
-    ]
-  },
 };
 
 export const films = (state = initState, action) => {
@@ -187,12 +164,27 @@ export const films = (state = initState, action) => {
                     }
                     return _item;
                   }),
-                ]
-              }
+                ],
+              };
             }
             return item;
-          })
-        ]
+          }),
+        ],
+      };
+
+    case GET_ALL_FILMS:
+      return {
+        ...state,
+        allFilms: action.allFilms,
+      };
+
+    case GET_SEARCH_FILMS:
+      return {
+        ...state,
+        searchFilms: {
+          searchInputValue: action.searchFilms.searchInputValue,
+          searchFilmsList: action.searchFilms.searchFilmsList,
+        },
       };
     default:
       return state;

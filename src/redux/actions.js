@@ -9,6 +9,8 @@ import {
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  GET_ALL_FILMS,
+  GET_SEARCH_FILMS,
 } from "./types";
 
 export const getMainSlider = () => {
@@ -126,7 +128,7 @@ export const getCategoryCurrent = (slug, count) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }
+    };
 
     const response = await axios.post(
       "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current",
@@ -142,10 +144,18 @@ export const getCategoryCurrent = (slug, count) => {
       slug,
       count,
       categoryCurrent: response.data,
-    })
+    });
+  };
+};
 
-  }
-}
+export const changeCheckedElCurrentFilter = (param) => {
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+      filtersProps: param,
+    });
+  };
+};
 
 export const getCategoryCurrentFilter = () => {
   // console.log("action getCategoryCurrentFilter:", arg);
@@ -155,7 +165,6 @@ export const getCategoryCurrentFilter = () => {
     //     Authorization: `Bearer ${token}`,
     //   },
     // }
-
     // const response = await axios.post(
     //   "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current-filter",
     //   {
@@ -166,20 +175,42 @@ export const getCategoryCurrentFilter = () => {
     //   },
     //   config
     // );
-
     // dispatch({
     //   type: GET_CATEGORY_CURRENT_FILTER,
     //   categoryCurrent: response.data,
     // })
+  };
+};
 
-  }
-}
+export const getAllFilms = () => {
+  return async (dispatch) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-export const changeCheckedElCurrentFilter = (param) => {
+    const response = await axios.post(
+      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films",
+      {},
+      config
+    );
+
+    dispatch({
+      type: GET_ALL_FILMS,
+      allFilms: response.data,
+    });
+  };
+};
+
+export const getSearchFilms = (val, searchList) => {
   return (dispatch) => {
     dispatch({
-      type: CHANGE_EL_CHECKBOX_CURRENT_FILTER,
-      filtersProps: param
+      type: GET_SEARCH_FILMS,
+      searchFilms: {
+        searchInputValue: val,
+        searchFilmsList: searchList,
+      },
     });
-  }
-}
+  };
+};
