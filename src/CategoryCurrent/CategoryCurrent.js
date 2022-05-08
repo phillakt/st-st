@@ -32,7 +32,7 @@ const CategoryCurrent = () => {
   }, [params.slug]);
 
   return (
-    <section className="_mt-100 _pt-20">
+    <section className="_mt-80 _pt-30">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-6">

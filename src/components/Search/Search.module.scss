@@ -4,8 +4,32 @@
   right: 0;
   top: 83px;
   padding: 10px 0;
-  background: #151f30;
+  background: #151f30e6;
   z-index: 9;
-  border-bottom: 1px solid #151f30;
   border-top: 1px solid rgba(47, 128, 237, 0.1);
+  border-bottom: 1px solid #131720;
+  @media (max-width: 768px) {
+    top: 183px;
+  }
 }
+
+.wrap_view {
+  display: block;
+}
+
+.wrap_hidden {
+  display: none;
+}
+
+.box {
+  display: flex;
+}
+
+.list {
+
+}
+
+.item {
+  width: 200px;
+}
+

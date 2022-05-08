@@ -39,6 +39,8 @@
     "jest-watch-typeahead": "^1.0.0",
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^2.4.5",
+    "overlayscrollbars": "^1.13.1",
+    "overlayscrollbars-react": "^0.2.3",
     "p2p-media-loader-hlsjs": "^0.6.2",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",

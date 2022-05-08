@@ -30,6 +30,7 @@ const initState = {
   allFilms: [],
   searchFilms: {
     searchInputValue: "",
+    searchWrap: false,
     searchFilmsList: [],
   },
   filtersProps: [
@@ -179,11 +180,15 @@ export const films = (state = initState, action) => {
       };
 
     case GET_SEARCH_FILMS:
+      const searchInputValue = action.searchFilms.searchInputValue;
+      const searchWrap = action.searchFilms.searchFilmsList.length ? true : false;
+      const searchFilmsList = action.searchFilms.searchFilmsList;
       return {
         ...state,
         searchFilms: {
-          searchInputValue: action.searchFilms.searchInputValue,
-          searchFilmsList: action.searchFilms.searchFilmsList,
+          searchInputValue,
+          searchWrap,
+          searchFilmsList,
         },
       };
     default:

@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CardFlat from "../CardFlat/CardFlat";
+import style from "./Search.module.scss";
 
-const Search = () => {
+const Search = (param) => {
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
 
   return (
@@ -11,7 +12,9 @@ const Search = () => {
         ? ""
         : searchFilms.searchFilmsList.map((item, i) => {
             return (
-              <div className="col-md-2" key={i}>
+              <div
+              onClick={() => (param.closeSearchSession())}
+              className={style.item} key={i}>
                 <CardFlat item={item} />
               </div>
             );
