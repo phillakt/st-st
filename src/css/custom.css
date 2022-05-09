@@ -1,3 +1,9 @@
+@media (max-width: 768px) {
+  #root {
+    margin-top: 110px;
+  }
+}
+
 .icon-min__25 {
   width: 25px;
   height: 25px;
@@ -9,6 +15,10 @@
 
 .width-50 {
   width: 50px;
+}
+
+header ul li a.active {
+  color: #2f80ed;
 }
 
 /* home-slider */
@@ -56,6 +66,7 @@
 
 .os-scrollbar.os-scrollbar-horizontal {
   cursor: pointer;
+  margin-left: 15px;
 }
 
 .os-theme-light > .os-scrollbar > .os-scrollbar-track {
@@ -70,6 +81,6 @@
   background: #2f80ed !important;
 }
 
-.os-scrollbar.os-scrollbar-vertical  {
+.os-scrollbar.os-scrollbar-vertical {
   display: none !important;
 }

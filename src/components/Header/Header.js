@@ -1,16 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { getAllFilms, getSearchFilms } from "../redux/actions";
+import {
+  getAllFilms,
+  getSearchFilms,
+  changeMenuMobileView,
+} from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-import Search from "./Search/Search";
-import styleSearch from "../components/Search/Search.module.scss";
+import styleHeader from "./Header.module.scss";
+
+import Search from "../Search/Search";
+import styleSearch from "../../components/Search/Search.module.scss";
 
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/css/OverlayScrollbars.css";
 
 // import magnifyingGlass from "../img/webp/magnifying-glass.webp";
-import login from "../img/webp/login.webp";
+import login from "../../img/webp/login.webp";
+import close from "../../img/webp/close.webp";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -18,6 +25,12 @@ export const Header = () => {
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
   const allFilmsLength = allFilms.length;
   const searchFilmsListLength = searchFilms.searchFilmsList.length;
+  const header = useSelector((selector) => selector.header);
+
+  const changeMenuMobileViewHandler = (view) => {
+    dispatch(changeMenuMobileView(view));
+    console.log("changeMenuMobileViewHandler: ", view);
+  };
 
   const getAllFilmsHandler = () => {
     dispatch(getAllFilms());
@@ -25,7 +38,7 @@ export const Header = () => {
 
   const closeSearchSession = () => {
     dispatch(getSearchFilms("", []));
-  }
+  };
 
   const getSearchFilmsHandler = (val) => {
     if (val) {
@@ -44,11 +57,11 @@ export const Header = () => {
 
   return (
     <>
-      <header className="header">
+      <header className={styleHeader.header}>
         <div className="container">
           <div className="row">
             <div className="col-lg-2">
-              <div className="header__logo _pt-10">
+              <div className={`${styleHeader.logo} _pt-10`}>
                 <NavLink className="header__logo_link" to="/">
                   St-St.
                   <span className="header__logo_desc-min">stream-store</span>
@@ -57,21 +70,62 @@ export const Header = () => {
             </div>
             <div className="col-lg-5">
               <nav className="sub-navigation">
-                <ul className="topmenu">
+                <ul
+                  className={`${styleHeader.topmenu} ${
+                    styleHeader.topmenu_mobile
+                  } ${
+                    header.menuMobile.view
+                      ? styleHeader.topmenu_mobile__view
+                      : ""
+                  }`}
+                >
                   <li>
-                    <NavLink to="/">Главная</NavLink>
+                    <NavLink
+                      onClick={() => {
+                        changeMenuMobileViewHandler(header.menuMobile.view);
+                      }}
+                      to="/"
+                    >
+                      Главная
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/categories">Категории</NavLink>
+                    <NavLink
+                      onClick={() => {
+                        changeMenuMobileViewHandler(header.menuMobile.view);
+                      }}
+                      to="/categorys"
+                    >
+                      Категории
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/about">О нас</NavLink>
+                    <NavLink
+                      onClick={() => {
+                        changeMenuMobileViewHandler(header.menuMobile.view);
+                      }}
+                      to="/about"
+                    >
+                      О нас
+                    </NavLink>
                   </li>
                 </ul>
+                <div
+                  onClick={() => {
+                    changeMenuMobileViewHandler(header.menuMobile.view);
+                  }}
+                  className={`${styleHeader.close_wrap} ${
+                    header.menuMobile.view ? styleHeader.close_wrap__view : ""
+                  }`}
+                >
+                  <span className={styleHeader.close__icon}>
+                    <img src={close} alt="close" />
+                  </span>
+                </div>
               </nav>
             </div>
             <div className="col-lg-3">
-              <form className="form-header-search _pt-10 _pb-10">
+              <form className={`${styleSearch.search} _pt-10 _pb-10`}>
                 <input
                   value={searchFilms.searchInputValue}
                   onClick={(e) => {
@@ -81,12 +135,11 @@ export const Header = () => {
                     }
                   }}
                   onChange={(e) => {
-                    // console.log(e.target.value);
                     getSearchFilmsHandler(e.target.value);
                   }}
-                  className="form-header-search__input-text"
+                  className={styleSearch.search_input__text}
                   type="text"
-                  placeholder="Поиск фильмов ..."
+                  placeholder="Поиск по названию..."
                 />
                 {/* <button
                   onClick={(e) => {
@@ -99,7 +152,17 @@ export const Header = () => {
               </form>
             </div>
             <div className="col-lg-2">
-              <div className="fjc-e sign-in _pt-5 _mt-10">
+              <div
+                onClick={() => {
+                  changeMenuMobileViewHandler(header.menuMobile.view);
+                }}
+                className={styleHeader.hamburger}
+              >
+                <span className={styleHeader.hamburger_span__top}></span>
+                <span className={styleHeader.hamburger_span__middle}></span>
+                <span className={styleHeader.hamburger_span__bottom}></span>
+              </div>
+              <div className={`${styleHeader.sign_in} fjc-e _pt-5 _mt-10`}>
                 <span className="sign-in__text">
                   <a href="#!" className="fjc-s fai-c">
                     <span className="_pr-10">Войти</span>
@@ -119,6 +182,20 @@ export const Header = () => {
         }`}
       >
         <div className={styleSearch.list}>
+          <div className="container _mb-30 _mt-10">
+            <div className="row">
+              <div className="col-md-4">
+                <div className="color__white fs-20">
+                  Поисковая фраза: {searchFilms.searchInputValue}
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="color__white fs-20">
+                  Найдено: {searchFilmsListLength}
+                </div>
+              </div>
+            </div>
+          </div>
           <OverlayScrollbarsComponent
             style={{
               width: "100%",

@@ -9,7 +9,7 @@ import {
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_SEARCH_FILMS,
-} from "./types";
+} from "./typesFilms";
 
 const initState = {
   mainSlider: [],

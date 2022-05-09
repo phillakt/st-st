@@ -4,9 +4,6 @@ import { getMainSliderRandom } from "../redux/actions";
 import Slider from "react-slick";
 import CardFlat from "./CardFlat/CardFlat";
 
-
-
-
 const HomeSliderRandom = () => {
   const mainSliderRandom = useSelector(
     (selector) => selector.films.mainSliderRandom
@@ -20,15 +17,44 @@ const HomeSliderRandom = () => {
     _getMainSliderRandom();
   }, []);
 
-  var settings = {
+  const settings = {
     dots: true,
     infinite: false,
     arrows: false,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToShow: 6,
     slidesToScroll: 1,
+    slidesToShow: 6,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+          infinite: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -44,12 +70,14 @@ const HomeSliderRandom = () => {
         <div className="row">
           <div className="col-lg-12">
             {!mainSliderRandom ? (
-              ""
+              "Загрузка..."
             ) : (
               <Slider {...settings}>
                 {mainSliderRandom.map((item, i) => {
                   return (
-                    <CardFlat item={item} key={item.ID} />
+                    <div key={i}>
+                      <CardFlat item={item} />
+                    </div>
                   );
                 })}
               </Slider>

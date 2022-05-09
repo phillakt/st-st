@@ -11,8 +11,11 @@ import {
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_SEARCH_FILMS,
-} from "./types";
+} from "./typesFilms";
 
+import { CHANGE_MOBILE_VIEW } from "./typesHeader";
+
+// Films
 export const getMainSlider = () => {
   return async (dispatch) => {
     const config = {
@@ -214,3 +217,13 @@ export const getSearchFilms = (val, searchList) => {
     });
   };
 };
+// Films end
+
+// Header
+export const changeMenuMobileView = (view) => {
+  return {
+    type: CHANGE_MOBILE_VIEW,
+    menuMobile: view,
+  };
+};
+// Header end

@@ -5,5 +5,7 @@
     background: #151f30 url("../../img/webp/cinema-bg-footer.webp");
     background-position: 100% 100%;
     background-size: cover;
-    // background-attachment: fixed;
+    @media (max-width: 768px){
+        margin-top: 60px ;
+    }
 }

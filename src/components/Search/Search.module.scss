@@ -1,16 +1,33 @@
 .wrap {
+  font-family: "Montserrat", sans-serif;
   position: fixed;
   left: 0;
   right: 0;
   top: 83px;
   padding: 10px 0;
-  background: #151f30e6;
+  background: linear-gradient(180deg, #131720, #151f30e6);
   z-index: 9;
   border-top: 1px solid rgba(47, 128, 237, 0.1);
   border-bottom: 1px solid #131720;
   @media (max-width: 768px) {
-    top: 183px;
+    top: 110px;
   }
+}
+
+.search {
+  position: relative;
+}
+
+.search_input__text {
+  border-radius: 16px;
+  background-color: #131720;
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #e0e0e0;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
 }
 
 .wrap_view {
@@ -26,10 +43,8 @@
 }
 
 .list {
-
 }
 
 .item {
   width: 200px;
 }
-

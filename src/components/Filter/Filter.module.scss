@@ -2,6 +2,10 @@
     background: #151f30;
     border-radius: 16px;
     padding: 30px;
+    
+    @media (max-width: 768px){
+        margin-bottom: 15px;
+    }
 }
 
 .wrap__box {

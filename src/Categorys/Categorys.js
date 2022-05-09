@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getCategories } from "../redux/actions";
 import HomeSliderRandom from "../components/HomeSliderRandom";
-import styles from "./Categories.module.scss";
+import styles from "./Categorys.module.scss";
 
 export const Categories = () => {
   const categories = useSelector((selector) => selector.films.categories);
@@ -18,7 +18,7 @@ export const Categories = () => {
 
   return (
     <>
-      <section className="_mt-100 _pt-20">
+      <section className="_mt-80 _pt-30">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
