@@ -13,7 +13,7 @@ const CardFlat = ({ item }) => {
 
                 </span>
                 <NavLink
-                    to={`/detail/${item.post_name}`}
+                    to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
                     className={style.play}
                 >
                     <img
@@ -34,7 +34,7 @@ const CardFlat = ({ item }) => {
                 <div>
                     <div className="_pb-10">
                         <h3 className={style.title} >
-                            <NavLink to={`/detail/${item.post_name}`}>
+                            <NavLink to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}>
                                 {item.post_title}
                             </NavLink>
                         </h3>
@@ -52,7 +52,7 @@ const CardFlat = ({ item }) => {
                             {item.category.map((item, i) => {
                                 return (
                                     <li key={i}>
-                                        <NavLink to={`/category/${item.slug}`}>
+                                        <NavLink to={`${process.env.PUBLIC_URL}/category/${item.slug}`}>
                                             {item.name}
                                         </NavLink>
                                     </li>

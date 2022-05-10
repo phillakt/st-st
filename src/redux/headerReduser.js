@@ -14,7 +14,6 @@ const initState = {
 export const header = (state = initState, action) => {
   switch (action.type) {
     case CHANGE_MOBILE_VIEW:
-      console.log(action.menuMobile.view);
       return {
         ...state,
         menuMobile: {

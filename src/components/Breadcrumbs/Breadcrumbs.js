@@ -12,13 +12,13 @@ const Breadcrumbs = () => {
     <div className={style.wrap}>
       <ul className={style.box}>
         <li className={style.item}>
-          <NavLink to="/">Главная</NavLink>
+          <NavLink to={`${process.env.PUBLIC_URL}/`}>Главная</NavLink>
           <i className="_ml-10">
             <img src={breadcrumbs} alt="breadcrumbs-arrow" />
           </i>
         </li>
         <li className={style.item}>
-          <NavLink to="/categories">Категории</NavLink>
+          <NavLink to={`${process.env.PUBLIC_URL}/categorys`}>Категории</NavLink>
           <i className="_ml-10">
             <img src={breadcrumbs} alt="breadcrumbs-arrow" />
           </i>

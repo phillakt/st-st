@@ -16,12 +16,12 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/categorys" element={<Categorys />} />
-        <Route path="/category/:slug" element={<CategoryCurrent />} />
-        <Route path="/detail/:slug" element={<Detail />} />
+      <Routes basename={'/st'}>
+        <Route path={`${process.env.PUBLIC_URL}/`} exact element={<Home />} />
+        <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} />
+        <Route path={`${process.env.PUBLIC_URL}/categorys`} element={<Categorys />} />
+        <Route path={`${process.env.PUBLIC_URL}/category/:slug`} element={<CategoryCurrent />} />
+        <Route path={`${process.env.PUBLIC_URL}/detail/:slug`} element={<Detail />} />
       </Routes>
       <Footer />
     </>

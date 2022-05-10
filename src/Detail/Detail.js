@@ -105,7 +105,7 @@ export const Detail = () => {
                     {detail.category.map((item, i) => {
                       return (
                         <li key={i}>
-                          <NavLink to={`/category/${item.slug}`}>
+                          <NavLink to={`${process.env.PUBLIC_URL}/category/${item.slug}`}>
                             {item.name}
                           </NavLink>
                         </li>

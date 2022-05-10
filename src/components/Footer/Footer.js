@@ -53,7 +53,7 @@ export const Footer = () => {
                         <li key={i}>
                           <NavLink
                             to={{
-                              pathname: `/category/${item.slug}`,
+                              pathname: `${process.env.PUBLIC_URL}/category/${item.slug}`,
                             }}
                           >
                             {item.name}

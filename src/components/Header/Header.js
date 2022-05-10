@@ -29,7 +29,6 @@ export const Header = () => {
 
   const changeMenuMobileViewHandler = (view) => {
     dispatch(changeMenuMobileView(view));
-    console.log("changeMenuMobileViewHandler: ", view);
   };
 
   const getAllFilmsHandler = () => {
@@ -62,7 +61,7 @@ export const Header = () => {
           <div className="row">
             <div className="col-lg-2">
               <div className={`${styleHeader.logo} _pt-10`}>
-                <NavLink className="header__logo_link" to="/">
+                <NavLink className="header__logo_link" to={`${process.env.PUBLIC_URL}/`}>
                   St-St.
                   <span className="header__logo_desc-min">stream-store</span>
                 </NavLink>
@@ -71,20 +70,18 @@ export const Header = () => {
             <div className="col-lg-5">
               <nav className="sub-navigation">
                 <ul
-                  className={`${styleHeader.topmenu} ${
-                    styleHeader.topmenu_mobile
-                  } ${
+                  className={`${styleHeader.topmenu} ${styleHeader.topmenu_mobile}
+                  ${
                     header.menuMobile.view
                       ? styleHeader.topmenu_mobile__view
                       : ""
-                  }`}
-                >
+                  }`}>
                   <li>
                     <NavLink
                       onClick={() => {
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to="/"
+                      to={`${process.env.PUBLIC_URL}/`}
                     >
                       Главная
                     </NavLink>
@@ -94,7 +91,7 @@ export const Header = () => {
                       onClick={() => {
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to="/categorys"
+                      to={`${process.env.PUBLIC_URL}/categorys`}
                     >
                       Категории
                     </NavLink>
@@ -104,7 +101,7 @@ export const Header = () => {
                       onClick={() => {
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to="/about"
+                      to={`${process.env.PUBLIC_URL}/about`}
                     >
                       О нас
                     </NavLink>
@@ -119,7 +116,9 @@ export const Header = () => {
                   }`}
                 >
                   <span className={styleHeader.close__icon}>
-                    <img src={close} alt="close" />
+                    {/* <img src={close} alt="close" /> */}
+                    
+                     ✕
                   </span>
                 </div>
               </nav>
@@ -185,8 +184,8 @@ export const Header = () => {
           <div className="container _mb-30 _mt-10">
             <div className="row">
               <div className="col-md-4">
-                <div className="color__white fs-20">
-                  Поисковая фраза: {searchFilms.searchInputValue}
+                <div className="color__white fs-20 _mb-10">
+                  Фраза: {searchFilms.searchInputValue}
                 </div>
               </div>
               <div className="col-md-4">

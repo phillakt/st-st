@@ -32,7 +32,7 @@ export const Categories = () => {
               : categories.map((item, i) => {
                   return (
                     <div key={i} className="col-lg-3">
-                      <NavLink  to={`/category/${item.slug}`} className={styles.wrap}>
+                      <NavLink  to={`${process.env.PUBLIC_URL}/category/${item.slug}`} className={styles.wrap}>
                         <img className="w-100" src={item.category_description} alt={item.slug} />
                         <span
                          

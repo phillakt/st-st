@@ -11,7 +11,7 @@ const CardBook = ({ item }) => {
                 <span className={style.img} style={{"background": `url(${item.thumbnail_url})`}}>
                 </span>
                 <NavLink
-                    to={`/detail/${item.post_name}`}
+                    to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
                     className={style.play}
                 >
                     <img src={playBtn} alt="playBtn" />
@@ -25,7 +25,7 @@ const CardBook = ({ item }) => {
                 <div>
                     <div className="_pb-10">
                         <h3 className={style.title}>
-                            <NavLink to={`/detail/${item.post_name}`}>
+                            <NavLink to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}>
                                 {item.post_title}
                             </NavLink>
                         </h3>
@@ -44,7 +44,7 @@ const CardBook = ({ item }) => {
                             {item.category.map((item, i) => {
                                 return (
                                     <li key={i}>
-                                        <NavLink to={`/category/${item.slug}`}>
+                                        <NavLink to={`${process.env.PUBLIC_URL}/category/${item.slug}`}>
                                             {item.name}
                                         </NavLink>
                                     </li>

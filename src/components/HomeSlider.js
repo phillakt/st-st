@@ -55,7 +55,7 @@ export const HomeSlider = () => {
   };
 
   return (
-    <section className="home-slider _mt-100 _pt-20">
+    <section className="home-slider _mt-80 _pt-30">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12">
@@ -72,7 +72,7 @@ export const HomeSlider = () => {
                         className="b-radius_16 img-res max-img"
                       />
                       <NavLink
-                        to={`/detail/${item.post_name}`}
+                        to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
                         className="home-slider__card_play"
                       >
                         <img
@@ -83,7 +83,7 @@ export const HomeSlider = () => {
                       </NavLink>
 
                       <h2 className="home-slider__card_title">
-                        <NavLink to={`/detail/${item.post_name}`}>
+                        <NavLink to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}>
                           {item.post_title}
                         </NavLink>
                       </h2>
@@ -93,7 +93,7 @@ export const HomeSlider = () => {
                           return (
                             <li key={i}>
                               <NavLink
-                                to={`/category/${_cat.category_nicename}`}
+                                to={`${process.env.PUBLIC_URL}/category/${_cat.category_nicename}`}
                               >
                                 {_cat.name}
                               </NavLink>
