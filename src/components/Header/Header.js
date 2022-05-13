@@ -16,7 +16,7 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/css/OverlayScrollbars.css";
 
 // import magnifyingGlass from "../img/webp/magnifying-glass.webp";
-import login from "../../img/webp/login.webp";
+import login from "../../img/png/login.png";
 import close from "../../img/webp/close.webp";
 
 export const Header = () => {
@@ -61,7 +61,10 @@ export const Header = () => {
           <div className="row">
             <div className="col-lg-2">
               <div className={`${styleHeader.logo} _pt-10`}>
-                <NavLink className="header__logo_link" to={`${process.env.PUBLIC_URL}/`}>
+                <NavLink
+                  className="header__logo_link"
+                  to={`${process.env.PUBLIC_URL}/`}
+                >
                   St-St.
                   <span className="header__logo_desc-min">stream-store</span>
                 </NavLink>
@@ -70,12 +73,15 @@ export const Header = () => {
             <div className="col-lg-5">
               <nav className="sub-navigation">
                 <ul
-                  className={`${styleHeader.topmenu} ${styleHeader.topmenu_mobile}
+                  className={`${styleHeader.topmenu} ${
+                    styleHeader.topmenu_mobile
+                  }
                   ${
                     header.menuMobile.view
                       ? styleHeader.topmenu_mobile__view
                       : ""
-                  }`}>
+                  }`}
+                >
                   <li>
                     <NavLink
                       onClick={() => {
@@ -116,9 +122,7 @@ export const Header = () => {
                   }`}
                 >
                   <span className={styleHeader.close__icon}>
-                    {/* <img src={close} alt="close" /> */}
-                    
-                     ✕
+                    {/* <img src={close} alt="close" /> */}✕
                   </span>
                 </div>
               </nav>
@@ -161,13 +165,13 @@ export const Header = () => {
                 <span className={styleHeader.hamburger_span__middle}></span>
                 <span className={styleHeader.hamburger_span__bottom}></span>
               </div>
-              <div className={`${styleHeader.sign_in} fjc-e _pt-5 _mt-10`}>
+              <div className={`${styleHeader.sign_in} fjc-e fai-c _pt-5 _mt-10`}>
                 <span className="sign-in__text">
                   <a href="#!" className="fjc-s fai-c">
                     <span className="_pr-10">Войти</span>
-                    <img src={login} alt="login" />
                   </a>
                 </span>
+                <img src={login} alt="login" />
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ export const Footer = () => {
                 <span className="footer__logo_desc-min">stream-store</span>
               </a>
             </div>
-            <div className="f-montserrat _mt-20">
+            <div className=" _mt-20">
               <div className="color__white fs-14">Потоковое хранилище</div>
               <div className="color__white fs-14">фильмов и сериалов</div>
             </div>
@@ -72,7 +72,7 @@ export const Footer = () => {
         </div>
         <div className="row _pt-60">
           <div className="col-lg-6">
-            <div className="f-montserrat color__white fs-14">
+            <div className=" color__white fs-14">
               © ST-ST.
               <span className="color__white fs-10 _pr-5">stream-store</span>
               <span>{date.getFullYear()}</span>

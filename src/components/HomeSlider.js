@@ -26,8 +26,17 @@ export const HomeSlider = () => {
     dragging: false,
     cssEase: "ease-in-out",
     slidesToScroll: 1,
-    slidesToShow: 4,
+    slidesToShow: 5,
     responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -75,11 +84,6 @@ export const HomeSlider = () => {
                         to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
                         className="home-slider__card_play"
                       >
-                        <img
-                          className="width-50 fa-circle-play"
-                          src={playBtn}
-                          alt={item.post_name}
-                        />
                       </NavLink>
 
                       <h2 className="home-slider__card_title">

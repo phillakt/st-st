@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import playBtn from "../../img/webp/play-button.webp";
-import star from "../../img/webp/star.webp";
+import star from "../../img/png/star.png";
 import style from "./CardBook.module.scss";
+import torrentFile from "../../img/png/get-torrent-file.png";
 
 const CardBook = ({ item }) => {
     return (
@@ -14,7 +15,7 @@ const CardBook = ({ item }) => {
                     to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
                     className={style.play}
                 >
-                    <img src={playBtn} alt="playBtn" />
+                    <img src={torrentFile} alt="torrentFile" />
                 </NavLink>
                 <span className={style.rating} >
                     <img src={star} alt="star" />
