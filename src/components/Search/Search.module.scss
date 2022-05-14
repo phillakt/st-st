@@ -1,5 +1,5 @@
 .wrap {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   position: fixed;
   left: 0;
   right: 0;
@@ -7,19 +7,25 @@
   padding: 10px 0;
   background: linear-gradient(180deg, #131720, #151f30e6);
   z-index: 8;
-  border-top: 1px solid rgba(47, 128, 237, 0.1);
-  border-bottom: 1px solid #131720;
   @media (max-width: 768px) {
-    top: 108px;
+    z-index: 10;
+    top: 110px;
   }
 }
 
 .search {
   position: relative;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    top: 55px;
+  }
 }
 
 .search_input__text {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   border-radius: 16px;
   background-color: #131720;
   padding: 12px 15px;
@@ -32,7 +38,30 @@
 
   @media (max-width: 768px) {
     font-size: 12px;
+    background-color: #151f30;
   }
+}
+
+.btn_search {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 0px;
+  top: 13%;
+  font-size: 16px;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.close {
+  width: 22px;
 }
 
 .wrap_view {
@@ -48,8 +77,14 @@
 }
 
 .list {
+  display: flex;
+  flex-direction: column;
 }
 
 .item {
   width: 200px;
+
+  @media (max-width: 768px) {
+    width: 150px;
+  }
 }

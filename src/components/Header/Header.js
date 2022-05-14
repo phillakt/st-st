@@ -15,9 +15,10 @@ import styleSearch from "../../components/Search/Search.module.scss";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/css/OverlayScrollbars.css";
 
-// import magnifyingGlass from "../img/webp/magnifying-glass.webp";
 import login from "../../img/png/login.png";
-import close from "../../img/webp/close.webp";
+import close from "../../img/png/close.png";
+
+import "../../../node_modules/hamburgers/dist/hamburgers.min.css";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -60,8 +61,12 @@ export const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-2">
-              <div className={`${styleHeader.logo} _pt-10`}>
+              <div className={`${styleHeader.logo} _pt-10 _pb-10`}>
                 <NavLink
+                  onClick={() => {
+                    changeMenuMobileViewHandler(header.menuMobile.view);
+                    closeSearchSession();
+                  }}
                   className="header__logo_link"
                   to={`${process.env.PUBLIC_URL}/`}
                 >
@@ -70,108 +75,116 @@ export const Header = () => {
                 </NavLink>
               </div>
             </div>
-            <div className="col-lg-5">
-              <nav className="sub-navigation">
-                <ul
+            <div className="col-lg-10">
+              <div className="">
+                {/* <div className="sub-navigation"> */}
+                <div
                   className={`${styleHeader.topmenu} ${
                     styleHeader.topmenu_mobile
                   }
-                  ${
-                    header.menuMobile.view
-                      ? styleHeader.topmenu_mobile__view
-                      : ""
-                  }`}
+                ${
+                  header.menuMobile.view ? styleHeader.topmenu_mobile__view : ""
+                }`}
                 >
-                  <li>
-                    <NavLink
-                      onClick={() => {
-                        changeMenuMobileViewHandler(header.menuMobile.view);
+                  <nav>
+                    <ul>
+                      <li>
+                        <NavLink
+                          onClick={() => {
+                            changeMenuMobileViewHandler(header.menuMobile.view);
+                            closeSearchSession();
+                          }}
+                          to={`${process.env.PUBLIC_URL}/`}
+                        >
+                          Главная
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={() => {
+                            changeMenuMobileViewHandler(header.menuMobile.view);
+                            closeSearchSession();
+                          }}
+                          to={`${process.env.PUBLIC_URL}/categorys`}
+                        >
+                          Категории
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={() => {
+                            changeMenuMobileViewHandler(header.menuMobile.view);
+                            closeSearchSession();
+                          }}
+                          to={`${process.env.PUBLIC_URL}/about`}
+                        >
+                          О нас
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </nav>
+
+                  <form className={`${styleSearch.search} _pt-10 _pb-10`}>
+                    <input
+                      value={searchFilms.searchInputValue}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (!allFilmsLength) {
+                          getAllFilmsHandler();
+                        }
                       }}
-                      to={`${process.env.PUBLIC_URL}/`}
-                    >
-                      Главная
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={() => {
-                        changeMenuMobileViewHandler(header.menuMobile.view);
+                      onChange={(e) => {
+                        getSearchFilmsHandler(e.target.value);
                       }}
-                      to={`${process.env.PUBLIC_URL}/categorys`}
-                    >
-                      Категории
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={() => {
-                        changeMenuMobileViewHandler(header.menuMobile.view);
+                      className={styleSearch.search_input__text}
+                      type="text"
+                      placeholder="Поиск по названию..."
+                    />
+                    <button
+                      style={{
+                        display: searchFilms.searchInputValue
+                          ? "inline-flex"
+                          : "none",
                       }}
-                      to={`${process.env.PUBLIC_URL}/about`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        closeSearchSession();
+                      }}
+                      className={styleSearch.btn_search}
                     >
-                      О нас
-                    </NavLink>
-                  </li>
-                </ul>
-                <div
+                      <img
+                        className={styleSearch.close}
+                        src={close}
+                        alt="close"
+                      />
+                    </button>
+                  </form>
+
+                  <div className={`${styleHeader.sign_in} fjc-s fai-c`}>
+                    <span className="sign-in__text">
+                      <a href="#!" className="fjc-s fai-c">
+                        <span className="_pr-10">Войти</span>
+                      </a>
+                    </span>
+                    <img src={login} alt="login" />
+                  </div>
+                </div>
+
+                <button
                   onClick={() => {
                     changeMenuMobileViewHandler(header.menuMobile.view);
                   }}
-                  className={`${styleHeader.close_wrap} ${
-                    header.menuMobile.view ? styleHeader.close_wrap__view : ""
+                  className={`${
+                    styleHeader.hamburger
+                  } hamburger hamburger--spring ${
+                    header.menuMobile.view ? "is-active" : ""
                   }`}
+                  type="button"
                 >
-                  <span className={styleHeader.close__icon}>
-                    {/* <img src={close} alt="close" /> */}✕
+                  <span className="hamburger-box">
+                    <span className="hamburger-inner"></span>
                   </span>
-                </div>
-              </nav>
-            </div>
-            <div className="col-lg-3">
-              <form className={`${styleSearch.search} _pt-10 _pb-10`}>
-                <input
-                  value={searchFilms.searchInputValue}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (!allFilmsLength) {
-                      getAllFilmsHandler();
-                    }
-                  }}
-                  onChange={(e) => {
-                    getSearchFilmsHandler(e.target.value);
-                  }}
-                  className={styleSearch.search_input__text}
-                  type="text"
-                  placeholder="Поиск по названию..."
-                />
-                {/* <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                  }}
-                  className="form-header-search__btn_search-trans"
-                >
-                  <img src={magnifyingGlass} alt="magnifying-glass" />
-                </button> */}
-              </form>
-            </div>
-            <div className="col-lg-2">
-              <div
-                onClick={() => {
-                  changeMenuMobileViewHandler(header.menuMobile.view);
-                }}
-                className={styleHeader.hamburger}
-              >
-                <span className={styleHeader.hamburger_span__top}></span>
-                <span className={styleHeader.hamburger_span__middle}></span>
-                <span className={styleHeader.hamburger_span__bottom}></span>
-              </div>
-              <div className={`${styleHeader.sign_in} fjc-e fai-c _pt-5 _mt-10`}>
-                <span className="sign-in__text">
-                  <a href="#!" className="fjc-s fai-c">
-                    <span className="_pr-10">Войти</span>
-                  </a>
-                </span>
-                <img src={login} alt="login" />
+                </button>
               </div>
             </div>
           </div>
@@ -185,20 +198,15 @@ export const Header = () => {
         }`}
       >
         <div className={styleSearch.list}>
-          <div className="container _mb-30 _mt-10">
+          {/* <div className="container _mb-30 _mt-10">
             <div className="row">
-              <div className="col-md-4">
-                <div className="color__white fs-20 _mb-10">
-                  Фраза: {searchFilms.searchInputValue}
-                </div>
-              </div>
               <div className="col-md-4">
                 <div className="color__white fs-20">
                   Найдено: {searchFilmsListLength}
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <OverlayScrollbarsComponent
             style={{
               width: "100%",
@@ -223,7 +231,7 @@ export const Header = () => {
             <div
               className={styleSearch.box}
               style={{
-                width: `${searchFilmsListLength * 180}px`,
+                width: `${searchFilmsListLength * 150}px`,
               }}
             >
               <Search closeSearchSession={closeSearchSession} />

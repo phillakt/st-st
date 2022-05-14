@@ -26,7 +26,7 @@ export const Detail = () => {
   }
 
   return (
-    <section className="detail _mt-100 _pt-20">
+    <section className="detail _pt-30">
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
