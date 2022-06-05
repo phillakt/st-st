@@ -3,7 +3,7 @@
   background: #151f30;
   border-radius: 16px;
   overflow: hidden;
-  height: 250px;
+  height: 220px;
   transition: all 0.3s ease-in-out;
 
   &:hover {
@@ -90,17 +90,17 @@
   border-radius: 16px 0 0 16px;
   line-height: 0;
   position: relative;
-  width: 40%;
+  width: 35%;
 
   @media (max-width: 768px) {
-    width: 70%;
+    width: 35%;
   }
 }
 
 .img {
   width: 100%;
   background-position: center center !important;
-  background-size: auto !important;
+  background-size: cover !important;
 }
 
 .category_list {
@@ -128,6 +128,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 65%;
   padding: 15px 5px 0 15px;
 }
 
@@ -141,12 +142,16 @@
 }
 
 .rating {
-  transform: scale(0.7);
-  opacity: 0;
-  visibility: hidden;
+  // transform: scale(0.7);
+  // opacity: 0;
+  // visibility: hidden;
+  // color: #2f80ed;
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  color: #e0e0e0;
   position: absolute;
   font-size: 14px;
-  color: #2f80ed;
   top: 10px;
   right: 15px;
   transition: all 0.3s ease-in-out;

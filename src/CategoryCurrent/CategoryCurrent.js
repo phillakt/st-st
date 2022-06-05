@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getCategoryCurrent, getCategories } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
-import BtnUploadMoreDefault from "../ui/BtnUploadMoreDefault/BtnUploadMoreDefault";
+import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 const CategoryCurrent = () => {
@@ -13,10 +13,10 @@ const CategoryCurrent = () => {
   const categoryCurrent = useSelector(
     (selector) => selector.films.categoryCurrent
   );
+  const filterState = useSelector((selector) => selector.films.filtersProps);
 
-  const increment = (categoryCurrent) => {
-    const count = categoryCurrent.count + 9;
-    dispatch(getCategoryCurrent(categoryCurrent.slug, count));
+  const increment = (slug, count, filterState) => {
+    dispatch(getCategoryCurrent(slug, count, filterState));
   };
 
   useEffect(() => {
@@ -24,15 +24,17 @@ const CategoryCurrent = () => {
   }, []);
 
   const _getCategoryCurrent = useCallback(() => {
-    dispatch(getCategoryCurrent(params.slug, 2));
+    dispatch(getCategoryCurrent(params.slug, 1));
   });
 
   useEffect(() => {
     _getCategoryCurrent();
   }, [params.slug]);
 
+  console.log("categoryCurrent: ", categoryCurrent);
+
   return (
-    <section className="_pt-30">
+    <section className="_pt-40">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-6">
@@ -47,13 +49,15 @@ const CategoryCurrent = () => {
 
         <div className="row _mt-30">
           <div className="col-lg-3">
-            <CategoryCurrentFilter />
+            <div className="_mb-30">
+              <CategoryCurrentFilter />
+            </div>
           </div>
 
           <div className="col-lg-9">
             <div className="row catalog__grid">
-              {!categoryCurrent.categoryPosts.length
-                ? "Загрузка..."
+              {!categoryCurrent.categoryPosts
+                ? "Фильмы отсутствуют"
                 : categoryCurrent.categoryPosts.map((item, i) => {
                     return (
                       <div className="col-lg-6" key={i}>
@@ -62,14 +66,15 @@ const CategoryCurrent = () => {
                     );
                   })}
             </div>
-            {categoryCurrent.count > categoryCurrent.categoryPosts.length ? (
+            {categoryCurrent.count >= categoryCurrent.categoryAllCountPosts ? (
               ""
             ) : (
               <div className="fjc-c">
-                <BtnUploadMoreDefault
-                  text="Загрузить еще"
+                <BtnUploadMoreFilterDefault
+                  text="Загрузить"
                   increment={increment}
                   categoryCurrent={categoryCurrent}
+                  filterState={filterState}
                 />
               </div>
             )}

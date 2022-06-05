@@ -5,3 +5,7 @@
   background: border-box;
   overflow: hidden;
 }
+
+.detail__list-prop li {
+  height: 25px;
+}

@@ -18,7 +18,7 @@ export const Categories = () => {
 
   return (
     <>
-      <section className="_pt-30">
+      <section className="_pt-40">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -31,7 +31,7 @@ export const Categories = () => {
               ? "Загрузка"
               : categories.map((item, i) => {
                   return (
-                    <div key={i} className="col-lg-3">
+                    <div key={i} className="col-lg-3 col-6">
                       <NavLink  to={`${process.env.PUBLIC_URL}/category/${item.slug}`} className={styles.wrap}>
                         <img className="w-100" src={item.category_description} alt={item.slug} />
                         <span

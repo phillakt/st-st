@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMainFilterCategoryCurrent } from "../../redux/actions";
 import BtnUploadMoreDefault from "../../ui/BtnUploadMoreDefault/BtnUploadMoreDefault";
 import CardBook from "../CardBook/CardBook";
+import RandomListCardBook from "../RandomListCardBook/RandomListCardBook";
 
 const CatalogGrid = () => {
   const categoryCurrent = useSelector(
@@ -11,9 +12,8 @@ const CatalogGrid = () => {
 
   const dispatch = useDispatch();
 
-  const increment = (categoryCurrent) => {
-    const count = categoryCurrent.count + 9;
-    dispatch(getMainFilterCategoryCurrent(categoryCurrent.slug, count));
+  const increment = (slug, count) => {
+    dispatch(getMainFilterCategoryCurrent(slug, count));
   };
 
   return (
@@ -21,11 +21,15 @@ const CatalogGrid = () => {
       <div className="container">
         <div className="row">
           {!categoryCurrent.categoryPosts.length ? (
-            <div className="col-lg-12">
-              <div className="fjc-c fia-c">
-                <span className="color__white fs-22">Выберите жанр</span>
-              </div>
-            </div>
+            
+            <RandomListCardBook />
+
+            // <div className="col-lg-12">
+            //   <div className="fjc-c fia-c">
+            //     <span className="color__white fs-22">Выберите жанр</span>
+            //   </div>
+            // </div>
+
           ) : (
             categoryCurrent.categoryPosts.map((item, i) => {
               return (
@@ -46,7 +50,7 @@ const CatalogGrid = () => {
               ) : (
                 <div className="fjc-c">
                   <BtnUploadMoreDefault
-                    text="Загрузить еще"
+                    text="Загрузить"
                     increment={increment}
                     categoryCurrent={categoryCurrent}
                   />

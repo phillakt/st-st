@@ -140,6 +140,7 @@ export const films = (state = initState, action) => {
           slug: action.slug,
           categoryData: action.categoryCurrent.categoryData,
           categoryPosts: action.categoryCurrent.posts,
+          categoryAllCountPosts: action.categoryCurrent.queryPostsAllCount,
         },
       };
     case GET_CATEGORY_CURRENT_FILTER:

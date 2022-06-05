@@ -125,7 +125,9 @@ export const getFilmDetail = (slug) => {
   };
 };
 
-export const getCategoryCurrent = (slug, count) => {
+export const getCategoryCurrent = (slug, count, filterState) => {
+  const filterStateJson = JSON.stringify(filterState);
+
   return async (dispatch) => {
     const config = {
       headers: {
@@ -138,6 +140,7 @@ export const getCategoryCurrent = (slug, count) => {
       {
         category: slug,
         count,
+        filterState: filterStateJson
       },
       config
     );

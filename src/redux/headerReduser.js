@@ -17,7 +17,7 @@ export const header = (state = initState, action) => {
       return {
         ...state,
         menuMobile: {
-          view: !action.menuMobile,
+          view: action.menuMobile,
         },
       };
 

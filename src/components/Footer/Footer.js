@@ -1,14 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import vkBrands from "../../img/social/vk-brands.svg";
 import telegramBrands from "../../img/social/telegram-brands.svg";
 
 import style from "./Footer.module.scss";
+import { getCategories } from "../../redux/actions";
 
 export const Footer = () => {
   const footerCategory = useSelector((selector) => selector.films.categories);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
   const date = new Date();
   return (
     <footer className={style.wrap}>

@@ -44,8 +44,15 @@ img {
     bottom: 30px;
     left: 20px;
     z-index: 1;
+
     &:hover {
         color: #2f80ed;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+        left: 15px;
+        bottom: 15px;
     }
 }
 
@@ -58,6 +65,12 @@ img {
     bottom: 30px;
     right: 20px;
     z-index: 1;
+
+    @media (max-width: 768px) {
+        font-size: 10px;
+        right: 15px;
+        bottom: 75px;
+    }
 }
 
 
