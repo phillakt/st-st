@@ -140,7 +140,7 @@ export const getCategoryCurrent = (slug, count, filterState) => {
       {
         category: slug,
         count,
-        filterState: filterStateJson
+        filterState: filterStateJson,
       },
       config
     );
@@ -151,6 +151,7 @@ export const getCategoryCurrent = (slug, count, filterState) => {
       count,
       categoryCurrent: response.data,
     });
+    
   };
 };
 

@@ -19,6 +19,7 @@ const initState = {
     slug: "",
     categoryData: {},
     categoryPosts: [],
+    categoryAllCountPosts: 0,
   },
   mainFilterCategoryCurrent: {
     count: 0,

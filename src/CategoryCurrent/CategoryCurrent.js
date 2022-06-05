@@ -6,6 +6,8 @@ import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
 import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
+
 
 const CategoryCurrent = () => {
   const params = useParams();
@@ -19,12 +21,8 @@ const CategoryCurrent = () => {
     dispatch(getCategoryCurrent(slug, count, filterState));
   };
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-
   const _getCategoryCurrent = useCallback(() => {
-    dispatch(getCategoryCurrent(params.slug, 1));
+    dispatch(getCategoryCurrent(params.slug, 1, filterState));
   });
 
   useEffect(() => {
@@ -49,15 +47,13 @@ const CategoryCurrent = () => {
 
         <div className="row _mt-30">
           <div className="col-lg-3">
-            <div className="_mb-30">
-              <CategoryCurrentFilter />
-            </div>
+            <CategoryCurrentFilter />
           </div>
 
           <div className="col-lg-9">
             <div className="row catalog__grid">
               {!categoryCurrent.categoryPosts
-                ? "Фильмы отсутствуют"
+                ? <EmptyListFilms />
                 : categoryCurrent.categoryPosts.map((item, i) => {
                     return (
                       <div className="col-lg-6" key={i}>
