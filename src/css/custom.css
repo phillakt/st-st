@@ -5,6 +5,10 @@ body {
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
   margin-top: 70px;
 }
 

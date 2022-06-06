@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCategoryCurrent, getCategories } from "../redux/actions";
+import { getCategoryCurrent, getCategories, wScrollTo } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
 import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
@@ -27,9 +27,9 @@ const CategoryCurrent = () => {
 
   useEffect(() => {
     _getCategoryCurrent();
-  }, [params.slug]);
 
-  console.log("categoryCurrent: ", categoryCurrent);
+    wScrollTo();
+  }, [params.slug]);
 
   return (
     <section className="_pt-40">

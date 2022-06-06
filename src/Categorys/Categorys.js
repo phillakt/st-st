@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getCategories } from "../redux/actions";
+import { getCategories, wScrollTo } from "../redux/actions";
 import HomeSliderRandom from "../components/HomeSliderRandom";
 import styles from "./Categorys.module.scss";
 
@@ -14,6 +14,7 @@ export const Categories = () => {
 
   useEffect(() => {
     _allCategories();
+    wScrollTo();
   }, []);
 
   return (

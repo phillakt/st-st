@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./main.css";
 import "./css/custom.css";
 import { Route, Routes } from "react-router-dom";
@@ -13,6 +13,7 @@ import CategoryCurrent from "./CategoryCurrent/CategoryCurrent";
 import Detail from "./Detail/Detail";
 
 const App = () => {
+  
   return (
     <>
       <Header />

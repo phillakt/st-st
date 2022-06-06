@@ -18,8 +18,6 @@ const RandomListCardBook = () => {
     _getMainSliderRandom();
   }, []);
 
-  console.log('RandomListCardBook: ', mainSliderRandom);
-
   return (
     <>
       {mainSliderRandom.map((item, i) => {

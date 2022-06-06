@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CatalogGrid from "../components/CatalogGrid/CatalogGrid";
 import HomeFilter from "../components/HomeFilter";
 import HomeSlider from "../components/HomeSlider";
 import HomeSliderRandom from "../components/HomeSliderRandom";
+import { wScrollTo } from "../redux/actions";
 
 export const Home = () => {
+
+  useEffect(() => {
+    wScrollTo();
+  }, []);
+
   return (
     <>
       <HomeSlider />

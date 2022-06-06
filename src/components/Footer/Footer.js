@@ -30,15 +30,9 @@ export const Footer = () => {
             </div>
             <div className=" _mt-20">
               <div className="color__white fs-14">Потоковое хранилище</div>
-              <div className="color__white fs-14">фильмов и сериалов</div>
             </div>
             <div className="social _mt-20 _mb-30">
               <ul className="ul fjc-s social__list">
-                <li>
-                  <a href="#!">
-                    <img className="icon-min__25" src={vkBrands} />
-                  </a>
-                </li>
                 <li>
                   <a href="#!">
                     <img className="icon-min__25" src={telegramBrands} />

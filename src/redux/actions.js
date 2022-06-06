@@ -231,3 +231,11 @@ export const changeMenuMobileView = (view) => {
   };
 };
 // Header end
+
+
+// scrollTo
+
+export const wScrollTo = () => {
+  window.scrollTo(0, 0);
+}
+// scrollTo end 
