@@ -1,6 +1,6 @@
 
 
-.main_banner {
+.main_img {
 
     img {
         max-width: 100%;
@@ -67,6 +67,35 @@
             background: #151f30;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background: #2f80ed; 
+            }
         }
     }
+}
+
+.download__wrap {
+    margin-bottom: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #29b474;
+    padding: 12px 28px;
+    border-radius: 16px;
+}
+
+.download__file {
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.download__quality {
+    margin-left: 5px;
+}
+
+.download__text {
+    margin-left: 15px;
 }

@@ -78,6 +78,12 @@ header ul li a.active {
   /* height: 450px; */
 }
 
+@media (max-width: 768px) {
+  .os-host-overflow {
+    height: 320px;
+  }
+}
+
 .os-scrollbar.os-scrollbar-horizontal {
   cursor: pointer;
   margin-left: 10px;
