@@ -1,0 +1,15 @@
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    width: 100%;
+  }
+  
+  /*
+    Set the color of the icon
+  */
+  .loader svg path,
+  .loader svg rect{
+    fill: #2f80ed;
+  }

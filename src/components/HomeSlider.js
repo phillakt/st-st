@@ -6,6 +6,7 @@ import Slider from "react-slick";
 
 import playBtn from "../img/webp/play-button.webp";
 import star from "../img/webp/star.webp";
+import Loader from "../ui/Loader/Loader";
 
 export const HomeSlider = () => {
   const mainSlider = useSelector((selector) => selector.films.mainSlider);
@@ -64,7 +65,7 @@ export const HomeSlider = () => {
         <div className="row">
           <div className="col-lg-12">
             {!mainSlider.length ? (
-              "Загрузка..."
+              <Loader />
             ) : (
               <Slider {...settings}>
                 {mainSlider.map((item, i) => {

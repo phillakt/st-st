@@ -7,6 +7,7 @@ import CardBook from "../components/CardBook/CardBook";
 import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
+import Loader from "../ui/Loader/Loader";
 
 
 const CategoryCurrent = () => {
@@ -60,7 +61,8 @@ const CategoryCurrent = () => {
                         <CardBook item={item} />
                       </div>
                     );
-                  })}
+                  })
+                  }
             </div>
             {categoryCurrent.count >= categoryCurrent.categoryAllCountPosts ? (
               ""

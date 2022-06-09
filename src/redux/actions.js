@@ -151,7 +151,6 @@ export const getCategoryCurrent = (slug, count, filterState) => {
       count,
       categoryCurrent: response.data,
     });
-    
   };
 };
 
@@ -232,10 +231,9 @@ export const changeMenuMobileView = (view) => {
 };
 // Header end
 
-
 // scrollTo
 
 export const wScrollTo = () => {
   window.scrollTo(0, 0);
-}
-// scrollTo end 
+};
+// scrollTo end

@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories, getMainFilterCategoryCurrent } from "../redux/actions";
+import Loader from "../ui/Loader/Loader";
 
 export const HomeFilter = () => {
   const filterList = useSelector((selector) => selector.films.categories);
@@ -33,7 +34,7 @@ export const HomeFilter = () => {
               <div className="fjc-sb">
                 <ul className="ul fjc-c home-filter__genre">
                   {!filterList.length
-                    ? "Загрузка..."
+                    ? <Loader />
                     : filterList.map((item, i) => {
                         return (
                           <li key={i}>

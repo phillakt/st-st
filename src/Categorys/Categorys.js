@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getCategories, wScrollTo } from "../redux/actions";
 import HomeSliderRandom from "../components/HomeSliderRandom";
 import styles from "./Categorys.module.scss";
+import Loader from "../ui/Loader/Loader";
 
 export const Categories = () => {
   const categories = useSelector((selector) => selector.films.categories);
@@ -17,6 +18,8 @@ export const Categories = () => {
     wScrollTo();
   }, []);
 
+
+  
   return (
     <>
       <section className="_pt-40">
@@ -28,8 +31,8 @@ export const Categories = () => {
           </div>
 
           <div className="row _mt-30">
-            {!categories
-              ? "Загрузка"
+            {!categories.length
+              ? <Loader />
               : categories.map((item, i) => {
                   return (
                     <div key={i} className="col-lg-3 col-6">

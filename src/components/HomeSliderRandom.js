@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMainSliderRandom } from "../redux/actions";
 import Slider from "react-slick";
 import CardFlat from "./CardFlat/CardFlat";
+import Loader from "../ui/Loader/Loader";
 
 const HomeSliderRandom = () => {
   const mainSliderRandom = useSelector(
@@ -60,8 +61,8 @@ const HomeSliderRandom = () => {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            {!mainSliderRandom ? (
-              "Загрузка..."
+            {!mainSliderRandom.length ? (
+              <Loader />
             ) : (
               <Slider {...settings}>
                 {mainSliderRandom.map((item, i) => {

@@ -81,15 +81,16 @@
     align-items: center;
     justify-content: space-between;
     border: 2px solid #29b474;
-    padding: 12px 28px;
     border-radius: 16px;
 }
 
 .download__file {
-    color: #e0e0e0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 12px 28px;
+    color: #e0e0e0;
+    text-decoration: none;
 }
 
 .download__quality {
