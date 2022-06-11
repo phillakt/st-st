@@ -1,3 +1,25 @@
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #e0e0e0;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #e0e0e0;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    #e0e0e0;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    #e0e0e0;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:    #e0e0e0;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+ color:    #e0e0e0;
+}
+
 .wrap {
   font-family: "Inter", sans-serif;
   position: fixed;
@@ -28,7 +50,7 @@
   font-family: "Inter", sans-serif;
   border-radius: 16px;
   background-color: #131720;
-  padding: 12px 15px;
+  padding: 12px 45px 12px 15px;
   font-size: 14px;
   color: #e0e0e0;
   width: 100%;

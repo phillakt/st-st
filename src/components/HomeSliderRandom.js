@@ -5,6 +5,9 @@ import Slider from "react-slick";
 import CardFlat from "./CardFlat/CardFlat";
 import Loader from "../ui/Loader/Loader";
 
+import arrowSliderLeft from "../img/svg/icons/arrow_slider__left.svg";
+import arrowSliderRight from "../img/svg/icons/arrow_slider__right.svg";
+
 const HomeSliderRandom = () => {
   const mainSliderRandom = useSelector(
     (selector) => selector.films.mainSliderRandom
@@ -20,19 +23,22 @@ const HomeSliderRandom = () => {
 
   const settings = {
     dots: true,
-    infinite: false,
-    arrows: false,
+    infinite: true,
+    arrows: true,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     slidesToShow: 7,
+    autoplay: true,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          arrows: false,
           dots: true,
           infinite: true,
         },
@@ -42,6 +48,7 @@ const HomeSliderRandom = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          arrows: false,
           dots: true,
           infinite: true,
         },

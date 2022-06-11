@@ -1,10 +1,12 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
 import Iframe from "react-iframe";
 import vkBrands from "../img/social/vk-brands.svg";
 import telegramBrands from "../img/social/telegram-brands.svg";
+import backArrow from "../img/svg/icons/back_arrow.svg";
+import downloadFile from "../img/svg/icons/download_file.svg";
 import star from "../img/webp/star.webp";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
@@ -13,6 +15,7 @@ export const Detail = () => {
   const params = useParams();
   const detail = useSelector((selector) => selector.films.filmDetail);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
@@ -31,23 +34,105 @@ export const Detail = () => {
     <section className="detail _pt-40">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6">
-            {!detail.ID ? (
-              <Loader />
-            ) : (
-              <>
-                <div className="_mb-20">
-                  {!detail.ID ? (
-                    ""
-                  ) : (
-                    <div className={style.main_img}>
-                      <img src={detail.meta_fields.main_banner[0]} />
-                    </div>
-                  )}
-                </div>
+          <div className="col-md-11 offset-md-1">
+            <div className="_mb-20">
+              <span className={style.backArrow} onClick={() => navigate(-1)}>
+                {/* <img src={backArrow} alt="back arrow" />  */}
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>Iconly/Broken/Arrow - Left</title>
+                  <g
+                    id="Iconly/Broken/Arrow---Left"
+                    stroke="none"
+                    strokeWidth={1}
+                    fill="none"
+                    fillRule="evenodd"
+                  >
+                    <g
+                      id="Arrow---Left"
+                      transform="translate(2.500000, 4.000000)"
+                      fill="#e0e0e0"
+                      fillRule="nonzero"
+                    >
+                      <path
+                        d="M9.49983393,17 C9.07673708,17 8.7272223,16.6876772 8.67595432,16.2844034 L8.66948082,16.1818182 L8.66948082,-0.181818182 C8.66948082,-0.513454545 8.87208698,-0.811272727 9.18319261,-0.937818182 C9.28504926,-0.979272727 9.39244159,-1 9.49983393,-1 C9.67974377,-1 9.85811592,-0.942424242 10.0041966,-0.831691919 L10.0877239,-0.758909091 L16.7582273,5.84109091 C17.0815114,6.16072727 17.0804043,6.67890909 16.756013,6.99745455 C16.4576394,7.28945455 15.990881,7.31378788 15.6661489,7.06877399 L15.5813401,6.99527273 L10.330187,1.79927273 L10.330187,16.1818182 C10.330187,16.6334545 9.95818885,17 9.49983393,17 Z M3.41865989,6.99538182 C3.09537574,7.31610909 2.56948544,7.31610909 2.24398702,6.99756364 C1.94662834,6.70556364 1.92091815,6.24581364 2.16770922,5.92417475 L2.24177274,5.84010909 L5.92079059,2.20083636 C6.0835398,2.03938182 6.2961102,1.95974545 6.50978773,1.95974545 C6.72125099,1.95974545 6.93271425,2.03938182 7.09546346,2.19865455 C7.39383701,2.49065455 7.41963178,2.94948788 7.17199498,3.27097399 L7.09767774,3.35501818 L3.41865989,6.99538182 Z"
+                        transform="translate(9.500000, 8.000000) rotate(-90.000000) translate(-9.500000, -8.000000) "
+                      />
+                    </g>
+                  </g>
+                </svg>
 
+                <span className={style.backArrow_text}>Назад</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          {!detail.ID ? (
+            <Loader />
+          ) : (
+            <>
+              <div className="col-lg-5 offset-md-1">
+                <>
+                  <div className="_mb-20">
+                    {!detail.ID ? (
+                      ""
+                    ) : (
+                      <>
+                        <div className={style.main_img}>
+                          <img src={detail.meta_fields.main_banner[0]} />
+                        </div>
+                        <div className={style.download__wrap}>
+                          <a
+                            href="#!"
+                            className={style.download__file}
+                            download
+                          >
+                            <>
+                              <img src={downloadFile} alt="download file" />
+                              <div className={style.download__text}>
+                                Скачать:
+                                <span className={style.download__quality}>
+                                  720p
+                                </span>
+                              </div>
+                            </>
+                          </a>
+                        </div>
+                        <div className="_mb-20">
+                          <div className="_mb-20">
+                            <h3 className="color__white fs-22">Категории</h3>
+                          </div>
+                          <div className="_mb-20">
+                            <ul className={style.category}>
+                              {detail.category.map((item, i) => {
+                                return (
+                                  <li key={i}>
+                                    <NavLink
+                                      to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
+                                    >
+                                      {item.name}
+                                    </NavLink>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </>
+              </div>
+              <div className="col-lg-5">
                 <div className="_mb-20">
-                  {!detail.ID ? (
+                  {!detail.post_title ? (
                     ""
                   ) : (
                     <h1 className="color__white fs-34">{detail.post_title}</h1>
@@ -121,90 +206,9 @@ export const Detail = () => {
                     ></div>
                   )}
                 </div>
-
-                <div className={style.download__wrap}>
-                  <a href="#!" className={style.download__file} download>
-                    <>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                        width="28px"
-                        height="28px"
-                        viewBox="0 0 24 24"
-                        version="1.1"
-                      >
-                        <title>Iconly/Broken/Download</title>
-                        <g
-                          id="Iconly/Broken/Download"
-                          stroke="none"
-                          strokeWidth={1}
-                          fill="none"
-                          fillRule="evenodd"
-                        >
-                          <g
-                            id="Download"
-                            transform="translate(2.000000, 2.500000)"
-                            fill="#29b474"
-                            fillRule="nonzero"
-                          >
-                            <path d="M15.5530445,4.69792358 C18.0050199,4.69792358 20,6.77181822 20,9.32078546 L20,9.32078546 L20,14.3875336 C20,16.9302635 18.0100199,19 15.5630444,19 L15.5630444,19 L7.94912051,19 C7.52412476,19 7.1801282,18.640317 7.1801282,18.1995494 C7.1801282,17.7567028 7.52412476,17.3980593 7.94912051,17.3980593 L7.94912051,17.3980593 L15.5630444,17.3980593 C17.1600284,17.3980593 18.4600154,16.0476888 18.4600154,14.3875336 L18.4600154,14.3875336 L18.4600154,9.32078546 C18.4600154,7.65439293 17.1560284,6.2988247 15.5530445,6.2988247 L15.5530445,6.2988247 L14.6220538,6.2988247 C14.197058,6.2988247 13.8530615,5.94122082 13.8530615,5.49837414 C13.8530615,5.05656701 14.197058,4.69792358 14.6220538,4.69792358 L14.6220538,4.69792358 Z M5.37794622,4.69844335 C5.80294197,4.69844335 6.14793852,5.05708678 6.14793852,5.49889391 C6.14793852,5.94070104 5.80294197,6.29934448 5.37794622,6.29934448 L5.37794622,6.29934448 L4.43695563,6.29934448 C2.8399716,6.29934448 1.5399846,7.65075452 1.5399846,9.30987023 L1.5399846,9.30987023 L1.5399846,14.3766183 C1.5399846,16.0430109 2.84397156,17.3985791 4.44695553,17.3985791 C4.87195128,17.3985791 5.21694783,17.7572225 5.21694783,18.1990297 C5.21694783,18.6408368 4.87195128,18.9994802 4.44695553,18.9994802 C1.99498005,18.9994802 -8.8817842e-16,16.9255856 0,14.3766183 L0,14.3766183 L8.8817842e-16,9.30987023 C1.77635684e-15,6.76714026 1.9899801,4.69844335 4.43695563,4.69844335 L4.43695563,4.69844335 Z M9.9998,1.15517937e-15 C10.4247958,1.23324982e-15 10.7707923,0.343306355 10.7707923,0.766219981 L10.7707923,0.766219981 L10.7707923,12.7212419 C10.7707923,13.0317102 10.5827942,13.3113308 10.2937971,13.4297466 C10.0057999,13.5481624 9.67380326,13.4814913 9.45380546,13.2625713 L9.45380546,13.2625713 L6.54583454,10.3549157 C6.39683603,10.2056521 6.32183678,10.0096192 6.32183678,9.81358631 C6.32183678,9.6175534 6.39683603,9.42052541 6.54783452,9.27126178 C6.8498315,8.97273451 7.33682663,8.9737296 7.63682363,9.27325196 L7.63682363,9.27325196 L9.2298077,10.8653974 L9.2298077,0.766219981 C9.2298077,0.343306355 9.57480425,1.07710892e-15 9.9998,1.15517937e-15 Z M12.3611764,9.27504312 C12.6601734,8.97452567 13.1471685,8.9715404 13.4501655,9.26907258 C13.7531625,9.56560966 13.7551624,10.0502189 13.4561654,10.3527265 L13.4561654,10.3527265 L12.7281727,11.0861085 C12.4301757,11.386626 11.9421806,11.3896113 11.6401836,11.091084 C11.4871851,10.9418204 11.4111859,10.7447924 11.4111859,10.5467693 C11.4111859,10.3527265 11.4851851,10.1576887 11.6341837,10.00743 L11.6341837,10.00743 Z" />
-                          </g>
-                        </g>
-                      </svg>
-                      <div className={style.download__text}>
-                        Скачать:
-                        <span className={style.download__quality}>720p</span>
-                      </div>
-                    </>
-                  </a>
-                </div>
-
-                {!detail.ID ? (
-                  "Загрузка..."
-                ) : (
-                  <div className="_mb-40">
-                    <div className="_mb-10">
-                      <h3 className="color__white fs-22">Категории</h3>
-                    </div>
-                    <div className="_mb-20">
-                      <ul className={style.category}>
-                        {detail.category.map((item, i) => {
-                          return (
-                            <li key={i}>
-                              <NavLink
-                                to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
-                              >
-                                {item.name}
-                              </NavLink>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-
-                <div className="_mb-40">
-                  <div className="_mb-10">
-                    <h3 className="color__white fs-22">Наш канал</h3>
-                  </div>
-                  <div className="_mb-20">
-                    <ul className="detail__social">
-                      <li>
-                        <a href="#!">
-                          <img
-                            className="icon-min__25"
-                            src={telegramBrands}
-                            alt="telegram"
-                          />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

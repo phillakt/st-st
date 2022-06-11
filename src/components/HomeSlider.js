@@ -21,19 +21,24 @@ export const HomeSlider = () => {
 
   const settings = {
     dots: true,
-    infinite: false,
-    arrows: false,
+    infinite: true,
+    arrows: true,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     slidesToShow: 5,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    centerMode: true,
     responsive: [
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
+          arrows: true,
+          centerMode: true,
+          slidesToScroll: 3,
+          slidesToShow: 3,
           dots: true,
           infinite: true,
         },
@@ -41,10 +46,11 @@ export const HomeSlider = () => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           dots: true,
           infinite: true,
+          centerMode: false,
         },
       },
       {
@@ -54,6 +60,7 @@ export const HomeSlider = () => {
           slidesToScroll: 1,
           dots: true,
           infinite: true,
+          centerMode: false,
         },
       },
     ],

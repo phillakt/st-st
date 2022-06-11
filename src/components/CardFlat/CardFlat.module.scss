@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
-  margin-right: 20px;
+  margin: 0 10px;
 
 
   &:hover {
@@ -149,10 +149,11 @@
 
 .year {
   font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 14px;
   color: #e0e0e0;
   text-decoration: none;
-  display: flex;
   transition: all 0.3s ease-in-out;
 }
 
