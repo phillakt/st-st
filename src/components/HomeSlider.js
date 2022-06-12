@@ -67,7 +67,7 @@ export const HomeSlider = () => {
   };
 
   return (
-    <section className="home-slider _pt-30">
+    <section className="home-slider _pt-40">
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12">

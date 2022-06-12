@@ -2,12 +2,12 @@ import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
-import Iframe from "react-iframe";
-import vkBrands from "../img/social/vk-brands.svg";
-import telegramBrands from "../img/social/telegram-brands.svg";
+// import Iframe from "react-iframe";
+// import vkBrands from "../img/social/v/k-brands.svg";
+// import telegramBrands from "../img/social/telegram-brands.svg";
 import backArrow from "../img/svg/icons/back_arrow.svg";
 import downloadFile from "../img/svg/icons/download_file.svg";
-import star from "../img/webp/star.webp";
+// import star from "../img/webp/star.webp";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
 
@@ -37,38 +37,7 @@ export const Detail = () => {
           <div className="col-md-11 offset-md-1">
             <div className="_mb-20">
               <span className={style.backArrow} onClick={() => navigate(-1)}>
-                {/* <img src={backArrow} alt="back arrow" />  */}
-                <svg
-                  width="24px"
-                  height="24px"
-                  viewBox="0 0 24 24"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                >
-                  <title>Iconly/Broken/Arrow - Left</title>
-                  <g
-                    id="Iconly/Broken/Arrow---Left"
-                    stroke="none"
-                    strokeWidth={1}
-                    fill="none"
-                    fillRule="evenodd"
-                  >
-                    <g
-                      id="Arrow---Left"
-                      transform="translate(2.500000, 4.000000)"
-                      fill="#e0e0e0"
-                      fillRule="nonzero"
-                    >
-                      <path
-                        d="M9.49983393,17 C9.07673708,17 8.7272223,16.6876772 8.67595432,16.2844034 L8.66948082,16.1818182 L8.66948082,-0.181818182 C8.66948082,-0.513454545 8.87208698,-0.811272727 9.18319261,-0.937818182 C9.28504926,-0.979272727 9.39244159,-1 9.49983393,-1 C9.67974377,-1 9.85811592,-0.942424242 10.0041966,-0.831691919 L10.0877239,-0.758909091 L16.7582273,5.84109091 C17.0815114,6.16072727 17.0804043,6.67890909 16.756013,6.99745455 C16.4576394,7.28945455 15.990881,7.31378788 15.6661489,7.06877399 L15.5813401,6.99527273 L10.330187,1.79927273 L10.330187,16.1818182 C10.330187,16.6334545 9.95818885,17 9.49983393,17 Z M3.41865989,6.99538182 C3.09537574,7.31610909 2.56948544,7.31610909 2.24398702,6.99756364 C1.94662834,6.70556364 1.92091815,6.24581364 2.16770922,5.92417475 L2.24177274,5.84010909 L5.92079059,2.20083636 C6.0835398,2.03938182 6.2961102,1.95974545 6.50978773,1.95974545 C6.72125099,1.95974545 6.93271425,2.03938182 7.09546346,2.19865455 C7.39383701,2.49065455 7.41963178,2.94948788 7.17199498,3.27097399 L7.09767774,3.35501818 L3.41865989,6.99538182 Z"
-                        transform="translate(9.500000, 8.000000) rotate(-90.000000) translate(-9.500000, -8.000000) "
-                      />
-                    </g>
-                  </g>
-                </svg>
-
-                <span className={style.backArrow_text}>Назад</span>
+                <img src={backArrow} alt="back arrow" /> 
               </span>
             </div>
           </div>
@@ -79,7 +48,6 @@ export const Detail = () => {
           ) : (
             <>
               <div className="col-lg-5 offset-md-1">
-                <>
                   <div className="_mb-20">
                     {!detail.ID ? (
                       ""
@@ -128,7 +96,6 @@ export const Detail = () => {
                       </>
                     )}
                   </div>
-                </>
               </div>
               <div className="col-lg-5">
                 <div className="_mb-20">
