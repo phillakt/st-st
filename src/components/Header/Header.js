@@ -15,9 +15,6 @@ import styleSearch from "../../components/Search/Search.module.scss";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import "overlayscrollbars/css/OverlayScrollbars.css";
 
-import login from "../../img/png/login.png";
-import close from "../../img/png/close.png";
-
 import "../../../node_modules/hamburgers/dist/hamburgers.min.css";
 
 export const Header = () => {
@@ -53,6 +50,7 @@ export const Header = () => {
     } else {
       dispatch(getSearchFilms("", []));
     }
+
   };
 
   return (
@@ -107,7 +105,7 @@ export const Header = () => {
                           }}
                           to={`${process.env.PUBLIC_URL}/categorys`}
                         >
-                          Категории
+                          Жанры
                         </NavLink>
                       </li>
                       <li>
@@ -116,9 +114,20 @@ export const Header = () => {
                             changeMenuMobileViewHandler(false);
                             closeSearchSession();
                           }}
-                          to={`${process.env.PUBLIC_URL}/about`}
+                          to={`${process.env.PUBLIC_URL}/feedback`}
                         >
-                          О нас
+                          Обратная связь
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={() => {
+                            changeMenuMobileViewHandler(false);
+                            closeSearchSession();
+                          }}
+                          to={`${process.env.PUBLIC_URL}/manual`}
+                        >
+                          Как скачать?
                         </NavLink>
                       </li>
                     </ul>

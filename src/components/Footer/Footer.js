@@ -43,7 +43,7 @@ export const Footer = () => {
           </div>
           <div className="col-lg-7 offset-lg-1">
             <div className="_mb-30">
-              <h2 className="color__white fs-26">Категории</h2>
+              <h2 className="color__white fs-26">Жанры</h2>
             </div>
             <div className="footer__menu">
               <ul>

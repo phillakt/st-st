@@ -60,26 +60,6 @@ const initState = {
           value: "2019",
           checked: false,
         },
-        {
-          text: "За",
-          value: "2018",
-          checked: false,
-        },
-        {
-          text: "За",
-          value: "2017",
-          checked: false,
-        },
-        {
-          text: "За",
-          value: "2016",
-          checked: false,
-        },
-        {
-          text: "За",
-          value: "2015",
-          checked: false,
-        },
       ],
     },
     // {

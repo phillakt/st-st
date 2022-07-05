@@ -2,12 +2,8 @@ import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
-// import Iframe from "react-iframe";
-// import vkBrands from "../img/social/v/k-brands.svg";
-// import telegramBrands from "../img/social/telegram-brands.svg";
 import backArrow from "../img/svg/icons/back_arrow.svg";
 import downloadFile from "../img/svg/icons/download_file.svg";
-// import star from "../img/webp/star.webp";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
 
@@ -35,9 +31,9 @@ export const Detail = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-11 offset-md-1">
-            <div className="_mb-20">
+            <div className="_mb-40">
               <span className={style.backArrow} onClick={() => navigate(-1)}>
-                <img src={backArrow} alt="back arrow" /> 
+                <img src={backArrow} alt="back arrow" />
               </span>
             </div>
           </div>
@@ -48,54 +44,57 @@ export const Detail = () => {
           ) : (
             <>
               <div className="col-lg-5 offset-md-1">
-                  <div className="_mb-20">
-                    {!detail.ID ? (
-                      ""
-                    ) : (
-                      <>
-                        <div className={style.main_img}>
-                          <img src={detail.meta_fields.main_banner[0]} />
-                        </div>
-                        <div className={style.download__wrap}>
-                          <a
-                            href="#!"
-                            className={style.download__file}
-                            download
-                          >
-                            <>
-                              <img src={downloadFile} alt="download file" />
-                              <div className={style.download__text}>
-                                Скачать:
-                                <span className={style.download__quality}>
-                                  720p
-                                </span>
-                              </div>
-                            </>
-                          </a>
-                        </div>
-                        <div className="_mb-20">
-                          <div className="_mb-20">
-                            <h3 className="color__white fs-22">Категории</h3>
-                          </div>
-                          <div className="_mb-20">
-                            <ul className={style.category}>
-                              {detail.category.map((item, i) => {
-                                return (
-                                  <li key={i}>
-                                    <NavLink
-                                      to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
-                                    >
-                                      {item.name}
-                                    </NavLink>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
+                <div className="_mb-20">
+                  <>
+                    <div className={style.main_img}>
+                      <img src={detail.meta_fields.main_banner[0]} />
+                    </div>
+                  </>
+                  {!detail.meta_fields?.mp4_file_size || !detail.meta_fields?.link_to_file ? (
+                    ""
+                  ) : (
+                    <>
+                      <div className={style.download__wrap}>
+                        <a
+                          href={detail.meta_fields.link_to_file[0]}
+                          className={style.download__file}
+                          download
+                        >
+                          <>
+                            <img src={downloadFile} alt="download file" />
+                            <div className={style.download__text}>
+                              <span className={style.download__quality}>
+                                {detail.meta_fields.mp4_file_size[0]} MB
+                              </span>
+                            </div>
+                          </>
+                        </a>
+                      </div>
+                    </>
+                  )}
+                  <>
+                    <div className="_mb-20">
+                      <div className="_mb-20">
+                        <h3 className="color__white fs-22">Похожие жанры</h3>
+                      </div>
+                    </div>
+                    <div className="_mb-20">
+                      <ul className={style.category}>
+                        {detail.category.map((item, i) => {
+                          return (
+                            <li key={i}>
+                              <NavLink
+                                to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
+                              >
+                                {item.name}
+                              </NavLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </>
+                </div>
               </div>
               <div className="col-lg-5">
                 <div className="_mb-20">
@@ -114,7 +113,6 @@ export const Detail = () => {
                     ) : (
                       <li className="fai-c">
                         <span className="_mr-5">
-                          {/* <img src={star} alt="star" /> */}
                           <svg
                             style={{
                               width: "24px",
