@@ -38,7 +38,7 @@ export const HomeSlider = () => {
           arrows: true,
           centerMode: true,
           slidesToScroll: 3,
-          slidesToShow: 3,
+          slidesToShow: 5,
           dots: true,
           infinite: true,
         },

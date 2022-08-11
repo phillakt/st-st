@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  margin-top: 70px;
+  margin-top: 85px;
 }
 
 body::-webkit-scrollbar-thumb {

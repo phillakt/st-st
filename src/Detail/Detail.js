@@ -13,6 +13,8 @@ export const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log('detail: ', detail);
+
   const getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
   }, [params.slug]);
@@ -27,11 +29,11 @@ export const Detail = () => {
   }
 
   return (
-    <section className="detail _pt-40">
+    <section className="detail _pt-30">
       <div className="container">
         <div className="row">
           <div className="col-md-10 offset-md-2">
-            <div className="_mb-40">
+            <div className="_mb-30">
               <span className={style.backArrow} onClick={() => navigate(-1)}>
                 <img src={backArrow} alt="back arrow" />
               </span>
@@ -43,7 +45,7 @@ export const Detail = () => {
             <Loader />
           ) : (
             <>
-              <div className="col-lg-4 offset-md-2">
+              <div className="col-lg-3 offset-md-2">
                 <div className="_mb-20">
                   <>
                     <div className={style.main_img}>
@@ -54,7 +56,7 @@ export const Detail = () => {
                       }
                     </div>
                   </>
-                  {!detail.meta_fields?.mp4_file_size || !detail.meta_fields?.link_to_file ? (
+                  {!detail.meta_fields.mp4_file_size[0] || !detail.meta_fields.link_to_file[0] ? (
                     ""
                   ) : (
                     <>
