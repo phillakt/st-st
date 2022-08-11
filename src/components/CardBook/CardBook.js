@@ -34,8 +34,7 @@ const CardBook = ({ item }) => {
           }}
           to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
           className={style.play}
-        >
-        </NavLink>
+        ></NavLink>
       </div>
       <div className={`${style.content}`}>
         <div>
@@ -52,12 +51,12 @@ const CardBook = ({ item }) => {
               </NavLink>
             </h3>
           </div>
-          {!item.meta_fields.director ? (
+          {!item.meta_fields.rating ? (
             ""
           ) : (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Режисер: {item.meta_fields.director}</span>
+                <span>Рейтинг: {item.meta_fields.rating}</span>
               </div>
             </div>
           )}
@@ -70,15 +69,34 @@ const CardBook = ({ item }) => {
               </div>
             </div>
           )}
-          {!item.meta_fields.rating ? (
+          {!item.meta_fields.director ? (
             ""
           ) : (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Рейтинг: {item.meta_fields.rating}</span>
+                <span>Режисер: {item.meta_fields.director}</span>
               </div>
             </div>
           )}
+          {!item.meta_fields.country ? (
+            ""
+          ) : (
+            <div className="_pb-10">
+              <div className={style.props}>
+                <span>Страна: {item.meta_fields.country}</span>
+              </div>
+            </div>
+          )}
+          {!item.meta_fields.duration ? (
+            ""
+          ) : (
+            <div className="_pb-10">
+              <div className={style.props}>
+                <span>Продолжительность: {item.meta_fields.duration}</span>
+              </div>
+            </div>
+          )}
+
           <div className="_pb-10">
             <ul className={style.category_list}>
               {item.category.map((item, i) => {
@@ -99,7 +117,7 @@ const CardBook = ({ item }) => {
             </ul>
           </div>
         </div>
-        <div>
+        {/* <div>
           {!item.meta_fields.slogan ? (
             ""
           ) : (
@@ -109,7 +127,7 @@ const CardBook = ({ item }) => {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

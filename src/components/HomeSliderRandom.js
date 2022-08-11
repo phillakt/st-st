@@ -29,7 +29,7 @@ const HomeSliderRandom = () => {
     dragging: false,
     cssEase: "ease-in-out",
     slidesToScroll: 3,
-    slidesToShow: 7,
+    slidesToShow: 6,
     autoplay: true,
     autoplaySpeed: 5000,
     responsive: [

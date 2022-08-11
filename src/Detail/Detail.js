@@ -30,7 +30,7 @@ export const Detail = () => {
     <section className="detail _pt-40">
       <div className="container">
         <div className="row">
-          <div className="col-md-11 offset-md-1">
+          <div className="col-md-10 offset-md-2">
             <div className="_mb-40">
               <span className={style.backArrow} onClick={() => navigate(-1)}>
                 <img src={backArrow} alt="back arrow" />
@@ -43,11 +43,15 @@ export const Detail = () => {
             <Loader />
           ) : (
             <>
-              <div className="col-lg-5 offset-md-1">
+              <div className="col-lg-4 offset-md-2">
                 <div className="_mb-20">
                   <>
                     <div className={style.main_img}>
-                      <img src={detail.meta_fields.main_banner[0]} />
+                      {
+                        !detail.thumbnail_url ? "" : (
+                          <img src={detail.thumbnail_url} />
+                        )
+                      }
                     </div>
                   </>
                   {!detail.meta_fields?.mp4_file_size || !detail.meta_fields?.link_to_file ? (

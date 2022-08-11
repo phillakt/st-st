@@ -27,7 +27,7 @@ export const HomeSlider = () => {
     dragging: false,
     cssEase: "ease-in-out",
     slidesToScroll: 3,
-    slidesToShow: 5,
+    slidesToShow: 7,
     autoplay: true,
     autoplaySpeed: 5000,
     centerMode: true,
@@ -79,7 +79,7 @@ export const HomeSlider = () => {
                   return (
                     <div className="home-slider__card" key={item.ID}>
                       <img
-                        src={item.meta_fields.main_banner}
+                        src={item.thumbnail_url}
                         alt={item.post_name}
                         className="b-radius_16 img-res max-img"
                       />
