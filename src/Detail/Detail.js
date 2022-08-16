@@ -13,8 +13,6 @@ export const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log('detail: ', detail);
-
   const getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
   }, [params.slug]);
@@ -49,28 +47,27 @@ export const Detail = () => {
                 <div className="_mb-20">
                   <>
                     <div className={style.main_img}>
-                      {
-                        !detail.thumbnail_url ? "" : (
-                          <img src={detail.thumbnail_url} />
-                        )
-                      }
+                      {!detail.thumbnail_url ? (
+                        ""
+                      ) : (
+                        <img src={detail.thumbnail_url} />
+                      )}
                     </div>
                   </>
-                  {!detail.meta_fields.mp4_file_size[0] || !detail.meta_fields.link_to_file[0] ? (
+                  {!detail.meta_fields.link_to_file_mp4[0] ? (
                     ""
                   ) : (
                     <>
                       <div className={style.download__wrap}>
                         <a
-                          href={detail.meta_fields.link_to_file[0]}
+                          href={detail.meta_fields.link_to_file_mp4[0]}
                           className={style.download__file}
                           download
                         >
                           <>
-                            <img src={downloadFile} alt="download file" />
                             <div className={style.download__text}>
                               <span className={style.download__quality}>
-                                {detail.meta_fields.mp4_file_size[0]} MB
+                                {detail.meta_fields.file_size_mp4[0]}
                               </span>
                             </div>
                           </>
