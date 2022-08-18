@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import {
   getAllFilms,
@@ -24,6 +24,14 @@ export const Header = () => {
   const allFilmsLength = allFilms.length;
   const searchFilmsListLength = searchFilms.searchFilmsList.length;
   const header = useSelector((selector) => selector.header);
+
+  useEffect(() => {
+    if(searchFilms.searchWrap){
+      document.body.style.overflow = 'hidden';
+    }else {
+      document.body.style.overflow = 'scroll'; 
+    }
+  }, [searchFilms.searchWrap]);
 
   const changeMenuMobileViewHandler = (view) => {
     dispatch(changeMenuMobileView(view));
