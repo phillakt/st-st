@@ -35,6 +35,21 @@
   }
 }
 
+
+.wrap::-webkit-scrollbar-thumb {
+  background-color: #2f80ed;
+  border-radius: 20px;
+  border: 7px solid #151f30;
+}
+
+.wrap::-webkit-scrollbar-track {
+  background: #151f30;
+}
+
+.wrap::-webkit-scrollbar {
+  width: 4px;
+}
+
 .search {
   position: relative;
 
@@ -109,7 +124,8 @@
 }
 
 .wrap_view {
-  display: block;
+  display: flex;
+  overflow-x: scroll;
 }
 
 .wrap_hidden {
@@ -122,13 +138,11 @@
 
 .list {
   display: flex;
-  flex-direction: column;
 }
 
 .item {
-  width: 200px;
 
   @media (max-width: 768px) {
-    width: 150px;
+
   }
 }

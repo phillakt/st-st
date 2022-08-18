@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   getAllFilms,
@@ -12,8 +12,13 @@ import styleHeader from "./Header.module.scss";
 import Search from "../Search/Search";
 import styleSearch from "../../components/Search/Search.module.scss";
 
-import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
-import "overlayscrollbars/css/OverlayScrollbars.css";
+// import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+// import "overlayscrollbars/css/OverlayScrollbars.css";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
 
 import "../../../node_modules/hamburgers/dist/hamburgers.min.css";
 
@@ -24,6 +29,10 @@ export const Header = () => {
   const allFilmsLength = allFilms.length;
   const searchFilmsListLength = searchFilms.searchFilmsList.length;
   const header = useSelector((selector) => selector.header);
+
+  const searchWrap = useRef(null);
+
+  const [step, setStep] = useState(0);
 
   const changeMenuMobileViewHandler = (view) => {
     dispatch(changeMenuMobileView(view));
@@ -50,7 +59,6 @@ export const Header = () => {
     } else {
       dispatch(getSearchFilms("", []));
     }
-
   };
 
   return (
@@ -184,15 +192,9 @@ export const Header = () => {
                           </g>
                         </g>
                       </svg>
-
-                      {/* <img
-                        className={styleSearch.close}
-                        src={close}
-                        alt="close"
-                      /> */}
                     </button>
                     <span
-                    className={styleSearch.btn__search_view}
+                      className={styleSearch.btn__search_view}
                       style={{
                         display: searchFilms.searchInputValue
                           ? "none"
@@ -286,54 +288,42 @@ export const Header = () => {
           </div>
         </div>
       </header>
+
       <div
         className={`${styleSearch.wrap} ${
           searchFilms.searchWrap
             ? styleSearch.wrap_view
             : styleSearch.wrap_hidden
         }`}
-      >
-        <div className={styleSearch.list}>
-          {/* <div className="container _mb-30 _mt-10">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="color__white fs-20">
-                  Найдено: {searchFilmsListLength}
-                </div>
-              </div>
-            </div>
-          </div> */}
-          <OverlayScrollbarsComponent
-            style={{
-              width: "100%",
-              paddingRight: "15px",
-              paddingLeft: "15px",
-              marginRight: "auto",
-              marginLeft: "auto",
-            }}
-            options={{
-              className: "os-theme-light",
-              resize: "none",
-              scrollbars: {
-                visibility: searchFilmsListLength >= 2 ? "visible" : "hidden",
-                dragScrolling: true,
-              },
-              overflowBehavior: {
-                x: "scroll",
-                y: "visible-hidden",
-              },
-            }}
-          >
-            <div
-              className={styleSearch.box}
-              style={{
-                width: `${searchFilmsListLength * 150}px`,
-              }}
-            >
-              <Search closeSearchSession={closeSearchSession} />
-            </div>
-          </OverlayScrollbarsComponent>
-        </div>
+        ref={searchWrap}
+        onWheel={(e) => {
+          const wAllItems = searchWrap.current.offsetWidth;
+          const itemWidth = searchWrap.current.children[0].clientWidth;
+          let childElementW =
+            searchWrap.current.childElementCount *
+            searchWrap.current.children[0].clientWidth;
+          let stepCount = Math.ceil((childElementW - wAllItems) / itemWidth);
+          if (Math.sign(e.deltaY) !== -1) {
+            if (step < stepCount) {
+              let inc = step + 1;
+              searchWrap.current.scrollTo({
+                left: inc * itemWidth,
+                behavior: "smooth",
+              });
+              setStep(inc);
+            }
+          } else {
+            if (step > 0) {
+              let dec = step - 1;
+              searchWrap.current.scrollTo({
+                left: dec * itemWidth,
+                behavior: "smooth",
+              });
+              setStep(dec);
+            }
+          }
+        }}>
+        <Search closeSearchSession={closeSearchSession} />
       </div>
     </>
   );
