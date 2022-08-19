@@ -130,10 +130,11 @@
 .title {
   transition: all 0.3s ease-in-out;
   color: #e0e0e0;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // text-overflow: ellipsis;
-  // word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
 
   @media (max-width: 768px) {
     height: 20px;
