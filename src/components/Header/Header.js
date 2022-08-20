@@ -53,38 +53,6 @@ export const Header = () => {
     }
   };
 
-  const searchSlider = (param) => {
-    const wAllItems = boxList.current.offsetWidth;
-    const itemWidth = boxList.current.children[0].clientWidth;
-    let childElementW =
-    boxList.current.childElementCount *
-    boxList.current.children[0].clientWidth;
-    let stepCount = Math.ceil((childElementW - wAllItems) / itemWidth);
-
-    console.log('step: ', step);
-
-    if (param) {
-      if (step < stepCount) {
-        let inc = step + 3;
-        boxList.current.scroll({
-          left: inc * itemWidth,
-          behavior: "smooth",
-        });
-        setStep(inc);
-      }
-    } else {
-      if (step > 0) {
-        let dec = step - 3;
-        boxList.current.scroll({
-          left: dec * itemWidth,
-          behavior: "smooth",
-        });
-        setStep(dec);
-      }
-    }
-  };
-
-
   return (
     <>
       <header className={styleHeader.header}>
@@ -176,7 +144,6 @@ export const Header = () => {
                       }}
                       onChange={(e) => {
                         getSearchFilmsHandler(e.target.value);
-                        console.log(boxList);
                       }}
                       className={styleSearch.search_input__text}
                       type="text"
@@ -320,34 +287,14 @@ export const Header = () => {
           searchFilms.searchWrap
             ? styleSearch.wrap_view
             : styleSearch.wrap_hidden
-        }`}>
-
-          <span
-            className={`${styleSearch.search__arrow} ${styleSearch.search__arrow_left}`}
-            style={{height: searchWrap.current?.clientHeight ? searchWrap.current.clientHeight : 370}}
-            onClick={() => {
-              searchSlider(false);
-            }}
-          ></span>
-
-          <div 
-            ref={boxList}
-            className={styleSearch.box__list}>
-
-              <Search closeSearchSession={closeSearchSession} />
-
+        }`}
+      >
+        <div className="container">
+          <div className="row">
+            <Search closeSearchSession={closeSearchSession} />
           </div>
-
-          <span
-            className={`${styleSearch.search__arrow} ${styleSearch.search__arrow_right}`}
-            style={{height: searchWrap.current?.clientHeight ? searchWrap.current.clientHeight : 370}}
-            onClick={() => {
-              searchSlider(true);
-            }}
-          ></span>     
-
+        </div>
       </div>
-
     </>
   );
 };

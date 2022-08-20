@@ -21,7 +21,7 @@ const CardFlat = ({ item, addClass }) => {
   };
 
   return (
-    <div className={`${addClass} ${style.card}`}>
+    <div className={`${style.card} ${addClass ? addClass : ''}`}>
       <div className={`${style.link} fjc-s`}>
         <span
           className={style.img}

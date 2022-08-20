@@ -69,15 +69,6 @@ const CardBook = ({ item }) => {
               </div>
             </div>
           )}
-          {!item.meta_fields.director ? (
-            ""
-          ) : (
-            <div className="_pb-10">
-              <div className={style.props}>
-                <span>Режисер: {item.meta_fields.director}</span>
-              </div>
-            </div>
-          )}
           {!item.meta_fields.country ? (
             ""
           ) : (
@@ -92,7 +83,7 @@ const CardBook = ({ item }) => {
           ) : (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Продолжительность: {item.meta_fields.duration}</span>
+                <span>Время: {item.meta_fields.duration}</span>
               </div>
             </div>
           )}
