@@ -61,9 +61,11 @@ export const Header = () => {
     boxList.current.children[0].clientWidth;
     let stepCount = Math.ceil((childElementW - wAllItems) / itemWidth);
 
+    console.log('step: ', step);
+
     if (param) {
       if (step < stepCount) {
-        let inc = step + 4;
+        let inc = step + 3;
         boxList.current.scroll({
           left: inc * itemWidth,
           behavior: "smooth",
@@ -72,7 +74,7 @@ export const Header = () => {
       }
     } else {
       if (step > 0) {
-        let dec = step - 4;
+        let dec = step - 3;
         boxList.current.scroll({
           left: dec * itemWidth,
           behavior: "smooth",
@@ -174,6 +176,7 @@ export const Header = () => {
                       }}
                       onChange={(e) => {
                         getSearchFilmsHandler(e.target.value);
+                        console.log(boxList);
                       }}
                       className={styleSearch.search_input__text}
                       type="text"
