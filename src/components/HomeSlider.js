@@ -4,8 +4,6 @@ import { getMainSlider } from "../redux/actions";
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 
-import playBtn from "../img/webp/play-button.webp";
-import star from "../img/webp/star.webp";
 import Loader from "../ui/Loader/Loader";
 
 export const HomeSlider = () => {
@@ -54,7 +52,7 @@ export const HomeSlider = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 576,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

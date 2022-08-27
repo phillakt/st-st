@@ -18,8 +18,6 @@ export const Categories = () => {
     wScrollTo();
   }, []);
 
-
-  
   return (
     <>
       <section className="_pt-40">

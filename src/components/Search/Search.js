@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CardFlat from "../CardFlat/CardFlat";
+import CardSearch from "../CardSearch/CardSearch";
 import style from "./Search.module.scss";
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Search = (param) => {
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
@@ -12,9 +12,7 @@ const Search = (param) => {
         ? ""
         : searchFilms.searchFilmsList.map((item, i) => {
             return (
-              <div key={i}>
-                <CardFlat item={item} addClass={style.item} />
-              </div>
+              <CardSearch item={item} key={i} />
             );
           })}
     </>
