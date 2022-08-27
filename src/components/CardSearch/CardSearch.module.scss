@@ -2,15 +2,19 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    padding-bottom: 15px;
 }
 
 .imgContainer {
-    height: 90px;
-    width: 60px;
+    height: 120px;
+    width: 80px;
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    margin-right: 15px;
+    margin: 15px;
+
+    @media (max-width: 576px) {
+        height: 90px;
+        width: 70px;
+    }
 }
 
 .mainLink {
@@ -19,9 +23,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #151f3061;
+    transition: all .3s ease-in-out;
 
-    display: none;
+    &:hover {
+        background: #2f80ed0d;
+    }
+
 }
 
 .mainContainer {
@@ -32,7 +39,15 @@
     width: 180px;
 
     @media (max-width: 576px) {
+        width: 200px;
+    }
+
+    @media (max-width: 360px) {
         width: 160px;
+    }
+
+    @media (max-width: 320px) {
+        width: 140px;
     }
 }
 
@@ -51,35 +66,42 @@
     color: #e0e0e0;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+
+    @media (max-width: 320px) {
+        font-size: 13px;
+    }
 }
 
 .subtitleLine {
     display: inline-flex;
-    font-family: "Inter", sans-serif;
     font-weight: 100;
     font-size: 14px;
     color: #e0e0e0;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+
+    @media (max-width: 320px) {
+        font-size: 13px;
+    }
 }
 
 .rating {
     display: inline-flex;
-    font-family: "Inter", sans-serif;
     font-weight: 100;
     font-size: 14px;
     color: #e0e0e0;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
     padding-right: 5px;
+
+    @media (max-width: 320px) {
+        font-size: 13px;
+    }
 }
 
 .subtitle {
     display: inline-flex;
-    font-family: "Inter", sans-serif;
     font-weight: 100;
     font-size: 14px;
     color: #e0e0e0;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+
+    @media (max-width: 320px) {
+        font-size: 13px;
+    }
 }

@@ -1,10 +1,7 @@
 import React from "react";
 import style from "./CardFlat.module.scss";
 import { NavLink } from "react-router-dom";
-import playBtn from "../../img/webp/play-button.webp";
-// import star from "../../img/webp/star.webp";
-import star from "../../img/png/star.png";
-import torrentFile from "../../img/png/get-torrent-file.png";
+
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
