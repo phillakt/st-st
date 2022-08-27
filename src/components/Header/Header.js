@@ -220,6 +220,17 @@ export const Header = () => {
                         </g>
                       </svg>
                     </span>
+
+                    <div
+                        ref={searchWrap}
+                        className={`${styleSearch.wrap} ${
+                          searchFilms.searchWrap
+                            ? styleSearch.wrap_view
+                            : styleSearch.wrap_hidden
+                        }`}
+                      >
+                        <Search closeSearchSession={closeSearchSession} />
+                    </div>
                   </form>
 
                   {/* <div className={`${styleHeader.sign_in} fjc-s fai-c`}>
@@ -280,21 +291,6 @@ export const Header = () => {
           </div>
         </div>
       </header>
-
-      <div
-        ref={searchWrap}
-        className={`${styleSearch.wrap} ${
-          searchFilms.searchWrap
-            ? styleSearch.wrap_view
-            : styleSearch.wrap_hidden
-        }`}
-      >
-        <div className="container">
-          <div className="row">
-            <Search closeSearchSession={closeSearchSession} />
-          </div>
-        </div>
-      </div>
     </>
   );
 };
