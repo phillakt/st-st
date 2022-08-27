@@ -8,7 +8,7 @@ import torrentFile from "../../img/png/get-torrent-file.png";
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardFlat = ({ item }) => {
+const CardFlat = ({ item, addClass }) => {
   const dispatch = useDispatch();
   const header = useSelector((selector) => selector.header);
 
@@ -21,7 +21,7 @@ const CardFlat = ({ item }) => {
   };
 
   return (
-    <div className={`${style.card}`}>
+    <div className={`${addClass} ${style.card}`}>
       <div className={`${style.link} fjc-s`}>
         <span
           className={style.img}

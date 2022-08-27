@@ -12,8 +12,8 @@ const Search = (param) => {
         ? ""
         : searchFilms.searchFilmsList.map((item, i) => {
             return (
-              <div className={style.item} key={i}>
-                <CardFlat item={item} />
+              <div key={i}>
+                <CardFlat item={item} addClass={style.item} />
               </div>
             );
           })}
