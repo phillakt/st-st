@@ -13,6 +13,8 @@ import CategoryCurrent from "./CategoryCurrent/CategoryCurrent";
 import Detail from "./Detail/Detail";
 import Manual from "./Manual/Manual";
 import FeedBack from "./FeedBack/FeedBack";
+import Desktop from "./Manual/Desktop/Desktop";
+import Mobile from "./Manual/Mobile/Mobile";
 
 const App = () => {
   
@@ -27,6 +29,8 @@ const App = () => {
         <Route path={`${process.env.PUBLIC_URL}/detail/:slug`} element={<Detail />} />
         <Route path={`${process.env.PUBLIC_URL}/feedback`} element={<FeedBack />} />
         <Route path={`${process.env.PUBLIC_URL}/manual`} element={<Manual />} />
+        <Route path={`${process.env.PUBLIC_URL}/manual/desktop`} element={<Desktop />}/>
+        <Route path={`${process.env.PUBLIC_URL}/manual/mobile`} element={<Mobile />} />
       </Routes>
       <Footer />
     </>

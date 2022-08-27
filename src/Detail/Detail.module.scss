@@ -79,7 +79,7 @@
     align-items: center;
     justify-content: space-between;
     border: 2px solid #248d5f;
-    border-radius: 2em;
+    border-radius: 16px;
     transition: all 0.3s ease-in-out;
     // filter: drop-shadow(0px 0px 3px #248d5f);
 }
@@ -91,7 +91,7 @@
     color: #e0e0e0;
     text-decoration: none;
     background: #131720;
-    border-radius: 2em;
+    border-radius: 16px;
     transition: all 0.3s ease;
 
     img {

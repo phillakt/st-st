@@ -8,6 +8,30 @@ body {
   margin: 0;
 }
 
+.d-block {
+  display: block;
+}
+
+.purge-link {
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link.link_white {
+  color: #e0e0e0;
+}
+
+.link.link_download {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.link.link_download:hover {
+  border-bottom: 1px solid transparent;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -98,40 +122,6 @@ header ul li a.active {
 }
 /* catalog__grid-min end */
 
-.os-host-overflow {
-  /* height: 450px; */
-}
-
-@media (max-width: 768px) {
-  .os-host-overflow {
-    height: 320px;
-  }
-}
-
-.os-scrollbar.os-scrollbar-horizontal {
-  cursor: pointer;
-  margin-left: 15px;
-}
-
-.os-theme-light > .os-scrollbar-horizontal {
-  right: 15px;
-}
-
-.os-theme-light > .os-scrollbar > .os-scrollbar-track {
-  background: #131720 !important;
-}
-
-.os-theme-light > .os-scrollbar.os-scrollbar-unusable {
-  display: none;
-}
-
-.os-theme-light > .os-scrollbar > .os-scrollbar-track > .os-scrollbar-handle {
-  background: #2f80ed !important;
-}
-
-.os-scrollbar.os-scrollbar-vertical {
-  display: none !important;
-}
 
 .home-slider__card_title a {
   bottom: 60px;
