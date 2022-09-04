@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { wScrollTo } from "../../redux/actions";
+
 
 export const Mobile = () => {
+
+  useEffect(() => {
+    wScrollTo();
+  });
+
   return (
     <section className="_pt-40">
       <div className="container">

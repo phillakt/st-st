@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardFlat = ({ item, addClass }) => {
+const CardFlat = ({ item, addClass, styleProp }) => {
   const dispatch = useDispatch();
   const header = useSelector((selector) => selector.header);
 
@@ -18,8 +18,13 @@ const CardFlat = ({ item, addClass }) => {
   };
 
   return (
-    <div className={`${style.card} ${addClass ? addClass : ''}`}>
-      <div className={`${style.link} fjc-s`}>
+    <div className={`${style.card} ${addClass ? addClass : ""}`}>
+      <div
+        className={`${style.link} fjc-s`}
+        style={{ height: styleProp?.height ? (
+          window.innerWidth >= 1200 ? styleProp?.height : ""
+        ) : "" }}
+      >
         <span
           className={style.img}
           style={{ background: `url(${item.thumbnail_url})` }}
@@ -31,8 +36,7 @@ const CardFlat = ({ item, addClass }) => {
           }}
           to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
           className={style.play}
-        >
-        </NavLink>
+        ></NavLink>
       </div>
       <div className={`${style.content} _mt-10`}>
         <div>
@@ -56,7 +60,7 @@ const CardFlat = ({ item, addClass }) => {
               <span>{item.meta_fields.rating[0]}</span>
             </div>
           </div>
-          <div style={{display: 'none'}} className="_pb-10">
+          <div style={{ display: "none" }} className="_pb-10">
             <ul className={style.category_list}>
               {item.category.map((item, i) => {
                 return (

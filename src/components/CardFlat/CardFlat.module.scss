@@ -3,14 +3,13 @@
   flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
 
   @media (max-width: 768px) {
-    // margin-left: 0;
-    // margin-right: 0;
+    margin-left: 5px;
+    margin-right: 5px;
   }
-
 
   &:hover {
     .play {

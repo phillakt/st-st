@@ -12,7 +12,7 @@
 }
 
 .form__contacts {
-  padding: 30px 30px 15px;
+  padding: 30px 30px;
   margin-top: 30px;
 }
 
@@ -67,5 +67,42 @@ select:focus {
   &:focus {
     background-color: #151f30;
     border-color: #2f80ed;
+  }
+}
+
+.btnSubmit {
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #151f30;
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  color: #e0e0e0;
+  padding: 16px 40px;
+  font-size: 16px;
+  border: 0;
+
+  &:hover {
+    background: #2f80ed;
+  }
+}
+
+.error {
+  color: #b74649;
+  font-size: 12px;
+  padding: 5px 0 0 20px;
+}
+
+.link {
+  color: #e0e0e0;
+  font-size: 22px;
+  text-decoration: none;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: #2f80ed;
   }
 }

@@ -8,7 +8,7 @@ import torrentFile from "../../img/png/get-torrent-file.png";
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardBook = ({ item }) => {
+const CardBook = ({ item, styleProp }) => {
   const dispatch = useDispatch();
   const header = useSelector((selector) => selector.header);
 
@@ -22,10 +22,17 @@ const CardBook = ({ item }) => {
 
   return (
     <div className={`${style.card} _mb-30`}>
-      <div className={style.link}>
+      <div
+        className={style.link}
+        style={{
+          width: styleProp?.width ? styleProp?.width : "80%",
+        }}
+      >
         <span
           className={style.img}
-          style={{ background: `url(${item.thumbnail_url})` }}
+          style={{
+            background: `url(${item.thumbnail_url})`,
+          }}
         ></span>
         <NavLink
           onClick={() => {

@@ -97,6 +97,7 @@ header ul li a.active {
   /* height: 400px !important; */
 }
 .home-slider .slick-dots {
+  bottom: -45px;
 }
 .home-slider .slick-dots li button:before {
   opacity: 1;
@@ -108,9 +109,23 @@ header ul li a.active {
 }
 /* home-slider end */
 
+/* home-filter */
+
+.home-filter {
+
+}
+
+@media (max-width: 768px) {
+  .home-filter {
+    margin-top: 60px;
+  }
+}
+
+/* home-filter end */
+
 /* catalog__grid-min */
 .catalog__grid-min .slick-dots {
-  /* bottom: -40px;  */
+  bottom: -45px; 
 }
 .catalog__grid-min .slick-dots li.slick-active button:before {
   opacity: 1;

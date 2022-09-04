@@ -1,7 +1,8 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCategories, getMainFilterCategoryCurrent } from "../redux/actions";
-import Loader from "../ui/Loader/Loader";
+import { getCategories, getMainFilterCategoryCurrent } from "../../redux/actions";
+import FilterListItem from "./iu/FilterListItem";
+import Loader from "../../ui/Loader/Loader";
 
 export const HomeFilter = () => {
   const filterList = useSelector((selector) => selector.films.categories);
@@ -38,21 +39,13 @@ export const HomeFilter = () => {
                     : filterList.map((item, i) => {
                         return (
                           <li key={i}>
-                            <span
-                              className={
-                                item.slug === mainFilterCategoryCurrent.slug
-                                  ? "active"
-                                  : ""
-                              }
-                              onClick={(e) => {
-                                e.preventDefault();
-                                dispatch(
-                                  getMainFilterCategoryCurrent(item.slug, 3)
-                                );
+                            <FilterListItem 
+                              props={{
+                                className: item.slug === mainFilterCategoryCurrent.slug ? "active" : "",
+                                name: item.name
                               }}
-                            >
-                              {item.name}
-                            </span>
+                              getMainFilterCategoryCurrentHandler={() => (getMainFilterCategoryCurrent(item.slug, 3))}
+                            />
                           </li>
                         );
                       })}

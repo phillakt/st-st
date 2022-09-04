@@ -9,7 +9,6 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
 import Loader from "../ui/Loader/Loader";
 
-
 const CategoryCurrent = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -47,22 +46,23 @@ const CategoryCurrent = () => {
         </div>
 
         <div className="row _mt-30">
-          <div className="col-lg-3">
+          <div className="col-md-3">
             <CategoryCurrentFilter />
           </div>
 
-          <div className="col-lg-9">
+          <div className="col-md-9">
             <div className="row catalog__grid">
-              {!categoryCurrent.categoryPosts
-                ? <EmptyListFilms />
-                : categoryCurrent.categoryPosts.map((item, i) => {
-                    return (
-                      <div className="col-lg-6" key={i}>
-                        <CardBook item={item} />
-                      </div>
-                    );
-                  })
-                  }
+              {!categoryCurrent.categoryPosts ? (
+                <EmptyListFilms />
+              ) : (
+                categoryCurrent.categoryPosts.map((item, i) => {
+                  return (
+                    <div className="col-lg-6" key={i}>
+                      <CardBook item={item} styleProp={{width: '60%'}} />
+                    </div>
+                  );
+                })
+              )}
             </div>
             {categoryCurrent.count >= categoryCurrent.categoryAllCountPosts ? (
               ""

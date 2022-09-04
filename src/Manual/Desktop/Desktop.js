@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { wScrollTo } from "../../redux/actions";
 import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.png";
 import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
 
+
 export const Desktop = () => {
+  useEffect(() => {
+    wScrollTo();
+  });
+
   return (
     <section className="_pt-40">
       <div className="container">
@@ -16,7 +22,7 @@ export const Desktop = () => {
         <div className="row _mt-40">
           <div className="col-lg-8 offset-lg-2">
             <h2 className="fjc-c color__white fs-30">Шаг - 1</h2>
-            <div className="fjc-c fai-e  color__white _mt-30">
+            <div className="fjc-c fai-s  color__white _mt-30">
               Для скачивания фильма на нашем сайте воспользуйтесь программой
               <a
                 className="df-inline _ml-10 link link_white link_download fs-20"
@@ -61,7 +67,7 @@ export const Desktop = () => {
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 3</h2>
 
-            <div className="_mt-30 fjc-s fai-e color__white">
+            <div className="_mt-30 fjc-s fai-s color__white">
               Открываем torrent файл через установленную программу 
               <a
                 className="df-inline _ml-10 link link_white link_download fs-20"
