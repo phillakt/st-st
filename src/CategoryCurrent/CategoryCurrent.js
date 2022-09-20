@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCategoryCurrent, getCategories, wScrollTo } from "../redux/actions";
@@ -7,7 +7,9 @@ import CardBook from "../components/CardBook/CardBook";
 import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
+
 import Loader from "../ui/Loader/Loader";
+import Paginate from "../components/Paginate/Paginate";
 
 const CategoryCurrent = () => {
   const params = useParams();
@@ -22,7 +24,7 @@ const CategoryCurrent = () => {
   };
 
   const _getCategoryCurrent = useCallback(() => {
-    dispatch(getCategoryCurrent(params.slug, 1, filterState));
+    dispatch(getCategoryCurrent(params.slug, 2, filterState));
   });
 
   useEffect(() => {
@@ -30,6 +32,7 @@ const CategoryCurrent = () => {
 
     wScrollTo();
   }, [params.slug]);
+
 
   return (
     <section className="_pt-40">
@@ -58,7 +61,7 @@ const CategoryCurrent = () => {
                 categoryCurrent.categoryPosts.map((item, i) => {
                   return (
                     <div className="col-lg-6" key={i}>
-                      <CardBook item={item} styleProp={{width: '60%'}} />
+                      <CardBook item={item} styleProp={{width: '80%'}} />
                     </div>
                   );
                 })
@@ -68,12 +71,9 @@ const CategoryCurrent = () => {
               ""
             ) : (
               <div className="fjc-c">
-                <BtnUploadMoreFilterDefault
-                  text="Загрузить"
-                  increment={increment}
-                  categoryCurrent={categoryCurrent}
-                  filterState={filterState}
-                />
+                <>
+                  <Paginate itemsPerPage={4} posts={categoryCurrent.categoryPosts} />
+                </>
               </div>
             )}
           </div>

@@ -16,7 +16,7 @@
     z-index: 10;
     top: 70px;
     width: 100%;
-    height: calc(100vh - 50px);
+    max-height: calc(100vh - 125px);
     background: #131720;
     padding: 0;
   }

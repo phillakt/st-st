@@ -25,7 +25,7 @@ export const HomeSlider = () => {
     dragging: false,
     cssEase: "ease-in-out",
     slidesToScroll: 1,
-    slidesToShow: 6,
+    slidesToShow: 7,
     autoplay: true,
     autoplaySpeed: 5000,
     centerMode: true,

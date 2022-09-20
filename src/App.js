@@ -25,6 +25,7 @@ const App = () => {
         <Route path={`${process.env.PUBLIC_URL}/`} exact element={<Home />} />
         <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} />
         <Route path={`${process.env.PUBLIC_URL}/categorys`} element={<Categorys />} />
+        <Route path={`${process.env.PUBLIC_URL}/category/:slug/?pagen=:pagen`} element={<CategoryCurrent />} />
         <Route path={`${process.env.PUBLIC_URL}/category/:slug`} element={<CategoryCurrent />} />
         <Route path={`${process.env.PUBLIC_URL}/detail/:slug`} element={<Detail />} />
         <Route path={`${process.env.PUBLIC_URL}/feedback`} element={<FeedBack />} />

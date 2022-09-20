@@ -247,3 +247,25 @@ header ul li a.active {
 }
 
 /* catalog__grid-min end */
+
+/* Pagi */
+
+.pagi__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagi__list_li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.pagi__list_item {
+  cursor: pointer;
+  color: #e0e0e0;
+  padding: 8px 16px;
+  background: #151f30;
+  border-radius: 1em;
+}
+
+/* Pagi end */
