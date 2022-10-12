@@ -8,6 +8,7 @@ import {
   GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   GET_ALL_FILMS,
+  GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
 } from "./typesFilms";
 
@@ -29,6 +30,7 @@ const initState = {
   mainSliderRandom: [],
   filmDetail: {},
   allFilms: [],
+  allFilmsLength: 0,
   searchFilms: {
     searchInputValue: "",
     searchWrap: false,
@@ -159,6 +161,12 @@ export const films = (state = initState, action) => {
       return {
         ...state,
         allFilms: action.allFilms,
+      };
+      
+    case GET_ALL_FILMS_LENGTH:
+      return {
+        ...state,
+        allFilmsLength: action.allFilmsLength,
       };
 
     case GET_SEARCH_FILMS:

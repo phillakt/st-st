@@ -10,6 +10,7 @@ import {
   GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   GET_ALL_FILMS,
+  GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
 } from "./typesFilms";
 
@@ -205,6 +206,29 @@ export const getAllFilms = () => {
     dispatch({
       type: GET_ALL_FILMS,
       allFilms: response.data,
+    });
+  };
+};
+
+export const getAllFilmsLength = (slug) => {
+  return async (dispatch) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await axios.post(
+      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films-length",
+      {
+        category: slug
+      },
+      config
+    );
+
+    dispatch({
+      type: GET_ALL_FILMS_LENGTH,
+      allFilmsLength: response.data,
     });
   };
 };

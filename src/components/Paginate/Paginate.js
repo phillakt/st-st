@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryCurrent, getAllFilmsLength } from "../../redux/actions";
 
-export const Paginate = ({ itemsPerPage }) => {
+export const Paginate = ({ itemsPerPage, slug, filterState }) => {
+
+  const dispatch = useDispatch();
   const params = useParams();
-  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-  // We start with an empty list of items.
+
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
 
+  const allFilmsLength = useSelector((selector) => selector.films.allFilmsLength);
+
+  const items = [];
+  for (let i = 1; i < allFilmsLength; i++) {items.push(i)}
+
   useEffect(() => {
-    // Fetch items from another resources.
+    _getAllFilmsLength(slug);
+
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     setCurrentItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
 
-  // Invoke when user click to request another page.
+  }, [itemOffset, itemsPerPage, allFilmsLength, slug]);
+
+  const _getAllFilmsLength = useCallback((slug) => {
+    dispatch(getAllFilmsLength(slug));
+  });
+
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
+    dispatch(getCategoryCurrent(slug, newOffset, filterState));
   };
 
   return (
@@ -35,12 +43,8 @@ export const Paginate = ({ itemsPerPage }) => {
         breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel="< previous"
-        hrefBuilder={(e) => {
-          return "?param=1";
-        }}
         hrefAllControls={true}
         renderOnZeroPageCount={null}
       />
