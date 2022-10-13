@@ -24,14 +24,14 @@ const CategoryCurrent = () => {
   //   dispatch(getCategoryCurrent(slug, count, filterState));
   // };
 
-  const _getCategoryCurrent = useCallback(() => {
-    dispatch(getCategoryCurrent(params.slug, 0, filterState));
+  const _getCategoryCurrent = useCallback((slug, offset, filterState) => {
+    dispatch(getCategoryCurrent(slug, offset, filterState));
   });
 
 
   useEffect(() => {
-    _getCategoryCurrent();
-    
+    _getCategoryCurrent(params.slug, 0, filterState);
+
     wScrollTo();
   }, [params.slug]);
 
@@ -63,7 +63,7 @@ const CategoryCurrent = () => {
                 categoryCurrent.categoryPosts.map((item, i) => {
                   return (
                     <div className="col-lg-6" key={i}>
-                      <CardBook item={item} styleProp={{width: '80%'}} />
+                      <CardBook item={item} styleProp={{width: '60%'}} />
                     </div>
                   );
                 })
