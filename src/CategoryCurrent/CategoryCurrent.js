@@ -72,10 +72,10 @@ const CategoryCurrent = () => {
             {categoryCurrent.count >= categoryCurrent.categoryAllCountPosts ? (
               ""
             ) : (
-              <div className="fjc-c">
-                <>
+              <div className="row">
+                <div className="col-md-12">
                   <Paginate itemsPerPage={2} slug={params.slug} filterState={filterState} />
-                </>
+                </div>
               </div>
             )}
           </div>

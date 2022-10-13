@@ -248,9 +248,13 @@ header ul li a.active {
 
 /* catalog__grid-min end */
 
-/* Pagi */
+/* Paginate */
 
-.pagi__list {
+.selected a[aria-current="page"] {
+  color: #2f80ed;
+}
+
+/* .pagi__list {
   display: flex;
   flex-wrap: wrap;
 }
@@ -266,6 +270,6 @@ header ul li a.active {
   padding: 8px 16px;
   background: #151f30;
   border-radius: 1em;
-}
+} */
 
-/* Pagi end */
+/* Paginate end */
