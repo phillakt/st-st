@@ -84,7 +84,13 @@ export const Header = () => {
                   header.menuMobile.view ? styleHeader.topmenu_mobile__view : ""
                 }`}
                 >
-                  <nav>
+                  <nav
+                    className={
+                      searchFilms.searchWrap
+                        ? styleSearch.wrap_hidden
+                        : styleSearch.wrap_view
+                    }
+                  >
                     <ul>
                       <li>
                         <NavLink
@@ -222,14 +228,14 @@ export const Header = () => {
                     </span>
 
                     <div
-                        ref={searchWrap}
-                        className={`${styleSearch.wrap} ${
-                          searchFilms.searchWrap
-                            ? styleSearch.wrap_view
-                            : styleSearch.wrap_hidden
-                        }`}
-                      >
-                        <Search closeSearchSession={closeSearchSession} />
+                      ref={searchWrap}
+                      className={`${styleSearch.wrap} ${
+                        searchFilms.searchWrap
+                          ? styleSearch.wrap_view
+                          : styleSearch.wrap_hidden
+                      }`}
+                    >
+                      <Search closeSearchSession={closeSearchSession} />
                     </div>
                   </form>
 

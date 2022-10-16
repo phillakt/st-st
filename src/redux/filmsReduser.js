@@ -21,6 +21,7 @@ const initState = {
     categoryData: {},
     categoryPosts: [],
     categoryAllCountPosts: 0,
+    _filter: undefined,
   },
   mainFilterCategoryCurrent: {
     count: 0,
@@ -124,6 +125,7 @@ export const films = (state = initState, action) => {
           categoryData: action.categoryCurrent.categoryData,
           categoryPosts: action.categoryCurrent.posts,
           categoryAllCountPosts: action.categoryCurrent.queryPostsAllCount,
+          _filter: action.categoryCurrent.filter,
         },
       };
     case GET_CATEGORY_CURRENT_FILTER:

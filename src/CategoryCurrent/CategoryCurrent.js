@@ -1,14 +1,17 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCategoryCurrent, getAllFilmsLength, getCategories, wScrollTo } from "../redux/actions";
+import {
+  getCategoryCurrent,
+  wScrollTo,
+} from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
-import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
+// import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
 
-import Loader from "../ui/Loader/Loader";
+// import Loader from "../ui/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
 
 const CategoryCurrent = () => {
@@ -18,23 +21,21 @@ const CategoryCurrent = () => {
     (selector) => selector.films.categoryCurrent
   );
 
-  const filterState = useSelector((selector) => selector.films.filtersProps);
+  const categoryAllCountPosts = useSelector(
+    (selector) => selector.films.categoryCurrent.categoryAllCountPosts
+  );
 
-  // const increment = (slug, count, filterState) => {
-  //   dispatch(getCategoryCurrent(slug, count, filterState));
-  // };
+  const filterState = useSelector((selector) => selector.films.filtersProps);
 
   const _getCategoryCurrent = useCallback((slug, offset, filterState) => {
     dispatch(getCategoryCurrent(slug, offset, filterState));
   });
-
 
   useEffect(() => {
     _getCategoryCurrent(params.slug, 0, filterState);
 
     wScrollTo();
   }, [params.slug]);
-
 
   return (
     <section className="_pt-40">
@@ -63,7 +64,7 @@ const CategoryCurrent = () => {
                 categoryCurrent.categoryPosts.map((item, i) => {
                   return (
                     <div className="col-lg-6" key={i}>
-                      <CardBook item={item} styleProp={{width: '60%'}} />
+                      <CardBook item={item} styleProp={{ width: "80%" }} />
                     </div>
                   );
                 })
@@ -74,7 +75,12 @@ const CategoryCurrent = () => {
             ) : (
               <div className="row">
                 <div className="col-md-12">
-                  <Paginate itemsPerPage={2} slug={params.slug} filterState={filterState} />
+                  <Paginate
+                    itemsPerPage={2}
+                    slug={params.slug}
+                    filterState={filterState}
+                    categoryAllCountPosts={categoryAllCountPosts}
+                  />
                 </div>
               </div>
             )}

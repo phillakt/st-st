@@ -10,7 +10,7 @@
   max-height: calc(100vh - 230px);
   max-width: 100%;
   top: calc(100% + 11px);
-  padding: 10px 5px 0 0;
+  // padding: 10px 5px 0 0;
 
   @media (max-width: 768px) {
     z-index: 10;
@@ -137,7 +137,10 @@
 }
 
 .wrap_hidden {
-  display: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .box {
