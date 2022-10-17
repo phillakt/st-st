@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { wScrollTo } from "../../redux/actions";
 import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.png";
 import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
-
+import BtnBlue from "../../ui/BtnBlue/BtnBlue";
+import style from "../Manual.module.scss";
 
 export const Desktop = () => {
   useEffect(() => {
@@ -10,22 +12,30 @@ export const Desktop = () => {
   });
 
   return (
-    <section className="_pt-40">
+    <section className="_pt-30">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <h1 className="fjc-c color__white fs-30">
-              Для компьютера
-            </h1>
+            <div className="fjc-c">
+              <NavLink
+                className="d-block purge-link _mb-30"
+                to={`${process.env.PUBLIC_URL}/manual/mobile`}
+              >
+                <BtnBlue>Для телефона</BtnBlue>
+              </NavLink>
+            </div>
+          </div>
+          <div className="col-lg-12">
+            <h1 className="fjc-c color__white fs-30">Для компьютера</h1>
           </div>
         </div>
         <div className="row _mt-40">
           <div className="col-lg-8 offset-lg-2">
             <h2 className="fjc-c color__white fs-30">Шаг - 1</h2>
-            <div className="fjc-c fai-s  color__white _mt-30">
-              Для скачивания фильма на нашем сайте воспользуйтесь программой
+            <div className="tac color__white _mt-30">
+              Для скачивания фильма воспользуйтесь программой
               <a
-                className="df-inline _ml-10 link link_white link_download fs-20"
+                className={style.link}
                 href="https://www.qbittorrent.org/"
                 target="_blank"
               >
@@ -33,9 +43,10 @@ export const Desktop = () => {
               </a>
             </div>
 
-            <div className="fjc-s color__white _mt-30">
-              Нажимаем по ссылке «Download» в меню, переходим на страницу, далее выбираем для вашей
-              операционной системы (Windows, MacOS, Linux) дистрибутив и cкачиваем его.
+            <div className="tac color__white _mt-30">
+              Нажимаем по ссылке «Download» в меню, переходим на страницу, далее
+              выбираем для вашей операционной системы (Windows, MacOS, Linux)
+              дистрибутив и cкачиваем его
             </div>
 
             <div className="_mt-30">
@@ -46,15 +57,14 @@ export const Desktop = () => {
               />
             </div>
 
-            <div className="_mt-30 fjc-s color__white">
-              После скачивания файла устаналиваете его на ваш компьютер.
+            <div className="tac _mt-30 color__white">
+              После скачивания файла устаналиваете его на ваш компьютер
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 2</h2>
 
-            <div className="_mt-30 fjc-s color__white">
-              Выбираем на сайте понравившийся фильм и скачиваем по нажатию
-              зеленой кнопки torrent файл.
+            <div className="tac _mt-30 color__white">
+              Скачиваем torrent файл с раширением .avi
             </div>
 
             <div className="_mt-30">
@@ -67,10 +77,10 @@ export const Desktop = () => {
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 3</h2>
 
-            <div className="_mt-30 fjc-s fai-s color__white">
-              Открываем torrent файл через установленную программу 
+            <div className="tac _mt-30 color__white">
+              Открываем torrent файл через установленную программу
               <a
-                className="df-inline _ml-10 link link_white link_download fs-20"
+                className={style.link}
                 href="https://www.qbittorrent.org/"
                 target="_blank"
               >
@@ -78,12 +88,14 @@ export const Desktop = () => {
               </a>
             </div>
 
-            <div className="_mt-30 fjc-s fai-e color__white">
-              В появившемся окне выбираем «Путь сохранения» и жмем «Ок», дожидаемся скачивания фильма.  
+            <div className="tac _mt-30 color__white">
+              В окне выбираем «Путь сохранения» и жмем «Ок»,
+              дожидаемся скачивания фильма
             </div>
 
-            <h2 className="fjc-c color__white fs-30 _mt-30">Приятного просмотра!</h2>
-
+            <h2 className="fjc-c color__white fs-30 _mt-30">
+              Приятного просмотра!
+            </h2>
           </div>
         </div>
       </div>

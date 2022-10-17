@@ -52,11 +52,11 @@ const CategoryCurrent = () => {
         </div>
 
         <div className="row _mt-30">
-          <div className="col-md-3">
+          <div className="col-lg-3 col-md-4">
             <CategoryCurrentFilter />
           </div>
 
-          <div className="col-md-9">
+          <div className="col-lg-9 col-md-8">
             <div className="row catalog__grid">
               {!categoryCurrent.categoryPosts ? (
                 <EmptyListFilms />

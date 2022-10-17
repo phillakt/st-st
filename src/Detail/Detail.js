@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
 import backArrow from "../img/svg/icons/back_arrow.svg";
-import downloadFile from "../img/svg/icons/download_file.svg";
+//import downloadFile from "../img/svg/icons/download_file.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
 
@@ -27,22 +27,25 @@ export const Detail = () => {
   }
 
   return (
-    <section className="detail _pt-30">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-10 offset-md-2">
-            <div className="_mb-30">
-              <span className={style.backArrow} onClick={() => navigate(-1)}>
-                <img src={backArrow} alt="back arrow" />
-              </span>
+    <>
+      {!detail.ID ? (
+        <Loader />
+      ) : (
+        <section className="detail _pt-30">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-10 offset-md-2">
+                <div className="_mb-30">
+                  <span
+                    className={style.backArrow}
+                    onClick={() => navigate(-1)}
+                  >
+                    <img src={backArrow} alt="back arrow" />
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          {!detail.ID ? (
-            <Loader />
-          ) : (
-            <>
+            <div className="row">
               <div className="col-lg-3 offset-md-2">
                 <div className="_mb-20">
                   <>
@@ -175,11 +178,11 @@ export const Detail = () => {
                   )}
                 </div>
               </div>
-            </>
-          )}
-        </div>
-      </div>
-    </section>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 

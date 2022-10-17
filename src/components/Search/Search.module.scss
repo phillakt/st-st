@@ -1,4 +1,3 @@
-
 .wrap {
   font-family: "Inter", sans-serif;
   position: absolute;
@@ -16,7 +15,7 @@
     z-index: 10;
     top: 70px;
     width: 100%;
-    max-height: calc(100vh - 125px);
+    max-height: calc(100vh - 225px);
     background: #131720;
     padding: 0;
   }
@@ -37,8 +36,6 @@
 .wrap::-webkit-scrollbar {
   width: 12px;
 }
-
-
 
 .search {
   position: relative;
@@ -106,7 +103,6 @@
 }
 
 .btn__search {
-
   &_view {
     pointer-events: none;
     cursor: pointer;
@@ -137,7 +133,6 @@
 }
 
 .wrap_hidden {
-
   @media (max-width: 768px) {
     display: none;
   }
@@ -198,5 +193,23 @@
 
   @media (max-width: 768px) {
     display: none;
+  }
+}
+
+.loader {
+  &__search {
+    position: absolute;
+    left: -40px;
+    top: 3px;
+    margin: 0 !important;
+    width: 8% !important;
+
+    @media (max-width: 768px) {
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: 0 auto !important;
+      width: 8% !important;
+    }
   }
 }

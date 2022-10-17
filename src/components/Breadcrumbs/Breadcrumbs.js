@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import style from "./Breadcrumbs.module.scss";
 // import breadcrumbs from "../../img/svg/icons/breadcrumb.svg";
 import breadcrumbs from "../../img/svg/icons/breadcrumb-arrow.svg";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Breadcrumbs = () => {

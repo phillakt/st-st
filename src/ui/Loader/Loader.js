@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./Loader.module.scss";
-const Loader = () => {
+const Loader = ({addClass}) => {
   return (
-    <div className={style.loader} title={0}>
+    <div className={`${style.loader} ${addClass ? addClass : ""}`} title="Loader module">
       <svg
         version="1.1"
         id="loader-1"

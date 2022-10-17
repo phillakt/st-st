@@ -202,11 +202,12 @@ export const getAllFilms = () => {
       {},
       config
     );
-
+    
     dispatch({
       type: GET_ALL_FILMS,
       allFilms: response.data,
     });
+
   };
 };
 
