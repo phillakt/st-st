@@ -14,3 +14,17 @@
         border-bottom: 1px dashed transparent; 
     }
 }
+
+.backArrow {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #151f30;
+    border-radius: 30px;
+    color: #e0e0e0;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}

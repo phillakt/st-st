@@ -5,9 +5,10 @@ import { getFilmDetail, wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
 import backArrow from "../img/svg/icons/back_arrow.svg";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
-import starIco from "../img/svg/icons/star_ico.svg";
+// import starIco from "../img/svg/icons/star_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
+import BtnBlue from "../ui/BtnBlue/BtnBlue";
 
 export const Detail = () => {
   const params = useParams();
@@ -28,6 +29,31 @@ export const Detail = () => {
     return { __html: param };
   }
 
+  const TypeFilms = ({ type }) => {
+    if (type.includes(".fhd")) {
+      return (
+        <>
+          <div className={style.download__fullhd}>Full HD</div>
+          <div className={style.download__ext}>mp4</div>
+        </>
+      );
+    } else if (type.includes(".hd")) {
+      return (
+        <>
+          <div className={style.download__hd}>HD</div>
+          <div className={style.download__ext}>mp4</div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className={style.download__sd}>SD</div>
+          <div className={style.download__ext}>mp4</div>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       {!detail.ID ? (
@@ -36,8 +62,8 @@ export const Detail = () => {
         <>
           <Helmet>
             <title>
-              Скачать торрент {detail.post_title} {detail.meta_fields.year[0]}
-               на телефон или компьютер в хорошем качестве
+              Скачать торрент {detail.post_title} {detail.meta_fields.year[0]}{" "}
+              на телефон, планшет или компьютер в хорошем качестве
             </title>
             <meta
               name="description"
@@ -46,19 +72,19 @@ export const Detail = () => {
               } торрент на телефон или компьютер. ${
                 detail.meta_fields.year[0]
                   ? `Год: ${detail.meta_fields.year[0]}.`
-                  : " "
+                  : ""
               } ${
                 detail.meta_fields.director[0]
                   ? `Режиссер: ${detail.meta_fields.director[0]}.`
-                  : " "
+                  : ""
               } ${
                 detail.meta_fields.country[0]
                   ? `Страна: ${detail.meta_fields.country[0]}.`
-                  : " "
+                  : ""
               } ${
                 detail.meta_fields.actors[0]
                   ? `Актеры: ${detail.meta_fields.actors[0]}.`
-                  : " "
+                  : ""
               }`}
             />
           </Helmet>
@@ -89,34 +115,71 @@ export const Detail = () => {
                         )}
                       </div>
                     </>
-                    {!detail.meta_fields.link_to_file_mid[0] ? (
+
+                    {/* Для телефонов */}
+                    {!detail.meta_fields.link_to_file_sd[0] ? (
                       ""
                     ) : (
                       <div className="_mb-20">
-                        {/* Для телефонов */}
                         <div className={style.download__wrap}>
                           <div>
                             <img src={qbIco} alt="qbIco" />
                           </div>
                           <div className={style.download__weight}>
-                            {detail.meta_fields.file_size_mid[0]}&nbsp;
+                            {detail.meta_fields.file_size_sd[0]}&nbsp;
                             <span>GB</span>
                           </div>
                           <div className={style.download__link}>
                             <a
-                              href={detail.meta_fields.link_to_file_mid[0]}
+                              href={detail.meta_fields.link_to_file_sd[0]}
                               download
                             >
                               torrent
                             </a>
                           </div>
-                          <div className={style.download__ext}>.mp4</div>
+                          {
+                            <TypeFilms
+                              type={detail.meta_fields.link_to_file_sd[0]}
+                            />
+                          }
                         </div>
                       </div>
                     )}
                     {/* Для телефонов end */}
-                    {/* Для компьтеров */}
-                    {!detail.meta_fields.link_to_file_high[0] ? (
+
+                    {/* Для компьтеров HD */}
+                    {!detail.meta_fields.link_to_file_hd[0] ? (
+                      ""
+                    ) : (
+                      <div className="_mb-20">
+                        <div className={style.download__wrap}>
+                          <div>
+                            <img src={qbIco} alt="qbIco" />
+                          </div>
+                          <div className={style.download__weight}>
+                            {detail.meta_fields.file_size_hd[0]}&nbsp;
+                            <span>GB</span>
+                          </div>
+                          <div className={style.download__link}>
+                            <a
+                              href={detail.meta_fields.link_to_file_hd[0]}
+                              download
+                            >
+                              torrent
+                            </a>
+                          </div>
+                          {
+                            <TypeFilms
+                              type={detail.meta_fields.link_to_file_hd[0]}
+                            />
+                          }
+                        </div>
+                      </div>
+                    )}
+                    {/* Для компьтеров HD end */}
+
+                    {/* Для компьтеров Full HD */}
+                    {!detail.meta_fields.link_to_file_fhd[0] ? (
                       ""
                     ) : (
                       <div className={`${style.download__wrap} _mb-20`}>
@@ -124,21 +187,50 @@ export const Detail = () => {
                           <img src={qbIco} alt="qbIco" />
                         </div>
                         <div className={style.download__weight}>
-                          {detail.meta_fields.file_size_high[0]}&nbsp;
+                          {detail.meta_fields.file_size_fhd[0]}&nbsp;
                           <span>GB</span>
                         </div>
                         <div className={style.download__link}>
                           <a
-                            href={detail.meta_fields.link_to_file_high[0]}
+                            href={detail.meta_fields.link_to_file_fhd[0]}
                             download
                           >
                             torrent
                           </a>
                         </div>
-                        <div className={style.download__ext}>.mp4</div>
+                        {
+                          <TypeFilms
+                            type={detail.meta_fields.link_to_file_fhd[0]}
+                          />
+                        }
+                        <div className={style.download__ext}>mp4</div>
                       </div>
                     )}
-                    {/* Для компьтеров end */}
+                    {/* Для компьтеров Full HD end */}
+
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div className="_mb-20">
+                          <h3 className="color__white fs-22">Как скачать?</h3>
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <NavLink
+                          className="d-block purge-link _mb-20"
+                          to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                        >
+                          <BtnBlue>Для компьютера</BtnBlue>
+                        </NavLink>
+                      </div>
+                      <div className="col-md-12">
+                        <NavLink
+                          className="d-block purge-link _mb-20"
+                          to={`${process.env.PUBLIC_URL}/manual/mobile`}
+                        >
+                          <BtnBlue>Для телефона</BtnBlue>
+                        </NavLink>
+                      </div>
+                    </div>
                     <>
                       <div className="_mb-20">
                         <div className="_mb-20">

@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { wScrollTo } from "../../redux/actions";
 import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.png";
 import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
 import BtnBlue from "../../ui/BtnBlue/BtnBlue";
 import style from "../Manual.module.scss";
+import backArrow from "../../img/svg/icons/back_arrow.svg";
 
 export const Desktop = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     wScrollTo();
   });
@@ -16,6 +19,11 @@ export const Desktop = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
+            <div className="fjc-c _mb-30">
+              <span className={style.backArrow} onClick={() => navigate(-1)}>
+                <img src={backArrow} alt="back arrow" />
+              </span>
+            </div>
             <div className="fjc-c">
               <NavLink
                 className="d-block purge-link _mb-30"
@@ -32,6 +40,15 @@ export const Desktop = () => {
         <div className="row _mt-40">
           <div className="col-lg-8 offset-lg-2">
             <h2 className="fjc-c color__white fs-30">Шаг - 1</h2>
+
+            <div className="_mt-30">
+              <img
+                className="img-res"
+                src={manualDesktop1}
+                alt="manualDesktop1"
+              />
+            </div>
+
             <div className="tac color__white _mt-30">
               Для скачивания фильма воспользуйтесь программой
               <a
@@ -49,30 +66,22 @@ export const Desktop = () => {
               дистрибутив и cкачиваем его
             </div>
 
-            <div className="_mt-30">
-              <img
-                className="img-res"
-                src={manualDesktop1}
-                alt="manualDesktop1"
-              />
-            </div>
-
             <div className="tac _mt-30 color__white">
               После скачивания файла устаналиваете его на ваш компьютер
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 2</h2>
-
-            <div className="tac _mt-30 color__white">
-              Скачиваем torrent файл с раширением .avi
-            </div>
-
+            
             <div className="_mt-30">
               <img
                 className="img-res"
                 src={manualDesktop2}
                 alt="manualDesktop2"
               />
+            </div>
+
+            <div className="tac _mt-30 color__white">
+              Скачиваем torrent файл с раширением .avi
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 3</h2>
@@ -89,13 +98,19 @@ export const Desktop = () => {
             </div>
 
             <div className="tac _mt-30 color__white">
-              В окне выбираем «Путь сохранения» и жмем «Ок»,
-              дожидаемся скачивания фильма
+              В окне выбираем «Путь сохранения» и жмем «Ок», дожидаемся
+              скачивания фильма
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">
               Приятного просмотра!
             </h2>
+
+            <div className="fjc-c _mt-30">
+              <span className={style.backArrow} onClick={() => navigate(-1)}>
+                <img src={backArrow} alt="back arrow" />
+              </span>
+            </div>
           </div>
         </div>
       </div>

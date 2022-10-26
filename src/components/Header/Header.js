@@ -67,6 +67,15 @@ export const Header = () => {
     }
   }
 
+  const checkActive = (param) => {
+    if(window.location.pathname === '/st/' && param){
+      console.log('active');
+      return 'active';
+    }else {
+      return 'active';
+    }
+}
+
   return (
     <header className={styleHeader.header}>
       <div className="container">
@@ -107,6 +116,7 @@ export const Header = () => {
                           closeSearchSession();
                         }}
                         to={`${process.env.PUBLIC_URL}/`}
+                        end
                       >
                         Главная
                       </NavLink>

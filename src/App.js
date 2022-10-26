@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./main.css";
 import "./css/custom.css";
 import { Route, Routes } from "react-router-dom";
@@ -32,7 +32,7 @@ const App = () => {
         <Route path={`${process.env.PUBLIC_URL}/manual`} element={<Manual />} />
         <Route path={`${process.env.PUBLIC_URL}/manual/desktop`} element={<Desktop />}/>
         <Route path={`${process.env.PUBLIC_URL}/manual/mobile`} element={<Mobile />} />
-        <Route path={`${process.env.PUBLIC_URL}*`} element={<Page404 />} />
+        <Route path={`${process.env.PUBLIC_URL}/*`} element={<Page404 />} />
       </Routes>
       <Footer />
     </>
