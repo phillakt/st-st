@@ -77,13 +77,13 @@ export const Mobile = () => {
             </div>
 
             <div className="tac _mt-30 color__white">
-              Скачиваем torrent файл с раширением .mp4
+              Скачиваем torrent с сайта
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 3</h2>
 
             <div className="tac color__white _mt-30">
-              Открываем torrent файл через программу
+              Открываем torrent через программу
               <a
                 className={style.link}
                 href="https://play.google.com/store/apps/details?id=com.delphicoder.flud"
@@ -96,7 +96,7 @@ export const Mobile = () => {
             <div className="_mt-30 fjc-c fai-e color__white">
               Дожидаемся скачивания фильма
             </div>
-            <h2 className="fjc-c color__white fs-30 _mt-30">
+            <h2 className="tac color__white fs-30 _mt-30">
               Приятного просмотра!
             </h2>
 

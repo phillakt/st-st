@@ -5,10 +5,8 @@ import { getFilmDetail, wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
 import backArrow from "../img/svg/icons/back_arrow.svg";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
-// import starIco from "../img/svg/icons/star_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
-import BtnBlue from "../ui/BtnBlue/BtnBlue";
 
 export const Detail = () => {
   const params = useParams();
@@ -106,17 +104,23 @@ export const Detail = () => {
               <div className="row">
                 <div className="col-lg-3 offset-md-2">
                   <div className="_mb-20">
-                    <>
-                      <div className={style.main_img}>
-                        {!detail.thumbnail_url ? (
-                          ""
-                        ) : (
-                          <img src={detail.thumbnail_url} />
-                        )}
-                      </div>
-                    </>
+                    {!detail.thumbnail_url ? "" : (
+                      <div
+                        className={style.main__img}
+                        style={{ background: `url(${detail.thumbnail_url})` }}></div>
+                    )}
 
-                    {/* Для телефонов */}
+                    {detail.meta_fields.link_to_file_sd[0] ||
+                    detail.meta_fields.link_to_file_hd[0] ||
+                    detail.meta_fields.link_to_file_fhd[0] ? (
+                      ""
+                    ) : (
+                      <div className={style.torrent_not_added}>
+                        <span>Torrent раздачи еще не добавлены</span>
+                      </div>
+                    )}
+
+                    {/* Для SD */}
                     {!detail.meta_fields.link_to_file_sd[0] ? (
                       ""
                     ) : (
@@ -145,9 +149,9 @@ export const Detail = () => {
                         </div>
                       </div>
                     )}
-                    {/* Для телефонов end */}
+                    {/* Для SD end */}
 
-                    {/* Для компьтеров HD */}
+                    {/* Для HD */}
                     {!detail.meta_fields.link_to_file_hd[0] ? (
                       ""
                     ) : (
@@ -176,9 +180,9 @@ export const Detail = () => {
                         </div>
                       </div>
                     )}
-                    {/* Для компьтеров HD end */}
+                    {/* Для HD end */}
 
-                    {/* Для компьтеров Full HD */}
+                    {/* Для Full HD */}
                     {!detail.meta_fields.link_to_file_fhd[0] ? (
                       ""
                     ) : (
@@ -206,36 +210,40 @@ export const Detail = () => {
                         <div className={style.download__ext}>mp4</div>
                       </div>
                     )}
-                    {/* Для компьтеров Full HD end */}
+                    {/* Для Full HD end */}
 
-                    <div className="row">
+                    <div className="row _mb-10">
                       <div className="col-md-12">
                         <div className="_mb-20">
-                          <h3 className="color__white fs-22">Как скачать?</h3>
+                          <h3 className="color__white fs-16">
+                            Инструкции по скачиванию:
+                          </h3>
                         </div>
                       </div>
                       <div className="col-md-12">
-                        <NavLink
-                          className="d-block purge-link _mb-20"
-                          to={`${process.env.PUBLIC_URL}/manual/desktop`}
-                        >
-                          <BtnBlue>Для компьютера</BtnBlue>
-                        </NavLink>
+                        <div className="_mb-10">
+                          <NavLink
+                            className={style.manual__link}
+                            to={`${process.env.PUBLIC_URL}/manual/mobile`}
+                          >
+                            Для телефона
+                          </NavLink>
+                        </div>
                       </div>
                       <div className="col-md-12">
-                        <NavLink
-                          className="d-block purge-link _mb-20"
-                          to={`${process.env.PUBLIC_URL}/manual/mobile`}
-                        >
-                          <BtnBlue>Для телефона</BtnBlue>
-                        </NavLink>
+                        <div className="_mb-10">
+                          <NavLink
+                            className={style.manual__link}
+                            to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                          >
+                            Для компьютера
+                          </NavLink>
+                        </div>
                       </div>
                     </div>
                     <>
                       <div className="_mb-20">
-                        <div className="_mb-20">
-                          <h3 className="color__white fs-22">Похожие жанры</h3>
-                        </div>
+                        <h3 className="color__white fs-16">Похожие жанры:</h3>
                       </div>
                       <div className="_mb-20">
                         <ul className={style.category}>

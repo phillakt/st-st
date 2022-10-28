@@ -81,13 +81,13 @@ export const Desktop = () => {
             </div>
 
             <div className="tac _mt-30 color__white">
-              Скачиваем torrent файл с раширением .avi
+              Скачиваем torrent с сайта
             </div>
 
             <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 3</h2>
 
             <div className="tac _mt-30 color__white">
-              Открываем torrent файл через установленную программу
+              Открываем torrent через установленную программу
               <a
                 className={style.link}
                 href="https://www.qbittorrent.org/"
@@ -102,7 +102,7 @@ export const Desktop = () => {
               скачивания фильма
             </div>
 
-            <h2 className="fjc-c color__white fs-30 _mt-30">
+            <h2 className="tac color__white fs-30 _mt-30">
               Приятного просмотра!
             </h2>
 

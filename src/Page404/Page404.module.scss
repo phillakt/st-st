@@ -42,11 +42,10 @@
   font-size: 18px;
   color: #2f80ed;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  border-bottom: 1px dashed #2f80ed;
+  border-bottom: 1px dotted #2f80ed;
   margin: 0 0 0 10px;
 
   &:hover {
-      border-bottom: 1px dashed transparent; 
+      border-bottom: 1px dotted transparent; 
   }
 }
