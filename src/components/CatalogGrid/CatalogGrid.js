@@ -2,10 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMainFilterCategoryCurrent } from "../../redux/actions";
 import BtnUploadMoreDefault from "../../ui/BtnUploadMoreDefault/BtnUploadMoreDefault";
-import Loader from "../../ui/Loader/Loader";
+//import Loader from "../../ui/Loader/Loader";
 import CardBook from "../CardBook/CardBook";
 import RandomListCardBook from "../RandomListCardBook/RandomListCardBook";
-
 
 
 const CatalogGrid = () => {
@@ -24,9 +23,7 @@ const CatalogGrid = () => {
       <div className="container">
         <div className="row">
           {!categoryCurrent.categoryPosts.length ? (
-            
             <RandomListCardBook />
-
           ) : (
             categoryCurrent.categoryPosts.map((item, i) => {
               return (

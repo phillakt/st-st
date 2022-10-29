@@ -8,8 +8,8 @@ import Footer from "./components/Footer/Footer";
 
 import Home from "./Home/Home";
 import About from "./About/About";
-import Categorys from "./Categorys/Categorys";
-import CategoryCurrent from "./CategoryCurrent/CategoryCurrent";
+import Cat from "./Cat/Cat";
+import CatCurrent from "./CatCurrent/CatCurrent";
 import Detail from "./Detail/Detail";
 import Manual from "./Manual/Manual";
 import FeedBack from "./FeedBack/FeedBack";
@@ -25,8 +25,8 @@ const App = () => {
       <Routes basename={'/st'}>
         <Route path={`${process.env.PUBLIC_URL}/`} exact element={<Home />} />
         <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} />
-        <Route path={`${process.env.PUBLIC_URL}/categorys`} element={<Categorys />} />
-        <Route path={`${process.env.PUBLIC_URL}/category/:slug`} element={<CategoryCurrent />} />
+        <Route path={`${process.env.PUBLIC_URL}/cat`} element={<Cat />} />
+        <Route path={`${process.env.PUBLIC_URL}/cat/:slug`} element={<CatCurrent />} />
         <Route path={`${process.env.PUBLIC_URL}/detail/:slug`} element={<Detail />} />
         <Route path={`${process.env.PUBLIC_URL}/feedback`} element={<FeedBack />} />
         <Route path={`${process.env.PUBLIC_URL}/manual`} element={<Manual />} />

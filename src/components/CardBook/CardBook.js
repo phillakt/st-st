@@ -105,7 +105,7 @@ const CardBook = ({ item, styleProp }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
+                      to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
                     >
                       {item.name}
                     </NavLink>
@@ -115,17 +115,6 @@ const CardBook = ({ item, styleProp }) => {
             </ul>
           </div>
         </div>
-        {/* <div>
-          {!item.meta_fields.slogan ? (
-            ""
-          ) : (
-            <div className="_pb-10">
-              <div className="card__slogan">
-                <span>{item.meta_fields.slogan}</span>
-              </div>
-            </div>
-          )}
-        </div> */}
       </div>
     </div>
   );

@@ -27,4 +27,8 @@
     color: #e0e0e0;
     border-radius: 30px;
     transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background: #2f80ed;
+    }
 }

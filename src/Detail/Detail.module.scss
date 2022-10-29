@@ -71,11 +71,12 @@
             border-radius: 16px;
             margin: 0 15px 15px 0;
             font-size: 14px;
-            background: #151f30;
+            border: 2px solid #151f30;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
 
             &:hover {
+                border: 2px solid #2f80ed;
                 background: #2f80ed;
             }
         }
@@ -204,8 +205,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 2px solid #eb575780;
+    justify-content: center;
+    border: 2px solid #eb575740;
     transition: all 0.3s ease-in-out;
     margin-bottom: 20px;
     padding: 15px;

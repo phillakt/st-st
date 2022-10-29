@@ -1,20 +1,16 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  getCategoryCurrent,
-  wScrollTo,
-} from "../redux/actions";
+import { getCategoryCurrent, wScrollTo } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
-// import BtnUploadMoreFilterDefault from "../ui/BtnUploadMoreFilterDefault/BtnUploadMoreFilterDefault";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
 
-// import Loader from "../ui/Loader/Loader";
+import Loader from "../ui/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
 
-const CategoryCurrent = () => {
+const CatCurrent = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const categoryCurrent = useSelector(
@@ -58,17 +54,21 @@ const CategoryCurrent = () => {
 
           <div className="col-lg-9 col-md-8">
             <div className="row catalog__grid">
-              {!categoryCurrent.categoryPosts ? (
+              {
+              !categoryCurrent.categoryPosts ? (
                 <EmptyListFilms />
               ) : (
-                categoryCurrent.categoryPosts.map((item, i) => {
-                  return (
-                    <div className="col-lg-6" key={i}>
-                      <CardBook item={item} styleProp={{ width: "80%" }} />
-                    </div>
-                  );
-                })
-              )}
+                !categoryCurrent.categoryPosts.length ? (<Loader />) : (
+                  categoryCurrent.categoryPosts.map((item, i) => {
+                    return (
+                      <div className="col-lg-6" key={i}>
+                        <CardBook item={item} styleProp={{ width: "80%" }} />
+                      </div>
+                    );
+                  })
+                )
+              )
+              }
             </div>
             {categoryCurrent.count >= categoryCurrent.categoryAllCountPosts ? (
               ""
@@ -91,4 +91,4 @@ const CategoryCurrent = () => {
   );
 };
 
-export default CategoryCurrent;
+export default CatCurrent;

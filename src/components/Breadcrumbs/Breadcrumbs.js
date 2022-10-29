@@ -20,7 +20,7 @@ const Breadcrumbs = () => {
           </i>
         </li>
         <li className={style.item}>
-          <NavLink to={`${process.env.PUBLIC_URL}/categorys`}>
+          <NavLink to={`${process.env.PUBLIC_URL}/cat`}>
             Категории
           </NavLink>
           <i className="_ml-10">

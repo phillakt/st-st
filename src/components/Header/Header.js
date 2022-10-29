@@ -25,7 +25,6 @@ export const Header = () => {
   const boxList = useRef(null);
   const searchWrap = useRef(null);
 
-  const [step, setStep] = useState(0);
   const [awaitAllFilms, setAwaitAllFilms] = useState(true);
 
   useEffect(() => {
@@ -63,18 +62,9 @@ export const Header = () => {
     if(!awaitAllFilms){
       return (<Loader addClass={styleSearch.loader__search} />);
     }else {
-      return (<></>);
+      return "";
     }
   }
-
-  const checkActive = (param) => {
-    if(window.location.pathname === '/st/' && param){
-      console.log('active');
-      return 'active';
-    }else {
-      return 'active';
-    }
-}
 
   return (
     <header className={styleHeader.header}>
@@ -96,8 +86,7 @@ export const Header = () => {
             </div>
           </div>
           <div className="col-lg-10">
-            <div className="">
-              {/* <div className="sub-navigation"> */}
+            <div>
               <div
                 className={`${styleHeader.topmenu} ${
                   styleHeader.topmenu_mobile
@@ -127,7 +116,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`${process.env.PUBLIC_URL}/categorys`}
+                        to={`${process.env.PUBLIC_URL}/cat`}
                       >
                         Жанры
                       </NavLink>

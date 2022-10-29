@@ -14,14 +14,15 @@ export const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const getCurrentFilm = useCallback(() => {
+  const _getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
-  }, [params.slug]);
+  });
 
   useEffect(() => {
-    getCurrentFilm();
+    _getCurrentFilm();
+
     wScrollTo();
-  }, [getCurrentFilm]);
+  }, [params.slug]);
 
   function createMarkup(param) {
     return { __html: param };
@@ -116,7 +117,7 @@ export const Detail = () => {
                       ""
                     ) : (
                       <div className={style.torrent_not_added}>
-                        <span>Torrent раздачи еще не добавлены</span>
+                        <span>Torrent раздачи не добавлены</span>
                       </div>
                     )}
 
@@ -251,7 +252,7 @@ export const Detail = () => {
                             return (
                               <li key={i}>
                                 <NavLink
-                                  to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
+                                  to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
                                 >
                                   {item.name}
                                 </NavLink>

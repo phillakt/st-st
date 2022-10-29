@@ -111,6 +111,8 @@ export const getFilmDetail = (slug) => {
         Authorization: `Bearer ${token}`,
       },
     };
+
+    
     const response = await axios.post(
       "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
       {
@@ -123,6 +125,7 @@ export const getFilmDetail = (slug) => {
       type: GET_FILM_DETAIL,
       filmDetail: response.data,
     });
+
   };
 };
 

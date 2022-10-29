@@ -70,7 +70,7 @@ const CardFlat = ({ item, addClass, styleProp }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(false);
                       }}
-                      to={`${process.env.PUBLIC_URL}/category/${item.slug}`}
+                      to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
                     >
                       {item.name}
                     </NavLink>

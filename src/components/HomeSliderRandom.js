@@ -5,9 +5,6 @@ import Slider from "react-slick";
 import CardFlat from "./CardFlat/CardFlat";
 import Loader from "../ui/Loader/Loader";
 
-// import arrowSliderLeft from "../img/svg/icons/arrow_slider__left.svg";
-// import arrowSliderRight from "../img/svg/icons/arrow_slider__right.svg";
-
 const HomeSliderRandom = () => {
   
   const mainSliderRandom = useSelector(

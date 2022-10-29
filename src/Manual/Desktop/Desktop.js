@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { wScrollTo } from "../../redux/actions";
-import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.png";
-import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
+import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.webp";
+import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.webp";
 import BtnBlue from "../../ui/BtnBlue/BtnBlue";
 import style from "../Manual.module.scss";
 import backArrow from "../../img/svg/icons/back_arrow.svg";
@@ -103,7 +103,7 @@ export const Desktop = () => {
             </div>
 
             <h2 className="tac color__white fs-30 _mt-30">
-              Приятного просмотра!
+              Приятного просмотра :)
             </h2>
 
             <div className="fjc-c _mt-30">

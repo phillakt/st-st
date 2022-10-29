@@ -96,9 +96,6 @@ header ul li a.active {
 .home-slider .slick-slider {
   /* height: 400px !important; */
 }
-.home-slider .slick-dots {
-  bottom: -45px;
-}
 .home-slider .slick-dots li button:before {
   opacity: 1;
   color: #e0e0e0;
@@ -125,8 +122,9 @@ header ul li a.active {
 
 /* catalog__grid-min */
 .catalog__grid-min .slick-dots {
-  bottom: -45px; 
+  bottom: -35px;
 }
+
 .catalog__grid-min .slick-dots li.slick-active button:before {
   opacity: 1;
   color: #2767bf;
@@ -144,6 +142,10 @@ header ul li a.active {
 
 .home-slider__card_genre-list li a {
   font-family: "Inter", sans-serif;
+}
+
+.home-slider .slick-dots {
+  bottom: -35px;
 }
 
 .hamburger {
