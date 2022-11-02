@@ -34,7 +34,8 @@ const CardFlat = ({ item, addClass, styleProp }) => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(false);
           }}
-          to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+          // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+          to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -47,7 +48,8 @@ const CardFlat = ({ item, addClass, styleProp }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(false);
                 }}
-                to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+                // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+                to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
               >
                 {item.post_title}
               </NavLink>

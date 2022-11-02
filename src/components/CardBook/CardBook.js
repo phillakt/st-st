@@ -1,14 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import playBtn from "../../img/webp/play-button.webp";
-import star from "../../img/png/star.png";
+// import playBtn from "../../img/webp/play-button.webp";
+// import star from "../../img/png/star.png";
 import style from "./CardBook.module.scss";
-import torrentFile from "../../img/png/get-torrent-file.png";
+// import torrentFile from "../../img/png/get-torrent-file.png";
 
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardBook = ({ item, styleProp }) => {
+const CardBook = ({ item }) => {
   const dispatch = useDispatch();
   const header = useSelector((selector) => selector.header);
 
@@ -23,11 +23,7 @@ const CardBook = ({ item, styleProp }) => {
   return (
     <div className={`${style.card} _mb-30`}>
       <div
-        className={style.link}
-        style={{
-          width: styleProp?.width ? styleProp?.width : "80%",
-        }}
-      >
+        className={style.link}>
         <span
           className={style.img}
           style={{
@@ -39,7 +35,8 @@ const CardBook = ({ item, styleProp }) => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(header.menuMobile.view);
           }}
-          to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+          // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+          to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -52,7 +49,8 @@ const CardBook = ({ item, styleProp }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(header.menuMobile.view);
                 }}
-                to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+                // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
+                to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
               >
                 {item.post_title}
               </NavLink>

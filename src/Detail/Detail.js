@@ -3,16 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
-import backArrow from "../img/svg/icons/back_arrow.svg";
+// import backArrow from "../img/svg/icons/back_arrow.svg";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 
 export const Detail = () => {
   const params = useParams();
   const detail = useSelector((selector) => selector.films.filmDetail);
+  const categoryCurrent = useSelector(
+    (selector) => selector.films.categoryCurrent
+  );
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const _getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
@@ -90,8 +94,20 @@ export const Detail = () => {
 
           <section className="detail _pt-30">
             <div className="container">
+              <div className="row _mb-30 align-items-center">
+                <div className="col-md-4 offset-md-2">
+                  {!detail.post_title ? (
+                    ""
+                  ) : (
+                    <h1 className="color__white fs-34">{detail.post_title}</h1>
+                  )}
+                </div>
+                <div className="col-lg-6">
+                  <Breadcrumbs postTitle={detail.post_title} cat={detail.category[0]}/>
+                </div>
+              </div>
               <div className="row">
-                <div className="col-md-10 offset-md-2">
+                {/* <div className="col-md-10 offset-md-2">
                   <div className="_mb-30">
                     <span
                       className={style.backArrow}
@@ -100,15 +116,18 @@ export const Detail = () => {
                       <img src={backArrow} alt="back arrow" />
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="row">
                 <div className="col-lg-3 offset-md-2">
                   <div className="_mb-20">
-                    {!detail.thumbnail_url ? "" : (
+                    {!detail.thumbnail_url ? (
+                      ""
+                    ) : (
                       <div
                         className={style.main__img}
-                        style={{ background: `url(${detail.thumbnail_url})` }}></div>
+                        style={{ background: `url(${detail.thumbnail_url})` }}
+                      ></div>
                     )}
 
                     {detail.meta_fields.link_to_file_sd[0] ||
@@ -117,7 +136,7 @@ export const Detail = () => {
                       ""
                     ) : (
                       <div className={style.torrent_not_added}>
-                        <span>Torrent раздачи не добавлены</span>
+                        <span>Torrent не добавлен</span>
                       </div>
                     )}
 
@@ -265,16 +284,6 @@ export const Detail = () => {
                   </div>
                 </div>
                 <div className="col-lg-5">
-                  <div className="_mb-20">
-                    {!detail.post_title ? (
-                      ""
-                    ) : (
-                      <h1 className="color__white fs-34">
-                        {detail.post_title}
-                      </h1>
-                    )}
-                  </div>
-
                   <div className="_mb-20">
                     <ul className={style.list_prop}>
                       {/* rating */}

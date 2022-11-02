@@ -62,7 +62,7 @@ const CatCurrent = () => {
                   categoryCurrent.categoryPosts.map((item, i) => {
                     return (
                       <div className="col-lg-6" key={i}>
-                        <CardBook item={item} styleProp={{ width: "80%" }} />
+                        <CardBook item={item} />
                       </div>
                     );
                   })

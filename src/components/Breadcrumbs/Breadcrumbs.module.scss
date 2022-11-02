@@ -48,6 +48,10 @@
       color: #2f80ed;
     }
   }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .item_active {

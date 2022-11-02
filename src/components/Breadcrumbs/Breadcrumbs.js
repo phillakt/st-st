@@ -5,7 +5,7 @@ import breadcrumbs from "../../img/svg/icons/breadcrumb-arrow.svg";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({postTitle, cat}) => {
   const categoryData = useSelector(
     (selector) => selector.films.categoryCurrent.categoryData
   );
@@ -21,15 +21,33 @@ const Breadcrumbs = () => {
         </li>
         <li className={style.item}>
           <NavLink to={`${process.env.PUBLIC_URL}/cat`}>
-            Категории
+            Жанры
           </NavLink>
           <i className="_ml-10">
             <img src={breadcrumbs} alt="breadcrumbs-arrow" />
           </i>
         </li>
-        <li className={`${style.item} ${style.item_active}`}>
-          {categoryData.name}
+        <li className={`${style.item}`}>
+          {
+            !postTitle ? categoryData.name : (
+              <>
+                <NavLink to={`${process.env.PUBLIC_URL}/cat/${cat.slug}`}>
+                  {cat.name}
+                </NavLink>
+                <i className="_ml-10">
+                  <img src={breadcrumbs} alt="breadcrumbs-arrow" />
+                </i>
+              </>
+            )
+          }
         </li>
+        {
+          !postTitle ? "" : (
+            <li className={style.item}>
+              {postTitle}
+            </li>
+          )
+        }
       </ul>
     </div>
   );
