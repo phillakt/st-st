@@ -36,23 +36,23 @@ const CatCurrent = () => {
   return (
     <section className="_pt-40">
       <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-6">
+        <div className="row align-items-start">
+          <div className="col-md-6 order-md-1 order-sm-2 order-2">
             <h1 className="color__white fs-26">
               {categoryCurrent.categoryData.name}
             </h1>
           </div>
-          <div className="col-lg-6">
+          <div className="col-md-6 order-md-2 order-sm-1 order-1">
             <Breadcrumbs />
           </div>
         </div>
 
         <div className="row _mt-30">
-          <div className="col-lg-3 col-md-4">
+          <div className="col-md-3 _mb-30">
             <CategoryCurrentFilter />
           </div>
 
-          <div className="col-lg-9 col-md-8">
+          <div className="col-md-9">
             <div className="row catalog__grid">
               {
               !categoryCurrent.categoryPosts ? (

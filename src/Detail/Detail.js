@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
 // import backArrow from "../img/svg/icons/back_arrow.svg";
@@ -16,7 +16,6 @@ export const Detail = () => {
     (selector) => selector.films.categoryCurrent
   );
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const _getCurrentFilm = useCallback(() => {
     dispatch(getFilmDetail(params.slug));
@@ -94,56 +93,37 @@ export const Detail = () => {
 
           <section className="detail _pt-30">
             <div className="container">
-              <div className="row _mb-30 align-items-center">
-                <div className="col-md-4 offset-md-2">
-                  {!detail.post_title ? (
-                    ""
-                  ) : (
+              <div className="row _mb-30 align-items-start">
+                <div className="col-md-4 offset-md-2 order-md-1 order-sm-2 order-2">
+                  {detail.post_title && (
                     <h1 className="color__white fs-34">{detail.post_title}</h1>
                   )}
                 </div>
-                <div className="col-lg-6">
+                <div className="col-md-6 order-md-2 order-sm-1 order-1">
                   <Breadcrumbs postTitle={detail.post_title} cat={detail.category[0]}/>
                 </div>
               </div>
               <div className="row">
-                {/* <div className="col-md-10 offset-md-2">
-                  <div className="_mb-30">
-                    <span
-                      className={style.backArrow}
-                      onClick={() => navigate(-1)}
-                    >
-                      <img src={backArrow} alt="back arrow" />
-                    </span>
-                  </div>
-                </div> */}
-              </div>
-              <div className="row">
                 <div className="col-lg-3 offset-md-2">
                   <div className="_mb-20">
-                    {!detail.thumbnail_url ? (
-                      ""
-                    ) : (
+                    
+                    {detail.thumbnail_url && (
                       <div
                         className={style.main__img}
                         style={{ background: `url(${detail.thumbnail_url})` }}
                       ></div>
                     )}
 
-                    {detail.meta_fields.link_to_file_sd[0] ||
-                    detail.meta_fields.link_to_file_hd[0] ||
-                    detail.meta_fields.link_to_file_fhd[0] ? (
-                      ""
-                    ) : (
-                      <div className={style.torrent_not_added}>
-                        <span>Torrent не добавлен</span>
-                      </div>
-                    )}
+                    { detail.meta_fields.link_to_file_sd[0] ||
+                      detail.meta_fields.link_to_file_hd[0] ||
+                      detail.meta_fields.link_to_file_fhd[0] ? "" : (
+                        <div className={style.torrent_not_added}>
+                          <span>Torrent не добавлен</span>
+                        </div>
+                      )}
 
                     {/* Для SD */}
-                    {!detail.meta_fields.link_to_file_sd[0] ? (
-                      ""
-                    ) : (
+                    {detail.meta_fields.link_to_file_sd[0] && (
                       <div className="_mb-20">
                         <div className={style.download__wrap}>
                           <div>
@@ -172,9 +152,7 @@ export const Detail = () => {
                     {/* Для SD end */}
 
                     {/* Для HD */}
-                    {!detail.meta_fields.link_to_file_hd[0] ? (
-                      ""
-                    ) : (
+                    {detail.meta_fields.link_to_file_hd[0] && (
                       <div className="_mb-20">
                         <div className={style.download__wrap}>
                           <div>
@@ -203,9 +181,7 @@ export const Detail = () => {
                     {/* Для HD end */}
 
                     {/* Для Full HD */}
-                    {!detail.meta_fields.link_to_file_fhd[0] ? (
-                      ""
-                    ) : (
+                    {detail.meta_fields.link_to_file_fhd[0] && (
                       <div className={`${style.download__wrap} _mb-20`}>
                         <div>
                           <img src={qbIco} alt="qbIco" />
@@ -287,9 +263,7 @@ export const Detail = () => {
                   <div className="_mb-20">
                     <ul className={style.list_prop}>
                       {/* rating */}
-                      {!detail.meta_fields?.rating[0] ? (
-                        ""
-                      ) : (
+                      {detail.meta_fields?.rating[0] && (
                         <li className="fai-c">
                           <span className="_mr-5">
                             <svg
@@ -322,16 +296,12 @@ export const Detail = () => {
                       )}
 
                       {/* year */}
-                      {!detail.meta_fields?.year[0] ? (
-                        ""
-                      ) : (
+                      {detail.meta_fields?.year[0] && (
                         <li className="fai-c">{detail.meta_fields.year[0]}</li>
                       )}
 
                       {/* duration */}
-                      {!detail.meta_fields?.duration[0] ? (
-                        ""
-                      ) : (
+                      {detail.meta_fields?.duration[0] && (
                         <li className="fai-c">
                           {detail.meta_fields.duration[0]}
                         </li>
@@ -340,9 +310,7 @@ export const Detail = () => {
                   </div>
 
                   <div className="_mb-40">
-                    {!detail.post_content ? (
-                      ""
-                    ) : (
+                    {detail.post_content && (
                       <div
                         className={style.content}
                         dangerouslySetInnerHTML={createMarkup(

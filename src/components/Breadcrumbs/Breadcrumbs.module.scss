@@ -3,7 +3,7 @@
   justify-content: flex-end;
 
   @media (max-width: 768px) {
-    margin-top: 15px;
+    margin-bottom: 15px;
     justify-content: flex-start;
   }
 }
@@ -36,14 +36,14 @@
   transition: 0.5s;
   position: relative;
   margin-right: 10px;
-  
+
   i {
     display: flex;
     align-items: center;
   }
 
   a {
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     &:hover {
       color: #2f80ed;
     }

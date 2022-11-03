@@ -11,7 +11,7 @@
   top: calc(100% + 11px);
   // padding: 10px 5px 0 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     z-index: 10;
     top: 70px;
     width: 100%;
@@ -26,7 +26,7 @@
   border-radius: 20px;
   border: 4px solid #151f30;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     background-color: #2e7de9;
     border-radius: 20px;
     border: 4px solid #131720;
@@ -40,7 +40,7 @@
 .search {
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     position: fixed;
     left: 15px;
     right: 15px;
@@ -133,7 +133,7 @@
 }
 
 .wrap_hidden {
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     display: none;
   }
 }
@@ -149,7 +149,7 @@
 .item {
   // width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 150px;
     margin-bottom: 30px;
   }
@@ -175,7 +175,7 @@
   left: 0;
   z-index: 9;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     display: none;
   }
 }
@@ -191,7 +191,7 @@
   right: 0;
   z-index: 9;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     display: none;
   }
 }
@@ -204,7 +204,7 @@
     margin: 0 !important;
     width: 8% !important;
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       left: 0;
       right: 0;
       top: 0;

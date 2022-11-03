@@ -30,9 +30,9 @@ export const Paginate = ({ itemsPerPage, slug, filterState, categoryAllCountPost
   return (
     <div className={`${style.wrap} fjc-sb fai-c`}>
       <div className={style.total}>
-        <span className={`${style.text} _pr-10 _pr-10`}>позиция</span>
-        <span className={`${style.count} _pr-10`}>{itemOffset}</span>
-        <span className={`${style.text} _pr-10 _pr-10`}>всего</span>
+        {/* <span className={`${style.text} _pr-10 _pr-10`}>позиция</span> */}
+        {/* <span className={`${style.count} _pr-10`}>{itemOffset}</span> */}
+        <span className={`${style.text} _pr-10 _pr-10`}>Всего</span>
         <span className={`${style.sum}`}>{categoryAllCountPosts}</span>
       </div>
       <div className={style.wrap_list} key={remountComponent}>

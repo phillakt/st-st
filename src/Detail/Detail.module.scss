@@ -8,10 +8,7 @@
     }
     min-height: 400px;
     max-width: 270px;
-    // height: 300px;
-    // width: 200px;
     border-radius: 16px;
-    // margin: 0 auto 20px auto;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: top center !important;
@@ -19,6 +16,7 @@
     @media (max-width: 768px) {
         min-height: 300px;
         max-width: 200px;
+        margin: 0 auto 15px auto;
     }
 }
 

@@ -42,7 +42,7 @@ const Breadcrumbs = ({postTitle, cat}) => {
           }
         </li>
         {
-          !postTitle ? "" : (
+          postTitle && (
             <li className={style.item}>
               {postTitle}
             </li>
