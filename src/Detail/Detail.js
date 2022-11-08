@@ -93,20 +93,27 @@ export const Detail = () => {
 
           <section className="detail _pt-30">
             <div className="container">
-              <div className="row _mb-30 align-items-start">
-                <div className="col-md-4 offset-md-2 order-md-1 order-sm-2 order-2">
-                  {detail.post_title && (
-                    <h1 className="color__white fs-34">{detail.post_title}</h1>
-                  )}
+              <div className="row">
+                <div className="col-md-10 offset-lg-2 _mb-30">
+                  <Breadcrumbs
+                    postTitle={detail.post_title}
+                    cat={detail.category[0]}
+                    styleWrap={{ justifyContent: "flex-start" }}
+                  />
                 </div>
-                <div className="col-md-6 order-md-2 order-sm-1 order-1">
-                  <Breadcrumbs postTitle={detail.post_title} cat={detail.category[0]}/>
+                <div className="col-lg-7 offset-lg-5">
+                  <div className="detail _mb-10">
+                    {detail.post_title && (
+                      <h1 className={style.title}>
+                        {detail.post_title}
+                      </h1>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-3 offset-md-2">
+                <div className="col-lg-3 offset-lg-2">
                   <div className="_mb-20">
-                    
                     {detail.thumbnail_url && (
                       <div
                         className={style.main__img}
@@ -114,13 +121,15 @@ export const Detail = () => {
                       ></div>
                     )}
 
-                    { detail.meta_fields.link_to_file_sd[0] ||
-                      detail.meta_fields.link_to_file_hd[0] ||
-                      detail.meta_fields.link_to_file_fhd[0] ? "" : (
-                        <div className={style.torrent_not_added}>
-                          <span>Torrent не добавлен</span>
-                        </div>
-                      )}
+                    {detail.meta_fields.link_to_file_sd[0] ||
+                    detail.meta_fields.link_to_file_hd[0] ||
+                    detail.meta_fields.link_to_file_fhd[0] ? (
+                      ""
+                    ) : (
+                      <div className={style.torrent_not_added}>
+                        <span>Torrent не добавлен</span>
+                      </div>
+                    )}
 
                     {/* Для SD */}
                     {detail.meta_fields.link_to_file_sd[0] && (
@@ -208,36 +217,40 @@ export const Detail = () => {
                     )}
                     {/* Для Full HD end */}
 
-                    <div className="row _mb-10">
-                      <div className="col-md-12">
-                        <div className="_mb-20">
-                          <h3 className="color__white fs-16">
-                            Инструкции по скачиванию:
-                          </h3>
+                    {
+                      "" && (
+                        <div className="row _mb-10">
+                        <div className="col-md-12">
+                          <div className="_mb-20">
+                            <h3 className="color__white fs-16">
+                              Инструкции по скачиванию:
+                            </h3>
+                          </div>
+                        </div>
+                        <div className="col-md-12">
+                          <div className="_mb-10">
+                            <NavLink
+                              className={style.manual__link}
+                              to={`${process.env.PUBLIC_URL}/manual/mobile`}
+                            >
+                              Для телефона
+                            </NavLink>
+                          </div>
+                        </div>
+                        <div className="col-md-12">
+                          <div className="_mb-10">
+                            <NavLink
+                              className={style.manual__link}
+                              to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                            >
+                              Для компьютера
+                            </NavLink>
+                          </div>
                         </div>
                       </div>
-                      <div className="col-md-12">
-                        <div className="_mb-10">
-                          <NavLink
-                            className={style.manual__link}
-                            to={`${process.env.PUBLIC_URL}/manual/mobile`}
-                          >
-                            Для телефона
-                          </NavLink>
-                        </div>
-                      </div>
-                      <div className="col-md-12">
-                        <div className="_mb-10">
-                          <NavLink
-                            className={style.manual__link}
-                            to={`${process.env.PUBLIC_URL}/manual/desktop`}
-                          >
-                            Для компьютера
-                          </NavLink>
-                        </div>
-                      </div>
-                    </div>
-                    <>
+                      )
+                    }
+
                       <div className="_mb-20">
                         <h3 className="color__white fs-16">Похожие жанры:</h3>
                       </div>
@@ -256,7 +269,7 @@ export const Detail = () => {
                           })}
                         </ul>
                       </div>
-                    </>
+                    
                   </div>
                 </div>
                 <div className="col-lg-5">

@@ -44,7 +44,7 @@ export const HomeFilter = () => {
                                 className: item.slug === mainFilterCategoryCurrent.slug ? "active" : "",
                                 name: item.name
                               }}
-                              getMainFilterCategoryCurrentHandler={() => (getMainFilterCategoryCurrent(item.slug, 3))}
+                              getMainFilterCategoryCurrentHandler={() => (getMainFilterCategoryCurrent(item.slug, 18))}
                             />
                           </li>
                         );

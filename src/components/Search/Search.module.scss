@@ -15,7 +15,7 @@
     z-index: 10;
     top: 70px;
     width: 100%;
-    max-height: calc(100vh - 225px);
+    max-height: calc(100vh - 135px);
     background: #131720;
     padding: 0;
   }
@@ -40,11 +40,16 @@
 .search {
   position: relative;
 
+  @media (min-width: 992px) {
+    min-width: 360px;
+  }
+
   @media (max-width: 992px) {
     position: fixed;
     left: 15px;
     right: 15px;
-    top: 55px;
+    top: 0;
+    margin-right: 10%;
   }
 }
 
@@ -58,29 +63,25 @@
   width: 100%;
   outline: none;
   box-sizing: border-box;
-  border: 1px solid transparent;
-  min-width: 370px;
+  border: 2px solid transparent;
   outline: none;
 
   &:focus {
-    border-color: #2f80ed;
+    border: 2px solid rgba(49, 130, 237, 0.4509803922);
   }
 
   @media (max-width: 1200px) {
-    min-width: 330px;
     background-color: #131720;
   }
 
   @media (max-width: 992px) {
     font-size: 12px;
     background-color: #151f30;
-    min-width: 290px;
   }
 
   @media (max-width: 576px) {
     font-size: 12px;
     background-color: #151f30;
-    min-width: 100%;
   }
 }
 

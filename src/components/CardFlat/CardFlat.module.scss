@@ -22,11 +22,11 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .play {
         opacity: 1;
         visibility: visible;
-        background: linear-gradient(0deg, rgba(19, 23, 32, 0.4), transparent);
+        background: transparent;
 
         img {
           transform: scale(1);
@@ -85,9 +85,10 @@
   opacity: 0;
   visibility: hidden;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     opacity: 1;
     visibility: visible;
+    background: transparent;
   }
 
   img {

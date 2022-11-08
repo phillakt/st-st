@@ -76,7 +76,7 @@ const CatCurrent = () => {
               <div className="row">
                 <div className="col-md-12">
                   <Paginate
-                    itemsPerPage={2}
+                    itemsPerPage={10}
                     slug={params.slug}
                     filterState={filterState}
                     categoryAllCountPosts={categoryAllCountPosts}

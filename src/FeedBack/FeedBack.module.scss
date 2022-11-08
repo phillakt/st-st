@@ -30,7 +30,7 @@
 .input {
   font-family: "Inter", sans-serif;
   background-color: #151f30;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 16px;
   height: 44px;
   position: relative;
@@ -41,7 +41,7 @@
 
   &:focus {
     background-color: #151f30;
-    border-color: #2f80ed;
+    border: 2px solid rgba(49, 130, 237, 0.4509803922);
   }
 }
 
@@ -54,7 +54,7 @@ select:focus {
 .textarea {
   font-family: "Inter", sans-serif;
   background-color: #151f30;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 16px;
   height: 144px;
   position: relative;
@@ -66,7 +66,7 @@ select:focus {
 
   &:focus {
     background-color: #151f30;
-    border-color: #2f80ed;
+    border: 2px solid rgba(49, 130, 237, 0.4509803922);
   }
 }
 

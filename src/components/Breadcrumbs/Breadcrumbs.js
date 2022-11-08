@@ -1,17 +1,16 @@
 import React from "react";
 import style from "./Breadcrumbs.module.scss";
-// import breadcrumbs from "../../img/svg/icons/breadcrumb.svg";
 import breadcrumbs from "../../img/svg/icons/breadcrumb-arrow.svg";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Breadcrumbs = ({postTitle, cat}) => {
+const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
   const categoryData = useSelector(
     (selector) => selector.films.categoryCurrent.categoryData
   );
 
   return (
-    <div className={style.wrap}>
+    <div className={style.wrap} style={styleWrap}>
       <ul className={style.box}>
         <li className={style.item}>
           <NavLink to={`${process.env.PUBLIC_URL}/`}>Главная</NavLink>
