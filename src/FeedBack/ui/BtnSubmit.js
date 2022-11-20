@@ -8,6 +8,7 @@ export const BtnSubmit = ({ props }) => {
         name={props.name}
         className={props.class}
         placeholder={props.placeholder}
+        value="Отправить"
       />
     </>
   );

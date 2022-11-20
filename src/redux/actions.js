@@ -1,5 +1,6 @@
 import axios from "axios";
 import { token } from "../token";
+import { GET_FEEDBACK } from "./typeForms";
 import {
   GET_MAIN_SLIDER,
   GET_CATEGORIES,
@@ -112,7 +113,6 @@ export const getFilmDetail = (slug) => {
       },
     };
 
-    
     const response = await axios.post(
       "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
       {
@@ -125,7 +125,6 @@ export const getFilmDetail = (slug) => {
       type: GET_FILM_DETAIL,
       filmDetail: response.data,
     });
-
   };
 };
 
@@ -205,12 +204,11 @@ export const getAllFilms = () => {
       {},
       config
     );
-    
+
     dispatch({
       type: GET_ALL_FILMS,
       allFilms: response.data,
     });
-
   };
 };
 
@@ -225,7 +223,7 @@ export const getAllFilmsLength = (slug) => {
     const response = await axios.post(
       "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films-length",
       {
-        category: slug
+        category: slug,
       },
       config
     );
@@ -265,3 +263,29 @@ export const wScrollTo = () => {
   window.scrollTo(0, 0);
 };
 // scrollTo end
+
+// Form
+export const getFeedBack = (dataForm) => {
+
+  return async (dispatch) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+  
+    const response = await axios.post(
+      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/feedback",
+      {
+        feedback: JSON.stringify(dataForm),
+      },
+      config
+    );
+
+    dispatch({
+      type: GET_FEEDBACK,
+      feedback: response.data,
+    });
+  };
+};
+// Form end

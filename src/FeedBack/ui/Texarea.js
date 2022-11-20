@@ -8,6 +8,7 @@ export const Textarea = ({ props, register, errors }) => {
         name={props.name}
         className={props.class}
         placeholder={props.placeholder}
+        value={props.val}
         {...register(props.name, {
           required: true,
           minLength: props?.minLength,
@@ -15,6 +16,7 @@ export const Textarea = ({ props, register, errors }) => {
           pattern: props?.pattern,
         })}
       />
+
       {errors[props.name] && (
         <span className={props.error}>
           Заполните поле &#171;{props.placeholder}&#187;

@@ -3,14 +3,28 @@ import { useForm } from "react-hook-form";
 import { wScrollTo } from "../redux/actions";
 import style from "./FeedBack.module.scss";
 import { Helmet } from "react-helmet";
+import { getFeedBack } from "../redux/actions";
 
 import Input from "./ui/Input";
 import Textarea from "./ui/Texarea";
 import BtnSubmit from "./ui/BtnSubmit";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {emailPatternValidate} from './patterns';
 
 export const FeedBack = () => {
-  const emailPatternValidate =
-    /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
+
+  const dispatch = useDispatch();
+  const feedback = useSelector(selector => selector.forms.feedback);
+
+  useEffect(() => {
+    if(feedback){
+      const feedbackJson = JSON.parse(feedback);
+      console.log('useEffect feedback: ', feedbackJson.statusText);
+    }
+  }, [feedback])
+
+  console.log('useSelector feedback: ', feedback);
 
   useEffect(() => {
     wScrollTo();
@@ -23,7 +37,10 @@ export const FeedBack = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log('onSubmit: ', data);
+    dispatch(getFeedBack());
+  };
 
   return (
     <>
@@ -61,6 +78,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Имя",
                           minLength: 2,
+                          val: "Имя"
                         }}
                         register={register}
                         errors={errors}
@@ -77,6 +95,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Email",
                           pattern: emailPatternValidate,
+                          val: "mail@gmal.com"
                         }}
                         register={register}
                         errors={errors}
@@ -92,6 +111,7 @@ export const FeedBack = () => {
                           class: style.input,
                           error: style.error,
                           placeholder: "Тема",
+                          val: "Тема"
                         }}
                         register={register}
                         errors={errors}
@@ -107,6 +127,7 @@ export const FeedBack = () => {
                           class: style.textarea,
                           error: style.error,
                           placeholder: "Сообщение",
+                          val: "Сообщение"
                         }}
                         register={register}
                         errors={errors}
@@ -151,6 +172,7 @@ export const FeedBack = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
