@@ -22,14 +22,14 @@ export const Header = () => {
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
   const header = useSelector((selector) => selector.header);
 
-  const boxList = useRef(null);
+  // const boxList = useRef(null);
   const searchWrap = useRef(null);
 
   const [awaitAllFilms, setAwaitAllFilms] = useState(true);
 
   useEffect(() => {
     setAwaitAllFilms(true);
-  }, [allFilms])
+  }, [allFilms]);
 
   const changeMenuMobileViewHandler = (view) => {
     dispatch(changeMenuMobileView(view));
@@ -59,30 +59,54 @@ export const Header = () => {
   };
 
   const AwaitAllFilms = () => {
-    if(!awaitAllFilms){
-      return (<Loader addClass={styleSearch.loader__search} />);
-    }else {
+    if (!awaitAllFilms) {
+      return <Loader addClass={styleSearch.loader__search} />;
+    } else {
       return "";
     }
-  }
+  };
+
+  const containerFluid = window.innerWidth <= 992 ? "-fluid" : "";
 
   return (
     <header className={styleHeader.header}>
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-2">
-            <div className={`${styleHeader.logo} _pt-10 _pb-10`}>
-              <NavLink
+      <div className={'container' + containerFluid}>
+        <div className="row align-items-center">
+          <div className="col-lg-2 col-md-12 col-sm-12 col-12">
+            <div className={styleHeader.wrap_logo}>
+              <div className={styleHeader.logo}>
+                <NavLink
+                  onClick={() => {
+                    changeMenuMobileViewHandler(false);
+                    closeSearchSession();
+                  }}
+                  className="header__logo_link"
+                  to={`${process.env.PUBLIC_URL}/`}
+                >
+                  St-St.
+                  <span className="header__logo_desc-min">stream-store</span>
+                </NavLink>
+              </div>
+              <button
                 onClick={() => {
-                  changeMenuMobileViewHandler(false);
+                  if (header.menuMobile.view) {
+                    changeMenuMobileViewHandler(false);
+                  } else {
+                    changeMenuMobileViewHandler(true);
+                  }
                   closeSearchSession();
                 }}
-                className="header__logo_link"
-                to={`${process.env.PUBLIC_URL}/`}
+                className={`${
+                  styleHeader.hamburger
+                } hamburger hamburger--spring ${
+                  header.menuMobile.view ? "is-active" : ""
+                }`}
+                type="button"
               >
-                St-St.
-                <span className="header__logo_desc-min">stream-store</span>
-              </NavLink>
+                <span className="hamburger-box">
+                  <span className="hamburger-inner"></span>
+                </span>
+              </button>
             </div>
           </div>
           <div className="col-lg-10">
@@ -90,13 +114,17 @@ export const Header = () => {
               <div
                 className={`${styleHeader.topmenu} ${
                   styleHeader.topmenu_mobile
-                } ${header.menuMobile.view ? styleHeader.topmenu_mobile__view : ""}`}>
+                } ${
+                  header.menuMobile.view ? styleHeader.topmenu_mobile__view : ""
+                }`}
+              >
                 <nav
                   className={
                     searchFilms.searchWrap
                       ? styleSearch.wrap_hidden
                       : styleSearch.wrap_view
-                  }>
+                  }
+                >
                   <ul>
                     <li>
                       <NavLink
@@ -147,12 +175,12 @@ export const Header = () => {
                 </nav>
 
                 <form className={`${styleSearch.search} _pt-10 _pb-10`}>
-                  { <AwaitAllFilms /> }
+                  {<AwaitAllFilms />}
                   <input
                     value={searchFilms.searchInputValue}
                     onClick={(e) => {
                       e.preventDefault();
-                      if(!allFilms.length){
+                      if (!allFilms.length) {
                         getAllFilmsHandler();
                         setAwaitAllFilms(false);
                       }
@@ -162,7 +190,11 @@ export const Header = () => {
                     }}
                     className={styleSearch.search_input__text}
                     type="text"
-                    placeholder={!awaitAllFilms ? "Загрузка данных..." : "Введите название..."}
+                    placeholder={
+                      !awaitAllFilms
+                        ? "Загрузка данных..."
+                        : "Введите название..."
+                    }
                   />
                   <button
                     style={{
@@ -207,7 +239,8 @@ export const Header = () => {
                       display: searchFilms.searchInputValue
                         ? "none"
                         : "inline-flex",
-                    }}>
+                    }}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -280,27 +313,6 @@ export const Header = () => {
                   </svg>
                 </div> */}
               </div>
-
-              <button
-                onClick={() => {
-                  if (header.menuMobile.view) {
-                    changeMenuMobileViewHandler(false);
-                  } else {
-                    changeMenuMobileViewHandler(true);
-                  }
-                  closeSearchSession();
-                }}
-                className={`${
-                  styleHeader.hamburger
-                } hamburger hamburger--spring ${
-                  header.menuMobile.view ? "is-active" : ""
-                }`}
-                type="button"
-              >
-                <span className="hamburger-box">
-                  <span className="hamburger-inner"></span>
-                </span>
-              </button>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
 
   return (
     <div className={style.wrap} style={styleWrap}>
-      <ul className={style.box}>
+      <ul className={style.box} style={styleWrap}>
         <li className={style.item}>
           <NavLink to={`${process.env.PUBLIC_URL}/`}>Главная</NavLink>
           <i className="_ml-10">

@@ -2,8 +2,10 @@
     color: #e0e0e0;
     font-size: 34px;
 
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         font-size: 28px;
+        text-align: center;
+        margin: 0 0 15px 0;
     }
 }
 
@@ -21,7 +23,7 @@
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: top center !important;
-    margin-top: -50px;
+
 
     @media (max-width: 992px) {
         min-height: 300px;
@@ -120,7 +122,6 @@
     text-decoration: none;
     border-bottom: 1px dotted;
 
-
     &:hover {
         border-bottom: 1px dotted transparent;
     }
@@ -175,7 +176,6 @@
 }
 
 .download__quality {
-
 }
 
 .backArrow {
@@ -222,7 +222,7 @@
     justify-content: center;
     border: 2px solid #eb575773;
     transition: all 0.3s ease-in-out;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 15px;
     border-radius: 16px;
 

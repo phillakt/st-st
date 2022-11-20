@@ -3,18 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getFilmDetail, wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
-// import backArrow from "../img/svg/icons/back_arrow.svg";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
+import { dataServer } from "../dataServer/dataServer";
 
 export const Detail = () => {
   const params = useParams();
   const detail = useSelector((selector) => selector.films.filmDetail);
-  const categoryCurrent = useSelector(
-    (selector) => selector.films.categoryCurrent
-  );
   const dispatch = useDispatch();
 
   const _getCurrentFilm = useCallback(() => {
@@ -56,6 +53,8 @@ export const Detail = () => {
     }
   };
 
+
+
   return (
     <>
       {!detail.ID ? (
@@ -64,14 +63,14 @@ export const Detail = () => {
         <>
           <Helmet>
             <title>
-              Скачать торрент {detail.post_title} {detail.meta_fields.year[0]}{" "}
-              на телефон, планшет или компьютер в хорошем качестве
+              {`Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}
+              на телефон, планшет бесплатно в mp4!`}
             </title>
             <meta
               name="description"
               content={`Скачать фильм ${
                 detail.post_title
-              } торрент на телефон или компьютер. ${
+              } торрент на телефон, планшет бесплатно в mp4! ${
                 detail.meta_fields.year[0]
                   ? `Год: ${detail.meta_fields.year[0]}.`
                   : ""
@@ -101,15 +100,15 @@ export const Detail = () => {
                     styleWrap={{ justifyContent: "flex-start" }}
                   />
                 </div>
-                <div className="col-lg-7 offset-lg-5">
-                  <div className="detail _mb-10">
-                    {detail.post_title && (
-                      <h1 className={style.title}>
-                        {detail.post_title}
-                      </h1>
-                    )}
+                {window.innerWidth < 992 && (
+                  <div className="col-lg-7 offset-lg-5">
+                    <div className="detail _mb-10">
+                      {detail.post_title && (
+                        <h1 className={style.title}>{detail.post_title}</h1>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <div className="row">
                 <div className="col-lg-3 offset-lg-2">
@@ -144,7 +143,7 @@ export const Detail = () => {
                           </div>
                           <div className={style.download__link}>
                             <a
-                              href={detail.meta_fields.link_to_file_sd[0]}
+                              href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_sd[0]}
                               download
                             >
                               torrent
@@ -173,7 +172,7 @@ export const Detail = () => {
                           </div>
                           <div className={style.download__link}>
                             <a
-                              href={detail.meta_fields.link_to_file_hd[0]}
+                              href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_hd[0]}
                               download
                             >
                               torrent
@@ -201,7 +200,7 @@ export const Detail = () => {
                         </div>
                         <div className={style.download__link}>
                           <a
-                            href={detail.meta_fields.link_to_file_fhd[0]}
+                            href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_fhd[0]}
                             download
                           >
                             torrent
@@ -217,9 +216,8 @@ export const Detail = () => {
                     )}
                     {/* Для Full HD end */}
 
-                    {
-                      "" && (
-                        <div className="row _mb-10">
+                    {"" && (
+                      <div className="row _mb-10">
                         <div className="col-md-12">
                           <div className="_mb-20">
                             <h3 className="color__white fs-16">
@@ -248,31 +246,36 @@ export const Detail = () => {
                           </div>
                         </div>
                       </div>
-                      )
-                    }
+                    )}
 
-                      <div className="_mb-20">
-                        <h3 className="color__white fs-16">Похожие жанры:</h3>
-                      </div>
-                      <div className="_mb-20">
-                        <ul className={style.category}>
-                          {detail.category.map((item, i) => {
-                            return (
-                              <li key={i}>
-                                <NavLink
-                                  to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
-                                >
-                                  {item.name}
-                                </NavLink>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    
+                    <div className="_mb-20">
+                      <h3 className="color__white fs-16">Похожие жанры:</h3>
+                    </div>
+                    <div className="_mb-20">
+                      <ul className={style.category}>
+                        {detail.category.map((item, i) => {
+                          return (
+                            <li key={i}>
+                              <NavLink
+                                to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
+                              >
+                                {item.name}
+                              </NavLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div className="col-lg-5">
+                  {window.innerWidth >= 991 && (
+                    <div className="detail _mb-10">
+                      {detail.post_title && (
+                        <h1 className={style.title}>{detail.post_title}</h1>
+                      )}
+                    </div>
+                  )}
                   <div className="_mb-20">
                     <ul className={style.list_prop}>
                       {/* rating */}
