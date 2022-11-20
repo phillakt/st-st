@@ -53,8 +53,6 @@ export const Detail = () => {
     }
   };
 
-
-
   return (
     <>
       {!detail.ID ? (
@@ -143,7 +141,10 @@ export const Detail = () => {
                           </div>
                           <div className={style.download__link}>
                             <a
-                              href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_sd[0]}
+                              href={
+                                dataServer.downloadLinkTorrent +
+                                detail.meta_fields.link_to_file_sd[0]
+                              }
                               download
                             >
                               torrent
@@ -172,7 +173,10 @@ export const Detail = () => {
                           </div>
                           <div className={style.download__link}>
                             <a
-                              href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_hd[0]}
+                              href={
+                                dataServer.downloadLinkTorrent +
+                                detail.meta_fields.link_to_file_hd[0]
+                              }
                               download
                             >
                               torrent
@@ -200,7 +204,10 @@ export const Detail = () => {
                         </div>
                         <div className={style.download__link}>
                           <a
-                            href={dataServer.downloadLinkTorrent + detail.meta_fields.link_to_file_fhd[0]}
+                            href={
+                              dataServer.downloadLinkTorrent +
+                              detail.meta_fields.link_to_file_fhd[0]
+                            }
                             download
                           >
                             torrent
@@ -268,6 +275,7 @@ export const Detail = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="col-lg-5">
                   {window.innerWidth >= 991 && (
                     <div className="detail _mb-10">
@@ -325,7 +333,48 @@ export const Detail = () => {
                     </ul>
                   </div>
 
+                  <div className="_mb-20">
+                    <div className="color__white">
+                      {detail.meta_fields.slogan[0]}
+                    </div>
+                  </div>
+
+                  <div className="_mb-20">
+                    <div className={style.country__title}>Страна:</div>
+                    <ul className={style.country__list}>
+                      {detail.meta_fields?.country[0] &&
+                        detail.meta_fields.country[0]
+                          .split(", ")
+                          .map((item, i) => {
+                            return (
+                              <li key={item} className={style.country__list_item}>
+                               <span>{item}</span>
+                              </li>
+                            );
+                          })}
+                    </ul>
+                  </div>
+
+                  <div className="_mb-20">
+                    <div className={style.actors__title}>Актеры:</div>
+                    <ul className={style.actors__list}>
+                      {detail.meta_fields.actors[0] &&
+                        detail.meta_fields.actors[0]
+                          .split(", ")
+                          .map((item, i) => {
+                            return (
+                              <li key={item}>
+                                <span className={style.actors__list_item}>
+                                  {item}
+                                </span>
+                              </li>
+                            );
+                          })}
+                    </ul>
+                  </div>
+
                   <div className="_mb-40">
+                    <div className={style.actors__title}>Описание:</div>
                     {detail.post_content && (
                       <div
                         className={style.content}

@@ -47,6 +47,7 @@ export const FeedBack = () => {
             <div className="col-12 col-lg-7 col-xl-8">
               <form
                 onSubmit={handleSubmit(onSubmit)}
+                autoComplete="off"
                 className={`${style.form} ${style.form__contacts}`}
               >
                 <div className="row">

@@ -22,7 +22,6 @@ export const Header = () => {
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
   const header = useSelector((selector) => selector.header);
 
-  // const boxList = useRef(null);
   const searchWrap = useRef(null);
 
   const [awaitAllFilms, setAwaitAllFilms] = useState(true);
@@ -59,11 +58,7 @@ export const Header = () => {
   };
 
   const AwaitAllFilms = () => {
-    if (!awaitAllFilms) {
-      return <Loader addClass={styleSearch.loader__search} />;
-    } else {
-      return "";
-    }
+    return !awaitAllFilms && <Loader addClass={styleSearch.loader__search} />
   };
 
   const containerFluid = window.innerWidth <= 992 ? "-fluid" : "";
