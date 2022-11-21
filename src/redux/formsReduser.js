@@ -1,19 +1,30 @@
-import { GET_FEEDBACK } from "./typeForms";
+import { GET_FEEDBACK, SET_FEEDBACK_SUCCESS } from "./typeForms";
 
 const initState = {
-    feedback: ""
-}
+  feedback: {
+    fields: {},
+    statusText: "",
+    status: 0,
+    success: false,
+  },
+};
 
 export const forms = (state = initState, action) => {
-    switch (action.type) {
-        case GET_FEEDBACK:
-            console.log('feedback redux: ', action);
-            return {
-                ...state,
-                feedback: action.feedback,
-              };
-    
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case GET_FEEDBACK:
+      return {
+        ...state,
+        feedback: action.feedback,
+      };
+    case SET_FEEDBACK_SUCCESS:
+      return {
+        ...state,
+        feedback: {
+            ...state,
+            success: action.success
+        },
+      };
+    default:
+      return state;
+  }
+};

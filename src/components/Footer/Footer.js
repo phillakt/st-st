@@ -7,10 +7,10 @@ import style from "./Footer.module.scss";
 import { getCategories } from "../../redux/actions";
 import HomeSliderRandom from "../HomeSliderRandom";
 
+
 export const Footer = () => {
   const footerCategory = useSelector((selector) => selector.films.categories);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getCategories());
@@ -53,9 +53,7 @@ export const Footer = () => {
               </div>
               <div className="footer__menu">
                 <ul>
-                  {!footerCategory.length
-                    ? ""
-                    : footerCategory.map((item, i) => {
+                  {footerCategory.length && footerCategory.map((item, i) => {
                         return (
                           <li key={i}>
                             <NavLink

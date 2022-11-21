@@ -1,6 +1,9 @@
 import axios from "axios";
 import { token } from "../token";
-import { GET_FEEDBACK } from "./typeForms";
+import { 
+  GET_FEEDBACK,
+  SET_FEEDBACK_SUCCESS
+ } from "./typeForms";
 import {
   GET_MAIN_SLIDER,
   GET_CATEGORIES,
@@ -273,7 +276,7 @@ export const getFeedBack = (dataForm) => {
         Authorization: `Bearer ${token}`,
       },
     };
-  
+
     const response = await axios.post(
       "https://blackbox.eurodir.ru/wp-json/blackbox/v1/feedback",
       {
@@ -284,8 +287,15 @@ export const getFeedBack = (dataForm) => {
 
     dispatch({
       type: GET_FEEDBACK,
-      feedback: response.data,
+      feedback: JSON.parse(response.data),
     });
   };
+};
+
+export const setFeedBackSuccess = (successStatus) => {
+    return {
+      type: SET_FEEDBACK_SUCCESS,
+      success: successStatus,
+    }
 };
 // Form end

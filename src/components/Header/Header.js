@@ -57,9 +57,7 @@ export const Header = () => {
     }
   };
 
-  const AwaitAllFilms = () => {
-    return !awaitAllFilms && <Loader addClass={styleSearch.loader__search} />
-  };
+  const AwaitAllFilms = () => (!awaitAllFilms && <Loader addClass={styleSearch.loader__search} />);
 
   const containerFluid = window.innerWidth <= 992 ? "-fluid" : "";
 
@@ -169,7 +167,7 @@ export const Header = () => {
                   </ul>
                 </nav>
 
-                <form className={`${styleSearch.search} _pt-10 _pb-10`}>
+                <div className={`${styleSearch.search} _pt-10 _pb-10`}>
                   {<AwaitAllFilms />}
                   <input
                     value={searchFilms.searchInputValue}
@@ -274,7 +272,7 @@ export const Header = () => {
                   >
                     <Search closeSearchSession={closeSearchSession} />
                   </div>
-                </form>
+                </div>
 
                 {/* <div className={`${styleHeader.sign_in} fjc-s fai-c`}>
                   <span className="sign-in__text">

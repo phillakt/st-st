@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { wScrollTo } from "../redux/actions";
+import { wScrollTo, setFeedBackSuccess } from "../redux/actions";
 import style from "./FeedBack.module.scss";
 import { Helmet } from "react-helmet";
 import { getFeedBack } from "../redux/actions";
@@ -10,21 +10,27 @@ import Textarea from "./ui/Texarea";
 import BtnSubmit from "./ui/BtnSubmit";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import {emailPatternValidate} from './patterns';
+import { emailPatternValidate } from "./patterns";
+import SuccessWindow from "../ui/SuccessWindow/SuccessWindow";
 
 export const FeedBack = () => {
-
   const dispatch = useDispatch();
-  const feedback = useSelector(selector => selector.forms.feedback);
+  const feedback = useSelector((selector) => selector.forms.feedback);
+  const formsFeedBackResponse = useSelector(
+    (selector) => selector.forms.feedback
+  );
+
+  const closeFeedBackModal = useCallback((successStatus) => {
+    dispatch(setFeedBackSuccess(successStatus));
+  });
+
+  // const closeFeedBackModal = (successStatus) => {
+  //   _closeFeedBackModal(successStatus);
+  // };
 
   useEffect(() => {
-    if(feedback){
-      const feedbackJson = JSON.parse(feedback);
-      console.log('useEffect feedback: ', feedbackJson.statusText);
-    }
-  }, [feedback])
-
-  console.log('useSelector feedback: ', feedback);
+    console.log("useEffect feedback: ", feedback);
+  }, [feedback]);
 
   useEffect(() => {
     wScrollTo();
@@ -38,8 +44,7 @@ export const FeedBack = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log('onSubmit: ', data);
-    dispatch(getFeedBack());
+    dispatch(getFeedBack(data));
   };
 
   return (
@@ -78,7 +83,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Имя",
                           minLength: 2,
-                          val: "Имя"
+                          val: "Имя",
                         }}
                         register={register}
                         errors={errors}
@@ -95,7 +100,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Email",
                           pattern: emailPatternValidate,
-                          val: "mail@gmal.com"
+                          val: "mail@gmail.com",
                         }}
                         register={register}
                         errors={errors}
@@ -111,7 +116,7 @@ export const FeedBack = () => {
                           class: style.input,
                           error: style.error,
                           placeholder: "Тема",
-                          val: "Тема"
+                          val: "Тема",
                         }}
                         register={register}
                         errors={errors}
@@ -127,7 +132,7 @@ export const FeedBack = () => {
                           class: style.textarea,
                           error: style.error,
                           placeholder: "Сообщение",
-                          val: "Сообщение"
+                          val: "Сообщение",
                         }}
                         register={register}
                         errors={errors}
@@ -172,10 +177,14 @@ export const FeedBack = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
+      {formsFeedBackResponse.success ? (
+        <SuccessWindow props={formsFeedBackResponse} close={closeFeedBackModal} />
+      ) : (
+        ""
+      )}
     </>
   );
 };
