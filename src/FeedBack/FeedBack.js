@@ -25,7 +25,7 @@ export const FeedBack = () => {
   });
 
   useEffect(() => {
-    console.log("useEffect feedback: ", feedback);
+    // console.log("useEffect feedback: ", feedback);
   }, [feedback]);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Имя",
                           minLength: 2,
-                          //val: "Имя",
+                          val: "Имя",
                         }}
                         register={register}
                         errors={errors}
@@ -96,7 +96,7 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Email",
                           pattern: emailPatternValidate,
-                          //val: "mail@gmail.com",
+                          val: "mail@gmail.com",
                         }}
                         register={register}
                         errors={errors}
@@ -112,7 +112,7 @@ export const FeedBack = () => {
                           class: style.input,
                           error: style.error,
                           placeholder: "Тема",
-                          //val: "Тема",
+                          val: "Тема",
                         }}
                         register={register}
                         errors={errors}
@@ -128,7 +128,7 @@ export const FeedBack = () => {
                           class: style.textarea,
                           error: style.error,
                           placeholder: "Сообщение",
-                          //val: "Сообщение",
+                          val: "Сообщение",
                         }}
                         register={register}
                         errors={errors}
