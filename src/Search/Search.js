@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import style from "./Search.module.scss";
 import { getAllFilms, getSearchFilmsPage } from "../redux/actions";
@@ -8,8 +8,7 @@ import CardBook from "../components/CardBook/CardBook";
 import Loader from "../ui/Loader/Loader";
 
 const Search = () => {
-
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const allFilms = useSelector((selector) => selector.films.allFilms);
   const searchFilmsPage = useSelector(
@@ -26,6 +25,7 @@ const Search = () => {
   }, [allFilms]);
 
   useEffect(() => {
+    
     const params = new URLSearchParams(location.search);
     const paramQuqest = params.get("q");
     
@@ -53,7 +53,7 @@ const Search = () => {
     <>
       <Helmet>
         <title>{`ST-ST — Поиск`}</title>
-        <meta name="description" content={`Поиск фильмов по названию`} />
+        <meta name="description" content={`Поиск по названию фильмов`} />
       </Helmet>
 
       <section className="_pt-40">
@@ -71,7 +71,11 @@ const Search = () => {
 
           <div className="row">
             <div className="col-12">
-              <div className="_mt-30 _mb-30">
+              <form autoComplete="off" className="_mt-30 _mb-30" onSubmit={e => {
+                e.preventDefault();
+                inputRef.current.blur();
+                navigate(`${process.env.PUBLIC_URL}/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`);
+              }}>
                 {allFilms.length ? (
                   <input
                     ref={inputRef}
@@ -84,7 +88,7 @@ const Search = () => {
                     }}
                   />
                 ) : <Loader />}
-              </div>
+              </form>
             </div>
           </div>
 
