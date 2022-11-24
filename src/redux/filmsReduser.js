@@ -10,6 +10,7 @@ import {
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
+  GET_SEARCH_FILMS_PAGE,
 } from "./typesFilms";
 
 const initState = {
@@ -36,6 +37,10 @@ const initState = {
     searchInputValue: "",
     searchWrap: false,
     searchFilmsList: [],
+  },
+  searchFilmsPage: {
+    searchFilmsPageInputValue: "",
+    searchFilmsPageList: [],
   },
   filtersProps: [
     {
@@ -65,23 +70,6 @@ const initState = {
         },
       ],
     },
-    // {
-    //   title: "Сортировка",
-    //   param: "sort",
-    //   type: "radio",
-    //   list: [
-    //     {
-    //       text: "От старых к новым",
-    //       value: "ASC",
-    //       checked: false,
-    //     },
-    //     {
-    //       text: "От новых к старым",
-    //       value: "DESC",
-    //       checked: false,
-    //     },
-    //   ],
-    // },
   ],
 };
 
@@ -181,6 +169,17 @@ export const films = (state = initState, action) => {
           searchInputValue,
           searchWrap,
           searchFilmsList,
+        },
+      };
+
+    case GET_SEARCH_FILMS_PAGE:
+      const searchFilmsPageInputValue = action.searchFilmsPage.searchFilmsPageInputValue;
+      const searchFilmsPageList = action.searchFilmsPage.searchFilmsPageList;
+      return {
+        ...state,
+        searchFilmsPage: {
+          searchFilmsPageInputValue,
+          searchFilmsPageList,
         },
       };
     default:

@@ -2,18 +2,14 @@ import React, { useEffect } from "react";
 import CatalogGrid from "../components/CatalogGrid/CatalogGrid";
 import HomeFilter from "../components/HomeFilter/HomeFilter";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
-import { wScrollTo } from "../redux/actions";
 import { Helmet } from "react-helmet";
 
 export const Home = () => {
-  useEffect(() => {
-    wScrollTo();
-  }, []);
 
   return (
     <>
       <Helmet>
-        <title>{`Скачать торрент на телефон, планшет бесплатно в mp4!`}</title>
+        <title>{`ST-ST — Скачать торрент на телефон, планшет бесплатно в mp4!`}</title>
         <meta
           name="description"
           content={`Скачать фильмы торрентом бесплатно в хорошем качестве mp4!`}

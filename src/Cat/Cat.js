@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getCategories, wScrollTo } from "../redux/actions";
+import { getCategories } from "../redux/actions";
 import styles from "./Cat.module.scss";
 import Loader from "../ui/Loader/Loader";
 import { Helmet } from "react-helmet";
@@ -15,13 +15,12 @@ export const Categories = () => {
 
   useEffect(() => {
     _allCategories();
-    wScrollTo();
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>{`Торрент жанры на телефон, планшет бесплатно в mp4!`}</title>
+        <title>{`ST-ST —  Торрент жанры на телефон, планшет бесплатно в mp4!`}</title>
         <meta
           name="description"
           content={`Скачать фильмы по жанрам торрентом бесплатно в хорошем качестве mp4!`}

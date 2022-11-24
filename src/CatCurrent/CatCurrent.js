@@ -39,7 +39,7 @@ const CatCurrent = () => {
     <>
       <Helmet>
         <title>
-        {`${categoryCurrent.categoryData.name} скачать торрент на
+        {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
           телефон, планшет бесплатно в mp4!`}
         </title>
         <meta

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { wScrollTo } from "../../redux/actions";
 import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.webp";
 import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.webp";
 import BtnBlue from "../../ui/BtnBlue/BtnBlue";
@@ -11,14 +10,10 @@ import { Helmet } from "react-helmet";
 export const Desktop = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    wScrollTo();
-  });
-
   return (
     <>
       <Helmet>
-        <title>{`Как скачать для компьютера`}</title>
+        <title>{`ST-ST — Как скачать для компьютера`}</title>
         <meta
           name="description"
           content={`Инструкции по скачиванию фильмов торрентом на компьютер`}

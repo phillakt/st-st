@@ -196,7 +196,7 @@ export const Header = () => {
                     placeholder={
                       !awaitAllFilms
                         ? "Загрузка данных..."
-                        : "Введите название..."
+                        : "Введите название фильма..."
                     }
                   />
                   {/* <button

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { wScrollTo } from "../../redux/actions";
 import manualMobile1 from "../../img/manual/mobile/st-st_manual__mobile-1.webp";
 import manualMobile2 from "../../img/manual/mobile/st-st_manual__mobile-2.webp";
 import BtnBlue from "../../ui/BtnBlue/BtnBlue";
@@ -11,14 +10,10 @@ import { Helmet } from "react-helmet";
 export const Mobile = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    wScrollTo();
-  }, []);
-
   return (
     <>
       <Helmet>
-        <title>{`Как скачать для телефон`}</title>
+        <title>{`ST-ST — Как скачать для телефона`}</title>
         <meta
           name="description"
           content={`Инструкции по скачиванию фильмов торрентом на телефон`}

@@ -1,9 +1,6 @@
 import axios from "axios";
 import { token } from "../token";
-import { 
-  GET_FEEDBACK,
-  SET_FEEDBACK_SUCCESS
- } from "./typeForms";
+import { GET_FEEDBACK, SET_FEEDBACK_SUCCESS } from "./typeForms";
 import {
   GET_MAIN_SLIDER,
   GET_CATEGORIES,
@@ -16,6 +13,7 @@ import {
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
+  GET_SEARCH_FILMS_PAGE,
 } from "./typesFilms";
 
 import { CHANGE_MOBILE_VIEW } from "./typesHeader";
@@ -249,6 +247,16 @@ export const getSearchFilms = (val, searchList) => {
     });
   };
 };
+
+export const getSearchFilmsPage = (val, searchList) => {
+  return {
+    type: GET_SEARCH_FILMS_PAGE,
+    searchFilmsPage: {
+      searchFilmsPageInputValue: val,
+      searchFilmsPageList: searchList,
+    },
+  };
+};
 // Films end
 
 // Header
@@ -269,7 +277,6 @@ export const wScrollTo = () => {
 
 // Form
 export const getFeedBack = (dataForm) => {
-
   return async (dispatch) => {
     const config = {
       headers: {
@@ -293,9 +300,9 @@ export const getFeedBack = (dataForm) => {
 };
 
 export const setFeedBackSuccess = (successStatus) => {
-    return {
-      type: SET_FEEDBACK_SUCCESS,
-      success: successStatus,
-    }
+  return {
+    type: SET_FEEDBACK_SUCCESS,
+    success: successStatus,
+  };
 };
 // Form end

@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
-import { wScrollTo } from "../redux/actions";
 
 export const About = () => {
-
-  useEffect(() => {
-    wScrollTo();
-  }, [])
 
   return (
     <section className="_mt-80 _pt-30">

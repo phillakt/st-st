@@ -1,11 +1,8 @@
 import React from "react";
 import style from "./BtnUploadMoreDefault.module.scss";
 
-const BtnUploadMoreDefault = (props) => {
-  const text = props.text;
-  const increment = props.increment;
-  const categoryCurrent = props.categoryCurrent;
-  const count = categoryCurrent.count + 3;
+const BtnUploadMoreDefault = ({text, increment, categoryCurrent}) => {
+  const count = categoryCurrent.count * 2;
   return (
     <div
       onClick={() => increment(categoryCurrent.slug, count)}

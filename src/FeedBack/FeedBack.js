@@ -46,7 +46,7 @@ export const FeedBack = () => {
   return (
     <>
       <Helmet>
-        <title>{`Контакты`}</title>
+        <title>{`ST-ST — Контакты`}</title>
         <meta
           name="description"
           content={`По вопросам сотрудничества или размещения рекламы пишите на почту`}

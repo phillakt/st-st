@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getFilmDetail, wScrollTo } from "../redux/actions";
+import { getFilmDetail } from "../redux/actions";
 import { Helmet } from "react-helmet";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
 import starIco from "../img/svg/icons/star_ico.svg";
@@ -21,8 +21,6 @@ export const Detail = () => {
 
   useEffect(() => {
     _getCurrentFilm();
-
-    wScrollTo();
   }, [params.slug]);
 
   function createMarkup(param) {
@@ -62,7 +60,7 @@ export const Detail = () => {
         <>
           <Helmet>
             <title>
-              {`Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}
+              {`ST-ST — Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}
               на телефон, планшет бесплатно в mp4!`}
             </title>
             <meta

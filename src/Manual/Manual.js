@@ -11,7 +11,7 @@ export const Manual = () => {
   return (
     <>
       <Helmet>
-        <title>{`Как скачать`}</title>
+        <title>{`ST-ST — Как скачать для телефона или компьютера`}</title>
         <meta
           name="description"
           content={`Инструкции по скачиванию фильмов торрентом на телефон, планшет или компьютер`}

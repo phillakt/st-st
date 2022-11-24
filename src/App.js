@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./main.css";
 import "./css/custom.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -17,8 +17,13 @@ import Desktop from "./Manual/Desktop/Desktop";
 import Mobile from "./Manual/Mobile/Mobile";
 import Search from "./Search/Search";
 import Page404 from "./Page404/Page404";
+import { wScrollTo } from "./redux/actions";
 
 const App = () => {
+  const location = useLocation();
+  useEffect(() => {
+    wScrollTo();
+  }, [location])
   
   return (
     <>
