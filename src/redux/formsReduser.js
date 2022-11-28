@@ -20,8 +20,8 @@ export const forms = (state = initState, action) => {
       return {
         ...state,
         feedback: {
-            ...state,
-            success: action.success
+          ...state.feedback,
+          success: action.success
         },
       };
     default:

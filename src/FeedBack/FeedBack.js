@@ -25,7 +25,7 @@ export const FeedBack = () => {
   });
 
   useEffect(() => {
-    // console.log("useEffect feedback: ", feedback);
+    feedback.success && reset({name: "",email: "",subject: "",text: "",})
   }, [feedback]);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export const FeedBack = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -79,7 +80,6 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Имя",
                           minLength: 2,
-                          val: "Имя",
                         }}
                         register={register}
                         errors={errors}
@@ -96,7 +96,6 @@ export const FeedBack = () => {
                           error: style.error,
                           placeholder: "Email",
                           pattern: emailPatternValidate,
-                          val: "mail@gmail.com",
                         }}
                         register={register}
                         errors={errors}
@@ -112,7 +111,6 @@ export const FeedBack = () => {
                           class: style.input,
                           error: style.error,
                           placeholder: "Тема",
-                          val: "Тема",
                         }}
                         register={register}
                         errors={errors}
@@ -128,7 +126,6 @@ export const FeedBack = () => {
                           class: style.textarea,
                           error: style.error,
                           placeholder: "Сообщение",
-                          val: "Сообщение",
                         }}
                         register={register}
                         errors={errors}

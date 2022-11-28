@@ -33,10 +33,10 @@ const CatalogGrid = () => {
             })
           )}
         </div>
-        {categoryCurrent.categoryPosts.length && (
+        {!!categoryCurrent.categoryPosts.length && (
           <div className="row">
             <div className="col-lg-12">
-              {categoryCurrent.count <= categoryCurrent.categoryPosts.length ? (
+              {categoryCurrent.count <= categoryCurrent.categoryPosts.length && (
                 <div className="fjc-c">
                   <BtnUploadMoreDefault
                     text="Загрузить"
@@ -44,7 +44,7 @@ const CatalogGrid = () => {
                     categoryCurrent={categoryCurrent}
                   />
                 </div>
-              ) : ""}
+              )}
             </div>
           </div>
         )}
