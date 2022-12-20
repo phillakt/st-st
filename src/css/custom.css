@@ -86,6 +86,12 @@ header ul li a.active {
   height: 380px;
 }
 
+@media (max-width: 768px) {
+  .home-slider .Card__link {
+    height: 300px;
+  }
+}
+
 .catalog__grid-min .Card-box {
   width: 95%;
   margin: 0 auto;
@@ -94,11 +100,7 @@ header ul li a.active {
   height: 300px;
 }
 
-@media (max-width: 768px) {
-  .home-slider .Card-box {
-    width: 100%;
-  }
-}
+
 
 .home-slider .home-slider__card_play {
   top: 0;
