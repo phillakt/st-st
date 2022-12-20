@@ -85,7 +85,7 @@ export const HomeSlider = () => {
                 {mainSlider.map((item, i) => {
                   return (
                     <div key={i}>
-                      <CardFlat item={item} styleProp={{ height: "330px" }} />
+                      <CardFlat item={item} />
                     </div>
                   );
                 })}

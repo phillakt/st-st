@@ -6,6 +6,7 @@ import style from "./Search.module.scss";
 import { getAllFilms, getSearchFilmsPage } from "../redux/actions";
 import CardBook from "../components/CardBook/CardBook";
 import Loader from "../ui/Loader/Loader";
+import CardFlat from "../components/CardFlat/CardFlat";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Search = () => {
       dispatch(getSearchFilmsPage("", []));
     }
   };
-
+  console.log(searchFilmsPage);
   return (
     <>
       <Helmet>
@@ -60,11 +61,16 @@ const Search = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className="color__white fs-26">Поиск по названию фильмов</h1>
+              <h1 className={style.title}>Поиск по названию</h1>
             </div>
             <div className="col-lg-12">
-              <div className="color__white fs-18 _mt-30">
+              <div className={`${style.title_search} _mt-30`}>
                 Вы искали: «{searchFilmsPage.searchFilmsPageInputValue}»
+              </div>
+            </div>
+            <div className="col-lg-12">
+              <div className={`${style.title_found} _mt-5`}>
+                Найдено: «{searchFilmsPage.searchFilmsPageList.length}»
               </div>
             </div>
           </div>
@@ -95,8 +101,8 @@ const Search = () => {
           <div className="row">
             {searchFilmsPage.searchFilmsPageList &&
               searchFilmsPage.searchFilmsPageList.map((item, i) => (
-                <div key={item.ID} className="col-lg-4 col-md-4 col-sm-4 col-12">
-                  <CardBook item={item} key={i} />
+                <div key={item.ID} className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30">
+                  <CardFlat item={item} key={i} />
                 </div>
               ))}
           </div>

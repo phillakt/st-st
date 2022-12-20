@@ -1,3 +1,31 @@
+
+.title {
+  color: #e0e0e0;
+  font-size: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.title_search {
+  color: #e0e0e0;
+  font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.title_found {
+  color: #e0e0e0;
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
 .search_input {
     font-family: "Inter", sans-serif;
     border-radius: 16px;

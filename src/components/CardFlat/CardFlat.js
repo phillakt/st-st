@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { changeMenuMobileView, getSearchFilms } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardFlat = ({ item, addClass, styleProp }) => {
+const CardFlat = ({ item }) => {
   const dispatch = useDispatch();
   const header = useSelector((selector) => selector.header);
 
@@ -18,13 +18,9 @@ const CardFlat = ({ item, addClass, styleProp }) => {
   };
 
   return (
-    <div className={`${style.card} ${addClass ? addClass : ""}`}>
+    <div className={`Card-box ${style.card}`}>
       <div
-        className={`${style.link} fjc-s`}
-        style={{ height: styleProp?.height ? (
-          window.innerWidth >= 1200 ? styleProp?.height : ""
-        ) : "" }}
-      >
+        className={`Card__link ${style.link} fjc-s`}>
         <span
           className={style.img}
           style={{ background: `url(${item.thumbnail_url})` }}
