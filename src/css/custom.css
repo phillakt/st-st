@@ -79,25 +79,26 @@ header ul li a.active {
 
 /* home-slider */
 .home-slider .Card-box {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
 }
+
 .home-slider .Card__link {
-  height: 380px;
+  height: 360px;
 }
 
 @media (max-width: 768px) {
   .home-slider .Card__link {
-    height: 300px;
+    height: 260px;
   }
 }
 
 .catalog__grid-min .Card-box {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
 }
 .catalog__grid-min .Card__link {
-  height: 300px;
+  height: 260px;
 }
 
 

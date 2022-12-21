@@ -77,7 +77,7 @@ const Search = () => {
 
           <div className="row">
             <div className="col-12">
-              <form autoComplete="off" className="_mt-30 _mb-30" onSubmit={e => {
+              <form autoComplete="off" className={style.form} onSubmit={e => {
                 e.preventDefault();
                 inputRef.current.blur();
                 navigate(`${process.env.PUBLIC_URL}/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`);
