@@ -5,7 +5,7 @@ import telegramBrands from "../../img/social/telegram-brands.svg";
 
 import style from "./Footer.module.scss";
 import { getCategories } from "../../redux/actions";
-import HomeSliderRandom from "../HomeSliderRandom";
+import HomeSliderRandom from "../HomeSliderRandom/HomeSliderRandom";
 
 
 export const Footer = () => {

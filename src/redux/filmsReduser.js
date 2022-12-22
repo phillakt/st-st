@@ -49,22 +49,22 @@ const initState = {
       param: "year",
       list: [
         {
-          text: "За",
+          text: "",
           value: "2022",
           checked: false,
         },
         {
-          text: "За",
+          text: "",
           value: "2021",
           checked: false,
         },
         {
-          text: "За",
+          text: "",
           value: "2020",
           checked: false,
         },
         {
-          text: "За",
+          text: "",
           value: "2019",
           checked: false,
         },

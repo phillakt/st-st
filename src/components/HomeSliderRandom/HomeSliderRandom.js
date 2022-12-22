@@ -1,9 +1,9 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMainSliderRandom } from "../redux/actions";
+import { getMainSliderRandom } from "../../redux/actions";
 import Slider from "react-slick";
-import CardFlat from "./CardFlat/CardFlat";
-import Loader from "../ui/Loader/Loader";
+import CardFlat from "../CardFlat/CardFlat";
+import Loader from "../../ui/Loader/Loader";
 
 const HomeSliderRandom = () => {
   

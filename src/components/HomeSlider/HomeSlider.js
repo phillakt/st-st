@@ -20,21 +20,21 @@ export const HomeSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    arrows: true,
+    arrows: false,
     speed: 700,
     dragging: false,
     cssEase: "ease-in-out",
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     slidesToShow: 7,
     autoplay: true,
     autoplaySpeed: 5000,
-    centerMode: true,
+    centerMode: false,
     responsive: [
       {
         breakpoint: 1400,
         settings: {
           arrows: true,
-          centerMode: true,
+          centerMode: false,
           slidesToScroll: 1,
           slidesToShow: 5,
           dots: true,

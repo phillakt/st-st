@@ -25,57 +25,39 @@ label {
     display: inline-flex;
     align-items: center;
     user-select: none;
-}
-
-.custom_checkbox+label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
+    position: relative;
+    line-height: 1;
 }
 
 .custom_checkbox+label::before {
-    content: '';
+    content: "";
     display: inline-block;
-    width: 1.2em;
-    height: 1.2em;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
     flex-grow: 0;
-    border: 1px solid #adb5bd;
-    border-radius: 0.25em;
-    margin-right: 0.5em;
+    border-radius: 8px;
+    margin-right: 0.8em;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50% 50%;
+    background-color: #131720;
 }
 
 .custom_checkbox:checked+label::before {
-    border-color: #2f80ed;
-    background-color: #2f80ed;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-color: #131720;
 }
 
-/* стили при наведении курсора на checkbox */
-.custom_checkbox:not(:disabled):not(:checked)+label:hover::before {
-    border-color: #b3d7ff;
-}
 
-/* стили для активного состояния чекбокса (при нажатии на него) */
-.custom_checkbox:not(:disabled):active+label::before {
-    background-color: #b3d7ff;
-    border-color: #b3d7ff;
-}
-
-/* стили для чекбокса, находящегося в фокусе */
-.custom_checkbox:focus+label::before {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
-.custom_checkbox:focus:not(:checked)+label::before {
-    border-color: #80bdff;
-}
-
-/* стили для чекбокса, находящегося в состоянии disabled */
-.custom_checkbox:disabled+label::before {
-    background-color: #e9ecef;
+.custom_checkbox:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 4px;
+    width: 5px;
+    height: 11px;
+    background: transparent;
+    border-bottom: 1px solid #2f80ed;
+    border-right: 1px solid #2f80ed;
+    transform: rotate(45deg);
 }
