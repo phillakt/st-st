@@ -53,7 +53,7 @@ export const Footer = () => {
               </div>
               <div className="footer__menu">
                 <ul>
-                  {footerCategory.length && footerCategory.map((item, i) => {
+                  {!!footerCategory && footerCategory.map((item, i) => {
                         return (
                           <li key={i}>
                             <NavLink

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import style from "./Search.module.scss";
 import { getAllFilms, getSearchFilmsPage } from "../redux/actions";
-import CardBook from "../components/CardBook/CardBook";
 import Loader from "../ui/Loader/Loader";
 import CardFlat from "../components/CardFlat/CardFlat";
 
@@ -17,23 +16,15 @@ const Search = () => {
   );
   const location = useLocation();
   const inputRef = useRef();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    !allFilms.length && dispatch(getAllFilms());
-    const params = new URLSearchParams(location.search);
-    const paramQuqest = params.get("q");
-    getSearchFilmsPageHandler(paramQuqest);
-  }, [allFilms]);
-
-  useEffect(() => {
-    
-    const params = new URLSearchParams(location.search);
-    const paramQuqest = params.get("q");
-    
-    getSearchFilmsPageHandler(paramQuqest);
+    !!allFilms && dispatch(getAllFilms());
+    const paramRequest = searchParams.get("q");
+    getSearchFilmsPageHandler(paramRequest);
 
     document.querySelector("input[name=q]").blur();
-  }, [location.search]);
+  }, [location.search, allFilms.length]);
 
   const getSearchFilmsPageHandler = (val) => {
     if (val) {
@@ -49,7 +40,7 @@ const Search = () => {
       dispatch(getSearchFilmsPage("", []));
     }
   };
-  console.log(searchFilmsPage);
+
   return (
     <>
       <Helmet>
@@ -77,12 +68,20 @@ const Search = () => {
 
           <div className="row">
             <div className="col-12">
-              <form autoComplete="off" className={style.form} onSubmit={e => {
-                e.preventDefault();
-                inputRef.current.blur();
-                navigate(`${process.env.PUBLIC_URL}/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`);
-              }}>
-                {allFilms.length ? (
+              <form
+                autoComplete="off"
+                className={style.form}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  inputRef.current.blur();
+                  navigate(
+                    `${process.env.PUBLIC_URL}/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`
+                  );
+                }}
+              >
+                {!allFilms.length ? (
+                  <Loader />
+                ) : (
                   <input
                     ref={inputRef}
                     className={style.search_input}
@@ -93,7 +92,7 @@ const Search = () => {
                       getSearchFilmsPageHandler(val);
                     }}
                   />
-                ) : <Loader />}
+                )}
               </form>
             </div>
           </div>
@@ -101,7 +100,10 @@ const Search = () => {
           <div className="row">
             {searchFilmsPage.searchFilmsPageList &&
               searchFilmsPage.searchFilmsPageList.map((item, i) => (
-                <div key={item.ID} className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30">
+                <div
+                  key={item.ID}
+                  className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30"
+                >
                   <CardFlat item={item} key={i} />
                 </div>
               ))}

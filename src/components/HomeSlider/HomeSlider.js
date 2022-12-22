@@ -33,7 +33,7 @@ export const HomeSlider = () => {
       {
         breakpoint: 1400,
         settings: {
-          arrows: true,
+          arrows: false,
           centerMode: false,
           slidesToScroll: 1,
           slidesToShow: 5,
