@@ -28,18 +28,18 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes basename={'/'}>
-        <Route path={`${process.env.PUBLIC_URL}/`} exact element={<Home />} />
-        <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} />
-        <Route path={`${process.env.PUBLIC_URL}/cat`} element={<Cat />} />
-        <Route path={`${process.env.PUBLIC_URL}/cat/:slug`} element={<CatCurrent />} />
-        <Route path={`${process.env.PUBLIC_URL}/cat/:cat/:slug`} element={<Detail />} />
-        <Route path={`${process.env.PUBLIC_URL}/feedback`} element={<FeedBack />} />
-        <Route path={`${process.env.PUBLIC_URL}/manual`} element={<Manual />} />
-        <Route path={`${process.env.PUBLIC_URL}/manual/desktop`} element={<Desktop />}/>
-        <Route path={`${process.env.PUBLIC_URL}/manual/mobile`} element={<Mobile />} />
-        <Route path={`${process.env.PUBLIC_URL}/search`} match={true} element={<Search />} />
-        <Route path={`${process.env.PUBLIC_URL}/*`} element={<Page404 />} />
+      <Routes>
+        <Route path={`/`} exact element={<Home />} />
+        <Route path={`/about`} element={<About />} />
+        <Route path={`/cat`} element={<Cat />} />
+        <Route path={`/cat/:slug`} element={<CatCurrent />} />
+        <Route path={`/cat/:cat/:slug`} element={<Detail />} />
+        <Route path={`/feedback`} element={<FeedBack />} />
+        <Route path={`/manual`} element={<Manual />} />
+        <Route path={`/manual/desktop`} element={<Desktop />}/>
+        <Route path={`/manual/mobile`} element={<Mobile />} />
+        <Route path={`/search`} match={true} element={<Search />} />
+        <Route path={`/*`} element={<Page404 />} />
       </Routes>
       <Footer />
     </>

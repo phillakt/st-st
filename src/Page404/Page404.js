@@ -24,7 +24,7 @@ const Page404 = () => {
               <div className="fjc-c _mt-10">
                 <NavLink
                   className={style.goHome}
-                  to={`${process.env.PUBLIC_URL}/`}
+                  to={`/`}
                 >
                   На главную
                 </NavLink>

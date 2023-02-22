@@ -76,7 +76,7 @@ export const Header = () => {
                     closeSearchSession();
                   }}
                   className="header__logo_link"
-                  to={`${process.env.PUBLIC_URL}/`}
+                  to={`/`}
                 >
                   St-St.
                   <span className="header__logo_desc-min">stream-store</span>
@@ -127,7 +127,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`${process.env.PUBLIC_URL}/`}
+                        to={`/`}
                         end
                       >
                         Главная
@@ -139,7 +139,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`${process.env.PUBLIC_URL}/cat`}
+                        to={`/cat`}
                       >
                         Жанры
                       </NavLink>
@@ -150,7 +150,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`${process.env.PUBLIC_URL}/feedback`}
+                        to={`/feedback`}
                       >
                         Обратная связь
                       </NavLink>
@@ -161,7 +161,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`${process.env.PUBLIC_URL}/manual`}
+                        to={`/manual`}
                       >
                         Как скачать?
                       </NavLink>
@@ -171,7 +171,7 @@ export const Header = () => {
 
                 <form autoComplete="off" onSubmit={(e) => {
                   e.preventDefault();
-                  navigate(`${process.env.PUBLIC_URL}/search/?q=${searchFilms.searchInputValue}`);
+                  navigate(`/search/?q=${searchFilms.searchInputValue}`);
                   changeMenuMobileViewHandler(false);
                   closeSearchSession();
                 }} 

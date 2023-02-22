@@ -235,7 +235,7 @@ export const Detail = () => {
                           <div className="_mb-10">
                             <NavLink
                               className={style.manual__link}
-                              to={`${process.env.PUBLIC_URL}/manual/mobile`}
+                              to={`/manual/mobile`}
                             >
                               Для телефона
                             </NavLink>
@@ -245,7 +245,7 @@ export const Detail = () => {
                           <div className="_mb-10">
                             <NavLink
                               className={style.manual__link}
-                              to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                              to={`/manual/desktop`}
                             >
                               Для компьютера
                             </NavLink>
@@ -263,7 +263,7 @@ export const Detail = () => {
                           return (
                             <li key={i}>
                               <NavLink
-                                to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
+                                to={`/cat/${item.slug}`}
                               >
                                 {item.name}
                               </NavLink>

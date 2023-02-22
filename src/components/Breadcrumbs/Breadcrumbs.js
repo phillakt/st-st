@@ -13,13 +13,13 @@ const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
     <div className={style.wrap} style={styleWrap}>
       <ul className={style.box} style={styleWrap}>
         <li className={style.item}>
-          <NavLink to={`${process.env.PUBLIC_URL}/`}>Главная</NavLink>
+          <NavLink to={`/`}>Главная</NavLink>
           <i className="_ml-10">
             <img src={breadcrumbs} alt="breadcrumbs-arrow" />
           </i>
         </li>
         <li className={style.item}>
-          <NavLink to={`${process.env.PUBLIC_URL}/cat`}>
+          <NavLink to={`/cat`}>
             Жанры
           </NavLink>
           <i className="_ml-10">
@@ -30,7 +30,7 @@ const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
           {
             !postTitle ? categoryData.name : (
               <>
-                <NavLink to={`${process.env.PUBLIC_URL}/cat/${cat.slug}`}>
+                <NavLink to={`/cat/${cat.slug}`}>
                   {cat.name}
                 </NavLink>
                 <i className="_ml-10">

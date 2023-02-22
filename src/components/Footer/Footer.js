@@ -28,7 +28,7 @@ export const Footer = () => {
               <div className="footer__logo">
                 <NavLink
                   className="footer__logo_link"
-                  to={`${process.env.PUBLIC_URL}/`}
+                  to={`/`}
                 >
                   St-St.
                   <span className="footer__logo_desc-min">stream-store</span>
@@ -58,7 +58,7 @@ export const Footer = () => {
                           <li key={i}>
                             <NavLink
                               to={{
-                                pathname: `${process.env.PUBLIC_URL}/cat/${item.slug}`,
+                                pathname: `/cat/${item.slug}`,
                               }}
                             >
                               {item.name}

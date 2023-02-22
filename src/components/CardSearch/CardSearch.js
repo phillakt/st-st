@@ -21,8 +21,8 @@ const CardSearch = ({ item }) => {
           closeSearchSessionHandler();
           changeMenuMobileViewHandler(false);
         }}
-        // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
-        to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
+        // to={`/detail/${item.post_name}`}
+        to={`/cat/${item.category[0].slug}/${item.post_name}`}
         className={style.mainLink}
       ></NavLink>
 

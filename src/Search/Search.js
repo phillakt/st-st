@@ -75,7 +75,7 @@ const Search = () => {
                   e.preventDefault();
                   inputRef.current.blur();
                   navigate(
-                    `${process.env.PUBLIC_URL}/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`
+                    `/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`
                   );
                 }}
               >

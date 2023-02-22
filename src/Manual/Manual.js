@@ -30,7 +30,7 @@ export const Manual = () => {
             <div className="col-lg-3 offset-lg-3">
               <NavLink
                 className="d-block purge-link _mt-30 _mb-30"
-                to={`${process.env.PUBLIC_URL}/manual/mobile`}
+                to={`/manual/mobile`}
               >
                 <BtnBlue>Для телефона</BtnBlue>
               </NavLink>
@@ -38,7 +38,7 @@ export const Manual = () => {
             <div className="col-lg-3">
               <NavLink
                 className="d-block purge-link _mt-30 _mb-30"
-                to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                to={`/manual/desktop`}
               >
                 <BtnBlue>Для компьютера</BtnBlue>
               </NavLink>

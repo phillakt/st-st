@@ -32,7 +32,7 @@ export const Mobile = () => {
               <div className="fjc-c">
                 <NavLink
                   className="d-block purge-link _mb-30"
-                  to={`${process.env.PUBLIC_URL}/manual/desktop`}
+                  to={`/manual/desktop`}
                 >
                   <BtnBlue>Для компьютера</BtnBlue>
                 </NavLink>

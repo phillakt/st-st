@@ -35,8 +35,8 @@ const CardBook = ({ item }) => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(header.menuMobile.view);
           }}
-          // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
-          to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
+          // to={`/detail/${item.post_name}`}
+          to={`/cat/${item.category[0].slug}/${item.post_name}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -49,8 +49,8 @@ const CardBook = ({ item }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(header.menuMobile.view);
                 }}
-                // to={`${process.env.PUBLIC_URL}/detail/${item.post_name}`}
-                to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
+                // to={`/detail/${item.post_name}`}
+                to={`/cat/${item.category[0].slug}/${item.post_name}`}
               >
                 {item.post_title}
               </NavLink>
@@ -103,7 +103,7 @@ const CardBook = ({ item }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
+                      to={`/cat/${item.slug}`}
                     >
                       {item.name}
                     </NavLink>

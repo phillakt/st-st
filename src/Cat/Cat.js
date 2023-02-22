@@ -43,7 +43,7 @@ export const Categories = () => {
                 return (
                   <div key={i} className="col-lg-3 col-6">
                     <NavLink
-                      to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
+                      to={`/cat/${item.slug}`}
                       className={styles.wrap}
                     >
                       <img

@@ -30,7 +30,7 @@ const CardFlat = ({ item }) => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(false);
           }}
-          to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
+          to={`/cat/${item.category[0].slug}/${item.post_name}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -43,7 +43,7 @@ const CardFlat = ({ item }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(false);
                 }}
-                to={`${process.env.PUBLIC_URL}/cat/${item.category[0].slug}/${item.post_name}`}
+                to={`/cat/${item.category[0].slug}/${item.post_name}`}
               >
                 {item.post_title}
               </NavLink>
@@ -66,7 +66,7 @@ const CardFlat = ({ item }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(false);
                       }}
-                      to={`${process.env.PUBLIC_URL}/cat/${item.slug}`}
+                      to={`/cat/${item.slug}`}
                     >
                       {item.name}
                     </NavLink>
