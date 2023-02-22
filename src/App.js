@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes basename={'/st'}>
+      <Routes basename={'/'}>
         <Route path={`${process.env.PUBLIC_URL}/`} exact element={<Home />} />
         <Route path={`${process.env.PUBLIC_URL}/about`} element={<About />} />
         <Route path={`${process.env.PUBLIC_URL}/cat`} element={<Cat />} />
