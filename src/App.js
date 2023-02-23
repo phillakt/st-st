@@ -23,7 +23,6 @@ const App = () => {
   const location = useLocation();
   useEffect(() => {
     wScrollTo();
-    
   }, [location]);
   
   return (
