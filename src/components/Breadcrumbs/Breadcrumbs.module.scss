@@ -12,9 +12,9 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 0;
-  height: calc(100% - 10px);
+  height: 44px;
 
   @media (max-width: 768px) {
     justify-content: flex-start;

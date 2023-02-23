@@ -73,7 +73,7 @@ body::-webkit-scrollbar {
   width: 50px;
 }
 
-header ul li a.active {
+header ul li a.active, footer ul li a.active {
   color: #2f80ed;
 }
 

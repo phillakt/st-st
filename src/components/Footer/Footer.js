@@ -51,21 +51,21 @@ export const Footer = () => {
               <div className="_mb-30">
                 <h2 className="color__white fs-26">Жанры</h2>
               </div>
-              <div className="footer__menu">
+              <div className={style.menu}>
                 <ul>
                   {!!footerCategory && footerCategory.map((item, i) => {
-                        return (
-                          <li key={i}>
-                            <NavLink
-                              to={{
-                                pathname: `/cat/${item.slug}`,
-                              }}
-                            >
-                              {item.name}
-                            </NavLink>
-                          </li>
-                        );
-                      })}
+                    return (
+                      <li key={i}>
+                        <NavLink
+                          to={{
+                            pathname: `/cat/${item.slug}`,
+                          }}
+                        >
+                          {item.name}
+                        </NavLink>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
