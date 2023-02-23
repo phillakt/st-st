@@ -36,7 +36,7 @@ export const HomeFilter = () => {
           <div className="col-lg-12">
             <div className="home-filter__wrap">
               <div className="fjc-sb">
-                <ul className="ul fjc-c home-filter__genre">
+                <ul className="ul home-filter__genre">
                   {filterList.length ? (
                     filterList.map((item, i) => {
                       return (
