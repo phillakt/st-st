@@ -77,11 +77,13 @@
   @media (max-width: 991px) {
     font-size: 16px;
     background-color: #151f30;
+    padding: 10px 45px 10px 15px;
   }
 
   @media (max-width: 576px) {
     font-size: 16px;
     background-color: #151f30;
+    padding: 10px 45px 10px 15px;
   }
 }
 
@@ -205,6 +207,22 @@
     width: 8% !important;
 
     @media (max-width: 992px) {
+      left: 0;
+      right: 0;
+      top: 2px;
+      margin: 0 auto !important;
+      width: 4% !important;
+    }
+
+    @media (max-width: 768px) {
+      left: 0;
+      right: 0;
+      top: 1px;
+      margin: 0 auto !important;
+      width: 6% !important;
+    }
+
+    @media (max-width: 576px) {
       left: 0;
       right: 0;
       top: 0;
