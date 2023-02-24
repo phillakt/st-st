@@ -44,11 +44,11 @@
     }
 
     @media (max-width: 360px) {
-        width: 160px;
+        width: 180px;
     }
 
     @media (max-width: 320px) {
-        width: 140px;
+        width: 160px;
     }
 }
 
@@ -63,7 +63,7 @@
     display: inline-flex;
     font-family: "Inter", sans-serif;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 16px;
     color: #e0e0e0;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -87,7 +87,7 @@
 .rating {
     display: inline-flex;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 16px;
     color: #e0e0e0;
     padding-right: 5px;
 
@@ -99,7 +99,7 @@
 .subtitle {
     display: inline-flex;
     font-weight: 100;
-    font-size: 14px;
+    font-size: 16px;
     color: #e0e0e0;
 
     @media (max-width: 320px) {
