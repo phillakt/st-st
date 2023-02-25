@@ -33,9 +33,26 @@ const HomeSliderRandom = () => {
     autoplaySpeed: 5000,
     responsive: [
       {
+        breakpoint: 1299,
+        settings: {
+          arrows: false,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1199,
+        settings: {
+          arrows: false,
+          slidesToShow: 5,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
         breakpoint: 992,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 4,
           slidesToScroll: 1,
           arrows: false,
           dots: true,

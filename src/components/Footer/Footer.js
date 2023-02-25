@@ -24,7 +24,7 @@ export const Footer = () => {
       <footer className={style.wrap}>
         <div className="container">
           <div className="row _pb-60">
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-12">
               <div className="footer__logo">
                 <NavLink
                   className="footer__logo_link"
@@ -47,7 +47,7 @@ export const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-lg-7 offset-lg-1">
+            <div className="col-lg-6 offset-lg-2 col-12">
               <div className="_mb-30">
                 <h2 className="color__white fs-26">Жанры</h2>
               </div>

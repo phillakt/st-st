@@ -2,19 +2,18 @@ import React from 'react';
 import style from './Filter.module.scss';
 import { useSelector } from 'react-redux';
 import ElementFilter from './ElementFilter/ElementFilter';
+import BtnResetFilter from '../../ui/BtnResetFilter/BtnResetFilter';
 
 
 const CategoryCurrentFilter = () => {
     const filtersProps = useSelector((selector => selector.films.filtersProps))
     return (
         <div className={style.wrap}>
-            <div>
-                <h2 className={style.title}>Фильтр</h2>
-            </div>
+            <h2 className={style.title}>Фильтр</h2>
             {
                 !filtersProps ? "Нету параметров" : (
                     filtersProps.map((item, i) => {
-                        return (    
+                        return (
                             <div className={style.wrap__box} key={i}>
                                 <ElementFilter item={item} />
                             </div>
@@ -22,6 +21,9 @@ const CategoryCurrentFilter = () => {
                     })
                 )
             }
+            <div className="_mt-30">
+                <BtnResetFilter>Сбросить</BtnResetFilter>
+            </div>
         </div>
     );
 }

@@ -7,6 +7,7 @@ import {
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  RESET_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
@@ -147,12 +148,46 @@ export const films = (state = initState, action) => {
         ],
       };
 
+    case RESET_CURRENT_FILTER:
+      return {
+        ...state,
+        filtersProps: [
+          {
+            title: "По годам",
+            type: "checkbox",
+            param: "year",
+            list: [
+              {
+                text: "",
+                value: "2022",
+                checked: false,
+              },
+              {
+                text: "",
+                value: "2021",
+                checked: false,
+              },
+              {
+                text: "",
+                value: "2020",
+                checked: false,
+              },
+              {
+                text: "",
+                value: "2019",
+                checked: false,
+              },
+            ],
+          },
+        ],
+      };
+
     case GET_ALL_FILMS:
       return {
         ...state,
         allFilms: action.allFilms,
       };
-      
+
     case GET_ALL_FILMS_LENGTH:
       return {
         ...state,

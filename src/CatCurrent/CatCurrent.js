@@ -1,11 +1,12 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getCategoryCurrent, wScrollTo } from "../redux/actions";
+import { getCategoryCurrent, resetCurrentFilter, wScrollTo } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
+import BtnBlue from "../ui/BtnBlue/BtnBlue";
 
 import Loader from "../ui/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
@@ -29,8 +30,13 @@ const CatCurrent = () => {
     dispatch(getCategoryCurrent(slug, offset, filterState));
   });
 
+  const _resetCurrentFilter = useCallback(() => {
+    dispatch(resetCurrentFilter());
+  });
+
   useEffect(() => {
-    _getCategoryCurrent(params.slug, 0, filterState);
+    _resetCurrentFilter();
+    _getCategoryCurrent(params.slug, 0, []);
 
     wScrollTo();
   }, [params.slug]);
@@ -39,7 +45,7 @@ const CatCurrent = () => {
     <>
       <Helmet>
         <title>
-        {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
+          {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
           телефон, планшет бесплатно в mp4!`}
         </title>
         <meta
@@ -82,21 +88,19 @@ const CatCurrent = () => {
                   })
                 )}
               </div>
-              {categoryCurrent.count >=
-              categoryCurrent.categoryAllCountPosts ? (
-                ""
-              ) : (
-                <div className="row">
-                  <div className="col-md-12">
-                    <Paginate
-                      itemsPerPage={10}
-                      slug={params.slug}
-                      filterState={filterState}
-                      categoryAllCountPosts={categoryAllCountPosts}
-                    />
+              {
+                !!categoryCurrent.categoryAllCountPosts && (
+                  <div className="row">
+                    <div className="col-md-12">
+                      <Paginate
+                        itemsPerPage={10}
+                        slug={params.slug}
+                        filterState={filterState}
+                        categoryAllCountPosts={categoryAllCountPosts}
+                      />
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           </div>
         </div>

@@ -1,0 +1,22 @@
+
+.btn {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    font-size: 16px;
+}
+
+.default {
+    cursor: pointer;
+    color: #eb5757;
+    background: #131720;
+    border-radius: 16px;
+    padding: 12px 50px;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        color: #e0e0e0;
+        background: #eb575773;
+    }
+}

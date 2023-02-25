@@ -9,14 +9,13 @@
   max-height: calc(100vh - 190px);
   max-width: 100%;
   top: calc(100% + 11px);
-  // padding: 10px 5px 0 0;
 
   @media (max-width: 991px) {
     z-index: 10;
     top: 68px;
     width: 100%;
-    // max-height: calc(100vh - 335px);
     max-height: 335px;
+    min-height: 335px;
     background: #131720;
     padding: 0;
   }

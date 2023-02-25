@@ -10,6 +10,7 @@ import {
   GET_CATEGORY_CURRENT,
   //GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  RESET_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
@@ -163,6 +164,14 @@ export const changeCheckedElCurrentFilter = (param) => {
     dispatch({
       type: CHANGE_EL_CHECKBOX_CURRENT_FILTER,
       filtersProps: param,
+    });
+  };
+};
+
+export const resetCurrentFilter = () => {
+  return (dispatch) => {
+    dispatch({
+      type: RESET_CURRENT_FILTER
     });
   };
 };
