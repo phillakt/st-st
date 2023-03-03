@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { animated, useSpring } from "@react-spring/web";
 import { getCategories } from "../redux/actions";
 import styles from "./Cat.module.scss";
 import Loader from "../ui/Loader/Loader";
@@ -17,6 +18,15 @@ export const Categories = () => {
     _allCategories();
   }, []);
 
+  const animat = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+  });
+
   return (
     <>
       <Helmet>
@@ -26,7 +36,6 @@ export const Categories = () => {
           content={`Скачать фильмы по жанрам торрентом бесплатно в хорошем качестве mp4!`}
         />
       </Helmet>
-
       <section className="_pt-40">
         <div className="container">
           <div className="row">

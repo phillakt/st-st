@@ -108,26 +108,37 @@ export const getMainSliderRandom = () => {
 };
 
 export const getFilmDetail = (slug) => {
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+  if(slug){
+    return async (dispatch) => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.post(
+        "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
+        {
+          name: slug,
+        },
+        config
+      );
+
+      dispatch({
+        type: GET_FILM_DETAIL,
+        filmDetail: response.data,
+      });
+
     };
+  }else {
+    return async (dispatch) => {
+      dispatch({
+        type: GET_FILM_DETAIL,
+        filmDetail: {},
+      });
+    }
+  }
 
-    const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
-      {
-        name: slug,
-      },
-      config
-    );
-
-    dispatch({
-      type: GET_FILM_DETAIL,
-      filmDetail: response.data,
-    });
-  };
 };
 
 export const getCategoryCurrent = (slug, count, filterState) => {

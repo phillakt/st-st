@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./main.css";
 import "./css/custom.css";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -17,31 +18,35 @@ import Desktop from "./Manual/Desktop/Desktop";
 import Mobile from "./Manual/Mobile/Mobile";
 import Search from "./Search/Search";
 import Page404 from "./Page404/Page404";
-import { wScrollTo } from "./redux/actions";
+import { wScrollTo, getFilmDetail } from "./redux/actions";
+
 
 const App = () => {
   const location = useLocation();
+  const filmDetail = useSelector((selector => selector.films.filmDetail));
+  const dispatch = useDispatch();
   useEffect(() => {
     wScrollTo();
-    
+    dispatch(getFilmDetail(null));
   }, [location]);
-  
+
+
   return (
     <>
       <Header />
-      <Routes>
-        <Route path={`/`} exact element={<Home />} />
-        <Route path={`/about`} element={<About />} />
-        <Route path={`/cat`} element={<Cat />} />
-        <Route path={`/cat/:slug`} element={<CatCurrent />} />
-        <Route path={`/cat/:cat/:slug`} element={<Detail />} />
-        <Route path={`/feedback`} element={<FeedBack />} />
-        <Route path={`/manual`} element={<Manual />} />
-        <Route path={`/manual/desktop`} element={<Desktop />}/>
-        <Route path={`/manual/mobile`} element={<Mobile />} />
-        <Route path={`/search`} match={true} element={<Search />} />
-        <Route path={`/*`} element={<Page404 />} />
-      </Routes>
+        <Routes>
+          <Route path={`/`} exact element={<Home />} />
+          <Route path={`/about`} element={<About />} />
+          <Route path={`/cat`} element={<Cat />} />
+          <Route path={`/cat/:slug`} element={<CatCurrent />} />
+          <Route path={`/cat/:cat/:slug`} element={<Detail />} />
+          <Route path={`/feedback`} element={<FeedBack />} />
+          <Route path={`/manual`} element={<Manual />} />
+          <Route path={`/manual/desktop`} element={<Desktop />}/>
+          <Route path={`/manual/mobile`} element={<Mobile />} />
+          <Route path={`/search`} match={true} element={<Search />} />
+          <Route path={`/*`} element={<Page404 />} />
+        </Routes>
       <Footer />
     </>
   );

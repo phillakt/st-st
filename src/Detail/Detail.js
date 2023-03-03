@@ -9,6 +9,9 @@ import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import { dataServer } from "../dataServer/dataServer";
+// import { animated, useSpring } from "@react-spring/web";
+// import Skeleton from "react-loading-skeleton";
+// import "react-loading-skeleton/dist/skeleton.css";
 
 export const Detail = () => {
   const params = useParams();
@@ -52,6 +55,15 @@ export const Detail = () => {
     }
   };
 
+  // const animat = useSpring({
+  //   from: {
+  //     opacity: 0,
+  //   },
+  //   to: {
+  //     opacity: 1,
+  //   },
+  // });
+
   return (
     <>
       {!detail.ID ? (
@@ -65,20 +77,25 @@ export const Detail = () => {
             </title>
             <meta
               name="description"
-              content={`Скачать фильм ${detail.post_title
-                } торрент на телефон, планшет бесплатно в mp4! ${detail.meta_fields.year[0]
+              content={`Скачать фильм ${
+                detail.post_title
+              } торрент на телефон, планшет бесплатно в mp4! ${
+                detail.meta_fields.year[0]
                   ? `Год: ${detail.meta_fields.year[0]}.`
                   : ""
-                } ${detail.meta_fields.director[0]
+              } ${
+                detail.meta_fields.director[0]
                   ? `Режиссер: ${detail.meta_fields.director[0]}.`
                   : ""
-                } ${detail.meta_fields.country[0]
+              } ${
+                detail.meta_fields.country[0]
                   ? `Страна: ${detail.meta_fields.country[0]}.`
                   : ""
-                } ${detail.meta_fields.actors[0]
+              } ${
+                detail.meta_fields.actors[0]
                   ? `Актеры: ${detail.meta_fields.actors[0]}.`
                   : ""
-                }`}
+              }`}
             />
           </Helmet>
 
@@ -113,8 +130,8 @@ export const Detail = () => {
                     )}
 
                     {detail.meta_fields.link_to_file_sd[0] ||
-                      detail.meta_fields.link_to_file_hd[0] ||
-                      detail.meta_fields.link_to_file_fhd[0] ? (
+                    detail.meta_fields.link_to_file_hd[0] ||
+                    detail.meta_fields.link_to_file_fhd[0] ? (
                       ""
                     ) : (
                       <div className={style.torrent_not_added}>
@@ -122,11 +139,9 @@ export const Detail = () => {
                       </div>
                     )}
 
-
                     <div className={style.download_box}>
                       {/* Для SD */}
                       {detail.meta_fields.link_to_file_sd[0] && (
-
                         <div className={style.download__wrap}>
                           <div className={style.download__icon}>
                             <img src={qbIco} alt="qbIco" />
@@ -152,13 +167,11 @@ export const Detail = () => {
                             />
                           }
                         </div>
-
                       )}
                       {/* Для SD end */}
 
                       {/* Для HD */}
                       {detail.meta_fields.link_to_file_hd[0] && (
-
                         <div className={style.download__wrap}>
                           <div className={style.download__icon}>
                             <img src={qbIco} alt="qbIco" />
@@ -184,7 +197,6 @@ export const Detail = () => {
                             />
                           }
                         </div>
-
                       )}
                       {/* Для HD end */}
 
@@ -218,7 +230,6 @@ export const Detail = () => {
                       )}
                       {/* Для Full HD end */}
                     </div>
-
 
                     {"" && (
                       <div className="row _mb-10">
@@ -260,9 +271,7 @@ export const Detail = () => {
                         {detail.category.map((item, i) => {
                           return (
                             <li key={i}>
-                              <NavLink
-                                to={`/cat/${item.slug}`}
-                              >
+                              <NavLink to={`/cat/${item.slug}`}>
                                 {item.name}
                               </NavLink>
                             </li>
@@ -321,7 +330,10 @@ export const Detail = () => {
                           .split(", ")
                           .map((item, i) => {
                             return (
-                              <li key={item} className={style.country__list_item}>
+                              <li
+                                key={item}
+                                className={style.country__list_item}
+                              >
                                 <span>{item}</span>
                               </li>
                             );
