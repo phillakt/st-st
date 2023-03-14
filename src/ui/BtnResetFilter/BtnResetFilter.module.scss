@@ -1,22 +1,25 @@
 
 .btn {
-    font-family: "Inter", sans-serif;
-    display: flex;
-    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
 }
 
 .default {
-    cursor: pointer;
-    color: #eb5757;
-    background: #131720;
-    border-radius: 16px;
-    padding: 12px 50px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .3s ease-in-out;
+    background: #131720;
+    border-radius: 16px;
+    transition: all .3s ease-in-out ;
+    
+    span {
+        display: inline-flex;
+        color: #e0e0e0;
+        padding: 14px 50px;
+        font-size: 16px;
+    }
 
     &:hover {
-        color: #e0e0e0;
-        background: #eb575773;
+        background: #2f80ed;
     }
 }

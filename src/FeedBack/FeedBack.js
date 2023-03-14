@@ -155,15 +155,15 @@ export const FeedBack = () => {
                 <div className="_mt-30">
                   <div className="fjc-s">
                     <span className="color__white fs-18">
-                      По вопросам сотрудничества <br /> или размещения рекламы
+                      По вопросам сотрудничества <br /> или улучшения портала
                       <br />
                       пишите на почту:
                     </span>
                   </div>
                   <div className="_mt-10">
                     <div className="fjc-s">
-                      <a className={style.link} href="mailto:support@st-st.com">
-                        support@st-st.com
+                      <a className={style.link} href="mailto:sup@st-st.org">
+                        sup@st-st.org
                       </a>
                     </div>
                   </div>

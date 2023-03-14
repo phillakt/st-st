@@ -6,7 +6,7 @@ import telegramBrands from "../../img/social/telegram-brands.svg";
 import style from "./Footer.module.scss";
 import { getCategories } from "../../redux/actions";
 import HomeSliderRandom from "../HomeSliderRandom/HomeSliderRandom";
-
+import Loader from "../../ui/Loader/Loader";
 
 export const Footer = () => {
   const footerCategory = useSelector((selector) => selector.films.categories);
@@ -26,10 +26,7 @@ export const Footer = () => {
           <div className="row _pb-60">
             <div className="col-lg-4 col-12">
               <div className="footer__logo">
-                <NavLink
-                  className="footer__logo_link"
-                  to={`/`}
-                >
+                <NavLink className="footer__logo_link" to={`/`}>
                   St-St.
                   <span className="footer__logo_desc-min">stream-store</span>
                 </NavLink>
@@ -53,19 +50,23 @@ export const Footer = () => {
               </div>
               <div className={style.menu}>
                 <ul>
-                  {!!footerCategory && footerCategory.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        <NavLink
-                          to={{
-                            pathname: `/cat/${item.slug}`,
-                          }}
-                        >
-                          {item.name}
-                        </NavLink>
-                      </li>
-                    );
-                  })}
+                  {!footerCategory.length ? (
+                    <Loader />
+                  ) : (
+                    footerCategory.map((item, i) => {
+                      return (
+                        <li key={i}>
+                          <NavLink
+                            to={{
+                              pathname: `/cat/${item.slug}`,
+                            }}
+                          >
+                            {item.name}
+                          </NavLink>
+                        </li>
+                      );
+                    })
+                  )}
                 </ul>
               </div>
             </div>

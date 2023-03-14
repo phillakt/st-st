@@ -1,9 +1,6 @@
-import React, { useEffect, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  getCategories,
-  getMainFilterCategoryCurrent,
-} from "../../redux/actions";
+import React from "react";
+import { useSelector } from "react-redux";
+import { getMainFilterCategoryCurrent } from "../../redux/actions";
 import FilterListItem from "./iu/FilterListItem";
 import Loader from "../../ui/Loader/Loader";
 
@@ -12,15 +9,6 @@ export const HomeFilter = () => {
   const mainFilterCategoryCurrent = useSelector(
     (selector) => selector.films.mainFilterCategoryCurrent
   );
-  const dispatch = useDispatch();
-
-  const _getCategories = useCallback(() => {
-    dispatch(getCategories());
-  }, []);
-
-  useEffect(() => {
-    _getCategories();
-  }, []);
 
   return (
     <section className="home-filter _mt-60">
@@ -36,15 +24,17 @@ export const HomeFilter = () => {
           <div className="col-lg-12">
             <div className="home-filter__wrap">
               <div className="fjc-sb">
-                <ul className="ul home-filter__genre">
-                  {filterList.length ? (
-                    filterList.map((item, i) => {
+                {!filterList.length ? (
+                  <Loader />
+                ) : (
+                  <ul className="ul home-filter__genre">
+                    {filterList.map((item, i) => {
                       return (
                         <li key={i}>
                           <FilterListItem
                             props={{
-                              className:
-                                item.slug === mainFilterCategoryCurrent.slug ? "active" : "", name: item.name,
+                              className: item.slug === mainFilterCategoryCurrent.slug ? "active" : "",
+                              name: item.name,
                             }}
                             getMainFilterCategoryCurrentHandler={() =>
                               getMainFilterCategoryCurrent(item.slug, 18)
@@ -52,11 +42,9 @@ export const HomeFilter = () => {
                           />
                         </li>
                       );
-                    })
-                  ) : (
-                    <Loader />
-                  )}
-                </ul>
+                    })}
+                  </ul>
+                )}
               </div>
             </div>
           </div>

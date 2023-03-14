@@ -146,6 +146,12 @@
     border-top: 2px solid #e0e0e0;
     border-left: 2px solid #e0e0e0;
     transform: rotate(315deg);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    border-top: 2px solid #2f80ed;
+    border-left: 2px solid #2f80ed;
   }
 }
 
@@ -180,5 +186,11 @@
     border-top: 2px solid #e0e0e0;
     border-right: 2px solid #e0e0e0;
     transform: rotate(45deg);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    border-top: 2px solid #2f80ed;
+    border-right: 2px solid #2f80ed;
   }
 }
