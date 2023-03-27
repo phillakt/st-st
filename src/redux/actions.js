@@ -28,7 +28,7 @@ export const getMainSlider = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/main-slider",
+      "https://backend.st-st.org/wp-json/blackbox/v1/main-slider",
       {},
       config
     );
@@ -48,7 +48,7 @@ export const getCategories = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/genres",
+      "https://backend.st-st.org/wp-json/blackbox/v1/genres",
       {},
       config
     );
@@ -68,7 +68,7 @@ export const getMainFilterCategoryCurrent = (slug, count) => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/main-filter-category-current",
+      "https://backend.st-st.org/wp-json/blackbox/v1/main-filter-category-current",
       {
         category: slug,
         count: count,
@@ -95,7 +95,7 @@ export const getMainSliderRandom = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-random",
+      "https://backend.st-st.org/wp-json/blackbox/v1/film-random",
       {},
       config
     );
@@ -116,7 +116,7 @@ export const getFilmDetail = (slug) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
+      "https://backend.st-st.org/wp-json/blackbox/v1/film-id",
       {
         name: slug,
       },
@@ -141,7 +141,7 @@ export const getCategoryCurrent = (slug, count, filterState) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current",
+      "https://backend.st-st.org/wp-json/blackbox/v1/category-current",
       {
         category: slug,
         count,
@@ -185,7 +185,7 @@ export const getCategoryCurrentFilter = () => {
     //   },
     // }
     // const response = await axios.post(
-    //   "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current-filter",
+    //   "https://backend.st-st.org/wp-json/blackbox/v1/category-current-filter",
     //   {
     //     category: slug,
     //     count,
@@ -210,7 +210,7 @@ export const getAllFilms = () => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films",
+      "https://backend.st-st.org/wp-json/blackbox/v1/all-films",
       {},
       config
     );
@@ -231,7 +231,7 @@ export const getAllFilmsLength = (slug) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films-length",
+      "https://backend.st-st.org/wp-json/blackbox/v1/all-films-length",
       {
         category: slug,
       },
@@ -294,7 +294,7 @@ export const getFeedBack = (dataForm) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/feedback",
+      "https://backend.st-st.org/wp-json/blackbox/v1/feedback",
       {
         feedback: JSON.stringify(dataForm),
       },

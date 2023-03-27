@@ -71,21 +71,21 @@ const CardBook = ({ item }) => {
             </div>
           )}
           
-          {/* {item.meta_fields.country && (
+          {item.meta_fields.country && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Страна: {item.meta_fields.country}</span>
               </div>
             </div>
-          )} */}
+          )}
 
-          {/* {item.meta_fields.duration && (
+          {item.meta_fields.duration && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Время: {item.meta_fields.duration}</span>
               </div>
             </div>
-          )} */}
+          )}
 
           <div className="_pb-10">
             <ul className={style.category_list}>

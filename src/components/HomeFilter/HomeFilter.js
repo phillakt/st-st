@@ -20,20 +20,24 @@ export const HomeFilter = () => {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="home-filter__wrap">
-              <div className="fjc-sb">
-                {!filterList.length ? (
-                  <Loader />
-                ) : (
+
+        {!filterList.length ? (
+          <Loader />
+        ) : (
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="home-filter__wrap">
+                <div className="fjc-sb">
                   <ul className="ul home-filter__genre">
                     {filterList.map((item, i) => {
                       return (
                         <li key={i}>
                           <FilterListItem
                             props={{
-                              className: item.slug === mainFilterCategoryCurrent.slug ? "active" : "",
+                              className:
+                                item.slug === mainFilterCategoryCurrent.slug
+                                  ? "active"
+                                  : "",
                               name: item.name,
                             }}
                             getMainFilterCategoryCurrentHandler={() =>
@@ -44,11 +48,11 @@ export const HomeFilter = () => {
                       );
                     })}
                   </ul>
-                )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
