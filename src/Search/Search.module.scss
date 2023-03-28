@@ -11,7 +11,8 @@
 .title_search {
   color: #e0e0e0;
   font-size: 20px;
-
+  word-wrap: break-word;
+  
   @media (max-width: 768px) {
     font-size: 16px;
   }
@@ -53,12 +54,12 @@
     }
   
     @media (max-width: 992px) {
-      font-size: 12px;
+      font-size: 14px;
       background-color: #151f30;
     }
   
     @media (max-width: 576px) {
-      font-size: 12px;
+      font-size: 14px;
       background-color: #151f30;
     }
 }

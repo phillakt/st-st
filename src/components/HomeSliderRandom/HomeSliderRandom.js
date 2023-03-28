@@ -70,7 +70,7 @@ const HomeSliderRandom = () => {
         },
       },
       {
-        breakpoint: 415,
+        breakpoint: 450,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,

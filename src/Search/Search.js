@@ -60,7 +60,7 @@ const Search = () => {
               </div>
             </div>
             <div className="col-lg-12">
-              <div className={`${style.title_found} _mt-5`}>
+              <div className={`${style.title_found} _mt-30`}>
                 Найдено: «{searchFilmsPage.searchFilmsPageList.length}»
               </div>
             </div>

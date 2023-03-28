@@ -6,7 +6,6 @@ import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import EmptyListFilms from "../components/EmptyListFilms/EmptyListFilms";
-import BtnBlue from "../ui/BtnBlue/BtnBlue";
 
 import Loader from "../ui/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
@@ -68,7 +67,7 @@ const CatCurrent = () => {
           </div>
 
           <div className="row _mt-30">
-            <div className="col-md-3 _mb-30">
+            <div className="col-md-3">
               <CategoryCurrentFilter />
             </div>
 

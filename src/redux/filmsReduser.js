@@ -129,6 +129,7 @@ export const films = (state = initState, action) => {
         ...state,
         filtersProps: [
           ...state.filtersProps.map((item) => {
+            console.log(item);
             if (item.param === action.filtersProps.param) {
               return {
                 ...item,

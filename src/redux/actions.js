@@ -1,5 +1,6 @@
 import axios from "axios";
 import { token } from "../token";
+import { dataServer } from "../dataServer/dataServer";
 import { GET_FEEDBACK, SET_FEEDBACK_SUCCESS } from "./typeForms";
 import {
   GET_MAIN_SLIDER,
@@ -8,7 +9,6 @@ import {
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
-  //GET_CATEGORY_CURRENT_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   RESET_CURRENT_FILTER,
   GET_ALL_FILMS,
@@ -28,7 +28,7 @@ export const getMainSlider = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/main-slider",
+      `${dataServer.backendJsonV1}main-slider`,
       {},
       config
     );
@@ -48,7 +48,7 @@ export const getCategories = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/genres",
+      `${dataServer.backendJsonV1}genres`,
       {},
       config
     );
@@ -68,7 +68,7 @@ export const getMainFilterCategoryCurrent = (slug, count) => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/main-filter-category-current",
+      `${dataServer.backendJsonV1}main-filter-category-current`,
       {
         category: slug,
         count: count,
@@ -95,7 +95,7 @@ export const getMainSliderRandom = () => {
       },
     };
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-random",
+      `${dataServer.backendJsonV1}film-random`,
       {},
       config
     );
@@ -117,7 +117,7 @@ export const getFilmDetail = (slug) => {
       };
 
       const response = await axios.post(
-        "https://blackbox.eurodir.ru/wp-json/blackbox/v1/film-id",
+        `${dataServer.backendJsonV1}film-id`,
         {
           name: slug,
         },
@@ -128,7 +128,6 @@ export const getFilmDetail = (slug) => {
         type: GET_FILM_DETAIL,
         filmDetail: response.data,
       });
-
     };
   }else {
     return async (dispatch) => {
@@ -138,7 +137,6 @@ export const getFilmDetail = (slug) => {
       });
     }
   }
-
 };
 
 export const getCategoryCurrent = (slug, count, filterState) => {
@@ -152,7 +150,7 @@ export const getCategoryCurrent = (slug, count, filterState) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current",
+      `${dataServer.backendJsonV1}category-current`,
       {
         category: slug,
         count,
@@ -187,31 +185,6 @@ export const resetCurrentFilter = () => {
   };
 };
 
-export const getCategoryCurrentFilter = () => {
-  // console.log("action getCategoryCurrentFilter:", arg);
-  return async (dispatch) => {
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // }
-    // const response = await axios.post(
-    //   "https://blackbox.eurodir.ru/wp-json/blackbox/v1/category-current-filter",
-    //   {
-    //     category: slug,
-    //     count,
-    //     year,
-    //     sort,
-    //   },
-    //   config
-    // );
-    // dispatch({
-    //   type: GET_CATEGORY_CURRENT_FILTER,
-    //   categoryCurrent: response.data,
-    // })
-  };
-};
-
 export const getAllFilms = () => {
   return async (dispatch) => {
     const config = {
@@ -221,7 +194,7 @@ export const getAllFilms = () => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films",
+      `${dataServer.backendJsonV1}all-films`,
       {},
       config
     );
@@ -242,7 +215,7 @@ export const getAllFilmsLength = (slug) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/all-films-length",
+      `${dataServer.backendJsonV1}all-films-length`,
       {
         category: slug,
       },
@@ -305,7 +278,7 @@ export const getFeedBack = (dataForm) => {
     };
 
     const response = await axios.post(
-      "https://blackbox.eurodir.ru/wp-json/blackbox/v1/feedback",
+      `${dataServer.backendJsonV1}feedback`,
       {
         feedback: JSON.stringify(dataForm),
       },

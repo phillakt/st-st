@@ -78,13 +78,13 @@
 .title {
   a {
     display: inline-flex;
-    font-size: 20px;
+    font-size: 18px;
     color: #e0e0e0;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 }

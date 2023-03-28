@@ -56,36 +56,30 @@ const CardBook = ({ item }) => {
               </NavLink>
             </h3>
           </div>
-          {!item.meta_fields.rating ? (
-            ""
-          ) : (
+          {item.meta_fields.rating && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Рейтинг: {item.meta_fields.rating}</span>
               </div>
             </div>
           )}
-          {!item.meta_fields.year ? (
-            ""
-          ) : (
+          {item.meta_fields.year && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Год: {item.meta_fields.year}</span>
               </div>
             </div>
           )}
-          {!item.meta_fields.country ? (
-            ""
-          ) : (
+          
+          {item.meta_fields.country && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Страна: {item.meta_fields.country}</span>
               </div>
             </div>
           )}
-          {!item.meta_fields.duration ? (
-            ""
-          ) : (
+
+          {item.meta_fields.duration && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Время: {item.meta_fields.duration}</span>
