@@ -6,12 +6,13 @@ import {
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
   GET_CATEGORY_CURRENT_FILTER,
-  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
-  RESET_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
   GET_SEARCH_FILMS_PAGE,
+  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  RESET_CURRENT_FILTER,
+  RESET_MAIN_FILTER_CATEGORY_CURRENT
 } from "./typesFilms";
 
 const initState = {
@@ -149,6 +150,45 @@ export const films = (state = initState, action) => {
         ],
       };
 
+    case GET_ALL_FILMS:
+      return {
+        ...state,
+        allFilms: action.allFilms,
+      };
+
+    case GET_ALL_FILMS_LENGTH:
+      return {
+        ...state,
+        allFilmsLength: action.allFilmsLength,
+      };
+
+    case GET_SEARCH_FILMS:
+      const searchInputValue = action.searchFilms.searchInputValue;
+      const searchWrap = action.searchFilms.searchFilmsList.length
+        ? true
+        : false;
+      const searchFilmsList = action.searchFilms.searchFilmsList;
+      return {
+        ...state,
+        searchFilms: {
+          searchInputValue,
+          searchWrap,
+          searchFilmsList,
+        },
+      };
+
+    case GET_SEARCH_FILMS_PAGE:
+      const searchFilmsPageInputValue =
+        action.searchFilmsPage.searchFilmsPageInputValue;
+      const searchFilmsPageList = action.searchFilmsPage.searchFilmsPageList;
+      return {
+        ...state,
+        searchFilmsPage: {
+          searchFilmsPageInputValue,
+          searchFilmsPageList,
+        },
+      };
+
     case RESET_CURRENT_FILTER:
       return {
         ...state,
@@ -183,39 +223,13 @@ export const films = (state = initState, action) => {
         ],
       };
 
-    case GET_ALL_FILMS:
+    case RESET_MAIN_FILTER_CATEGORY_CURRENT:
       return {
         ...state,
-        allFilms: action.allFilms,
-      };
-
-    case GET_ALL_FILMS_LENGTH:
-      return {
-        ...state,
-        allFilmsLength: action.allFilmsLength,
-      };
-
-    case GET_SEARCH_FILMS:
-      const searchInputValue = action.searchFilms.searchInputValue;
-      const searchWrap = action.searchFilms.searchFilmsList.length ? true : false;
-      const searchFilmsList = action.searchFilms.searchFilmsList;
-      return {
-        ...state,
-        searchFilms: {
-          searchInputValue,
-          searchWrap,
-          searchFilmsList,
-        },
-      };
-
-    case GET_SEARCH_FILMS_PAGE:
-      const searchFilmsPageInputValue = action.searchFilmsPage.searchFilmsPageInputValue;
-      const searchFilmsPageList = action.searchFilmsPage.searchFilmsPageList;
-      return {
-        ...state,
-        searchFilmsPage: {
-          searchFilmsPageInputValue,
-          searchFilmsPageList,
+        mainFilterCategoryCurrent: {
+          count: 0,
+          slug: "",
+          categoryPosts: [],
         },
       };
     default:

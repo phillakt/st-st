@@ -9,12 +9,13 @@ import {
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
-  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
-  RESET_CURRENT_FILTER,
   GET_ALL_FILMS,
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
   GET_SEARCH_FILMS_PAGE,
+  CHANGE_EL_CHECKBOX_CURRENT_FILTER,
+  RESET_CURRENT_FILTER,
+  RESET_MAIN_FILTER_CATEGORY_CURRENT,
 } from "./typesFilms";
 
 import { CHANGE_MOBILE_VIEW } from "./typesHeader";
@@ -61,30 +62,30 @@ export const getCategories = () => {
 };
 
 export const getMainFilterCategoryCurrent = (slug, count) => {
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    return async (dispatch) => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.post(
+        `${dataServer.backendJsonV1}main-filter-category-current`,
+        {
+          category: slug,
+          count: count,
+        },
+        config
+      );
+        
+      dispatch({
+        type: GET_MAIN_FILTER_CATEGORY_CURRENT,
+        mainFilterCategoryCurrent: {
+          count,
+          slug,
+          categoryPosts: response.data,
+        },
+      });
     };
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}main-filter-category-current`,
-      {
-        category: slug,
-        count: count,
-      },
-      config
-    );
-
-    dispatch({
-      type: GET_MAIN_FILTER_CATEGORY_CURRENT,
-      mainFilterCategoryCurrent: {
-        count,
-        slug,
-        categoryPosts: response.data,
-      },
-    });
-  };
 };
 
 export const getMainSliderRandom = () => {
@@ -140,32 +141,44 @@ export const getFilmDetail = (slug) => {
 };
 
 export const getCategoryCurrent = (slug, count, filterState) => {
-  const filterStateJson = JSON.stringify(filterState);
+  if(slug){
+    const filterStateJson = JSON.stringify(filterState);
 
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}category-current`,
-      {
-        category: slug,
+    return async (dispatch) => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+  
+      const response = await axios.post(
+        `${dataServer.backendJsonV1}category-current`,
+        {
+          category: slug,
+          count,
+          filterState: filterStateJson,
+        },
+        config
+      );
+  
+      dispatch({
+        type: GET_CATEGORY_CURRENT,
+        slug,
         count,
-        filterState: filterStateJson,
-      },
-      config
-    );
+        categoryCurrent: response.data,
+      });
+    };
+  }else {
+    return async (dispatch) => {
+      dispatch({
+        type: GET_CATEGORY_CURRENT,
+        slug: '',
+        count: 0,
+        categoryCurrent: [],
+      })
+    }
+  }
 
-    dispatch({
-      type: GET_CATEGORY_CURRENT,
-      slug,
-      count,
-      categoryCurrent: response.data,
-    });
-  };
 };
 
 export const changeCheckedElCurrentFilter = (param) => {
@@ -173,14 +186,6 @@ export const changeCheckedElCurrentFilter = (param) => {
     dispatch({
       type: CHANGE_EL_CHECKBOX_CURRENT_FILTER,
       filtersProps: param,
-    });
-  };
-};
-
-export const resetCurrentFilter = () => {
-  return (dispatch) => {
-    dispatch({
-      type: RESET_CURRENT_FILTER
     });
   };
 };
@@ -250,6 +255,33 @@ export const getSearchFilmsPage = (val, searchList) => {
     },
   };
 };
+
+
+
+
+
+export const resetCurrentFilter = () => {
+  return (dispatch) => {
+    dispatch({
+      type: RESET_CURRENT_FILTER
+    });
+  };
+};
+
+export const resetMainFilterCategoryCurrent = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: RESET_MAIN_FILTER_CATEGORY_CURRENT,
+      mainFilterCategoryCurrent: {
+        slug: null,
+        count: 0,
+        categoryPosts: [],
+      },
+    })
+  }
+}
+
+
 // Films end
 
 // Header

@@ -24,4 +24,5 @@ const RandomListCardBook = () => {
   );
 };
 
+
 export default RandomListCardBook;

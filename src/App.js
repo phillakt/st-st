@@ -18,16 +18,16 @@ import Desktop from "./Manual/Desktop/Desktop";
 import Mobile from "./Manual/Mobile/Mobile";
 import Search from "./Search/Search";
 import Page404 from "./Page404/Page404";
-import { wScrollTo, getFilmDetail } from "./redux/actions";
+import { wScrollTo, getFilmDetail, getCategoryCurrent } from "./redux/actions";
 
 
 const App = () => {
   const location = useLocation();
-  const filmDetail = useSelector((selector => selector.films.filmDetail));
   const dispatch = useDispatch();
   useEffect(() => {
     wScrollTo();
     dispatch(getFilmDetail(null));
+    dispatch(getCategoryCurrent(null));
   }, [location]);
 
 

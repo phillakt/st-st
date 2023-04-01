@@ -1,17 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { getMainFilterCategoryCurrent } from "../../../redux/actions";
 
-export const FilterListItem = ({
-  props,
-  getMainFilterCategoryCurrentHandler,
-}) => {
+export const FilterListItem = ({props}) => {
   const dispatch = useDispatch();
   return (
     <span
       className={props.className}
-      onClick={(e) => {
-        e.preventDefault();
-        dispatch(getMainFilterCategoryCurrentHandler());
+      onClick={() => {
+        dispatch(getMainFilterCategoryCurrent(props.slug, props.count));
       }}
     >
       {props.name}

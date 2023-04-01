@@ -13,7 +13,7 @@ export const Paginate = ({ itemsPerPage, slug, filterState, categoryAllCountPost
   useEffect(() => {
     setRemountComponent(Math.random());
     setPageCount(Math.ceil(categoryAllCountPosts / itemsPerPage));
-  }, [categoryAllCountPosts, slug]);
+  }, [categoryAllCountPosts, slug, filterState]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % categoryAllCountPosts;

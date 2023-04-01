@@ -132,134 +132,100 @@ export const Detail = () => {
                     {detail.meta_fields.link_to_file_sd[0] ||
                     detail.meta_fields.link_to_file_hd[0] ||
                     detail.meta_fields.link_to_file_fhd[0] ? (
-                      ""
+                      <div className={style.download_box}>
+                        {/* Для SD */}
+                        {detail.meta_fields.link_to_file_sd[0] && (
+                          <div className={style.download__wrap}>
+                            <div className={style.download__icon}>
+                              <img src={qbIco} alt="qbIco" />
+                            </div>
+                            <div className={style.download__weight}>
+                              {detail.meta_fields.file_size_sd[0]}&nbsp;
+                              <span>GB</span>
+                            </div>
+                            <div className={style.download__link}>
+                              <a
+                                href={
+                                  dataServer.downloadLinkTorrent +
+                                  detail.meta_fields.link_to_file_sd[0]
+                                }
+                                download
+                              >
+                                torrent
+                              </a>
+                            </div>
+                            {
+                              <TypeFilms
+                                type={detail.meta_fields.link_to_file_sd[0]}
+                              />
+                            }
+                          </div>
+                        )}
+                        {/* Для SD end */}
+
+                        {/* Для HD */}
+                        {detail.meta_fields.link_to_file_hd[0] && (
+                          <div className={style.download__wrap}>
+                            <div className={style.download__icon}>
+                              <img src={qbIco} alt="qbIco" />
+                            </div>
+                            <div className={style.download__weight}>
+                              {detail.meta_fields.file_size_hd[0]}&nbsp;
+                              <span>GB</span>
+                            </div>
+                            <div className={style.download__link}>
+                              <a
+                                href={
+                                  dataServer.downloadLinkTorrent +
+                                  detail.meta_fields.link_to_file_hd[0]
+                                }
+                                download
+                              >
+                                torrent
+                              </a>
+                            </div>
+                            {
+                              <TypeFilms
+                                type={detail.meta_fields.link_to_file_hd[0]}
+                              />
+                            }
+                          </div>
+                        )}
+                        {/* Для HD end */}
+
+                        {/* Для Full HD */}
+                        {detail.meta_fields.link_to_file_fhd[0] && (
+                          <div className={`${style.download__wrap}`}>
+                            <div className={style.download__icon}>
+                              <img src={qbIco} alt="qbIco" />
+                            </div>
+                            <div className={style.download__weight}>
+                              {detail.meta_fields.file_size_fhd[0]}&nbsp;
+                              <span>GB</span>
+                            </div>
+                            <div className={style.download__link}>
+                              <a
+                                href={
+                                  dataServer.downloadLinkTorrent +
+                                  detail.meta_fields.link_to_file_fhd[0]
+                                }
+                                download
+                              >
+                                torrent
+                              </a>
+                            </div>
+                            {
+                              <TypeFilms
+                                type={detail.meta_fields.link_to_file_fhd[0]}
+                              />
+                            }
+                          </div>
+                        )}
+                        {/* Для Full HD end */}
+                      </div>
                     ) : (
                       <div className={style.torrent_not_added}>
                         <span>Torrent не добавлен</span>
-                      </div>
-                    )}
-
-                    <div className={style.download_box}>
-                      {/* Для SD */}
-                      {detail.meta_fields.link_to_file_sd[0] && (
-                        <div className={style.download__wrap}>
-                          <div className={style.download__icon}>
-                            <img src={qbIco} alt="qbIco" />
-                          </div>
-                          <div className={style.download__weight}>
-                            {detail.meta_fields.file_size_sd[0]}&nbsp;
-                            <span>GB</span>
-                          </div>
-                          <div className={style.download__link}>
-                            <a
-                              href={
-                                dataServer.downloadLinkTorrent +
-                                detail.meta_fields.link_to_file_sd[0]
-                              }
-                              download
-                            >
-                              torrent
-                            </a>
-                          </div>
-                          {
-                            <TypeFilms
-                              type={detail.meta_fields.link_to_file_sd[0]}
-                            />
-                          }
-                        </div>
-                      )}
-                      {/* Для SD end */}
-
-                      {/* Для HD */}
-                      {detail.meta_fields.link_to_file_hd[0] && (
-                        <div className={style.download__wrap}>
-                          <div className={style.download__icon}>
-                            <img src={qbIco} alt="qbIco" />
-                          </div>
-                          <div className={style.download__weight}>
-                            {detail.meta_fields.file_size_hd[0]}&nbsp;
-                            <span>GB</span>
-                          </div>
-                          <div className={style.download__link}>
-                            <a
-                              href={
-                                dataServer.downloadLinkTorrent +
-                                detail.meta_fields.link_to_file_hd[0]
-                              }
-                              download
-                            >
-                              torrent
-                            </a>
-                          </div>
-                          {
-                            <TypeFilms
-                              type={detail.meta_fields.link_to_file_hd[0]}
-                            />
-                          }
-                        </div>
-                      )}
-                      {/* Для HD end */}
-
-                      {/* Для Full HD */}
-                      {detail.meta_fields.link_to_file_fhd[0] && (
-                        <div className={`${style.download__wrap}`}>
-                          <div className={style.download__icon}>
-                            <img src={qbIco} alt="qbIco" />
-                          </div>
-                          <div className={style.download__weight}>
-                            {detail.meta_fields.file_size_fhd[0]}&nbsp;
-                            <span>GB</span>
-                          </div>
-                          <div className={style.download__link}>
-                            <a
-                              href={
-                                dataServer.downloadLinkTorrent +
-                                detail.meta_fields.link_to_file_fhd[0]
-                              }
-                              download
-                            >
-                              torrent
-                            </a>
-                          </div>
-                          {
-                            <TypeFilms
-                              type={detail.meta_fields.link_to_file_fhd[0]}
-                            />
-                          }
-                        </div>
-                      )}
-                      {/* Для Full HD end */}
-                    </div>
-
-                    {"" && (
-                      <div className="row _mb-10">
-                        <div className="col-md-12">
-                          <div className="_mb-20">
-                            <h3 className="color__white fs-16">
-                              Инструкции по скачиванию:
-                            </h3>
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="_mb-10">
-                            <NavLink
-                              className={style.manual__link}
-                              to={`/manual/mobile`}
-                            >
-                              Для телефона
-                            </NavLink>
-                          </div>
-                        </div>
-                        <div className="col-md-12">
-                          <div className="_mb-10">
-                            <NavLink
-                              className={style.manual__link}
-                              to={`/manual/desktop`}
-                            >
-                              Для компьютера
-                            </NavLink>
-                          </div>
-                        </div>
                       </div>
                     )}
 
