@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { getMainFilterCategoryCurrent } from "../../../redux/actions";
+import { getMainFilterCategoryCurrent, resetMainFilterCategoryCurrent } from "../../../redux/actions";
 
 export const FilterListItem = ({props}) => {
   const dispatch = useDispatch();
@@ -8,6 +8,7 @@ export const FilterListItem = ({props}) => {
     <span
       className={props.className}
       onClick={() => {
+        dispatch(resetMainFilterCategoryCurrent());
         dispatch(getMainFilterCategoryCurrent(props.slug, props.count));
       }}
     >

@@ -271,12 +271,7 @@ export const resetCurrentFilter = () => {
 export const resetMainFilterCategoryCurrent = () => {
   return async (dispatch) => {
     dispatch({
-      type: RESET_MAIN_FILTER_CATEGORY_CURRENT,
-      mainFilterCategoryCurrent: {
-        slug: null,
-        count: 0,
-        categoryPosts: [],
-      },
+      type: RESET_MAIN_FILTER_CATEGORY_CURRENT
     })
   }
 }

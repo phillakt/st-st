@@ -30,6 +30,7 @@ const initState = {
     count: 0,
     slug: "",
     categoryPosts: [],
+    changeCategory: false
   },
   mainSliderRandom: [],
   filmDetail: {},
@@ -94,6 +95,7 @@ export const films = (state = initState, action) => {
           slug: action.mainFilterCategoryCurrent.slug,
           count: action.mainFilterCategoryCurrent.count,
           categoryPosts: action.mainFilterCategoryCurrent.categoryPosts,
+          changeCategory: true
         },
       };
     case GET_MAIN_SLIDER_RANDOM:
@@ -230,6 +232,7 @@ export const films = (state = initState, action) => {
           count: 0,
           slug: "",
           categoryPosts: [],
+          changeCategory: true
         },
       };
     default:

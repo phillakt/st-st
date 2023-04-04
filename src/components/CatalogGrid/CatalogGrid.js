@@ -18,9 +18,8 @@ const CatalogGrid = () => {
   };
 
   const ViewCategoryPosts = ({ categoryCurrent }) => {
-    console.log(categoryCurrent);
     if (!categoryCurrent.categoryPosts.length) {
-      return <RandomListCardBook />
+      return <Loader />
     } else {
       return categoryCurrent.categoryPosts.map((item, i) => {
         return (
@@ -36,7 +35,9 @@ const CatalogGrid = () => {
     <section className="catalog__grid _mt-30">
       <div className="container">
         <div className="row">
-          <ViewCategoryPosts categoryCurrent={categoryCurrent} />
+          {
+            categoryCurrent.changeCategory ? <ViewCategoryPosts categoryCurrent={categoryCurrent} /> : <RandomListCardBook />
+          }
         </div>
 
         {!!categoryCurrent.categoryPosts.length && (
