@@ -50,7 +50,7 @@ export const Categories = () => {
             ) : (
               categories.map((item, i) => {
                 return (
-                  <div key={i} className="col-lg-3 col-6">
+                  <div key={i} className="col-lg-3 col-6 !!!">
                     <NavLink
                       to={`/cat/${item.slug}`}
                       className={styles.wrap}

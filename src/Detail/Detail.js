@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { getFilmDetail } from "../redux/actions";
 import { Helmet } from "react-helmet";
 import qbIco from "../img/svg/icons/qbittorrent_ico.svg";
+import dTorrent from "../img/svg/icons/download_torrent.svg";
 import starIco from "../img/svg/icons/star_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
@@ -137,7 +138,7 @@ export const Detail = () => {
                         {detail.meta_fields.link_to_file_sd[0] && (
                           <div className={style.download__wrap}>
                             <div className={style.download__icon}>
-                              <img src={qbIco} alt="qbIco" />
+                              <img src={dTorrent} alt="dTorrent" />
                             </div>
                             <div className={style.download__weight}>
                               {detail.meta_fields.file_size_sd[0]}&nbsp;
@@ -151,7 +152,7 @@ export const Detail = () => {
                                 }
                                 download
                               >
-                                torrent
+                                Torrent
                               </a>
                             </div>
                             {
@@ -167,7 +168,7 @@ export const Detail = () => {
                         {detail.meta_fields.link_to_file_hd[0] && (
                           <div className={style.download__wrap}>
                             <div className={style.download__icon}>
-                              <img src={qbIco} alt="qbIco" />
+                              <img src={dTorrent} alt="dTorrent" />
                             </div>
                             <div className={style.download__weight}>
                               {detail.meta_fields.file_size_hd[0]}&nbsp;
@@ -181,7 +182,7 @@ export const Detail = () => {
                                 }
                                 download
                               >
-                                torrent
+                                Torrent
                               </a>
                             </div>
                             {
@@ -197,7 +198,7 @@ export const Detail = () => {
                         {detail.meta_fields.link_to_file_fhd[0] && (
                           <div className={`${style.download__wrap}`}>
                             <div className={style.download__icon}>
-                              <img src={qbIco} alt="qbIco" />
+                              <img src={dTorrent} alt="dTorrent" />
                             </div>
                             <div className={style.download__weight}>
                               {detail.meta_fields.file_size_fhd[0]}&nbsp;
@@ -211,7 +212,7 @@ export const Detail = () => {
                                 }
                                 download
                               >
-                                torrent
+                                Torrent
                               </a>
                             </div>
                             {

@@ -16,7 +16,6 @@ import "../../../node_modules/hamburgers/dist/hamburgers.min.css";
 
 import Loader from "../../ui/Loader/Loader";
 import searchIco from "../../img/svg/icons/search_ico.svg";
-import closeIco from "../../img/svg/icons/close_ico.svg";
 
 export const Header = () => {
   const dispatch = useDispatch();

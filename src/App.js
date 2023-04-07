@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./main.css";
 import "./css/custom.css";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";

@@ -292,6 +292,7 @@ export const changeMenuMobileView = (view) => {
 
 export const wScrollTo = () => {
   window.scrollTo(0, 0);
+  // document.querySelector('html').scrollIntoView({ behavior: 'smooth' });
 };
 // scrollTo end
 

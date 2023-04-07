@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import CatalogGrid from "../components/CatalogGrid/CatalogGrid";
 import HomeFilter from "../components/HomeFilter/HomeFilter";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
 import { Helmet } from "react-helmet";
-import { useDispatch } from "react-redux";
 
 export const Home = () => {
-  // const dispatch = useDispatch();
 
   return (
     <>
@@ -19,7 +16,6 @@ export const Home = () => {
       </Helmet>
       <HomeSlider />
       <HomeFilter />
-      {/* <CatalogGrid /> */}
     </>
   );
 };
