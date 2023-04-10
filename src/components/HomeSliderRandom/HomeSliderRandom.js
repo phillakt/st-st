@@ -83,7 +83,7 @@ const HomeSliderRandom = () => {
   };
 
   return (
-    <section className="catalog__grid-min _mt-60">
+    <section className="catalog__grid-min _mt-60 _mb-40">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

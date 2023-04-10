@@ -8,11 +8,10 @@ import dTorrent from "../img/svg/icons/download_torrent.svg";
 import starIco from "../img/svg/icons/star_ico.svg";
 import style from "./Detail.module.scss";
 import Loader from "../ui/Loader/Loader";
+import LoaderDetail from "../ui/LoaderSkeleton/Detail/Detail";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 import { dataServer } from "../dataServer/dataServer";
-// import { animated, useSpring } from "@react-spring/web";
-// import Skeleton from "react-loading-skeleton";
-// import "react-loading-skeleton/dist/skeleton.css";
+import { animated, useSpring, useTransition } from "@react-spring/web";
 
 export const Detail = () => {
   const params = useParams();
@@ -56,19 +55,20 @@ export const Detail = () => {
     }
   };
 
-  // const animat = useSpring({
-  //   from: {
-  //     opacity: 0,
-  //   },
-  //   to: {
-  //     opacity: 1,
-  //   },
-  // });
+  const animat = useSpring({
+    from: {
+      opacity: 0,
+    },
+    to: {
+      opacity: 1,
+    },
+    delay: 500
+  });
 
   return (
-    <>
+    <animated.div style={animat}>
       {!detail.ID ? (
-        <Loader />
+         <LoaderDetail />
       ) : (
         <>
           <Helmet>
@@ -343,7 +343,7 @@ export const Detail = () => {
           </section>
         </>
       )}
-    </>
+    </animated.div>
   );
 };
 

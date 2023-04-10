@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import HomeFilter from "../components/HomeFilter/HomeFilter";
 import HomeSlider from "../components/HomeSlider/HomeSlider";
+import HomeSliderRandom from "../components/HomeSliderRandom/HomeSliderRandom";
 import { Helmet } from "react-helmet";
 
 export const Home = () => {
@@ -16,6 +17,7 @@ export const Home = () => {
       </Helmet>
       <HomeSlider />
       <HomeFilter />
+      {/* <HomeSliderRandom /> */}
     </>
   );
 };
