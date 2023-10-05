@@ -160,7 +160,7 @@ export const Header = () => {
                           changeMenuMobileViewHandler(false);
                           closeSearchSession();
                         }}
-                        to={`/manual`}
+                        to={`/manual/desktop`}
                       >
                         Как скачать?
                       </NavLink>

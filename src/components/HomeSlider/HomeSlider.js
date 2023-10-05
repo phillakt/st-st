@@ -31,6 +31,28 @@ export const HomeSlider = () => {
     centerMode: false,
     responsive: [
       {
+        breakpoint: 3450,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          slidesToScroll: 1,
+          slidesToShow: 9,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1920,
+        settings: {
+          arrows: false,
+          centerMode: false,
+          slidesToScroll: 1,
+          slidesToShow: 7,
+          dots: true,
+          infinite: true,
+        },
+      },
+      {
         breakpoint: 1400,
         settings: {
           arrows: false,

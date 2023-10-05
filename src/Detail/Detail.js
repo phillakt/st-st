@@ -31,28 +31,7 @@ export const Detail = () => {
   }
 
   const TypeFilms = ({ type }) => {
-    if (type.includes(".fhd")) {
-      return (
-        <>
-          <div className={style.download__fullhd}>Full HD</div>
-          <div className={style.download__ext}>mp4</div>
-        </>
-      );
-    } else if (type.includes(".hd")) {
-      return (
-        <>
-          <div className={style.download__hd}>HD</div>
-          <div className={style.download__ext}>mp4</div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <div className={style.download__sd}>SD</div>
-          <div className={style.download__ext}>mp4</div>
-        </>
-      );
-    }
+    return <div className={style.download__fullhd}>Full HD</div>
   };
 
   const animat = useSpring({
@@ -68,37 +47,23 @@ export const Detail = () => {
   return (
     <animated.div style={animat}>
       {!detail.ID ? (
-         <LoaderDetail />
+        <LoaderDetail />
       ) : (
         <>
           <Helmet>
             <title>
-              {`ST-ST — Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}
-              на телефон, планшет бесплатно в mp4!`}
+              {`ST-ST — Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}, бесплатно!`}
             </title>
             <meta
               name="description"
-              content={`Скачать фильм ${
-                detail.post_title
-              } торрент на телефон, планшет бесплатно в mp4! ${
-                detail.meta_fields.year[0]
-                  ? `Год: ${detail.meta_fields.year[0]}.`
-                  : ""
-              } ${
-                detail.meta_fields.director[0]
-                  ? `Режиссер: ${detail.meta_fields.director[0]}.`
-                  : ""
-              } ${
-                detail.meta_fields.country[0]
-                  ? `Страна: ${detail.meta_fields.country[0]}.`
-                  : ""
-              } ${
-                detail.meta_fields.actors[0]
-                  ? `Актеры: ${detail.meta_fields.actors[0]}.`
-                  : ""
-              }`}
+              content={`Скачать фильм ${detail.post_title
+                } торрент, бесплатно! ${detail.meta_fields.year[0] && `Год: ${detail.meta_fields.year[0]}.`} 
+              ${detail.meta_fields.director[0] && `Режиссер: ${detail.meta_fields.director[0]}.`} 
+              ${detail.meta_fields.country[0] && `Страна: ${detail.meta_fields.country[0]}.`} 
+              ${detail.meta_fields.actors[0] && `Актеры: ${detail.meta_fields.actors[0]}.`}`}
             />
           </Helmet>
+
 
           <section className="detail _pt-30">
             <div className="container">
@@ -120,6 +85,7 @@ export const Detail = () => {
                   </div>
                 )}
               </div>
+
               <div className="row">
                 <div className="col-lg-3 offset-lg-2">
                   <div className="_mb-20">
@@ -130,96 +96,22 @@ export const Detail = () => {
                       ></div>
                     )}
 
-                    {detail.meta_fields.link_to_file_sd[0] ||
-                    detail.meta_fields.link_to_file_hd[0] ||
-                    detail.meta_fields.link_to_file_fhd[0] ? (
+                    {detail.meta_fields.file_size[0] ? (
                       <div className={style.download_box}>
-                        {/* Для SD */}
-                        {detail.meta_fields.link_to_file_sd[0] && (
-                          <div className={style.download__wrap}>
-                            <div className={style.download__icon}>
-                              <img src={dTorrent} alt="dTorrent" />
-                            </div>
-                            <div className={style.download__weight}>
-                              {detail.meta_fields.file_size_sd[0]}&nbsp;
-                              <span>GB</span>
-                            </div>
-                            <div className={style.download__link}>
-                              <a
-                                href={
-                                  dataServer.downloadLinkTorrent +
-                                  detail.meta_fields.link_to_file_sd[0]
-                                }
-                                download
-                              >
-                                Torrent
-                              </a>
-                            </div>
-                            {
-                              <TypeFilms
-                                type={detail.meta_fields.link_to_file_sd[0]}
-                              />
-                            }
-                          </div>
-                        )}
-                        {/* Для SD end */}
-
-                        {/* Для HD */}
-                        {detail.meta_fields.link_to_file_hd[0] && (
-                          <div className={style.download__wrap}>
-                            <div className={style.download__icon}>
-                              <img src={dTorrent} alt="dTorrent" />
-                            </div>
-                            <div className={style.download__weight}>
-                              {detail.meta_fields.file_size_hd[0]}&nbsp;
-                              <span>GB</span>
-                            </div>
-                            <div className={style.download__link}>
-                              <a
-                                href={
-                                  dataServer.downloadLinkTorrent +
-                                  detail.meta_fields.link_to_file_hd[0]
-                                }
-                                download
-                              >
-                                Torrent
-                              </a>
-                            </div>
-                            {
-                              <TypeFilms
-                                type={detail.meta_fields.link_to_file_hd[0]}
-                              />
-                            }
-                          </div>
-                        )}
-                        {/* Для HD end */}
-
                         {/* Для Full HD */}
-                        {detail.meta_fields.link_to_file_fhd[0] && (
+                        {detail.meta_fields.file_size[0] && (
                           <div className={`${style.download__wrap}`}>
-                            <div className={style.download__icon}>
-                              <img src={dTorrent} alt="dTorrent" />
-                            </div>
+                            <TypeFilms type={detail.meta_fields.file_size[0]} />
                             <div className={style.download__weight}>
-                              {detail.meta_fields.file_size_fhd[0]}&nbsp;
+                              {detail.meta_fields.file_size[0]}&nbsp;
                               <span>GB</span>
                             </div>
                             <div className={style.download__link}>
                               <a
-                                href={
-                                  dataServer.downloadLinkTorrent +
-                                  detail.meta_fields.link_to_file_fhd[0]
-                                }
-                                download
-                              >
-                                Torrent
+                                href={dataServer.downloadLinkTorrent + detail.post_name + '.torrent'} download >
+                                Скачать
                               </a>
                             </div>
-                            {
-                              <TypeFilms
-                                type={detail.meta_fields.link_to_file_fhd[0]}
-                              />
-                            }
                           </div>
                         )}
                         {/* Для Full HD end */}
@@ -285,7 +177,7 @@ export const Detail = () => {
 
                   <div className="_mb-20">
                     <div className="color__white">
-                      {detail.meta_fields.slogan[0]}
+                      {detail.meta_fields?.slogan[0]}
                     </div>
                   </div>
 
@@ -311,7 +203,7 @@ export const Detail = () => {
                   <div className="_mb-20">
                     <div className={style.actors__title}>Актеры:</div>
                     <ul className={style.actors__list}>
-                      {detail.meta_fields.actors[0] &&
+                      {detail.meta_fields?.actors[0] &&
                         detail.meta_fields.actors[0]
                           .split(", ")
                           .map((item, i) => {
@@ -339,8 +231,10 @@ export const Detail = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </section>
+
         </>
       )}
     </animated.div>

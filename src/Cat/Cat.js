@@ -5,6 +5,7 @@ import { animated, useSpring } from "@react-spring/web";
 import { getCategories } from "../redux/actions";
 import styles from "./Cat.module.scss";
 import Loader from "../ui/Loader/Loader";
+import { dataServer } from "../dataServer/dataServer"; 
 import { Helmet } from "react-helmet";
 
 export const Categories = () => {
@@ -50,14 +51,14 @@ export const Categories = () => {
             ) : (
               categories.map((item, i) => {
                 return (
-                  <div key={i} className="col-lg-3 col-6 !!!">
+                  <div key={i} className="col-lg-3 col-6">
                     <NavLink
                       to={`/cat/${item.slug}`}
                       className={styles.wrap}
                     >
                       <img
                         className="w-100"
-                        src={item.category_description}
+                        src={dataServer.backendHost + item.category_description}
                         alt={item.slug}
                       />
                       <span className={styles.title}>{item.name}</span>

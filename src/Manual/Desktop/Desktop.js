@@ -24,21 +24,6 @@ export const Desktop = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="fjc-c _mb-30">
-                <span className={style.backArrow} onClick={() => navigate(-1)}>
-                  <img src={backArrow} alt="back arrow" />
-                </span>
-              </div>
-              <div className="fjc-c">
-                <NavLink
-                  className="d-block purge-link _mb-30"
-                  to={`/manual/mobile`}
-                >
-                  <BtnBlue>Для телефона</BtnBlue>
-                </NavLink>
-              </div>
-            </div>
-            <div className="col-lg-12">
               <h1 className="fjc-c color__white fs-30">Для компьютера</h1>
             </div>
           </div>

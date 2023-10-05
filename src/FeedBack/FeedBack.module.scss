@@ -50,6 +50,11 @@ textarea:focus,
 select:focus {
   outline: none;
 }
+.input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #e0e0e0;
+}
 
 .textarea {
   font-family: "Inter", sans-serif;
@@ -58,7 +63,7 @@ select:focus {
   border-radius: 16px;
   height: 144px;
   position: relative;
-  color: #fff;
+  color: #e0e0e0;
   font-size: 14px;
   width: 100%;
   padding: 15px 20px;
@@ -67,6 +72,10 @@ select:focus {
   &:focus {
     background-color: #151f30;
     border: 2px solid rgba(49, 130, 237, 0.4509803922);
+  }
+
+  &::placeholder {
+    color: #e0e0e0;
   }
 }
 

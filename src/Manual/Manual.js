@@ -4,9 +4,6 @@ import { wScrollTo } from "../redux/actions";
 import BtnBlue from "../ui/BtnBlue/BtnBlue";
 import { Helmet } from "react-helmet";
 export const Manual = () => {
-  useEffect(() => {
-    wScrollTo();
-  }, []);
 
   return (
     <>
@@ -27,15 +24,7 @@ export const Manual = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-3 offset-lg-3">
-              <NavLink
-                className="d-block purge-link _mt-30 _mb-30"
-                to={`/manual/mobile`}
-              >
-                <BtnBlue>Для телефона</BtnBlue>
-              </NavLink>
-            </div>
-            <div className="col-lg-3">
+            <div className="col-lg-4 offset-4">
               <NavLink
                 className="d-block purge-link _mt-30 _mb-30"
                 to={`/manual/desktop`}
