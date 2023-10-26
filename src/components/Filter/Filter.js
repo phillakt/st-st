@@ -11,6 +11,7 @@ const CategoryCurrentFilter = () => {
     <div className={style.wrap}>
       <h2 className={style.title}>Фильтр</h2>
       {filtersProps.map((item, i) => {
+        // console.log('item: ', item);
         return (
           <div className={style.wrap__box} key={i}>
             <ElementFilter item={item} />

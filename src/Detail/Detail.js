@@ -30,10 +30,6 @@ export const Detail = () => {
     return { __html: param };
   }
 
-  const TypeFilms = ({ type }) => {
-    return <div className={style.download__fullhd}>Full HD</div>
-  };
-
   const animat = useSpring({
     from: {
       opacity: 0,
@@ -98,23 +94,28 @@ export const Detail = () => {
 
                     {detail.meta_fields.file_size[0] ? (
                       <div className={style.download_box}>
-                        {/* Для Full HD */}
                         {detail.meta_fields.file_size[0] && (
                           <div className={`${style.download__wrap}`}>
-                            <TypeFilms type={detail.meta_fields.file_size[0]} />
-                            <div className={style.download__weight}>
-                              {detail.meta_fields.file_size[0]}&nbsp;
-                              <span>GB</span>
+                            <div className={style.attr__wrap}>
+                              <div className={style.download__quality}>
+                                {detail.meta_fields.quality[0]}
+                              </div>
+                              <div className={style.download__ext}>
+                                {detail.meta_fields.file_ext[0]}
+                              </div>
+                              <div className={style.download__weight}>
+                                {detail.meta_fields.file_size[0]}&nbsp;
+                                <span>GB</span>
+                              </div>
                             </div>
                             <div className={style.download__link}>
                               <a
                                 href={dataServer.downloadLinkTorrent + detail.post_name + '.torrent'} download >
-                                Скачать
+                                torrent
                               </a>
                             </div>
                           </div>
                         )}
-                        {/* Для Full HD end */}
                       </div>
                     ) : (
                       <div className={style.torrent_not_added}>
@@ -143,7 +144,7 @@ export const Detail = () => {
 
                 <div className="col-lg-5">
                   {window.innerWidth >= 991 && (
-                    <div className="detail _mb-10">
+                    <div className="detail _mb-20">
                       {detail.post_title && (
                         <h1 className={style.title}>{detail.post_title}</h1>
                       )}

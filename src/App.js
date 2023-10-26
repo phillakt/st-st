@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./main.css";
 import "./css/custom.css";
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -23,12 +23,16 @@ import { wScrollTo, getFilmDetail, getCategoryCurrent } from "./redux/actions";
 const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const [loc, setLoc] = useState(location);
+
   useEffect(() => {
     wScrollTo();
-    dispatch(getFilmDetail(null));
-    dispatch(getCategoryCurrent(null));
-  }, [location]);
-
+    if(location.pathname !== loc.pathname){
+      dispatch(getFilmDetail(null));
+      dispatch(getCategoryCurrent(null));
+      setLoc(location);
+    }
+  }, [location.key]);
 
   return (
     <>

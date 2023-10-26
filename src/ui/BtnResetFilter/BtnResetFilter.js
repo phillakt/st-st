@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./BtnResetFilter.module.scss";
-import { getCategoryCurrent, resetCurrentFilter } from "../../redux/actions";
+import { getCategoryCurrent, getCategoryCurrentLabelsFilter } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const BtnResetFilter = (props) => {
@@ -10,9 +10,8 @@ const BtnResetFilter = (props) => {
     return (
         <div
             onClick={() => {
-                dispatch(resetCurrentFilter());
+                dispatch(getCategoryCurrentLabelsFilter(categoryCurrent.slug));
                 dispatch(getCategoryCurrent(categoryCurrent.slug, 0, []));
-                // dispatch(getCategoryCurrent(categoryCurrent.slug, 0, []));
             }}
             className={`${style.btn} ${style.default}`}>
             <span>{props.children}</span>

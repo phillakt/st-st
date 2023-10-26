@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   getCategoryCurrent,
-  resetCurrentFilter,
-  wScrollTo,
+  getCategoryCurrentLabelsFilter,
 } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
@@ -33,15 +32,14 @@ const CatCurrent = () => {
     dispatch(getCategoryCurrent(slug, offset, filterState));
   });
 
-  const _resetCurrentFilter = useCallback(() => {
-    dispatch(resetCurrentFilter());
+  const _getCategoryCurrentLabelsFilter = useCallback((slug) => {
+    dispatch(getCategoryCurrentLabelsFilter(slug));
   });
 
   useEffect(() => {
-    _resetCurrentFilter();
+    _getCategoryCurrentLabelsFilter(params.slug);
     _getCategoryCurrent(params.slug, 0, []);
 
-    wScrollTo();
   }, [params.slug]);
 
   return (
@@ -52,7 +50,7 @@ const CatCurrent = () => {
         <>
           <Helmet>
             <title>
-              {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
+            {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
             телефон, планшет бесплатно в mp4!`}
             </title>
             <meta

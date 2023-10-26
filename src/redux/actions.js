@@ -13,8 +13,8 @@ import {
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
   GET_SEARCH_FILMS_PAGE,
+  GET_CATEGORY_CURRENT_LABELS_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
-  RESET_CURRENT_FILTER,
   RESET_MAIN_FILTER_CATEGORY_CURRENT,
 } from "./typesFilms";
 
@@ -256,14 +256,25 @@ export const getSearchFilmsPage = (val, searchList) => {
   };
 };
 
+export const getCategoryCurrentLabelsFilter = (slug) => {
+  return async (dispatch) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-
-
-
-export const resetCurrentFilter = () => {
-  return (dispatch) => {
+    const response = await axios.post(
+      `${dataServer.backendJsonV1}category-current-labels-filter`,
+      {
+        category: slug,
+      },
+      config
+    );
+    
     dispatch({
-      type: RESET_CURRENT_FILTER
+      type: GET_CATEGORY_CURRENT_LABELS_FILTER,
+      filter: response.data,
     });
   };
 };

@@ -87,7 +87,7 @@
             line-height: 1;
             border-radius: 16px;
             margin: 0 15px 15px 0;
-            font-size: 14px;
+            font-size: 16px;
             border: 2px solid #3182ed73;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
@@ -112,17 +112,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     border: 2px solid #151f30;
     transition: all 0.3s ease-in-out;
     margin-bottom: 20px;
-    padding: 35px 18px;
+    padding: 38px 18px;
     border-radius: 16px;
     background: #151f30;
 
     @media (max-width: 991px) {
-        padding: 35px 15px 15px 15px;
-        width: 48%;
+        padding: 34px 18px;
+        width: 100%;
     }
+}
+
+.attr__wrap {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 15px;
+    width: 100%;
 }
 
 .download__icon {
@@ -137,15 +145,16 @@
     color: #e0e0e0;
 
     @media (max-width: 576px) {
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
 .download__link a {
     font-size: 16px;
-    color: #29b474;
+    color: #4CAF50;
     text-decoration: none;
     border-bottom: 1px dotted;
+    text-transform: uppercase;
 
     &:hover {
         border-bottom: 1px dotted transparent;
@@ -158,14 +167,21 @@
     }
 }
 
-.download__fullhd {
+.download__quality {
     font-size: 16px;
-    color: #00bcd4;
+    color: #e0e0e0;
     text-decoration: none;
     border-radius: 16px;
+    text-transform: uppercase;
 }
 
-.download__quality {}
+.download__ext {
+    font-size: 16px;
+    color: #e0e0e0;
+    text-decoration: none;
+    border-radius: 16px;
+    text-transform: uppercase;
+}
 
 .backArrow {
     cursor: pointer;
@@ -236,9 +252,10 @@
 
 .country__list_item {
     font-family: "Inter", sans-serif;
+    display: inline-flex;
     color: #e0e0e0;
-    font-size: 12px;
-    margin: 0 10px 10px 0;
+    font-size: 14px;
+    margin: 0 12px 6px 0;
 }
 
 .actors__title {
@@ -255,7 +272,8 @@
 
 .actors__list_item {
     font-family: "Inter", sans-serif;
+    display: inline-flex;
     color: #e0e0e0;
-    font-size: 12px;
-    margin: 0 10px 10px 0;
+    font-size: 14px;
+    margin: 0 12px 6px 0;
 }

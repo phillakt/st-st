@@ -10,8 +10,8 @@ import {
   GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
   GET_SEARCH_FILMS_PAGE,
+  GET_CATEGORY_CURRENT_LABELS_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
-  RESET_CURRENT_FILTER,
   RESET_MAIN_FILTER_CATEGORY_CURRENT
 } from "./typesFilms";
 
@@ -45,35 +45,7 @@ const initState = {
     searchFilmsPageInputValue: "",
     searchFilmsPageList: [],
   },
-  filtersProps: [
-    {
-      title: "По годам",
-      type: "checkbox",
-      param: "year",
-      list: [
-        {
-          text: "",
-          value: "2022",
-          checked: false,
-        },
-        {
-          text: "",
-          value: "2021",
-          checked: false,
-        },
-        {
-          text: "",
-          value: "2020",
-          checked: false,
-        },
-        {
-          text: "",
-          value: "2019",
-          checked: false,
-        },
-      ],
-    },
-  ],
+  filtersProps: [],
 };
 
 export const films = (state = initState, action) => {
@@ -132,7 +104,6 @@ export const films = (state = initState, action) => {
         ...state,
         filtersProps: [
           ...state.filtersProps.map((item) => {
-            console.log(item);
             if (item.param === action.filtersProps.param) {
               return {
                 ...item,
@@ -191,37 +162,16 @@ export const films = (state = initState, action) => {
         },
       };
 
-    case RESET_CURRENT_FILTER:
+    case GET_CATEGORY_CURRENT_LABELS_FILTER: 
       return {
         ...state,
         filtersProps: [
           {
-            title: "По годам",
-            type: "checkbox",
-            param: "year",
-            list: [
-              {
-                text: "",
-                value: "2022",
-                checked: false,
-              },
-              {
-                text: "",
-                value: "2021",
-                checked: false,
-              },
-              {
-                text: "",
-                value: "2020",
-                checked: false,
-              },
-              {
-                text: "",
-                value: "2019",
-                checked: false,
-              },
-            ],
-          },
+            title: action.filter.title,
+            param: action.filter.param,
+            type: action.filter.type,
+            list: action.filter.list
+          }
         ],
       };
 
