@@ -48,6 +48,10 @@
     &:focus {
       border: 2px solid rgba(49, 130, 237, 0.4509803922);
     }
+
+    &::placeholder {
+      color: #e0e0e0;
+    }
   
     @media (max-width: 1200px) {
       background-color: #131720;

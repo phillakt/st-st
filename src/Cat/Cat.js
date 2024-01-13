@@ -31,10 +31,10 @@ export const Categories = () => {
   return (
     <>
       <Helmet>
-        <title>{`ST-ST —  Торрент жанры на телефон, планшет бесплатно в mp4!`}</title>
+        <title>{`ST-ST —  Торрент жанры на компьютер бесплатно!`}</title>
         <meta
           name="description"
-          content={`Скачать фильмы по жанрам торрентом бесплатно в хорошем качестве mp4!`}
+          content={`Скачать фильмы по жанрам торрентом бесплатно в хорошем качестве!`}
         />
       </Helmet>
       <section className="_pt-40">

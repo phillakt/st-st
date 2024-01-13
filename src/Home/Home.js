@@ -9,15 +9,14 @@ export const Home = () => {
   return (
     <>
       <Helmet>
-        <title>{`ST-ST — Скачать торрент на телефон, планшет бесплатно в mp4!`}</title>
+        <title>{`ST-ST — Скачать фильмы для компьютера!`}</title>
         <meta
           name="description"
-          content={`Скачать фильмы торрентом бесплатно в хорошем качестве mp4!`}
+          content={`Скачать фильмы торрентом бесплатно в хорошем качестве!`}
         />
       </Helmet>
       <HomeSlider />
       <HomeFilter />
-      {/* <HomeSliderRandom /> */}
     </>
   );
 };

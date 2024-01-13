@@ -1,0 +1,2 @@
+export const GET_MANUAL_DESKTOP = "GET_MANUAL_DESKTOP"; 
+

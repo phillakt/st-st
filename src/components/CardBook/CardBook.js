@@ -87,7 +87,7 @@ const CardBook = ({ item }) => {
             </div>
           )}
 
-          <div className="_pb-10">
+          {/* <div className="_pb-10">
             <ul className={style.category_list}>
               {item.category.map((item, i) => {
                 return (
@@ -105,7 +105,8 @@ const CardBook = ({ item }) => {
                 );
               })}
             </ul>
-          </div>
+          </div> */}
+
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ import {
 } from "./typesFilms";
 
 import { CHANGE_MOBILE_VIEW } from "./typesHeader";
+import { GET_MANUAL_DESKTOP } from "./typePages";
 
 // Films
 export const getMainSlider = () => {
@@ -337,3 +338,25 @@ export const setFeedBackSuccess = (successStatus) => {
   };
 };
 // Form end
+
+
+// Pages
+
+export const getManualDesktop = (slug) => {
+  return async (dispatch) => {
+
+    const response = await axios.post(
+      `${dataServer.backendJsonV1}manual-desktop`,
+      {
+        name: JSON.stringify(slug),
+      }
+    );
+
+    dispatch({
+      type: GET_MANUAL_DESKTOP,
+      manualDesktop: response.data,
+    });
+  }
+}
+
+// Pages end

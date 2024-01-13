@@ -44,6 +44,7 @@ const CatCurrent = () => {
 
   return (
     <>
+    
       {!categoryCurrent.slug ? (
         <Loader />
       ) : (
@@ -51,11 +52,11 @@ const CatCurrent = () => {
           <Helmet>
             <title>
             {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
-            телефон, планшет бесплатно в mp4!`}
+            компьютер бесплатно!`}
             </title>
             <meta
               name="description"
-              content={`${categoryCurrent.categoryData.name} скачать фильмы торрент бесплатно в mp4`}
+              content={`${categoryCurrent.categoryData.name} скачать фильмы торрент бесплатно!`}
             />
           </Helmet>
 
@@ -111,6 +112,7 @@ const CatCurrent = () => {
           </section>
         </>
       )}
+
     </>
   );
 };

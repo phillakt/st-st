@@ -274,7 +274,21 @@ header ul li a.active, footer ul li a.active {
   color: #2f80ed;
 }
 
+.manual-desktop__link {
+  display: inline-flex;
+  font-family: "Inter", sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+  color: #2f80ed;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px dashed #2f80ed;
+  margin: 0 0 0 10px;
+}
 
+.manual-desktop__link:hover {
+  border-bottom: 1px dashed transparent; 
+}
 
 /* .pagi__list {
   display: flex;
