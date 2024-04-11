@@ -9,7 +9,7 @@ const BtnUploadMoreFilterDefault = (props) => {
   const count = categoryCurrent.count + 1;
   return (
     <div
-      onClick={() => increment(categoryCurrent.slug, count, filterState)}
+      onClick={() => increment(categoryCurrent.code, count, filterState)}
       className={`${style.btn} ${style.default}`}
     >
       <span>{text}</span>

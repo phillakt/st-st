@@ -83,12 +83,12 @@
             cursor: pointer;
             display: inline-flex;
             color: #e0e0e0;
-            padding: 8px 16px;
+            padding: 8px 16px 10px 16px;
             line-height: 1;
             border-radius: 16px;
             margin: 0 15px 15px 0;
-            font-size: 16px;
-            border: 2px solid #3182ed73;
+            font-size: 12px;
+            border: 2px solid #151f30;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
 
@@ -101,6 +101,8 @@
 }
 
 .download_box {
+    margin-bottom: 20px;
+
     @media (max-width: 991px) {
         display: flex;
         justify-content: space-between;
@@ -115,10 +117,9 @@
     flex-direction: column;
     border: 2px solid #151f30;
     transition: all 0.3s ease-in-out;
-    margin-bottom: 20px;
-    padding: 38px 18px;
+    margin-bottom: 10px;
+    padding: 15px 0;
     border-radius: 16px;
-    background: #151f30;
 
     @media (max-width: 991px) {
         padding: 34px 18px;
@@ -129,7 +130,6 @@
 .attr__wrap {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 15px;
     width: 100%;
 }
 
@@ -154,7 +154,7 @@
     color: #4CAF50;
     text-decoration: none;
     border-bottom: 1px dotted;
-    text-transform: uppercase;
+    text-transform: lowercase;
 
     &:hover {
         border-bottom: 1px dotted transparent;
@@ -172,7 +172,7 @@
     color: #e0e0e0;
     text-decoration: none;
     border-radius: 16px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .download__ext {
@@ -180,7 +180,7 @@
     color: #e0e0e0;
     text-decoration: none;
     border-radius: 16px;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
 .backArrow {

@@ -20,7 +20,7 @@ const initState = {
   categories: [],
   categoryCurrent: {
     count: 0,
-    slug: "",
+    code: "",
     categoryData: {},
     categoryPosts: [],
     categoryAllCountPosts: 0,
@@ -28,7 +28,7 @@ const initState = {
   },
   mainFilterCategoryCurrent: {
     count: 0,
-    slug: "",
+    code: "",
     categoryPosts: [],
     changeCategory: false
   },
@@ -64,7 +64,7 @@ export const films = (state = initState, action) => {
       return {
         ...state,
         mainFilterCategoryCurrent: {
-          slug: action.mainFilterCategoryCurrent.slug,
+          code: action.mainFilterCategoryCurrent.code,
           count: action.mainFilterCategoryCurrent.count,
           categoryPosts: action.mainFilterCategoryCurrent.categoryPosts,
           changeCategory: true
@@ -85,7 +85,7 @@ export const films = (state = initState, action) => {
         ...state,
         categoryCurrent: {
           count: action.count,
-          slug: action.slug,
+          code: action.code,
           categoryData: action.categoryCurrent.categoryData,
           categoryPosts: action.categoryCurrent.posts,
           categoryAllCountPosts: action.categoryCurrent.queryPostsAllCount,
@@ -180,7 +180,7 @@ export const films = (state = initState, action) => {
         ...state,
         mainFilterCategoryCurrent: {
           count: 0,
-          slug: "",
+          code: "",
           categoryPosts: [],
           changeCategory: true
         },

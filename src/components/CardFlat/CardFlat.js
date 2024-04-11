@@ -23,14 +23,14 @@ const CardFlat = ({ item }) => {
         className={`Card__link ${style.link} fjc-s`}>
         <span
           className={style.img}
-          style={{ background: `url(${item.thumbnail_url})` }}
+          style={{ background: `url(${item.poster})` }}
         ></span>
         <NavLink
           onClick={() => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(false);
           }}
-          to={`/cat/${item.category[0].slug}/${item.post_name}`}
+          to={`/cat/${item.genre}/${item.code}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -43,22 +43,22 @@ const CardFlat = ({ item }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(false);
                 }}
-                to={`/cat/${item.category[0].slug}/${item.post_name}`}
+                to={`/cat/${item.genre}/${item.code}`}
               >
-                {item.post_title}
+                {item.name}
               </NavLink>
             </h3>
           </div>
           <div className="_mb-5">
             <div className={style.year}>
-              <span className="_mr-10">{item.meta_fields.duration[0]}</span>
-              <span className="_mr-10">{item.meta_fields.year[0]}</span>
-              <span>{item.meta_fields.rating[0]}</span>
+              <span className="_mr-10">{item.duration}</span>
+              <span className="_mr-10">{item.year}</span>
+              {/* <span>{item.meta_fields.rating[0]}</span> */}
             </div>
           </div>
           <div style={{ display: "none" }} className="_pb-10">
             <ul className={style.category_list}>
-              {item.category.map((item, i) => {
+              {item.genre_list.map((item, i) => {
                 return (
                   <li key={i}>
                     <NavLink
@@ -66,7 +66,7 @@ const CardFlat = ({ item }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(false);
                       }}
-                      to={`/cat/${item.slug}`}
+                      to={`/cat/${item.code}`}
                     >
                       {item.name}
                     </NavLink>

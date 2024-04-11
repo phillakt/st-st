@@ -10,8 +10,8 @@ const BtnResetFilter = (props) => {
     return (
         <div
             onClick={() => {
-                dispatch(getCategoryCurrentLabelsFilter(categoryCurrent.slug));
-                dispatch(getCategoryCurrent(categoryCurrent.slug, 0, []));
+                dispatch(getCategoryCurrentLabelsFilter(categoryCurrent.code));
+                dispatch(getCategoryCurrent(categoryCurrent.code, 0, []));
             }}
             className={`${style.btn} ${style.default}`}>
             <span>{props.children}</span>

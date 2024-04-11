@@ -27,7 +27,7 @@ const CardBook = ({ item }) => {
         <span
           className={style.img}
           style={{
-            background: `url(${item.thumbnail_url})`,
+            background: `url(${item.poster})`,
           }}
         ></span>
         <NavLink
@@ -35,8 +35,7 @@ const CardBook = ({ item }) => {
             closeSearchSessionHandler();
             changeMenuMobileViewHandler(header.menuMobile.view);
           }}
-          // to={`/detail/${item.post_name}`}
-          to={`/cat/${item.category[0].slug}/${item.post_name}`}
+          to={`/cat/${item.genre}/${item.code}`}
           className={style.play}
         ></NavLink>
       </div>
@@ -49,47 +48,46 @@ const CardBook = ({ item }) => {
                   closeSearchSessionHandler();
                   changeMenuMobileViewHandler(header.menuMobile.view);
                 }}
-                // to={`/detail/${item.post_name}`}
-                to={`/cat/${item.category[0].slug}/${item.post_name}`}
+                to={`/cat/${item.genre}/${item.code}`}
               >
-                {item.post_title}
+                {item.name}
               </NavLink>
             </h3>
           </div>
-          {item.meta_fields.rating && (
+          {/* {item.meta_fields.rating && (
             <div className="_pb-10">
               <div className={style.props}>
                 <span>Рейтинг: {item.meta_fields.rating}</span>
               </div>
             </div>
-          )}
-          {item.meta_fields.year && (
+          )} */}
+          {item.year && (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Год: {item.meta_fields.year}</span>
+                <span>Год: {item.year}</span>
               </div>
             </div>
           )}
           
-          {item.meta_fields.country && (
+          {item.country && (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Страна: {item.meta_fields.country}</span>
+                <span>Страна: {item.country}</span>
               </div>
             </div>
           )}
 
-          {item.meta_fields.duration && (
+          {item.duration && (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Время: {item.meta_fields.duration}</span>
+                <span>Время: {item.duration}</span>
               </div>
             </div>
           )}
 
           {/* <div className="_pb-10">
             <ul className={style.category_list}>
-              {item.category.map((item, i) => {
+              {item.genre_list.map((item, i) => {
                 return (
                   <li key={i}>
                     <NavLink
@@ -97,7 +95,7 @@ const CardBook = ({ item }) => {
                         closeSearchSessionHandler();
                         changeMenuMobileViewHandler(header.menuMobile.view);
                       }}
-                      to={`/cat/${item.slug}`}
+                      to={`/cat/${item.code}`}
                     >
                       {item.name}
                     </NavLink>

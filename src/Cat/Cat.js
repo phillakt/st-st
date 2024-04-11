@@ -53,13 +53,13 @@ export const Categories = () => {
                 return (
                   <div key={i} className="col-lg-3 col-6">
                     <NavLink
-                      to={`/cat/${item.slug}`}
+                      to={`/cat/${item.code}`}
                       className={styles.wrap}
                     >
                       <img
                         className="w-100"
-                        src={dataServer.backendHost + item.category_description}
-                        alt={item.slug}
+                        src={item.poster}
+                        alt={item.code}
                       />
                       <span className={styles.title}>{item.name}</span>
                       <span className={styles.count}>{item.count}</span>

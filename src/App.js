@@ -40,8 +40,8 @@ const App = () => {
           <Route path={`/`} exact element={<Home />} />
           <Route path={`/about`} element={<About />} />
           <Route path={`/cat`} element={<Cat />} />
-          <Route path={`/cat/:slug`} element={<CatCurrent />} />
-          <Route path={`/cat/:cat/:slug`} element={<Detail />} />
+          <Route path={`/cat/:code`} element={<CatCurrent />} />
+          <Route path={`/cat/:cat/:code`} element={<Detail />} />
           <Route path={`/feedback`} element={<FeedBack />} />
           <Route path={`/manual-desktop`} element={<Desktop />}/>
           <Route path={`/search`} match={true} element={<Search />} />

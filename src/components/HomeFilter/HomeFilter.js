@@ -36,11 +36,11 @@ export const HomeFilter = () => {
                             <FilterListItem
                               props={{
                                 className:
-                                  item.slug === mainFilterCategoryCurrent.slug
+                                  item.code === mainFilterCategoryCurrent.code
                                     ? "active"
                                     : "",
                                 name: item.name,
-                                slug: item.slug,
+                                code: item.code,
                                 count: 18,
                               }}
                             />

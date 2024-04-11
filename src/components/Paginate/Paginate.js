@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getCategoryCurrent, wScrollTo } from "../../redux/actions";
 import style from "./Paginate.module.scss";
 
-export const Paginate = ({ itemsPerPage, slug, filterState, categoryAllCountPosts }) => {
+export const Paginate = ({ itemsPerPage, code, filterState, categoryAllCountPosts }) => {
   const dispatch = useDispatch();
 
   const [pageCount, setPageCount] = useState(0);
@@ -13,11 +13,11 @@ export const Paginate = ({ itemsPerPage, slug, filterState, categoryAllCountPost
   useEffect(() => {
     setRemountComponent(Math.random());
     setPageCount(Math.ceil(categoryAllCountPosts / itemsPerPage));
-  }, [categoryAllCountPosts, slug, filterState]);
+  }, [categoryAllCountPosts, code, filterState]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % categoryAllCountPosts;
-    dispatch(getCategoryCurrent(slug, newOffset, filterState));
+    dispatch(getCategoryCurrent(code, newOffset, filterState));
     wScrollTo();
   };
 

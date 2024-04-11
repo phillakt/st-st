@@ -37,7 +37,7 @@ const Checkbox = ({ item }) => {
                   })
                 );
 
-                dispatch(getCategoryCurrent(categoryCurrent.slug, 0, filterState));
+                dispatch(getCategoryCurrent(categoryCurrent.code, 0, filterState));
               }}
             >
               {el.text} {el.value}

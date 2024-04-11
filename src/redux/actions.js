@@ -1,4 +1,5 @@
 import axios from "axios";
+import $ from "jquery";
 import { token } from "../token";
 import { dataServer } from "../dataServer/dataServer";
 import { GET_FEEDBACK, SET_FEEDBACK_SUCCESS } from "./typeForms";
@@ -26,12 +27,18 @@ export const getMainSlider = () => {
   return async (dispatch) => {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
+        'Content-Type': 'text/plain'
       },
     };
+
+    var data = {
+      request: '',
+    };
+
     const response = await axios.post(
-      `${dataServer.backendJsonV1}main-slider`,
-      {},
+      `${dataServer.backendJsonV1}c=front:main.slider&action=films`,
+      data,
       config
     );
 
@@ -42,62 +49,17 @@ export const getMainSlider = () => {
   };
 };
 
-export const getCategories = () => {
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}genres`,
-      {},
-      config
-    );
-
-    dispatch({
-      type: GET_CATEGORIES,
-      categories: response.data,
-    });
-  };
-};
-
-export const getMainFilterCategoryCurrent = (slug, count) => {
-    return async (dispatch) => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios.post(
-        `${dataServer.backendJsonV1}main-filter-category-current`,
-        {
-          category: slug,
-          count: count,
-        },
-        config
-      );
-        
-      dispatch({
-        type: GET_MAIN_FILTER_CATEGORY_CURRENT,
-        mainFilterCategoryCurrent: {
-          count,
-          slug,
-          categoryPosts: response.data,
-        },
-      });
-    };
-};
-
 export const getMainSliderRandom = () => {
   return async (dispatch) => {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
+        'Content-Type': 'text/plain'
       },
     };
     const response = await axios.post(
-      `${dataServer.backendJsonV1}film-random`,
+      // `${dataServer.backendJsonV1}film-random`,
+      `${dataServer.backendJsonV1}c=front:main.random&action=films`,
       {},
       config
     );
@@ -109,29 +71,77 @@ export const getMainSliderRandom = () => {
   };
 };
 
-export const getFilmDetail = (slug) => {
-  if(slug){
-    return async (dispatch) => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+export const getCategories = () => {
+  return async (dispatch) => {
+    const config = {
+      headers: {
+        // 'Authorization': `Bearer 123`,
+        'Content-Type': 'text/plain',
+      },
+    };
+    const response = await axios.post(
+      `${dataServer.backendJsonV1}c=front:main.genres&action=films`,
+      {},
+      config
+    );
 
-      const response = await axios.post(
-        `${dataServer.backendJsonV1}film-id`,
-        {
-          name: slug,
-        },
-        config
-      );
+    dispatch({
+      type: GET_CATEGORIES,
+      categories: response.data,
+    });
+  };
+};
 
+export const getMainFilterCategoryCurrent = (code, count) => {
+  return async (dispatch) => {
+
+    var data = {
+      genre: code,
+      count: count,
+    };
+
+    var request = $.ajax({
+      url: `${dataServer.backendJsonV1}c=front:main.filter&action=films`,
+      method: 'POST',
+      data: data
+    })
+
+    request.done(function (response) {
       dispatch({
-        type: GET_FILM_DETAIL,
-        filmDetail: response.data,
+        type: GET_MAIN_FILTER_CATEGORY_CURRENT,
+        mainFilterCategoryCurrent: {
+          count,
+          code,
+          categoryPosts: response,
+        },
+      });
+    });
+
+  };
+};
+
+
+export const getFilmDetail = (code) => {
+  if (code) {
+    return async (dispatch) => {
+      var data = {
+        code,
+      };
+  
+      var request = $.ajax({
+        url: `${dataServer.backendJsonV1}c=front:film.detail&action=film`,
+        method: 'POST',
+        data
+      });
+
+      request.done(function (response) {
+        dispatch({
+          type: GET_FILM_DETAIL,
+          filmDetail: response,
+        });
       });
     };
-  }else {
+  } else {
     return async (dispatch) => {
       dispatch({
         type: GET_FILM_DETAIL,
@@ -141,39 +151,38 @@ export const getFilmDetail = (slug) => {
   }
 };
 
-export const getCategoryCurrent = (slug, count, filterState) => {
-  if(slug){
+export const getCategoryCurrent = (code, count, filterState) => {
+
+  if (code) {
     const filterStateJson = JSON.stringify(filterState);
 
     return async (dispatch) => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      var data = {
+        category: code,
+        count,
+        filterState: filterStateJson,
       };
   
-      const response = await axios.post(
-        `${dataServer.backendJsonV1}category-current`,
-        {
-          category: slug,
+      var request = $.ajax({
+        url: `${dataServer.backendJsonV1}c=front:genre.current&action=genre`,
+        method: 'POST',
+        data
+      });
+
+      request.done(function (response) {
+        dispatch({
+          type: GET_CATEGORY_CURRENT,
+          code,
           count,
-          filterState: filterStateJson,
-        },
-        config
-      );
-  
-      dispatch({
-        type: GET_CATEGORY_CURRENT,
-        slug,
-        count,
-        categoryCurrent: response.data,
+          categoryCurrent: response.categoryCurrent,
+        });
       });
     };
-  }else {
+  } else {
     return async (dispatch) => {
       dispatch({
         type: GET_CATEGORY_CURRENT,
-        slug: '',
+        code: '',
         count: 0,
         categoryCurrent: [],
       })
@@ -212,7 +221,7 @@ export const getAllFilms = () => {
   };
 };
 
-export const getAllFilmsLength = (slug) => {
+export const getAllFilmsLength = (code) => {
   return async (dispatch) => {
     const config = {
       headers: {
@@ -223,7 +232,7 @@ export const getAllFilmsLength = (slug) => {
     const response = await axios.post(
       `${dataServer.backendJsonV1}all-films-length`,
       {
-        category: slug,
+        category: code,
       },
       config
     );
@@ -257,25 +266,26 @@ export const getSearchFilmsPage = (val, searchList) => {
   };
 };
 
-export const getCategoryCurrentLabelsFilter = (slug) => {
+export const getCategoryCurrentLabelsFilter = (code) => {
   return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // };
 
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}category-current-labels-filter`,
-      {
-        category: slug,
-      },
-      config
-    );
-    
+    // const response = await axios.post(
+    //   `${dataServer.backendJsonV1}category-current-labels-filter`,
+    //   {
+    //     category: code,
+    //   },
+    //   config
+    // );
+
     dispatch({
       type: GET_CATEGORY_CURRENT_LABELS_FILTER,
-      filter: response.data,
+      // filter: response.data,
+      filter: [],
     });
   };
 };
@@ -342,13 +352,13 @@ export const setFeedBackSuccess = (successStatus) => {
 
 // Pages
 
-export const getManualDesktop = (slug) => {
+export const getManualDesktop = (code) => {
   return async (dispatch) => {
 
     const response = await axios.post(
       `${dataServer.backendJsonV1}manual-desktop`,
       {
-        name: JSON.stringify(slug),
+        name: JSON.stringify(code),
       }
     );
 

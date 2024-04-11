@@ -8,7 +8,6 @@ const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
   const categoryData = useSelector(
     (selector) => selector.films.categoryCurrent.categoryData
   );
-
   return (
     <div className={style.wrap} style={styleWrap}>
       <ul className={style.box} style={styleWrap}>
@@ -30,14 +29,14 @@ const Breadcrumbs = ({postTitle, cat, styleWrap}) => {
           {
             !postTitle ? categoryData.name : (
               <>
-                <NavLink to={`/cat/${cat.slug}`}>
+                <NavLink to={`/cat/${cat.code}`}>
                   {cat.name}
                 </NavLink>
                 <i className="_ml-10">
                   <img src={breadcrumbs} alt="breadcrumbs-arrow" />
                 </i>
               </>
-            )
+            ) 
           }
         </li>
         {

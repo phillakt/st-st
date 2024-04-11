@@ -9,7 +9,7 @@ export const FilterListItem = ({props}) => {
       className={props.className}
       onClick={() => {
         dispatch(resetMainFilterCategoryCurrent());
-        dispatch(getMainFilterCategoryCurrent(props.slug, props.count));
+        dispatch(getMainFilterCategoryCurrent(props.code, props.count));
       }}
     >
       {props.name}

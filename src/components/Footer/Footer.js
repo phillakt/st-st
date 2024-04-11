@@ -58,7 +58,7 @@ export const Footer = () => {
                         <li key={i}>
                           <NavLink
                             to={{
-                              pathname: `/cat/${item.slug}`,
+                              pathname: `/cat/${item.code}`,
                             }}
                           >
                             {item.name}

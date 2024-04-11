@@ -22,7 +22,7 @@ const CardSearch = ({ item }) => {
           changeMenuMobileViewHandler(false);
         }}
         // to={`/detail/${item.post_name}`}
-        to={`/cat/${item.category[0].slug}/${item.post_name}`}
+        to={`/cat/${item.category[0].code}/${item.post_name}`}
         className={style.mainLink}
       ></NavLink>
 

@@ -17,6 +17,7 @@ import { Helmet } from "react-helmet";
 
 const CatCurrent = () => {
   const params = useParams();
+
   const dispatch = useDispatch();
   const categoryCurrent = useSelector(
     (selector) => selector.films.categoryCurrent
@@ -25,31 +26,31 @@ const CatCurrent = () => {
   const categoryAllCountPosts = useSelector(
     (selector) => selector.films.categoryCurrent.categoryAllCountPosts
   );
-
+  console.log('categoryAllCountPosts: ', categoryAllCountPosts);
   const filterState = useSelector((selector) => selector.films.filtersProps);
 
-  const _getCategoryCurrent = useCallback((slug, offset, filterState) => {
-    dispatch(getCategoryCurrent(slug, offset, filterState));
+  const _getCategoryCurrent = useCallback((code, offset, filterState) => {
+    dispatch(getCategoryCurrent(code, offset, filterState));
   });
 
-  const _getCategoryCurrentLabelsFilter = useCallback((slug) => {
-    dispatch(getCategoryCurrentLabelsFilter(slug));
+  const _getCategoryCurrentLabelsFilter = useCallback((code) => {
+    dispatch(getCategoryCurrentLabelsFilter(code));
   });
 
   useEffect(() => {
-    _getCategoryCurrentLabelsFilter(params.slug);
-    _getCategoryCurrent(params.slug, 0, []);
+    _getCategoryCurrentLabelsFilter(params.code);
+    _getCategoryCurrent(params.code, 0, []);
 
-  }, [params.slug]);
+  }, [params.code]);
 
   return (
     <>
     
-      {!categoryCurrent.slug ? (
+      {!categoryCurrent.code ? (
         <Loader />
       ) : (
         <>
-          <Helmet>
+          {/* <Helmet>
             <title>
             {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
             компьютер бесплатно!`}
@@ -58,14 +59,14 @@ const CatCurrent = () => {
               name="description"
               content={`${categoryCurrent.categoryData.name} скачать фильмы торрент бесплатно!`}
             />
-          </Helmet>
+          </Helmet> */}
 
           <section className="_pt-40">
             <div className="container">
               <div className="row align-items-start">
                 <div className="col-md-6 order-md-1 order-sm-2 order-2">
                   <h1 className="color__white fs-26">
-                    {categoryCurrent.categoryData.name}
+                    {/* {categoryCurrent.categoryData.name} */}
                   </h1>
                 </div>
                 <div className="col-md-6 order-md-2 order-sm-1 order-1 _mb-30">
@@ -75,7 +76,8 @@ const CatCurrent = () => {
 
               <div className="row _mt-30">
                 <div className="col-md-3">
-                  <CategoryCurrentFilter />
+                  {/* Фильтр */}
+                  {/* <CategoryCurrentFilter /> */}
                 </div>
 
                 <div className="col-md-9">
@@ -94,12 +96,13 @@ const CatCurrent = () => {
                       })
                     )}
                   </div>
+                  {/* Пагинация */}
                   {!!categoryCurrent.categoryAllCountPosts && (
                     <div className="row">
                       <div className="col-md-12">
                         <Paginate
                           itemsPerPage={10}
-                          slug={params.slug}
+                          code={params.code}
                           filterState={filterState}
                           categoryAllCountPosts={categoryAllCountPosts}
                         />

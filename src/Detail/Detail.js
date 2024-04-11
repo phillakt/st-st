@@ -19,12 +19,12 @@ export const Detail = () => {
   const dispatch = useDispatch();
 
   const _getCurrentFilm = useCallback(() => {
-    dispatch(getFilmDetail(params.slug));
+    dispatch(getFilmDetail(params.code));
   });
 
   useEffect(() => {
     _getCurrentFilm();
-  }, [params.slug]);
+  }, [params.code]);
 
   function createMarkup(param) {
     return { __html: param };
@@ -42,11 +42,11 @@ export const Detail = () => {
 
   return (
     <animated.div style={animat}>
-      {!detail.ID ? (
+      {!detail.code ? (
         <LoaderDetail />
       ) : (
         <>
-          <Helmet>
+          {/* <Helmet>
             <title>
               {`ST-ST — Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}, бесплатно!`}
             </title>
@@ -58,24 +58,23 @@ export const Detail = () => {
               ${detail.meta_fields.country[0] && `Страна: ${detail.meta_fields.country[0]}.`} 
               ${detail.meta_fields.actors[0] && `Актеры: ${detail.meta_fields.actors[0]}.`}`}
             />
-          </Helmet>
-
+          </Helmet> */}
 
           <section className="detail _pt-30">
             <div className="container">
               <div className="row">
                 <div className="col-md-10 offset-lg-2 _mb-30">
                   <Breadcrumbs
-                    postTitle={detail.post_title}
-                    cat={detail.category[0]}
+                    postTitle={detail.name}
+                    cat={detail.genre_list[0]}
                     styleWrap={{ justifyContent: "flex-start" }}
                   />
                 </div>
                 {window.innerWidth < 992 && (
                   <div className="col-lg-7 offset-lg-5">
                     <div className="detail _mb-10">
-                      {detail.post_title && (
-                        <h1 className={style.title}>{detail.post_title}</h1>
+                      {detail.name && (
+                        <h1 className={style.title}>{detail.name}</h1>
                       )}
                     </div>
                   </div>
@@ -85,53 +84,49 @@ export const Detail = () => {
               <div className="row">
                 <div className="col-lg-3 offset-lg-2">
                   <div className="_mb-20">
-                    {detail.thumbnail_url && (
+                    {detail.poster && (
                       <div
                         className={style.main__img}
-                        style={{ background: `url(${detail.thumbnail_url})` }}
+                        style={{ background: `url(${detail.poster})` }}
                       ></div>
                     )}
 
-                    {detail.meta_fields.file_size[0] ? (
-                      <div className={style.download_box}>
-                        {detail.meta_fields.file_size[0] && (
-                          <div className={`${style.download__wrap}`}>
+                    <div className={style.download_box}>
+                      {
+                        detail.torrents.map((item, i) => (
+                          <div className={`${style.download__wrap}`} key={item.url_torrent}>
                             <div className={style.attr__wrap}>
-                              <div className={style.download__quality}>
-                                {detail.meta_fields.quality[0]}
-                              </div>
                               <div className={style.download__ext}>
-                                {detail.meta_fields.file_ext[0]}
+                                {item.format}
                               </div>
                               <div className={style.download__weight}>
-                                {detail.meta_fields.file_size[0]}&nbsp;
-                                <span>GB</span>
+                                {item.weight}
+                              </div>
+                              <div className={style.download__link}>
+                                <a
+                                  href={item.url_torrent} download >
+                                  torrent
+                                </a>
                               </div>
                             </div>
-                            <div className={style.download__link}>
-                              <a
-                                href={dataServer.downloadLinkTorrent + detail.post_name + '.torrent'} download >
-                                torrent
-                              </a>
-                            </div>
                           </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div className={style.torrent_not_added}>
+                        ))
+                      }
+                    </div>
+
+                    {/* <div className={style.torrent_not_added}>
                         <span>Torrent не добавлен</span>
-                      </div>
-                    )}
+                      </div> */}
 
                     <div className="_mb-20">
                       <h3 className="color__white fs-16">Похожие жанры:</h3>
                     </div>
                     <div className="_mb-20">
                       <ul className={style.category}>
-                        {detail.category.map((item, i) => {
+                        {detail.genre_list.map((item, i) => {
                           return (
                             <li key={i}>
-                              <NavLink to={`/cat/${item.slug}`}>
+                              <NavLink to={`/cat/${item.code}`}>
                                 {item.name}
                               </NavLink>
                             </li>
@@ -145,48 +140,42 @@ export const Detail = () => {
                 <div className="col-lg-5">
                   {window.innerWidth >= 991 && (
                     <div className="detail _mb-20">
-                      {detail.post_title && (
-                        <h1 className={style.title}>{detail.post_title}</h1>
+                      {detail.name && (
+                        <h1 className={style.title}>{detail.name}</h1>
                       )}
                     </div>
                   )}
                   <div className="_mb-20">
                     <ul className={style.list_prop}>
                       {/* rating */}
-                      {detail.meta_fields?.rating[0] && (
+                      {detail.rating && (
                         <li className="fai-c">
                           <span className="_mr-5">
                             <img src={starIco} alt="starIco" />
                           </span>
-                          {detail.meta_fields.rating[0]}
+                          {detail.rating}
                         </li>
                       )}
 
                       {/* year */}
-                      {detail.meta_fields?.year[0] && (
-                        <li className="fai-c">{detail.meta_fields.year[0]}</li>
+                      {detail.year && (
+                        <li className="fai-c">{detail.year}</li>
                       )}
 
                       {/* duration */}
-                      {detail.meta_fields?.duration[0] && (
+                      {detail.duration && (
                         <li className="fai-c">
-                          {detail.meta_fields.duration[0]}
+                          {detail.duration}
                         </li>
                       )}
                     </ul>
                   </div>
 
                   <div className="_mb-20">
-                    <div className="color__white">
-                      {detail.meta_fields?.slogan[0]}
-                    </div>
-                  </div>
-
-                  <div className="_mb-20">
                     <div className={style.country__title}>Страна:</div>
                     <ul className={style.country__list}>
-                      {detail.meta_fields?.country[0] &&
-                        detail.meta_fields.country[0]
+                      {detail.country &&
+                        detail.country
                           .split(", ")
                           .map((item, i) => {
                             return (
@@ -204,8 +193,8 @@ export const Detail = () => {
                   <div className="_mb-20">
                     <div className={style.actors__title}>Актеры:</div>
                     <ul className={style.actors__list}>
-                      {detail.meta_fields?.actors[0] &&
-                        detail.meta_fields.actors[0]
+                      {detail.actors &&
+                        detail.actors
                           .split(", ")
                           .map((item, i) => {
                             return (
@@ -221,11 +210,11 @@ export const Detail = () => {
 
                   <div className="_mb-40">
                     <div className={style.actors__title}>Описание:</div>
-                    {detail.post_content && (
+                    {detail.text && (
                       <div
                         className={style.content}
                         dangerouslySetInnerHTML={createMarkup(
-                          detail.post_content
+                          detail.text
                         )}
                       ></div>
                     )}

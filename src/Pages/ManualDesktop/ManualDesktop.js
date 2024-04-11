@@ -13,12 +13,12 @@ export const Desktop = () => {
   const dispatch = useDispatch();
 
   const _getManualDesktop = useCallback(() => {
-    dispatch(getManualDesktop(params.slug));
+    dispatch(getManualDesktop(params.code));
   }, []);
 
   useEffect(() => {
     _getManualDesktop();
-  }, [params.slug]);
+  }, [params.code]);
 
 
   function createMarkup(param) {

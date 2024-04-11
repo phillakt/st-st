@@ -10,11 +10,10 @@ const CatalogGrid = () => {
   const categoryCurrent = useSelector(
     (selector) => selector.films.mainFilterCategoryCurrent
   );
-
   const dispatch = useDispatch();
 
-  const increment = (slug, count) => {
-    dispatch(getMainFilterCategoryCurrent(slug, count));
+  const increment = (code, count) => {
+    dispatch(getMainFilterCategoryCurrent(code, count));
   };
 
   const ViewCategoryPosts = ({ categoryCurrent }) => {
