@@ -191,6 +191,50 @@ export const getCategoryCurrent = (code, count, filterState) => {
 
 };
 
+export const getCategoryCurrentLabelsFilter = (code) => {
+  return async (dispatch) => {
+
+    var data = {
+      genre: code
+    };
+
+    var request = $.ajax({
+      url: `${dataServer.backendJsonV1}c=front:genre.current-filter&action=labels`,
+      method: 'POST',
+      data
+    });
+
+    request.done(function (response) {
+      dispatch({
+        type: GET_CATEGORY_CURRENT_LABELS_FILTER,
+        filter: response,
+      });
+    });
+
+  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const changeCheckedElCurrentFilter = (param) => {
   return (dispatch) => {
     dispatch({
@@ -266,29 +310,7 @@ export const getSearchFilmsPage = (val, searchList) => {
   };
 };
 
-export const getCategoryCurrentLabelsFilter = (code) => {
-  return async (dispatch) => {
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // };
 
-    // const response = await axios.post(
-    //   `${dataServer.backendJsonV1}category-current-labels-filter`,
-    //   {
-    //     category: code,
-    //   },
-    //   config
-    // );
-
-    dispatch({
-      type: GET_CATEGORY_CURRENT_LABELS_FILTER,
-      // filter: response.data,
-      filter: [],
-    });
-  };
-};
 
 export const resetMainFilterCategoryCurrent = () => {
   return async (dispatch) => {
@@ -300,6 +322,27 @@ export const resetMainFilterCategoryCurrent = () => {
 
 
 // Films end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Header
 export const changeMenuMobileView = (view) => {

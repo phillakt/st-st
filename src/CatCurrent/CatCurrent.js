@@ -26,7 +26,7 @@ const CatCurrent = () => {
   const categoryAllCountPosts = useSelector(
     (selector) => selector.films.categoryCurrent.categoryAllCountPosts
   );
-  console.log('categoryAllCountPosts: ', categoryAllCountPosts);
+
   const filterState = useSelector((selector) => selector.films.filtersProps);
 
   const _getCategoryCurrent = useCallback((code, offset, filterState) => {
@@ -77,7 +77,7 @@ const CatCurrent = () => {
               <div className="row _mt-30">
                 <div className="col-md-3">
                   {/* Фильтр */}
-                  {/* <CategoryCurrentFilter /> */}
+                  <CategoryCurrentFilter />
                 </div>
 
                 <div className="col-md-9">

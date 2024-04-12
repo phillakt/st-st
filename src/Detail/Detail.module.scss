@@ -106,6 +106,7 @@
     @media (max-width: 991px) {
         display: flex;
         justify-content: space-between;
+        flex-direction: column;
     }
 }
 
@@ -122,7 +123,7 @@
     border-radius: 16px;
 
     @media (max-width: 991px) {
-        padding: 34px 18px;
+        padding: 10px 0;
         width: 100%;
     }
 }
