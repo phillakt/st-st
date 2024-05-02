@@ -50,7 +50,7 @@ export const FeedBack = () => {
         <title>{`ST-ST — Контакты`}</title>
         <meta
           name="description"
-          content={`По вопросам сотрудничества или размещения рекламы пишите на почту`}
+          content={`По вопросам сотрудничества или размещения рекламы заполните форму обратной связи.`}
         />
       </Helmet>
 
@@ -155,18 +155,17 @@ export const FeedBack = () => {
                 <div className="_mt-30">
                   <div className="fjc-s">
                     <span className="color__white fs-18">
-                      По вопросам сотрудничества <br /> или улучшения портала
-                      <br />
-                      пишите на почту:
+                      По вопросам сотрудничества или улучшения портала
+                      заполните форму обратной связи.
                     </span>
                   </div>
-                  <div className="_mt-10">
+                  {/* <div className="_mt-10">
                     <div className="fjc-s">
                       <a className={style.link} href="mailto:sup@st-st.org">
                         sup@st-st.org
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

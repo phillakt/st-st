@@ -6,20 +6,22 @@ import { getManualDesktop } from "../../redux/actions";
 import { Helmet } from "react-helmet";
 import Loader from "../../ui/Loader/Loader";
 
+import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.webp";
+import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
+
 export const Desktop = () => {
 
-  const params = useParams();
-  const manualDesktop = useSelector((selector) => selector.pages.manualDesktop);
-  const dispatch = useDispatch();
+  // const params = useParams();
+  // const manualDesktop = useSelector((selector) => selector.pages.manualDesktop);
+  // const dispatch = useDispatch();
 
-  const _getManualDesktop = useCallback(() => {
-    dispatch(getManualDesktop(params.code));
-  }, []);
+  // const _getManualDesktop = useCallback(() => {
+  //   dispatch(getManualDesktop(params.code));
+  // }, []);
 
-  useEffect(() => {
-    _getManualDesktop();
-  }, [params.code]);
-
+  // useEffect(() => {
+  //   _getManualDesktop();
+  // }, [params.code]);
 
   function createMarkup(param) {
     return { __html: param };
@@ -28,7 +30,7 @@ export const Desktop = () => {
   return (
     <>
       {
-        !manualDesktop.ID ? (
+        0 ? (
           <Loader />
         ) : (
           <>
@@ -49,9 +51,10 @@ export const Desktop = () => {
                 </div>
                 <div className="row _mt-40">
                   <div className="col-lg-8 offset-lg-2"
-                    dangerouslySetInnerHTML={createMarkup(manualDesktop.post_content)}>
+                    // dangerouslySetInnerHTML={createMarkup(manualDesktop.post_content)}
+                    >
 
-                    {/* <h2 className="fjc-c color__white fs-30">Шаг - 1</h2>
+                    <h2 className="fjc-c color__white fs-30">Шаг - 1</h2>
   
                     <div className="_mt-30">
                       <img
@@ -84,13 +87,13 @@ export const Desktop = () => {
   
                     <h2 className="fjc-c color__white fs-30 _mt-30">Шаг - 2</h2>
   
-                    <div className="_mt-30">
+                    {/* <div className="_mt-30">
                       <img
                         className="img-res"
                         src={manualDesktop2}
                         alt="manualDesktop2"
                       />
-                    </div>
+                    </div> */}
   
                     <div className="tac _mt-30 color__white">
                       Скачиваем torrent с сайта
@@ -116,7 +119,7 @@ export const Desktop = () => {
   
                     <h2 className="tac color__white fs-30 _mt-30">
                       Приятного просмотра :)
-                    </h2> */}
+                    </h2>
 
                   </div>
                 </div>

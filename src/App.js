@@ -38,13 +38,13 @@ const App = () => {
       <Header />
         <Routes>
           <Route path={`/`} exact element={<Home />} />
-          <Route path={`/about`} element={<About />} />
           <Route path={`/cat`} element={<Cat />} />
           <Route path={`/cat/:code`} element={<CatCurrent />} />
           <Route path={`/cat/:cat/:code`} element={<Detail />} />
           <Route path={`/feedback`} element={<FeedBack />} />
           <Route path={`/manual-desktop`} element={<Desktop />}/>
           <Route path={`/search`} match={true} element={<Search />} />
+          {/* <Route path={`/about`} element={<About />} /> */}
           <Route path={`/*`} element={<Page404 />} />
         </Routes>
       <Footer />

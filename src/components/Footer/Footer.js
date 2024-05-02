@@ -31,10 +31,10 @@ export const Footer = () => {
                   <span className="footer__logo_desc-min">stream-store</span>
                 </NavLink>
               </div>
-              <div className=" _mt-20">
+              <div className=" _mt-20 _mb-30">
                 <div className="color__white fs-14">Потоковое хранилище</div>
               </div>
-              <div className="social _mt-20 _mb-30">
+              {/* <div className="social _mt-20 _mb-30">
                 <ul className="ul fjc-s social__list">
                   <li>
                     <a href="#!">
@@ -42,7 +42,7 @@ export const Footer = () => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
             <div className="col-lg-6 offset-lg-2 col-12">
               <div className="_mb-30">

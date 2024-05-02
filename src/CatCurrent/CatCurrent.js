@@ -45,28 +45,26 @@ const CatCurrent = () => {
 
   return (
     <>
-    
       {!categoryCurrent.code ? (
         <Loader />
       ) : (
         <>
-          {/* <Helmet>
+          <Helmet>
             <title>
-            {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент на
-            компьютер бесплатно!`}
+            {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент!`}
             </title>
             <meta
               name="description"
-              content={`${categoryCurrent.categoryData.name} скачать фильмы торрент бесплатно!`}
+              content={`Жанр: ${categoryCurrent.categoryData.name}. Скачать фильмы торрент на компьютер бесплатно в хорошем качестве!`}
             />
-          </Helmet> */}
+          </Helmet>
 
           <section className="_pt-40">
             <div className="container">
               <div className="row align-items-start">
                 <div className="col-md-6 order-md-1 order-sm-2 order-2">
                   <h1 className="color__white fs-26">
-                    {/* {categoryCurrent.categoryData.name} */}
+                    {categoryCurrent.categoryData.name}
                   </h1>
                 </div>
                 <div className="col-md-6 order-md-2 order-sm-1 order-1 _mb-30">
@@ -74,7 +72,7 @@ const CatCurrent = () => {
                 </div>
               </div>
 
-              <div className="row _mt-30">
+              <div className="row row-column-reverse-mob _mt-30">
                 <div className="col-md-3">
                   {/* Фильтр */}
                   <CategoryCurrentFilter />
@@ -115,7 +113,6 @@ const CatCurrent = () => {
           </section>
         </>
       )}
-
     </>
   );
 };

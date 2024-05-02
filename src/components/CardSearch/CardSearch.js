@@ -22,7 +22,7 @@ const CardSearch = ({ item }) => {
           changeMenuMobileViewHandler(false);
         }}
         // to={`/detail/${item.post_name}`}
-        to={`/cat/${item.category[0].code}/${item.post_name}`}
+        to={`/cat/${item.genre}/${item.code}`}
         className={style.mainLink}
       ></NavLink>
 
@@ -30,21 +30,22 @@ const CardSearch = ({ item }) => {
         <div
           className={style.imgContainer}
           style={{
-            background: `url(${item.thumbnail_url})`,
+            background: `url(${item.poster})`,
           }}
         ></div>
         <div className={style.wrap_info}>
           <div className={style.info}>
-            <h4 className={style.title}>{item.post_title}</h4>
+            <h4 className={style.title}>{item.name}</h4>
 
             <div className={style.subtitleLine}>
-              <div className={style.rating}>{item.meta_fields.rating[0]}</div>
+              <div className={style.rating}>{item.rating}</div>
               <div className={style.subtitle}>
                 <span className={style.yearRange}>
-                  {item.meta_fields.year[0]}
+                  {item.year}
                 </span>
               </div>
             </div>
+
           </div>
         </div>
       </div>

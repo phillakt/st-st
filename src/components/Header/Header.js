@@ -46,7 +46,7 @@ export const Header = () => {
   const getSearchFilmsHandler = (val) => {
     if (val) {
       const searchList = allFilms.filter((item, i) => {
-        const title = item.post_title.toLowerCase();
+        const title = item.name.toLowerCase();
         const value = val.toLowerCase();
         if (title.includes(value)) {
           return item;

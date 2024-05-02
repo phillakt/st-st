@@ -63,14 +63,10 @@
     display: inline-flex;
     font-family: "Inter", sans-serif;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
     color: #e0e0e0;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
-
-    @media (max-width: 320px) {
-        font-size: 13px;
-    }
 }
 
 .subtitleLine {
@@ -78,31 +74,19 @@
     font-weight: 100;
     font-size: 14px;
     color: #e0e0e0;
-
-    @media (max-width: 320px) {
-        font-size: 13px;
-    }
 }
 
 .rating {
     display: inline-flex;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
     color: #e0e0e0;
     padding-right: 5px;
-
-    @media (max-width: 320px) {
-        font-size: 13px;
-    }
 }
 
 .subtitle {
     display: inline-flex;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 14px;
     color: #e0e0e0;
-
-    @media (max-width: 320px) {
-        font-size: 13px;
-    }
 }

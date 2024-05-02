@@ -37,7 +37,7 @@ export const getMainSlider = () => {
     };
 
     const response = await axios.post(
-      `${dataServer.backendJsonV1}c=front:main.slider&action=films`,
+      `${dataServer.backend_v1}c=front:main.slider&action=films`,
       data,
       config
     );
@@ -58,8 +58,8 @@ export const getMainSliderRandom = () => {
       },
     };
     const response = await axios.post(
-      // `${dataServer.backendJsonV1}film-random`,
-      `${dataServer.backendJsonV1}c=front:main.random&action=films`,
+      // `${dataServer.backend_v1}film-random`,
+      `${dataServer.backend_v1}c=front:main.random&action=films`,
       {},
       config
     );
@@ -80,7 +80,7 @@ export const getCategories = () => {
       },
     };
     const response = await axios.post(
-      `${dataServer.backendJsonV1}c=front:main.genres&action=films`,
+      `${dataServer.backend_v1}c=front:main.genres&action=films`,
       {},
       config
     );
@@ -101,7 +101,7 @@ export const getMainFilterCategoryCurrent = (code, count) => {
     };
 
     var request = $.ajax({
-      url: `${dataServer.backendJsonV1}c=front:main.filter&action=films`,
+      url: `${dataServer.backend_v1}c=front:main.filter&action=films`,
       method: 'POST',
       data: data
     })
@@ -129,7 +129,7 @@ export const getFilmDetail = (code) => {
       };
   
       var request = $.ajax({
-        url: `${dataServer.backendJsonV1}c=front:film.detail&action=film`,
+        url: `${dataServer.backend_v1}c=front:film.detail&action=film`,
         method: 'POST',
         data
       });
@@ -164,7 +164,7 @@ export const getCategoryCurrent = (code, count, filterState) => {
       };
   
       var request = $.ajax({
-        url: `${dataServer.backendJsonV1}c=front:genre.current&action=genre`,
+        url: `${dataServer.backend_v1}c=front:genre.current&action=genre`,
         method: 'POST',
         data
       });
@@ -199,7 +199,7 @@ export const getCategoryCurrentLabelsFilter = (code) => {
     };
 
     var request = $.ajax({
-      url: `${dataServer.backendJsonV1}c=front:genre.current-filter&action=labels`,
+      url: `${dataServer.backend_v1}c=front:genre.current-filter&action=labels`,
       method: 'POST',
       data
     });
@@ -214,27 +214,6 @@ export const getCategoryCurrentLabelsFilter = (code) => {
   };
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const changeCheckedElCurrentFilter = (param) => {
   return (dispatch) => {
     dispatch({
@@ -244,49 +223,46 @@ export const changeCheckedElCurrentFilter = (param) => {
   };
 };
 
+
 export const getAllFilms = () => {
   return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}all-films`,
-      {},
-      config
-    );
-
-    dispatch({
-      type: GET_ALL_FILMS,
-      allFilms: response.data,
+    var request = $.ajax({
+      url: `${dataServer.backend_v1}c=front:film.all&action=films`,
+      method: 'POST',
     });
+
+    request.done(function (response) {
+      dispatch({
+        type: GET_ALL_FILMS,
+        allFilms: response,
+      });
+    });
+
   };
 };
 
-export const getAllFilmsLength = (code) => {
-  return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+// export const getAllFilmsLength = (code) => {
+//   return async (dispatch) => {
+//     const config = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
 
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}all-films-length`,
-      {
-        category: code,
-      },
-      config
-    );
+//     const response = await axios.post(
+//       `${dataServer.backend_v1}all-films-length`,
+//       {
+//         category: code,
+//       },
+//       config
+//     );
 
-    dispatch({
-      type: GET_ALL_FILMS_LENGTH,
-      allFilmsLength: response.data,
-    });
-  };
-};
+//     dispatch({
+//       type: GET_ALL_FILMS_LENGTH,
+//       allFilmsLength: response.data,
+//     });
+//   };
+// };
 
 export const getSearchFilms = (val, searchList) => {
   return (dispatch) => {
@@ -310,8 +286,6 @@ export const getSearchFilmsPage = (val, searchList) => {
   };
 };
 
-
-
 export const resetMainFilterCategoryCurrent = () => {
   return async (dispatch) => {
     dispatch({
@@ -320,29 +294,7 @@ export const resetMainFilterCategoryCurrent = () => {
   }
 }
 
-
 // Films end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Header
 export const changeMenuMobileView = (view) => {
@@ -363,24 +315,23 @@ export const wScrollTo = () => {
 // Form
 export const getFeedBack = (dataForm) => {
   return async (dispatch) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    var data = {
+      feedback: JSON.stringify(dataForm)
     };
 
-    const response = await axios.post(
-      `${dataServer.backendJsonV1}feedback`,
-      {
-        feedback: JSON.stringify(dataForm),
-      },
-      config
-    );
-
-    dispatch({
-      type: GET_FEEDBACK,
-      feedback: JSON.parse(response.data),
+    var request = $.ajax({
+      url: `${dataServer.backend_v1}c=front:form.feedback&action=send`,
+      method: 'POST',
+      data
     });
+
+    request.done(function (response) {
+      dispatch({
+        type: GET_FEEDBACK,
+        feedback: response,
+      });
+    });
+
   };
 };
 
@@ -399,7 +350,7 @@ export const getManualDesktop = (code) => {
   return async (dispatch) => {
 
     const response = await axios.post(
-      `${dataServer.backendJsonV1}manual-desktop`,
+      `${dataServer.backend_v1}manual-desktop`,
       {
         name: JSON.stringify(code),
       }

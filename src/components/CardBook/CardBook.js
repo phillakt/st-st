@@ -54,13 +54,13 @@ const CardBook = ({ item }) => {
               </NavLink>
             </h3>
           </div>
-          {/* {item.meta_fields.rating && (
+          {item.rating && (
             <div className="_pb-10">
               <div className={style.props}>
-                <span>Рейтинг: {item.meta_fields.rating}</span>
+                <span>Рейтинг: {item.rating}</span>
               </div>
             </div>
-          )} */}
+          )}
           {item.year && (
             <div className="_pb-10">
               <div className={style.props}>
@@ -85,7 +85,7 @@ const CardBook = ({ item }) => {
             </div>
           )}
 
-          {/* <div className="_pb-10">
+          <div className="_pb-10">
             <ul className={style.category_list}>
               {item.genre_list.map((item, i) => {
                 return (
@@ -103,7 +103,7 @@ const CardBook = ({ item }) => {
                 );
               })}
             </ul>
-          </div> */}
+          </div>
 
         </div>
       </div>

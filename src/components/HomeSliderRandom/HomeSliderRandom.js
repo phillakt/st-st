@@ -1,7 +1,11 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMainSliderRandom } from "../../redux/actions";
+
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import CardFlat from "../CardFlat/CardFlat";
 import Loader from "../../ui/Loader/Loader";
 
@@ -25,12 +29,13 @@ const HomeSliderRandom = () => {
     infinite: true,
     arrows: true,
     speed: 700,
-    dragging: false,
     cssEase: "ease-in-out",
     slidesToScroll: 3,
     slidesToShow: 6,
     autoplay: true,
     autoplaySpeed: 5000,
+    dragging: false,
+    swipe: false,
     responsive: [
       {
         breakpoint: 1299,
@@ -38,6 +43,8 @@ const HomeSliderRandom = () => {
           arrows: false,
           dots: true,
           infinite: true,
+          dragging: false,
+          swipe: false,
         },
       },
       {
@@ -47,36 +54,44 @@ const HomeSliderRandom = () => {
           slidesToShow: 5,
           dots: true,
           infinite: true,
+          dragging: false,
+          swipe: false,
         },
       },
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 4,
           arrows: false,
           dots: true,
           infinite: true,
+          dragging: true,
+          swipe: true,
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           arrows: false,
           dots: true,
           infinite: true,
+          dragging: true,
+          swipe: true,
         },
       },
       {
         breakpoint: 450,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           arrows: false,
           dots: true,
           infinite: true,
+          dragging: true,
+          swipe: true,
         },
       },
     ],

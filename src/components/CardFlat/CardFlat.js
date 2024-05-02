@@ -25,6 +25,7 @@ const CardFlat = ({ item }) => {
           className={style.img}
           style={{ background: `url(${item.poster})` }}
         ></span>
+        
         <NavLink
           onClick={() => {
             closeSearchSessionHandler();
@@ -53,10 +54,11 @@ const CardFlat = ({ item }) => {
             <div className={style.year}>
               <span className="_mr-10">{item.duration}</span>
               <span className="_mr-10">{item.year}</span>
-              {/* <span>{item.meta_fields.rating[0]}</span> */}
+              <span>{item.rating}</span>
             </div>
           </div>
-          <div style={{ display: "none" }} className="_pb-10">
+
+          {/* <div style={{ display: "none" }} className="_pb-10">
             <ul className={style.category_list}>
               {item.genre_list.map((item, i) => {
                 return (
@@ -74,7 +76,8 @@ const CardFlat = ({ item }) => {
                 );
               })}
             </ul>
-          </div>
+          </div> */}
+          
         </div>
       </div>
     </div>

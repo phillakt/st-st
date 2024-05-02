@@ -46,19 +46,18 @@ export const Detail = () => {
         <LoaderDetail />
       ) : (
         <>
-          {/* <Helmet>
+          <Helmet>
             <title>
-              {`ST-ST — Скачать торрент ${detail.post_title} ${detail.meta_fields.year[0]}, бесплатно!`}
+              {`ST-ST — Скачать торрент ${detail.name} ${detail.year}, бесплатно!`}
             </title>
             <meta
               name="description"
-              content={`Скачать фильм ${detail.post_title
-                } торрент, бесплатно! ${detail.meta_fields.year[0] && `Год: ${detail.meta_fields.year[0]}.`} 
-              ${detail.meta_fields.director[0] && `Режиссер: ${detail.meta_fields.director[0]}.`} 
-              ${detail.meta_fields.country[0] && `Страна: ${detail.meta_fields.country[0]}.`} 
-              ${detail.meta_fields.actors[0] && `Актеры: ${detail.meta_fields.actors[0]}.`}`}
+              content={`Скачать фильм ${detail.name} торрент, бесплатно! ${detail.year && `Год: ${detail.year}.`} 
+              ${detail.director && `Режиссер: ${detail.director}.`} 
+              ${detail.country && `Страна: ${detail.country}.`} 
+              ${detail.actors && `Актеры: ${detail.actors}.`}`}
             />
-          </Helmet> */}
+          </Helmet>
 
           <section className="detail _pt-30">
             <div className="container">

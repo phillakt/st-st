@@ -29,7 +29,7 @@ const Search = () => {
   const getSearchFilmsPageHandler = (val) => {
     if (val) {
       const searchList = allFilms.filter((item, i) => {
-        const title = item.post_title.toLowerCase();
+        const title = item.name.toLowerCase();
         const value = val.toLowerCase();
         if (title.includes(value)) {
           return item;
@@ -101,7 +101,7 @@ const Search = () => {
             {searchFilmsPage.searchFilmsPageList &&
               searchFilmsPage.searchFilmsPageList.map((item, i) => (
                 <div
-                  key={item.ID}
+                  key={item.name}
                   className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30"
                 >
                   <CardFlat item={item} key={i} />
