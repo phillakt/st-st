@@ -57,6 +57,7 @@ export const Detail = () => {
               ${detail.country && `Страна: ${detail.country}.`} 
               ${detail.actors && `Актеры: ${detail.actors}.`}`}
             />
+            <link rel="canonical" href={`https://${dataServer.host}/cat/${detail.genre}/${detail.code}`}/>
           </Helmet>
 
           <section className="detail _pt-30">

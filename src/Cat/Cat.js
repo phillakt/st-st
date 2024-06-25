@@ -36,6 +36,7 @@ export const Categories = () => {
           name="description"
           content={`Скачать фильмы по жанрам торрентом бесплатно в хорошем качестве!`}
         />
+        <link rel="canonical" href={`https://${dataServer.host}/cat`}/>
       </Helmet>
       <section className="_pt-40">
         <div className="container">

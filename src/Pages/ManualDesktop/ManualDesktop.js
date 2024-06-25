@@ -8,6 +8,7 @@ import Loader from "../../ui/Loader/Loader";
 
 import manualDesktop1 from "../../img/manual/desktop/st-st_manual__desktop-1.webp";
 import manualDesktop2 from "../../img/manual/desktop/st-st_manual__desktop-2.png";
+import { dataServer } from "../../dataServer/dataServer";
 
 export const Desktop = () => {
 
@@ -40,6 +41,7 @@ export const Desktop = () => {
                 name="description"
                 content={`Инструкция для скачивания фильмов торрентом на компьютер`}
               />
+              <link rel="canonical" href={`https://${dataServer.host}/manual-desktop`}/>
             </Helmet>
 
             <section className="_pt-30">

@@ -1,64 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  getAllFilms,
   getSearchFilms,
   changeMenuMobileView,
 } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-
 import styleHeader from "./Header.module.scss";
-
-import Search from "../Search/Search";
 import styleSearch from "../../components/Search/Search.module.scss";
-
 import "../../../node_modules/hamburgers/dist/hamburgers.min.css";
-
-import Loader from "../../ui/Loader/Loader";
 import searchIco from "../../img/svg/icons/search_ico.svg";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const allFilms = useSelector((selector) => selector.films.allFilms);
   const searchFilms = useSelector((selector) => selector.films.searchFilms);
   const header = useSelector((selector) => selector.header);
   const navigate = useNavigate();
-  const searchWrap = useRef(null);
 
-  const [awaitAllFilms, setAwaitAllFilms] = useState(true);
-
-  useEffect(() => {
-    setAwaitAllFilms(true);
-  }, [allFilms]);
+  const [valueInput, setValueInput] = useState("");
 
   const changeMenuMobileViewHandler = (view) => {
     dispatch(changeMenuMobileView(view));
   };
 
-  const getAllFilmsHandler = () => {
-    dispatch(getAllFilms());
-  };
-
   const closeSearchSession = () => {
     dispatch(getSearchFilms("", []));
   };
-
-  const getSearchFilmsHandler = (val) => {
-    if (val) {
-      const searchList = allFilms.filter((item, i) => {
-        const title = item.name.toLowerCase();
-        const value = val.toLowerCase();
-        if (title.includes(value)) {
-          return item;
-        }
-      });
-      dispatch(getSearchFilms(val, searchList));
-    } else {
-      dispatch(getSearchFilms("", []));
-    }
-  };
-
-  const AwaitAllFilms = () => (!awaitAllFilms && <Loader addClass={styleSearch.loader__search} />);
 
   const containerFluid = window.innerWidth <= 992 ? "-fluid" : "";
 
@@ -168,75 +134,33 @@ export const Header = () => {
                   </ul>
                 </nav>
 
-                <form autoComplete="off" onSubmit={(e) => {
+                <form autoComplete="off" 
+                className={`${styleSearch.search} _pt-10 _pb-10`} 
+                onSubmit={(e) => {
                   e.preventDefault();
-                  navigate(`/search/?q=${searchFilms.searchInputValue}`);
+                  navigate(`/search/?q=${valueInput}`);
+                  setValueInput("");
                   changeMenuMobileViewHandler(false);
                   closeSearchSession();
-                }} 
-                
-                className={`${styleSearch.search} _pt-10 _pb-10`}>
-                  {<AwaitAllFilms />}
+                }}>
                   <input
-                    value={searchFilms.searchInputValue}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (!allFilms.length) {
-                        getAllFilmsHandler();
-                        setAwaitAllFilms(false);
-                      }
-                    }}
+                    value={valueInput}
                     onChange={(e) => {
-                      getSearchFilmsHandler(e.target.value);
+                      setValueInput(e.target.value);
                     }}
                     className={styleSearch.search_input__text}
                     name="q"
                     type="text"
-                    placeholder={
-                      !awaitAllFilms
-                        ? "Загрузка данных..."
-                        : "Введите название фильма..."
-                    }
+                    placeholder={"Введите название фильма"}
                   />
-                  {/* <button
-                    style={{
-                      display: searchFilms.searchInputValue
-                        ? "inline-flex"
-                        : "none",
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      closeSearchSession();
-                    }}
-                    className={styleSearch.btn_search}
-                  >
-                    <img src={closeIco} alt="closeIco" />
-                  </button> */}
-
                   <button
                     type="submit"
                     className={styleSearch.btn__search_view}
-                    // style={{
-                    //   display: searchFilms.searchInputValue
-                    //     ? "none"
-                    //     : "inline-flex",
-                    // }}
                   >
                     <img src={searchIco} alt="searchIco" />
                   </button>
-
-                  <div
-                    ref={searchWrap}
-                    className={`${styleSearch.wrap} ${
-                      searchFilms.searchWrap
-                        ? styleSearch.wrap_view
-                        : styleSearch.wrap_hidden
-                    }`}
-                  >
-                    <Search closeSearchSession={closeSearchSession} />
-                  </div>
                 </form>
-
+                
                 {/* <div className={`${styleHeader.sign_in} fjc-s fai-c`}>
                   <span className="sign-in__text">
                     <a href="#!" className="fjc-s fai-c">

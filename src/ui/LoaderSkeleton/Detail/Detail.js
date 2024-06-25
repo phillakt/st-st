@@ -1,8 +1,8 @@
 import React from 'react';
 import style from "./Detail.module.scss";
 import PropStyles from "../PropStyles";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const Detail = () => {
     const ps = PropStyles();

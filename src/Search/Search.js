@@ -1,43 +1,34 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import style from "./Search.module.scss";
-import { getAllFilms, getSearchFilmsPage } from "../redux/actions";
-import Loader from "../ui/Loader/Loader";
+import searchIco from "../img/svg/icons/search_ico.svg";
+
+import { getSearchFilms } from "../redux/actions";
+
 import CardFlat from "../components/CardFlat/CardFlat";
+import { dataServer } from "../dataServer/dataServer";
 
 const Search = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const allFilms = useSelector((selector) => selector.films.allFilms);
-  const searchFilmsPage = useSelector(
-    (selector) => selector.films.searchFilmsPage
+  const searchFilms = useSelector(
+    (selector) => selector.films.searchFilms
   );
   const location = useLocation();
-  const inputRef = useRef();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [valueInput, setValueInput] = useState("");
 
   useEffect(() => {
-    !!allFilms && dispatch(getAllFilms());
     const paramRequest = searchParams.get("q");
-    getSearchFilmsPageHandler(paramRequest);
+    getSearchFilmsHandler(paramRequest);
+  }, [location.search]);
 
-    document.querySelector("input[name=q]").blur();
-  }, [location.search, allFilms.length]);
-
-  const getSearchFilmsPageHandler = (val) => {
-    if (val) {
-      const searchList = allFilms.filter((item, i) => {
-        const title = item.name.toLowerCase();
-        const value = val.toLowerCase();
-        if (title.includes(value)) {
-          return item;
-        }
-      });
-      dispatch(getSearchFilmsPage(val, searchList));
+  const getSearchFilmsHandler = (name) => {
+    if (name) {
+      dispatch(getSearchFilms(name));
     } else {
-      dispatch(getSearchFilmsPage("", []));
+      dispatch(getSearchFilms(""));
     }
   };
 
@@ -46,6 +37,7 @@ const Search = () => {
       <Helmet>
         <title>{`ST-ST — Поиск`}</title>
         <meta name="description" content={`Поиск по названию фильмов`} />
+        <link rel="canonical" href={`https://${dataServer.host}/search`} />
       </Helmet>
 
       <section className="_pt-40">
@@ -56,12 +48,12 @@ const Search = () => {
             </div>
             <div className="col-lg-12">
               <div className={`${style.title_search} _mt-30`}>
-                Вы искали: «{searchFilmsPage.searchFilmsPageInputValue}»
+                Вы искали: «{searchFilms.searchInputValue}»
               </div>
             </div>
             <div className="col-lg-12">
               <div className={`${style.title_found} _mt-30`}>
-                Найдено: «{searchFilmsPage.searchFilmsPageList.length}»
+                Найдено: «{searchFilms.searchFilmsList.length}»
               </div>
             </div>
           </div>
@@ -73,37 +65,31 @@ const Search = () => {
                 className={style.form}
                 onSubmit={(e) => {
                   e.preventDefault();
-                  inputRef.current.blur();
-                  navigate(
-                    `/search/?q=${searchFilmsPage.searchFilmsPageInputValue}`
-                  );
-                }}
-              >
-                {!allFilms.length ? (
-                  <Loader />
-                ) : (
-                  <input
-                    ref={inputRef}
-                    className={style.search_input}
-                    type="text"
-                    placeholder="Введите название фильма..."
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      getSearchFilmsPageHandler(val);
-                    }}
-                  />
-                )}
+                  getSearchFilmsHandler(valueInput);
+                  setValueInput("");
+                }}>
+                <input
+                  className={style.search_input}
+                  type="text"
+                  placeholder="Введите название фильма"
+                  value={valueInput}
+                  onChange={(e) => {
+                    setValueInput(e.target.value);
+                  }}
+                />
+                <button type="submit" className={style.btn__search_view}>
+                  <img src={searchIco} alt="searchIco" />
+                </button>
               </form>
             </div>
           </div>
 
           <div className="row">
-            {searchFilmsPage.searchFilmsPageList &&
-              searchFilmsPage.searchFilmsPageList.map((item, i) => (
+            {!!searchFilms.searchFilmsList.length &&
+              searchFilms.searchFilmsList.map((item, i) => (
                 <div
-                  key={item.name}
-                  className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30"
-                >
+                  key={item.code}
+                  className="col-lg-2 col-md-4 col-sm-4 col-6 _mb-30">
                   <CardFlat item={item} key={i} />
                 </div>
               ))}

@@ -14,6 +14,7 @@ import Loader from "../ui/Loader/Loader";
 import Paginate from "../components/Paginate/Paginate";
 
 import { Helmet } from "react-helmet";
+import { dataServer } from "../dataServer/dataServer";
 
 const CatCurrent = () => {
   const params = useParams();
@@ -57,6 +58,7 @@ const CatCurrent = () => {
               name="description"
               content={`Жанр: ${categoryCurrent.categoryData.name}. Скачать фильмы торрент на компьютер бесплатно в хорошем качестве!`}
             />
+            <link rel="canonical" href={`https://${dataServer.host}/cat/${categoryCurrent.code}`}/>
           </Helmet>
 
           <section className="_pt-40">

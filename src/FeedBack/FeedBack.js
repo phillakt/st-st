@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { emailPatternValidate } from "./patterns";
 import SuccessWindow from "../ui/SuccessWindow/SuccessWindow";
+import { dataServer } from "../dataServer/dataServer";
 
 export const FeedBack = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export const FeedBack = () => {
           name="description"
           content={`По вопросам сотрудничества или размещения рекламы заполните форму обратной связи.`}
         />
+        <link rel="canonical" href={`https://${dataServer.host}/feedback`}/>
       </Helmet>
 
       <section className="_pt-40">

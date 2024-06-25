@@ -10,10 +10,7 @@ import {
   GET_MAIN_SLIDER_RANDOM,
   GET_FILM_DETAIL,
   GET_CATEGORY_CURRENT,
-  GET_ALL_FILMS,
-  GET_ALL_FILMS_LENGTH,
   GET_SEARCH_FILMS,
-  GET_SEARCH_FILMS_PAGE,
   GET_CATEGORY_CURRENT_LABELS_FILTER,
   CHANGE_EL_CHECKBOX_CURRENT_FILTER,
   RESET_MAIN_FILTER_CATEGORY_CURRENT,
@@ -223,66 +220,29 @@ export const changeCheckedElCurrentFilter = (param) => {
   };
 };
 
+export const getSearchFilms = (name) => {
 
-export const getAllFilms = () => {
   return async (dispatch) => {
+    var data = {
+      name
+    };
+
     var request = $.ajax({
-      url: `${dataServer.backend_v1}c=front:film.all&action=films`,
+      url: `${dataServer.backend_v1}c=front:film.search&action=films`,
       method: 'POST',
+      data
     });
 
     request.done(function (response) {
       dispatch({
-        type: GET_ALL_FILMS,
-        allFilms: response,
+        type: GET_SEARCH_FILMS,
+        searchFilms: {
+          searchInputValue: name,
+          searchFilmsList: response,
+        },
       });
     });
 
-  };
-};
-
-// export const getAllFilmsLength = (code) => {
-//   return async (dispatch) => {
-//     const config = {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     };
-
-//     const response = await axios.post(
-//       `${dataServer.backend_v1}all-films-length`,
-//       {
-//         category: code,
-//       },
-//       config
-//     );
-
-//     dispatch({
-//       type: GET_ALL_FILMS_LENGTH,
-//       allFilmsLength: response.data,
-//     });
-//   };
-// };
-
-export const getSearchFilms = (val, searchList) => {
-  return (dispatch) => {
-    dispatch({
-      type: GET_SEARCH_FILMS,
-      searchFilms: {
-        searchInputValue: val,
-        searchFilmsList: searchList,
-      },
-    });
-  };
-};
-
-export const getSearchFilmsPage = (val, searchList) => {
-  return {
-    type: GET_SEARCH_FILMS_PAGE,
-    searchFilmsPage: {
-      searchFilmsPageInputValue: val,
-      searchFilmsPageList: searchList,
-    },
   };
 };
 

@@ -1,0 +1,20 @@
+.stub__span {
+    cursor: progress;
+    position: absolute !important;
+    top: 10px;
+    left: 0;
+    width: 100% !important;
+    height: 45px;
+    opacity: 0.7;
+    border-radius: 14px !important;
+}
+
+.stub__expectation {
+    cursor: progress;
+    position: absolute;
+    top: 24px;
+    color: #eee;
+    z-index: 1;
+    font-size: 14px;
+    left: 17px;
+}
