@@ -188,11 +188,12 @@ export const getCategoryCurrent = (code, count, filterState) => {
 
 };
 
-export const getCategoryCurrentLabelsFilter = (code) => {
+export const getCategoryCurrentLabelsFilter = (code, currentYear) => {
   return async (dispatch) => {
 
     var data = {
-      genre: code
+      genre: code,
+      activeFilterParam: currentYear ? currentYear : null
     };
 
     var request = $.ajax({

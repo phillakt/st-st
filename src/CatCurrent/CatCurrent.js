@@ -1,9 +1,10 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import {
   getCategoryCurrent,
   getCategoryCurrentLabelsFilter,
+  wScrollTo,
 } from "../redux/actions";
 import CategoryCurrentFilter from "../components/Filter/Filter";
 import CardBook from "../components/CardBook/CardBook";
@@ -18,11 +19,20 @@ import { dataServer } from "../dataServer/dataServer";
 
 const CatCurrent = () => {
   const params = useParams();
+  const location = useLocation();
+
+  const queryCatCurrent = new URLSearchParams(location.search);
+
+  // Pagination
+  const currentPagination = queryCatCurrent.get('pagination');
+
+  const currentPaginationOffset = ((parseInt(currentPagination) || 1) * 10) - 10;
+
+  // Filter year
+  const currentYear = queryCatCurrent.get('year');
 
   const dispatch = useDispatch();
-  const categoryCurrent = useSelector(
-    (selector) => selector.films.categoryCurrent
-  );
+  const categoryCurrent = useSelector((selector) => selector.films.categoryCurrent);
 
   const categoryAllCountPosts = useSelector(
     (selector) => selector.films.categoryCurrent.categoryAllCountPosts
@@ -33,16 +43,34 @@ const CatCurrent = () => {
   const _getCategoryCurrent = useCallback((code, offset, filterState) => {
     dispatch(getCategoryCurrent(code, offset, filterState));
   });
-
-  const _getCategoryCurrentLabelsFilter = useCallback((code) => {
-    dispatch(getCategoryCurrentLabelsFilter(code));
+  const _getCategoryCurrentLabelsFilter = useCallback((code, currentYear) => {
+    dispatch(getCategoryCurrentLabelsFilter(code, currentYear));
   });
 
   useEffect(() => {
-    _getCategoryCurrentLabelsFilter(params.code);
-    _getCategoryCurrent(params.code, 0, []);
 
-  }, [params.code]);
+    _getCategoryCurrentLabelsFilter(params.code, currentYear);
+
+      if(filterState.length){
+        _getCategoryCurrent(params.code, currentPagination ? currentPaginationOffset : 0, filterState);
+      }else if(currentYear){
+        const filterList = [];
+        const filterYear = {
+          title: "По годам",
+          param: "year",
+          type: "checkbox",
+          list: currentYear.split('.')
+        };
+
+        filterYear.list = filterYear.list.map((item) => ({ text: "", value: item, checked: true }));
+        filterList.push(filterYear);
+        _getCategoryCurrent(params.code, currentPagination ? currentPaginationOffset : 0, filterList);
+      }else {
+        _getCategoryCurrent(params.code, currentPagination ? currentPaginationOffset : 0, filterState);
+      }
+    
+    wScrollTo();
+  }, [params.code, currentPagination, currentYear]);
 
   return (
     <>
@@ -52,13 +80,13 @@ const CatCurrent = () => {
         <>
           <Helmet>
             <title>
-            {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент!`}
+              {`ST-ST — ${categoryCurrent.categoryData.name} скачать торрент!`}
             </title>
             <meta
               name="description"
               content={`Жанр: ${categoryCurrent.categoryData.name}. Скачать фильмы торрент на компьютер бесплатно в хорошем качестве!`}
             />
-            <link rel="canonical" href={`https://${dataServer.host}/cat/${categoryCurrent.code}`}/>
+            <link rel="canonical" href={`https://${dataServer.host}/cat/${categoryCurrent.code}`} />
           </Helmet>
 
           <section className="_pt-40">
@@ -105,6 +133,7 @@ const CatCurrent = () => {
                           code={params.code}
                           filterState={filterState}
                           categoryAllCountPosts={categoryAllCountPosts}
+                          currentPagination={currentPagination}
                         />
                       </div>
                     </div>

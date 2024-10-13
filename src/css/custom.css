@@ -199,6 +199,7 @@ header ul li a.active, footer ul li a.active {
 }
 
 .home-slider .slick-prev {
+  top: 49%;
   left: -15px;
   background: #131720f2;
   z-index: 8;
@@ -223,6 +224,7 @@ header ul li a.active, footer ul li a.active {
 
 
 .home-slider .slick-next {
+  top: 49%;
   right: -15px;
   background: #131720f2;
   z-index: 8;

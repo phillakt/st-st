@@ -104,7 +104,7 @@ export const Detail = () => {
                               </div>
                               <div className={style.download__link}>
                                 <a
-                                  href={item.url_torrent} download >
+                                  href={item.url_torrent} download={`${detail.name}.${item.weight}.${item.format}`} >
                                   torrent
                                 </a>
                               </div>
